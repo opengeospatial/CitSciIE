@@ -35,7 +35,7 @@
 // The title here should match the title on the first page.
 // *****************************************************************************
 
-:title: OGC Testbed-14:
+:title: OGC Testbed-14: MapML Engineering Report
 
 // *****************************************************************************
 // Document identifier, with format "OGC YY-nnn" (e.g., OGC 17-067).
@@ -73,7 +73,7 @@
 // *****************************************************************************
 :publicationDate: YYYY-MM-DD
 :approvalDate: YYYY-MM-DD
-:referenceURLID: ID
+:referenceURLID: D012
 :copyrightYear: 2018
 //
 :titletext: {title}
