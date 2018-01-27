@@ -6,16 +6,18 @@
 // General ER Editorial Guidance can be found at
 // http://external.opengis.org/twiki_public/ERGuidance/WebHome.
 //
-// In general, please adhere to the following guidelines and ensure that
-// all contributing authors follow them also:
-// 1. Leave no empty sections.
-// 2. Correct all misspelling according to idiomatic American English.
-// 3. All acronyms must be defined the first time they are used.
-// 4. Avoid domain-specific buzzwords.
-// 5. Write in 3rd person voice; avoid using "we".
-// 6. Ensure correct Grammar and use direct language.
-// 7. Use a colon (:) to introduce bulleted lists.
-// 8. Avoid pronouns with ambiguous references (the problem with "it").
+// In general, please adhere to the following guidelines
+// (and ensure that all contributing authors follow them also):
+//
+// - Leave no empty sections.
+// - Author the document (including spelling) in idiomatic U.S. English.
+// - Start each section with a paragraph (not a figure, table, or list).
+// - Spell out each acronym on first use (with the acronym in parentheses).
+// - Avoid domain-specific buzzwords.
+// - Write in 3rd person voice; avoid using "we".
+// - Ensure correct Grammar and use direct language.
+// - Use a colon (:) to introduce bulleted lists.
+// - Avoid pronouns with ambiguous antecedents (the problem with "it").
 //
 // Please also ensure that all Figures have numbers and captions.
 // Here's an example to follow:
