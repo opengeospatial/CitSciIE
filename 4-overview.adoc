@@ -7,7 +7,98 @@
 This 4-overview.adoc file helps the reader to better understand the various sections of the ER. It should be written like an extended table of contents.
 ====
 
+== Feature Encoding
+=== Current version encoding
+This section describes the goods and bads of the current encoding.
 
+The current proposed encoding is a direct translation of the GeoJSON Encoding into XML.
+
+=== Alternative 1: Compact geometry encoding with microdata
+This encoding is assuming that the content of a feature are its coordinates and attributes are actually subproperties of it.
+
+We have to better discuss about the actual CRS used for the features. For the moment I'm assuming extent coordinates.
+Since MapML is intended for representing 2D maps, I'm only considering 2D coordinates.
+
+In this encoding there will be elements named <polygon>, <polyline>... that will be the actual features. Inside this elements will have html text and other elements. We are using microdata to include tag the html text with semantics. We are introducing the linearRing element that includes the coordinates of the polygon.
+
+.Example of a polygon encoding
+[source,html]
+----
+<mapml>
+  <polygon id="myrestaurant" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://schema.org/Restaurant">
+    <h1 itemprop="name">Fondue for Fun and Fantasy</h1>
+    <p itemprop="description">Fantastic and fun for all your cheesy occasions.</p>
+    <p>Open: <span itemprop="openingHours" content="Mo,Tu,We,Th,Fr,Sa,Su 11:30-23:00">Daily from 11:30am till 11pm</span></p>
+    <p>Phone: <span itemprop="telephone" content="+155501003333">555-0100-3333</span></p>
+    <p>View <a itemprop="menu" href="http://example.com/menu">our menu</a>.</p>
+    <linearRing boundary="exterior">123,321 124,322 126,322 123,321</linearRing>
+  </polygon>
+</mapml>
+----
+
+.Example of a polygon with aring of a diffent color and attributes
+[source,html]
+----
+<mapml>
+  <polygon id="myrestaurant" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://schema.org/Restaurant">
+    <h1 itemprop="name">Fondue for Fun and Fantasy</h1>
+    <p itemprop="description">Fantastic and fun for all your cheesy occasions.</p>
+    <p>Open: <span itemprop="openingHours" content="Mo,Tu,We,Th,Fr,Sa,Su 11:30-23:00">Daily from 11:30am till 11pm</span></p>
+    <p>Phone: <span itemprop="telephone" content="+155501003333">555-0100-3333</span></p>
+    <p>View <a itemprop="menu" href="http://example.com/menu">our menu</a>.</p>
+    <linearRing boundary="exterior">123,321 124,322 126,322 123,321</linearRing>
+    <linearRing boundary="interior" style="stroke:black;stroke-width:5;opacity:0.5">123.5,321.5 124.5,322.5 125.5,321.5 123.5,321.5
+      <p itemprop="description">Hole in the restaurant land.</p>
+    </linearRing>
+  </polygon>
+</mapml>
+----
+
+
+=== Alternative 2: Compact geometry encoding with microdata
+
+.Example of a polygon encoding
+[source,html]
+----
+<mapml>
+  <feature id="myrestaurant" itemscope itemtype="http://schema.org/Restaurant">
+    <h1 itemprop="name">Fondue for Fun and Fantasy</h1>
+    <p itemprop="description">Fantastic and fun for all your cheesy occasions.</p>
+    <p>Open: <span itemprop="openingHours" content="Mo,Tu,We,Th,Fr,Sa,Su 11:30-23:00">Daily from 11:30am till 11pm</span></p>
+    <p>Phone: <span itemprop="telephone" content="+155501003333">555-0100-3333</span></p>
+    <p>View <a itemprop="menu" href="http://example.com/menu">our menu</a>.</p>
+    <polygon id="MyRestaurantGeometry" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://pending.schema.org/GeospatialGeometry">
+      <linearRing boundary="exterior">123,321 124,322 126,322 123,321</linearRing>
+    </polygon>
+  </feature>
+</mapml>
+----
+
+=== Alternative 3: GML geometry encoding with microdata
+
+.Example of a polygon encoding
+[source,html]
+----
+<mapml>
+  <feature id="myrestaurant" style="stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://schema.org/Restaurant">
+    <h1 itemprop="name">Fondue for Fun and Fantasy</h1>
+    <p itemprop="description">Fantastic and fun for all your cheesy occasions.</p>
+    <p>Open: <span itemprop="openingHours" content="Mo,Tu,We,Th,Fr,Sa,Su 11:30-23:00">Daily from 11:30am till 11pm</span></p>
+    <p>Phone: <span itemprop="telephone" content="+155501003333">555-0100-3333</span></p>
+    <p>View <a itemprop="menu" href="http://example.com/menu">our menu</a>.</p>
+    <Polygon id="MyRestaurantGeometry" style="fill:lime;stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://www.opengis.net/gml/3.2"> 
+      <exterior>
+        <LinearRing>
+          <posList>123 321 124 322 126 322 123 321
+          </posList>
+        </LinearRing>
+      </exterior>
+    </Polygon>
+  </feature>
+</mapml>
+----
+
+== Other
 (( Example: ))
 
 (( Section 5 introduces the problem of vector tiling. It describes the situation prior to the testbed and discusses the requirements set by the sponsors. ))
