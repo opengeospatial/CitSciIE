@@ -13,47 +13,53 @@ This section describes the goods and bads of the current encoding.
 
 The current proposed encoding is a direct translation of the GeoJSON Encoding into XML.
 
-=== Alternative 1: Compact geometry encoding with microdata
-This encoding is assuming that the content of a feature are its coordinates and attributes are actually subproperties of it.
+=== Alternative feature encodings
 
+Three alternatives are presented below. All three rely on the use of microdata to specify the non-geometrical properties of the feature. The way the encode geometry is different.
 We have to better discuss about the actual CRS used for the features. For the moment I'm assuming extent coordinates.
 Since MapML is intended for representing 2D maps, I'm only considering 2D coordinates.
 
-In this encoding there will be elements named <polygon>, <polyline>... that will be the actual features. Inside this elements will have html text and other elements. We are using microdata to include tag the html text with semantics. We are introducing the linearRing element that includes the coordinates of the polygon.
+=== Alternative 1: Compact geometry encoding with microdata
+This encoding is departing form the general feature model where a feature can have geopmetrical and non-geometrical properties at the same level. Instead, it assumes that the content of a feature is characterized by its geometrical properties first and non-geometrical properties can be attached to it as subproperties. The advantage of this approach is that we can attach non-geometrical properties to the complete geometry but also to any part of it.
+
+In this encoding root feature elements are named <polygon>, <polyline>... that. Inside this elements,  html text is included describing the feature. We are using microdata to include tag the html text with semantics. In addition, We are introducing the linearRing element that includes the coordinates of the polygon.
+
+The style of the polygon applies to all linearRigns but can be overwritten by one of them. It does on apply to the non-geometrical properties that should define their one styles.
 
 .Example of a polygon encoding
 [source,html]
 ----
 <mapml>
-  <polygon id="myrestaurant" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://schema.org/Restaurant">
+  <polygon id="myrestaurant" style="fill:red;stroke:black;stroke-width:3;opacity:0.5" itemscope itemtype="http://schema.org/Restaurant">
+    <linearRing boundary="exterior">123,321 124,322 126,322 123,321</linearRing>
     <h1 itemprop="name">Fondue for Fun and Fantasy</h1>
     <p itemprop="description">Fantastic and fun for all your cheesy occasions.</p>
     <p>Open: <span itemprop="openingHours" content="Mo,Tu,We,Th,Fr,Sa,Su 11:30-23:00">Daily from 11:30am till 11pm</span></p>
     <p>Phone: <span itemprop="telephone" content="+155501003333">555-0100-3333</span></p>
     <p>View <a itemprop="menu" href="http://example.com/menu">our menu</a>.</p>
-    <linearRing boundary="exterior">123,321 124,322 126,322 123,321</linearRing>
   </polygon>
 </mapml>
 ----
 
-.Example of a polygon with aring of a diffent color and attributes
+The following example shows how se can add non-geometrical properties to an inner ring.
+
+.Example of a polygon with a ring of a different color and additional non-geometrical properties.
 [source,html]
 ----
 <mapml>
-  <polygon id="myrestaurant" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://schema.org/Restaurant">
+  <polygon id="myrestaurant" style="fill:red;stroke:black;stroke-width:3;opacity:0.5" itemscope itemtype="http://schema.org/Restaurant">
     <h1 itemprop="name">Fondue for Fun and Fantasy</h1>
     <p itemprop="description">Fantastic and fun for all your cheesy occasions.</p>
     <p>Open: <span itemprop="openingHours" content="Mo,Tu,We,Th,Fr,Sa,Su 11:30-23:00">Daily from 11:30am till 11pm</span></p>
     <p>Phone: <span itemprop="telephone" content="+155501003333">555-0100-3333</span></p>
     <p>View <a itemprop="menu" href="http://example.com/menu">our menu</a>.</p>
     <linearRing boundary="exterior">123,321 124,322 126,322 123,321</linearRing>
-    <linearRing boundary="interior" style="stroke:black;stroke-width:5;opacity:0.5">123.5,321.5 124.5,322.5 125.5,321.5 123.5,321.5
+    <linearRing boundary="interior" style="stroke:orange;stroke-width:5">123.5,321.5 124.5,322.5 125.5,321.5 123.5,321.5
       <p itemprop="description">Hole in the restaurant land.</p>
     </linearRing>
   </polygon>
 </mapml>
 ----
-
 
 === Alternative 2: Compact geometry encoding with microdata
 
@@ -75,6 +81,14 @@ In this encoding there will be elements named <polygon>, <polyline>... that will
 ----
 
 === Alternative 3: GML geometry encoding with microdata
+The following encoding reuses GML geometrical classes to encode the geometrical properties. In this case, there is neither namespace nor GML schema but only the reuse of the GML encoding of geometrical features. We are also eliminating the need for defining feature types a priori.The resulting notation is not terrible in terms of size compared to the other more compact alternatives.
+
+Since we have relaxed GML validation, we can consider that GML elements are extensible and we can add attributes and element when needed. One of our additions is the inclusion of style to represent how the objects need to be portrait in the screen. In the following examples we use the style property. We could also use the other approaches to associate styles to elements in HTML such as the use of "class" names or the association of styles to element id's.
+
+[NOTE]
+====
+The use of SVG (css) styles in GML is not new and was introduced in GML 3.0.0 and still present in the informative annex H in GML 3.2.1. Nevertheless, the encoding suggested here is different and based on how HTML links elements with css styles.
+====
 
 .Example of a polygon encoding
 [source,html]
@@ -86,7 +100,7 @@ In this encoding there will be elements named <polygon>, <polyline>... that will
     <p>Open: <span itemprop="openingHours" content="Mo,Tu,We,Th,Fr,Sa,Su 11:30-23:00">Daily from 11:30am till 11pm</span></p>
     <p>Phone: <span itemprop="telephone" content="+155501003333">555-0100-3333</span></p>
     <p>View <a itemprop="menu" href="http://example.com/menu">our menu</a>.</p>
-    <Polygon id="MyRestaurantGeometry" style="fill:lime;stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://www.opengis.net/gml/3.2"> 
+    <Polygon id="MyRestaurantGeometry" style="fill:lime;stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://www.opengis.net/gml/3.2">
       <exterior>
         <LinearRing>
           <posList>123 321 124 322 126 322 123 321
@@ -97,6 +111,41 @@ In this encoding there will be elements named <polygon>, <polyline>... that will
   </feature>
 </mapml>
 ----
+
+In this example, we making use of the relaxation of GML validation to include new style attribute to in inner ring and to add non-geometrical properties to it.
+
+.Example of a polygon encoding with holes
+[source,html]
+----
+<mapml>
+  <feature id="myrestaurant" style="stroke:black;stroke-width:5;opacity:0.5" itemscope itemtype="http://schema.org/Restaurant">
+    <h1 itemprop="name">Fondue for Fun and Fantasy</h1>
+    <p itemprop="description">Fantastic and fun for all your cheesy occasions.</p>
+    <p>Open: <span itemprop="openingHours" content="Mo,Tu,We,Th,Fr,Sa,Su 11:30-23:00">Daily from 11:30am till 11pm</span></p>
+    <p>Phone: <span itemprop="telephone" content="+155501003333">555-0100-3333</span></p>
+    <p>View <a itemprop="menu" href="http://example.com/menu">our menu</a>.</p>
+    <Polygon id="MyRestaurantGeometry" style="fill:lime;stroke:black;stroke-width:3;opacity:0.5" itemscope itemtype="http://www.opengis.net/gml/3.2">
+      <exterior>
+        <LinearRing>
+          <posList>123 321 124 322 126 322 123 321
+          </posList>
+        </LinearRing>
+      </exterior>
+      <interior style="stroke:orange;stroke-width:5">
+        <LinearRing>
+          <posList>123.5 321.5 124.5 322.5 125.5 321.5 123.5 321.5
+          </posList>
+        </LinearRing>
+        <span itemscope itemtype="http://schema.org/Thing">
+          <p itemprop="description">Hole in the restaurant land.</p>
+        </span>
+      </interior>
+    </Polygon>
+  </feature>
+</mapml>
+----
+
+If we opt for this approach, we should detail what extensions are allowed in the specification. In addition, we could need some addition to GML objects, such as the addition of ellipses.
 
 == Other
 (( Example: ))
