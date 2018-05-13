@@ -1,6 +1,20 @@
 [[Overview]]
 == Overview
 
+=== MapML in relation to other feature encodings,
+
+Vector tiles are an 'unknown media type' as far as the browser is concerned.  As such, they are handled by the JavaScript layer, which is to say, not by the browser, except for through the canvas API calls by the JavaScript.  Vector tiles are even less interoperable than png tiles, since the browser engine 'understands' how to layout and paint png and other image formats.  Their main advantage is bandwidth conservation, which is important, but it's not the first step in standardization of geospatial concepts in the browser.
+
+So I don’t see MapML overlapping or duplicating anything in vector tiles.  However, a MapML client engine, whether it was implemented in JavaScript, or WASM, or preferably by the browser, could use vector tiles to paint a map layer.  The main issue I see with that is the standardization of the tile format to the point where its as widely understood and implemented as png (say), but that may eventually happen.  Finally, despite the canvas element, vector tiles styling is done using scripting, because they are not DOM related in that sense, hence not susceptible to styling via CSS. i.e. not a standard yet.
+
+MapML is an extension to HTML, which if implemented, implies that the browser understands map / layer semantics (however those elements are named), as well as feature / property / geometry semantics.  As such it is intended to be a user-oriented format.  For example,  today on the Web, users create Web pages in all manner of styles, but the common denominator is HTML and CSS and possibly JavaScript for progressive enhancement.  Today, there is no map / layer behaviour, much less feature /  property / geometry semantics, in the browser (proof: try disabling JavaScript, then go to Google Maps).  MapML provides the ability to encode map / layer and feature / property / geometry semantics in one ("simple") format.  This is not just YAFE.  It is user-oriented, to the extent this is possible for maps.  But it brings geographic knowledge to the browser, and it's the browser that is our "user agent".
+
+There is no other “encoding” or service that attempts to do this.  If GeoJSON, or GML, or KML was suitable, browsers would have implemented or be able to implement those, without the need for a YAFE.  Nothing else tries to do what MapML is trying to do, so it should not be considered YAFE, and it should not be constrained by those other encodings should the need for user-oriented features arise (e.g. markup in coordinate strings and possibly other requirements).  As I mentioned on today’s call, one major objective is to make the browser understand not only where the user is (GeoLocation API is implemented across browsers today) , but also to understand where features are in relation to the user (MapML should achieve this).
+
+Regarding OAB and the WFS 3 initiative: who is it for?  Web devs?  If so, just add a GeoJSON format to the output and it will work better, without changing the whole W*S model.
+
+OTOH, if it's for users, well maybe we should consider what users, and possibly talk about including MapML as the default output format.  I think this could be done even without changing the whole W*S model, and we would leverage infrastructure in place.  MapML is trying to change the way we see the world, not how the world is.  Browser developers call this “paving the cow paths”.  WFS 3 is trying to change how the world is, which is fraught and unlikely to succeed.  See also Tim Berners-Lee on the Test of Independent Invention.
+
 [NOTE]
 .Instructions
 ====
@@ -146,6 +160,256 @@ In this example, we making use of the relaxation of GML validation to include ne
 ----
 
 If we opt for this approach, we should detail what extensions are allowed in the specification. In addition, we could need some addition to GML objects, such as the addition of ellipses.
+
+== CCS Symbolization
+
+CSS stands for Cascading Style Sheets. CSS describes how HTML elements are to be displayed on screen. A CSS is a sequence of rule-sets the consist of two parts
+
+* The selector, that points to the HTML element to be symbolized
+* The declaration block that contains one or more symbol declarations
+
+.Example of a ruleset in CSS
+[source,css]
+----
+p {
+    color: red;
+    text-align: center;
+}
+----
+
+In the example the _selector_ points to all <p> elements and declares the letters will be _red_ and paragraph will be _centered_.
+
+=== How to apply css styles to geometries
+The more direct way to apply ccs symbolization is to do it inline
+
+.Example of a polygon encoding
+[source,html]
+----
+<polygon style="fill:red;stroke:black;stroke-width:5;opacity:0.5">
+...
+</polygon>
+----
+
+Another direct way to set styles is to use class (or id) to assign a css ruleset.
+
+[source,html]
+----
+<style>
+.nice
+{
+  fill:red;stroke:black;stroke-width:5;opacity:0.5
+}
+</style>
+
+<polygon class="nice">
+...
+</polygon>
+----
+
+CSS has a way to select elements to be symbolized depending on the values of some attributes of the element.
+
+[source,html]
+----
+<style>
+polygon[type="road"]
+{
+  fill:red;stroke:black;stroke-width:5;opacity:0.5
+}
+</style>
+
+<polygon type="road">
+...
+</polygon>
+----
+
+=== Limitations of ccs
+In the experimentation done to apply CCS to features with properties and geometry, we have detected the following limitations:name: value
+
+* You cannot set select an element of the HTML and apply the symbol to another element
+* You cannot set a selector based on the value of the element (you can do it based on an attribute of the element)
+* You cannot set a selector based on the value of two properties at the same level.
+* You cannot set a symbol declaration value (e.g. _width_ ) as a function of a value of an element or attribute in the HTML
+
+==== You cannot set a selector based on the value of the element.
+CSS selectors can only select elements based attributes but not on values. The use of the attribute "content" of microdata could be a fix to this limitation even if we are forced to repeat the value.
+
+[source,html]
+----
+<style>
+*[itemtype="http://www.opengis.net/road"] [itemprop="theme"][content="road"]{
+    background:red;
+}
+</style>
+<feature>
+  <properties>
+      <table a="b" class="table-properties" itemscope itemtype="http://www.opengis.net/road">
+        <tbody>
+          <tr>
+            <th scope="row">id</th>
+            <td itemprop="id">10964418e33d457aabd6f6ab10dc2e4a</td>
+          </tr>
+          <tr>
+            <th scope="row">theme</th>
+            <td itemprop="theme" content="road">road</td>
+          </tr>
+        </tbody>
+      </table>
+  </properties>
+  <geometry>
+     <polygon>
+     </polygon>
+  </geometry>
+</feature>
+----
+
+==== You cannot set select an element of the HTML and apply the symbol to another element
+In principle, CSS was not designed to select some elements but apply the style to another element. In our case, this means that in general it is not possible to define a selector depending on "properties" and apply this to "geometry".
+The only approximation to this behavior is to select the polygon that is a child of geometry that has a _precedent sibling_ (using ~) with an attribute value. It is still possible to go into single attribute values (that is what we need).
+
+[source,html]
+----
+<style>
+properties[type="road"] ~ geometry polygon {
+    background:red;
+}
+</style>
+
+<feature>
+  <properties type="road">
+      <table>
+      </table>
+  </properties>
+  <geometry>
+     <polygon>
+	polygon
+     </polygon>
+  </geometry>
+</feature>
+----
+
+The use of JavaScript can help to overcome this limitation. We can use querySelectorAll to make use of selector of properties and className to apply the style to geometries.
+
+[source,html]
+----
+<style>
+.road_red {
+    background:red;
+}
+</style>
+<script>
+function setColorsToGeometries()
+{
+	var roads=document.querySelectorAll('*[itemtype="http://www.opengis.net/road"] [itemprop="theme"][content="road"]');
+
+	for (var i=0; i<roads.length; i++)
+	{
+		var elem=roads[i];
+		while (elem && elem.tagName.toLowerCase()!="properties")
+			elem=elem.parentElement;
+		elem.parentElement.getElementsByTagName("geometry")[0].className="road_red";
+	}
+}
+</script>
+
+<body onLoad="setColorsToGeometries()">
+  <feature>
+    <properties>
+        <table a="b" class="table-properties" itemscope itemtype="http://www.opengis.net/road">
+          <tbody>
+            <tr>
+              <th scope="row">theme</th>
+              <td itemprop="theme" content="road">road</td>
+            </tr>
+          </tbody>
+        </table>
+    </properties>
+    <geometry>
+       <polygon>
+       </polygon>
+    </geometry>
+  </feature>
+</body>
+----
+
+=== Extensions of CSS to support geospatial requirements
+NOTE: We need to study the use of CSS styling as defined in geoserver: http://docs.geoserver.org/latest/en/user/styling/css/index.html#css
+
+One of the needed extensions the capability to apply a selector based on some _properties_ values to the _geometry_. Our proposal is to incorporate _condition1_ attribute to point another selector that will add extra conditions based on elements that are not directly the ones to simbolize. Both the _selector_ and the _condition1_ should be of the same father.
+
+A suggested possibility is:
+
+[source,html]
+----
+<style>
+feature polygon; condition1: feature *[itemtype="http://www.opengis.net/road"] [itemprop="theme"][content="road"]
+{
+    background:red;
+}
+</style>
+<feature>
+  <properties>
+      <table a="b" class="table-properties" itemscope itemtype="http://www.opengis.net/road">
+        <tbody>
+          <tr>
+            <th scope="row">id</th>
+            <td itemprop="id">10964418e33d457aabd6f6ab10dc2e4a</td>
+          </tr>
+          <tr>
+            <th scope="row">theme</th>
+            <td itemprop="theme" content="road">road</td>
+          </tr>
+        </tbody>
+      </table>
+  </properties>
+  <geometry>
+     <polygon>
+     </polygon>
+  </geometry>
+</feature>
+----
+
+Another extension iscould be to condition a declaration value (e.g. width) to a property value (e.g. lanes). This could be achieved by using a selector as a value of a symbol declaration:
+
+[source,html]
+----
+<style>
+feature polygon; condition1: feature *[itemtype="http://www.opengis.net/road"] [itemprop="theme"][content="road"]
+{
+    background:red;
+    label: feature *[itemtype="http://www.opengis.net/road"] [itemprop="name"][content];
+    stroke-width: feature *[itemtype="http://www.opengis.net/road"] [itemprop="lanes"][content];
+}
+</style>
+
+<feature>
+  <properties>
+      <table a="b" class="table-properties" itemscope itemtype="http://www.opengis.net/road">
+        <tbody>
+          <tr>
+            <th scope="row">id</th>
+            <td itemprop="id">10964418e33d457aabd6f6ab10dc2e4a</td>
+          </tr>
+          <tr>
+            <th scope="row">theme</th>
+            <td itemprop="theme" content="road">road</td>
+          </tr>
+          <tr>
+            <th scope="row">theme</th>
+            <td itemprop="name" content="route 66">Route 66</td>
+          </tr>
+          <tr>
+            <th scope="row">theme</th>
+            <td itemprop="lanes" content="3">3</td>
+          </tr>
+        </tbody>
+      </table>
+  </properties>
+  <geometry>
+     <polygon>
+     </polygon>
+  </geometry>
+</feature>
+----
 
 == Other
 (( Example: ))
