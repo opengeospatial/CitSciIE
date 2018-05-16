@@ -1,19 +1,18 @@
 [[Overview]]
 == Overview
 
-=== MapML in relation to other feature encodings,
+=== MapML in relation to other feature encodings
+MapML is unique relative to other encodings but the concern that it is duplicative in some way. It is trying to apply geospatial information on the Web best practices, and adapting them to users where applicable.
 
-Vector tiles are an 'unknown media type' as far as the browser is concerned.  As such, they are handled by the JavaScript layer, which is to say, not by the browser, except for through the canvas API calls by the JavaScript.  Vector tiles are even less interoperable than png tiles, since the browser engine 'understands' how to layout and paint png and other image formats.  Their main advantage is bandwidth conservation, which is important, but it's not the first step in standardization of geospatial concepts in the browser.
+The requirements for MapML were originally developed and published on the Web here: http://maps4html.github.io/HTML-Map-Element-UseCases-Requirements. MapML is an extension to HTML, which if implemented, implies that the browser understands map / layer semantics (however those elements are eventually named), as well as feature / property / geometry semantics. As such it is intended to be a user-oriented format. For example, today on the Web, users create Web pages in all manner of styles, but the common denominator is HTML and CSS and possibly JavaScript for progressive enhancement. Today, there is no map / layer behavior, much less feature / property / geometry semantics, in the browser (proof: try disabling JavaScript, then go to Google Maps). MapML provides the ability to encode map / layer and feature / property / geometry semantics in one (simple) format that will be read and interpreted by browsers directly. It is user-oriented, to the extent this is possible for maps. But it brings geographic knowledge to the browser, and it's the browser that is our user agent.
 
-So I don’t see MapML overlapping or duplicating anything in vector tiles.  However, a MapML client engine, whether it was implemented in JavaScript, or WASM, or preferably by the browser, could use vector tiles to paint a map layer.  The main issue I see with that is the standardization of the tile format to the point where its as widely understood and implemented as png (say), but that may eventually happen.  Finally, despite the canvas element, vector tiles styling is done using scripting, because they are not DOM related in that sense, hence not susceptible to styling via CSS. i.e. not a standard yet.
+There is no other encoding or service that attempts to do this. If GeoJSON, or GML, or KML was suitable, browsers would have implemented or be able to implement those directly. MapML should not be constrained by those other encodings should the need for user-oriented features arise (e.g. markup in coordinate strings and possibly other requirements). A major objective of MapML is to make the browser understand not only where the user is (GeoLocation API, https://www.w3schools.com/html/html5_geolocation.asp), but also to understand where features are in relation to the user (MapML should achieve this).
 
-MapML is an extension to HTML, which if implemented, implies that the browser understands map / layer semantics (however those elements are named), as well as feature / property / geometry semantics.  As such it is intended to be a user-oriented format.  For example,  today on the Web, users create Web pages in all manner of styles, but the common denominator is HTML and CSS and possibly JavaScript for progressive enhancement.  Today, there is no map / layer behaviour, much less feature /  property / geometry semantics, in the browser (proof: try disabling JavaScript, then go to Google Maps).  MapML provides the ability to encode map / layer and feature / property / geometry semantics in one ("simple") format.  This is not just YAFE.  It is user-oriented, to the extent this is possible for maps.  But it brings geographic knowledge to the browser, and it's the browser that is our "user agent".
+Take, for example vector tiles. Vector tiles are an 'unknown media type' as far as the browser is concerned.  As such, they are handled by the JavaScript layer, which is to say, not by the browser, except for through the canvas API calls by the JavaScript.  Vector tiles are even less interoperable than png tiles, since the browser engine 'understands' how to layout and paint png and other image formats.  Their main advantage is bandwidth conservation, which is important, but it's not the first step in standardization of geospatial concepts in the browser.
 
-There is no other “encoding” or service that attempts to do this.  If GeoJSON, or GML, or KML was suitable, browsers would have implemented or be able to implement those, without the need for a YAFE.  Nothing else tries to do what MapML is trying to do, so it should not be considered YAFE, and it should not be constrained by those other encodings should the need for user-oriented features arise (e.g. markup in coordinate strings and possibly other requirements).  As I mentioned on today’s call, one major objective is to make the browser understand not only where the user is (GeoLocation API is implemented across browsers today) , but also to understand where features are in relation to the user (MapML should achieve this).
+MapML is not overlapping or duplicating vector tiles.  However, a MapML client engine, whether it was implemented in JavaScript, or WASM, or preferably by the browser, could use vector tiles to paint a map layer.  The main issue I see with that is the standardization of the tile format to the point where its as widely understood and implemented as png (say), but that may eventually happen.  Finally, despite the canvas element, vector tiles styling is done using scripting, because they are not DOM related in that sense, hence not susceptible to styling via CSS. i.e. not a standard yet.
 
-Regarding OAB and the WFS 3 initiative: who is it for?  Web devs?  If so, just add a GeoJSON format to the output and it will work better, without changing the whole W*S model.
-
-OTOH, if it's for users, well maybe we should consider what users, and possibly talk about including MapML as the default output format.  I think this could be done even without changing the whole W*S model, and we would leverage infrastructure in place.  MapML is trying to change the way we see the world, not how the world is.  Browser developers call this “paving the cow paths”.  WFS 3 is trying to change how the world is, which is fraught and unlikely to succeed.  See also Tim Berners-Lee on the Test of Independent Invention.
+Regarding the WFS 3 initiative: who is it for?  Web devs?  If so, just add a GeoJSON format to the output and it will work better, without changing the whole W*S model. If it's for users, we should consider what users, and possibly talk about including MapML as the default output format.  I think this could be done even without changing the whole W*S model, and we would leverage infrastructure in place.  MapML is trying to change the way we see the world, not how the world is. Browser developers call this “paving the cow paths”. WFS 3 is trying to change how the world is, which is fraught and unlikely to succeed.  See also Tim Berners-Lee on the Test of Independent Invention.
 
 [NOTE]
 .Instructions
@@ -222,7 +221,43 @@ polygon[type="road"]
 </polygon>
 ----
 
-=== Limitations of ccs
+CSS has selectors that can be used to select element tag names, class attributes or elements id's. An interesting capability is that selectors can be used to select whatever element name that has an attribute (using the '*' character).
+
+[source,html]
+----
+<style>
+*[type="road"]{
+    background:red;
+}
+</style>
+<feature>
+  <properties>
+    <span type="road">road</span>
+  </properties>
+</feature>
+----
+
+As suggested by https://www.brmwebdev.com/dev/css/schema-based-styling, we can use this to select elements of a particular itemtype. Going further in this approach, we can select itemtype's that are in a particular scope. I have not been ale to find anyone suggesting that, but it is what you should do if you want to be precise in your selectors. This approach was already mentioned in OGC 16-053r1.
+
+[source,html]
+----
+<style>
+*[itemtype="http://www.opengis.net/road"] [itemprop="type"]{
+    background:red;
+}
+</style>
+<feature>
+  <properties>
+    <div itemscope itemtype="http://www.opengis.net/road">
+      <span itemprop="type">road</span>
+    </div>
+  </properties>
+</feature>
+----
+
+Exploring the combinations of all this possible combinations together, and analyzing what is possible in CSS, we can found some important limitations in CSS that prevents us from doing things that are common in GIS such us conditioning the style of a geometry to some values of the properties or specify a style declaration value as function of a property value.
+
+=== Limitations in CSS
 In the experimentation done to apply CCS to features with properties and geometry, we have detected the following limitations:name: value
 
 * You cannot set select an element of the HTML and apply the symbol to another element
@@ -230,8 +265,10 @@ In the experimentation done to apply CCS to features with properties and geometr
 * You cannot set a selector based on the value of two properties at the same level.
 * You cannot set a symbol declaration value (e.g. _width_ ) as a function of a value of an element or attribute in the HTML
 
+It seems that the limitations in the selectors syntax where imposed to allow a faster parser of the HTML-CSS styler.
+
 ==== You cannot set a selector based on the value of the element.
-CSS selectors can only select elements based attributes but not on values. The use of the attribute "content" of microdata could be a fix to this limitation even if we are forced to repeat the value.
+CSS selectors can only select elements based attributes but not on element values (a.k.a element innerHTML). The use of the attribute "content" of microdata could be a fix to this limitation even if we are forced to repeat the value.
 
 [source,html]
 ----
@@ -262,6 +299,28 @@ CSS selectors can only select elements based attributes but not on values. The u
 </feature>
 ----
 
+To avoid the need to repeat the content as an _attribute_ and as a _value_, you could use CSS content property as suggested here: https://www.w3schools.com/cssref/pr_gen_content.asp. In the following example, we populate the innerHTML span element with the content of the  _content_ attribute using the CSS declaration _content_.
+
+[source,html]
+----
+<html>
+<style>
+feature *[itemtype="http://www.opengis.net/road"] [itemprop="theme"][content="highway"] {
+    background:red;
+}
+
+feature *[itemtype="http://www.opengis.net/road"] [itemprop="theme"]::after {
+    content: attr(content);
+}
+</style>
+
+<feature>
+  <properties>
+    <div itemscope itemtype="http://www.opengis.net/road">
+      <span itemprop="theme" content="highway"></span>
+  </properties>
+</feature>
+----
 ==== You cannot set select an element of the HTML and apply the symbol to another element
 In principle, CSS was not designed to select some elements but apply the style to another element. In our case, this means that in general it is not possible to define a selector depending on "properties" and apply this to "geometry".
 The only approximation to this behavior is to select the polygon that is a child of geometry that has a _precedent sibling_ (using ~) with an attribute value. It is still possible to go into single attribute values (that is what we need).
@@ -332,7 +391,7 @@ function setColorsToGeometries()
 ----
 
 === Extensions of CSS to support geospatial requirements
-NOTE: We need to study the use of CSS styling as defined in geoserver: http://docs.geoserver.org/latest/en/user/styling/css/index.html#css
+NOTE: We need to study the use of CSS styling as defined in geoserver: http://docs.geoserver.org/latest/en/user/styling/css/index.html#css and https://carto.com/docs/carto-engine/cartocss/
 
 One of the needed extensions the capability to apply a selector based on some _properties_ values to the _geometry_. Our proposal is to incorporate _condition1_ attribute to point another selector that will add extra conditions based on elements that are not directly the ones to simbolize. Both the _selector_ and the _condition1_ should be of the same father.
 
