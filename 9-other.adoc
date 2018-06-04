@@ -1,0 +1,23 @@
+[[other]]
+== Languages in MapML
+It will include language negociation.
+
+== Panels in MapML
+This will describe pannels such us legends, botons, slides, an other static annotations that can acompany the map.
+
+== Animation in MapML
+This section will consider the time dimension and its applicability for animations.
+
+== Security considerations
+This section will discuss the implications of CORS in MapML.
+
+As a JavaScript programmer cannot access of content coming from another
+server (different that the one that loaded the page) by default for security reasons. The browser is allowed to to that: the browser can render PNG files coming from different domains in the same page with no problem. The same with HTML: the browser is allowed to render HTML in a iframe even if it is not from the same server. Javascript code cannot
+
+This opens an interesting discussions:
+MapML is an new media type. The whole purpose of MapML is to empower browsers with geospatial map capabilities. If the browser is going to do all the rendering, then we could consider that rendering a MapML is equivalent to render a PNG. We can be sure that the browser is not going to "mix" content (only overlay it) so there should be no CORS protection needed. However, the programmer will not have access to the content of any MapML DOM document outside its server by default.
+This is an important design constraint that we need to keep in mind if you follow this route.
+
+To me this is extremely important because the current situation is horrible. By default you cannot render a GeoJSON file that you found elsewhere on top of your data because of CORS. WMS is the exception of this if you only deal with GetMap and images but as soon as you try to read a capabilities document, or use GetMap for vector data you are in CORS problem.
+
+MapML could avoid the CORS issue and this will make it much more versatile that the current solutions on the web.

@@ -45,7 +45,7 @@
 // https://portal.opengeospatial.org/?m=public&subtab=request&tab=1.
 // *****************************************************************************
 
-:docReference: OGC XX-XXX
+:docReference: OGC 18-023
 
 // *****************************************************************************
 // Date posted to OGC Portal>Pending Documents, with format: yyyy-mm-dd.
@@ -57,13 +57,13 @@
 // Names of all editors, comma-separated (e.g., John Doe, Sue Smith)
 // *****************************************************************************
 
-:editor: Name(s)
+:editor: Joan Masó
 
 // *****************************************************************************
 // Proposed working group for review (e.g. Architecture DWG, WCS SWG)
 // *****************************************************************************
 
-:workingGroup: SWG/DWG for Review: Name(s)
+:workingGroup: Spatial Data on the Web Working Group
 
 // *****************************************************************************
 // End of Editor's front-matter elements.
@@ -132,6 +132,18 @@ include::4-overview.adoc[]
 // *****************************************************************************
 // Editors organize included-file inputs as appropriate starting here.
 // *****************************************************************************
+
+include::5-crs.adoc[]
+
+include::6-tiles.adoc[]
+
+include::7-features.adoc[]
+
+include::8-styles.adoc[]
+
+include::9-other.adoc[]
+
+include::10-implementation.adoc[]
 
 include::5-example.adoc[]
 

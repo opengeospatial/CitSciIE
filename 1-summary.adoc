@@ -1,5 +1,5 @@
 == Summary
-(( A The following is, as all texts in double square brackets, a helper text. Please remove this and all other helper texts once done. ))
+This is the second ER about MapML resulting from Testbed initiatives. To find an introduction of MapML and how it works, please, refer to the previous ER OGC 17-019. MapML is a new media type included in an HTML page in a <map> section in a <layer> element. This document assumes that ans is only focused on the description of the MapML media type and its evolutions.
 
 (( The Summary clause shall define without ambiguity the subject of this document and the aspect(s) covered. It shall be succinct so that it can be used as a text for bibliographic purposes. Briefly, it shall contain the key results of the work described in the ER. ))
 
@@ -10,6 +10,36 @@
 (( This section shall be between 2-3 paragraphs and not longer than 507 words.))
 
 === Requirements & Research Motivation
+This Engineering Report is required to captures all results of the MapML task in Testbed 14. In particular is required to collect use cases, implementations, best practices, experiences and results.
+
+This ER makes particular emphasis on a MapML Extension Study that is the result of extensive discussion in the group.
+
+This document is required to specify and suggest adaptations or integration of OWS services (e.g. WMS, WFS, WMTS) serving MapML.
+
+The minimum set of topics it should contain is:
+[loweralpha]
+. Tiled Coordinate Reference System (TCRS) definitions
+. Image georeferencing markup
+. TCRS/projection negotiation
+. Language negotiation
+. Security considerations
+. Hyperlinking within and between map services
+. Accessibility considerations for map feature markup
+. Microdata / microformat semantic markup recommendations
+. Feature  creation  /  update  /  deletion  sections  via  PUT,  POST,  DELETE considerations
+. Caching discussion
+. Extent processing discussion / algorithm
+. Feature styling with Cascading Style Sheets
+. non-spatial content,  such  as  legends,  notes,  graphics  and  other  standard  map  meta-information
+. Evaluate support for vector tiles in the client HTML <map> element
+. Evaluate  support  for  ‘offline’  MapML  maps
+. Define layer grouping / styling and animation in MapML
+. Investigate  and  implement  semantic  markup  integration,  parsing  and  display  using
+HTML/Microdata + schema.org + OGC Simple Features.
+
+This ER will also collect the experiences in the Browser Extension implement the HTML <map> element API and event model as a browser extension, to make programming maps on the Web an exercise in the application of browser-supported standards.
+This ER will also collect the experiences in the implementation of Cloud  Based  Proxy for MapML
+
 (( A precise descriptions of the requirements that have been addressed by the work documented in this Engineering Report; together with the research motivation that answers the fundamental question: What motivated us to address this topic in this report? ))
 
 === Prior-After Comparison
@@ -28,7 +58,7 @@ All questions regarding this document should be directed to the editor or the co
 [width="80%",options="header",caption=""]
 |====================
 |Name |Organization
-|((editor)) | (( from org ))
+|Joan Maso | CREAF
 |((contributor)) | ((from org))
 |====================
 
