@@ -1,5 +1,8 @@
+# What is this ER
+This is the place where we can produced the Citizen Science ER collecting the results of the CitSciIE. For the moment the content is a copy of the OGC template for ER used in the Testbeds that we are going to personalize in this place. 
+
 # Intellectual Property Rights
-The content of this document is copyrighted by the Open Geospatial Consortium (OGC) and may be [licensed](https://github.com/opengeospatial/D012-MapML_Engineering_Report/blob/master/LICENSE) for designated purposes.
+The content of this document is copyrighted by the Open Geospatial Consortium (OGC) and may be [licensed](https://github.com/opengeospatial/CitSciIE/blob/master/LICENSE) for designated purposes.
 
 > NOTE: The language below should already be included in the `1-summary.adoc` source file. It is replicated here for convenience.
 
@@ -8,7 +11,7 @@ Attention is drawn to the possibility that some of the elements of this document
 Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
 
 # er_template
-This is a template proposed for Testbed-14 Engineering Reports.  The objective is for editors to check this out (Clone a version) and begin editing it with a tool such as e.g. Atom editor and Asciidoctor conversion tool.
+This is a template proposed for Testbed-14 Engineering Reports but we are using it here for the CitSciIE.  The objective is for editors to check this out (Clone a version) and begin editing it with a tool such as e.g. Atom editor and Asciidoctor conversion tool.
 
 Note that the files index.adoc, 0-preface.adoc, asciidoctor.css, and all files in folder _resources_ should not be modified. Please begin with file er.adoc. The file er.adoc has instructions in the form of comment. These don't need to be removed. Other files have helper texts that provide instructions.
 
