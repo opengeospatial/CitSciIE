@@ -1,3 +1,0 @@
-[[tiles]]
-== Tile Encoding
-This will include discussion on new addition such as URL templates and server abcd alternatives.
