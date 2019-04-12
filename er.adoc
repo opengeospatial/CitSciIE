@@ -133,7 +133,11 @@ include::4-overview.adoc[]
 // Editors organize included-file inputs as appropriate starting here.
 // *****************************************************************************
 
-include::5-example.adoc[]
+include::5-apply-OandM.adoc[]
+
+include::6-setup-SOS.adoc[]
+
+include::7-data-quality-with-SOS.adoc[]
 
 // you may add any number of chapters as required here
 

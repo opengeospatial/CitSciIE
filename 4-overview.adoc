@@ -2,7 +2,10 @@
 == Overview
 This section could introduce the different improvements that we are introducing in MapML.
 
-=== MapML use cases that are considered in this document.
+=== How to make a map client with SOS
+
+=== Other sections
+
 (( Section 5 introduces the problem of vector tiling. It describes the situation prior to the testbed and discusses the requirements set by the sponsors. ))
 
 (( Section 6 discusses the mathematical model behind the various tiling strategies. It provides recommendations on preferred strategies. ))

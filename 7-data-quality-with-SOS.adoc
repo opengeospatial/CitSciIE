@@ -1,5 +1,9 @@
-[[ExampleClause]]
-== Example Clause
+[[DataQuality]]
+== Data quality estimations with SOS
+
+== Examples
+((The content of this section is copied from the template and will be removed))
+
 
 [NOTE]
 .Instructions
