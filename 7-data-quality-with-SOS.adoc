@@ -1,0 +1,116 @@
+[[ExampleClause]]
+== Example Clause
+
+[NOTE]
+.Instructions
+===============================================
+This section explains some concepts frequently required by Asciidoc novices. Please use this file as a template for your own clauses.
+===============================================
+
+=== Headlines
+All headlines are marked by "=" signs. The top level in each each file starts with level 2 ("=="). Important: For whatever strange reason, headings in annexes are marked differently.
+
+=== Figures
+If you want to reference a figure by using a figure number, it is important to use the following syntax. The figure identifier for <<img_mindMap>> is the first statement of the header. Please adapt the width as appropriate.
+
+[#img_mindMap,reftext='{figure-caption} {counter:figure-num}']
+.High-Level Mind Map of Testbed-14
+image::images/t14MindMap.png[width=800,align="center"]
+
+It is important that you use the same syntax for all images, otherwise the automatic numbering is corrupted!
+
+=== Tables
+Tables are easy to deal with as long as you keep them simple! To add a table, please use the following syntax.
+
+[#table_countries,reftext='{table-caption} {counter:table-num}']
+.Countries in Europe
+[cols="50e,^25m,>25s",width="75%",options="header",align="center"]
+|===
+|Country | Population | Size
+
+| Monaco
+| 36371
+| 1.98
+
+| Gibraltar
+| 29431
+| 6.8
+|===
+
+The first line is used for referencing. You can reference <<table_countries>> in your text. The only thing you should change in that line is the table id, which is "table_countries" in this case. Please do not remove the "#", please do not change anything else in that line.
+
+You can define the style and width of each column. In our example, the first column takes 50% of the entire width, the second and third column take 25% each. The total width of the table is 75% of the text width.
+
+The letters after the width percentage indicate if the column is e=emphasis, m=monospaced, a=asciidoc, s=strong. The d=default does not need to be set.
+
+Cell alignment: If you need to align a column, you may indicate this by setting ^,<, or >. Examples:
+
+* ^25m = centered, 25% width, monospaced.
+* >25e = aligned right, 25% width, emphasised
+* <25 = aligned left, 25% width, asciidoc
+
+In any case, please make sure that your table fit on a piece of A4 or letter-size paper!!
+
+=== Recommended Asciidoc Environment
+We recommend to use http://asciidoctor.org[asciidoctor] and http://asciidoctor.org/docs/convert-asciidoc-to-pdf/[asciidoctor-pdf] in combination with the https://atom.io[Atom] editor.
+
+In Atom, you should install the following packages:
+
+* asciidoc-preview
+* autocomplete-asciidoc
+* language-asciidoc
+* markdown-writer: requires changing of key-map to allow for keyboard shortcuts such as e.g. *bold*
+* platformio-IDE-terminal
+
+This environment allows you to use keyboard shortcuts, autocomplete, syntax highlighting and a rendered preview for asciidoc; and provides you an terminal window within the editor to convert your asciidoc to html and pdf.
+
+=== Asciidoc Conversion
+In order to achieve a uniform look-and-feel of all ERs in both HTML and PDF, we have provided a css and theme file. The following commands can be used to convert the ER:
+
+*Command for PDF output:*
+ asciidoctor-pdf -a pdf-stylesdir=resources -a pdf-style=ogc -a pdf-fontsdir=resources/fonts -o 18-xxx.pdf  er.adoc
+
+*Command for HTML output:*
+ asciidoctor -a data-uri -a stylesheet=ogc.css -a stylesdir=./resources/stylesheets -o 18-xxx er.adoc
+
+=== Source Code
+
+You can add code snippets using the following syntax:
+
+.Code Example XML
+[source,xml]
+----
+<section>
+  <title>Section Title</title> <!--1-->
+</section>
+----
+<1> This notation allows to reference particular sections within the code.
+
+
+.Code Example JSON
+[source,json]
+----
+{"menu": {
+  "id": "file",
+  "value": "File",
+  "popup": {
+    "menuitem": [
+      {"value": "New", "onclick": "CreateNewDoc()"},
+      {"value": "Open", "onclick": "OpenDoc()"},
+      {"value": "Close", "onclick": "CloseDoc()"}
+    ]
+  }
+}}
+----
+
+=== Asciidoc(tor) Syntax Help
+Is available e.g. here: http://asciidoctor.org/docs/
+
+=== Citations
+Please use the following syntax to insert citations:
+
+cite:[VanZyl2009]
+
+Then you need to provide all citation information in the file resources/bibtex-file.bib. Everything else is done automatically.
+
+For further information, please consult https://github.com/asciidoctor/asciidoctor-bibtex.
