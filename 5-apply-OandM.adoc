@@ -1,5 +1,25 @@
 [[DataModels]]
 == O&M for Cit Sci
+The Observations and Measurements(O&M) standard defines a data model that observations should follow. Its main concepts a represented in the <<img-observationConcepts>>:
+
+[#img-observationConcepts,reftext='{figure-caption} {counter:figure-num}']]
+.Observation main concepts
+image::images/observationConcepts.png[Observation main concepts]
+
+For each observation, the O&M allows us to document the following aspects:
+
+* Where the observation is situated: Even if the observations was done remotely with a camera or a drone, it is important to know the position of the observed phenomena.
+* When the observation took place and what time period it represents: Even if samples were collected and analyzed latter, it is important to know and to be able to differentiate the instant of period the observations represent and the time when the observations took place.
+* How the observation was done
+* Who did the observation
+* What was measures
+* What data was collected
+* What is the expected quality of the observation.
+
+
+[#img-commonModelForOandM,reftext='{figure-caption} {counter:figure-num}']]
+.Common Model For Oservations and Measurements
+image::images/commonModelForOandM.png[Common Model For Oservations and Measurements]
 
 === The GT20 examples
 

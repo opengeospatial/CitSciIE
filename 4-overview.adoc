@@ -1,6 +1,6 @@
 [[Overview]]
 == Overview
-This section could introduce the different improvements that we are introducing in MapML.
+This Engineering Report focuses on the findings of the first Citizen Science Interoperability Experiment. The experiment applied the approach explained in the OGC SWE4CS discussion paper in several citizen observatories and tested the interoperability of services and clients.
 
 === How to make a map client with SOS
 
