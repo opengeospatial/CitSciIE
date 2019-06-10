@@ -3,6 +3,11 @@
 
 The following normative documents are referenced in this document.
 
-.NOTE: 	Only normative standards are referenced here, e.g. OGC, ISO or other SDO standards. All other references are listed in the bibliography. Example:
+* http://portal.opengeospatial.org/files/?artifact_id=41579[OGC 10-004r3, Topic 20: Observations and Measurements]
+* http://portal.opengeospatial.org/files/?artifact_id=41510[OGC 10-025r1, Observations and Measurements - XML Implementation]
+* https://portal.opengeospatial.org/files/64910[OGC 15-100r1, OGC Observations and Measurements – JSON implementation]
+* https://portal.opengeospatial.org/files/?artifact_id=47599[OGC 12-006, OGC® Sensor Observation Service Interface Standard v2.0]
 
-* https://portal.opengeospatial.org/files/?artifact_id=38867&version=2[OGC 06-121r9, OGC® Web Services Common Standard]
+Even if the following is an OGC discussion paper that is not an OGC standard and cannot be considered strictly a normative reference, it is actually the bases for several sections of this document and should be considered as and important background:
+
+* https://portal.opengeospatial.org/files/?artifact_id=70328[OGC 16-129, Standardized Information Models to Optimize Exchange, Reusability and Comparability of Citizen Science Data (SWE4CS)]

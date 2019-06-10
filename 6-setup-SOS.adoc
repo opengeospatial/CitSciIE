@@ -7,9 +7,10 @@
 
 ===== SOS and CORS
 
-==== SOS in a server coupled to a JavaScript client
+==== SOS in a data view
+This is the grow and the heveland (52North).
 
-=== SOS tested applications
+=== SOS tested services
 ((This section will describe the different applications tested in the IE))
 
 ==== 52 North solution
@@ -19,6 +20,8 @@ SOS of 52norht
 Easily manage your sensor network and distribute your data in a standard way
 
 ==== MiraMon SOS
+
+==== GROW SOS
 
 ==== Practical Comparative
 ((This section will compare the different options with the same hardware and the same HackAir dataset))
