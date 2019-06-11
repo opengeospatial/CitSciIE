@@ -50,53 +50,52 @@ The following is an example of how a water quality observation is encoded in XML
 [source,xml]
 ----
 <om:OM_Observation gml:id="vatten-fokus_2_1">
-			<om:type xlink:href="http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation"/>
-			<om:procedure xlink:href="http://www.opengis.uab.cat/vatten-fokus/procedure/22655"/>
-			<om:observedProperty xlink:href="http://www.opengis.uab.cat/vatten-fokus/observedProperty"/>
-			<om:featureOfInterest xlink:href="http://www.opengis.uab.cat/vatten-fokus/featureOfInterest/2"/>
-			<om:result xsi:type="swe:DataRecordPropertyType">
-				<swe:DataRecord>
-					<swe:field name="CREA_DATE">
-						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Creation_Date">
-							<swe:value>07/12/2018 17:23</swe:value>
-						</swe:Text>
-					</swe:field>
-					<swe:field name="SITE_NAME">
-						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Site_name">
-							<swe:value>Dunkershall. V¤gtrumma uppst¤ms.</swe:value>
-						</swe:Text>
-					</swe:field>
-					<swe:field name="LAND_USE">
-						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Land_use_in_the_immediate_surroundings">
-							<swe:value>Agriculture</swe:value>
-						</swe:Text>
-					</swe:field>
-					<swe:field name="BANK_VEGE">
-						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Bank_vegetation">
-							<swe:value>Grass</swe:value>
-						</swe:Text>
-					</swe:field>
-					<swe:field name="NITRATE">
-						<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/NITRATE">
-							<swe:uom/>
-							<swe:value>1.50</swe:value>
-						</swe:Quantity>
-					</swe:field>
-					<swe:field name="PHOSPHATE">
-						<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/PHOSPHATE">
-							<swe:uom/>
-							<swe:value>0.075</swe:value>
-						</swe:Quantity>
-					</swe:field>
-					<swe:field name="WATER_COLOR">
-						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Estimated_water_colour">
-							<swe:value>Colourless</swe:value>
-						</swe:Text>
-					</swe:field>
-				</swe:DataRecord>
-			</om:result>
-		</om:OM_Observation>
-	</sos:observationData>
+	<om:type xlink:href="http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation"/>
+	<om:procedure xlink:href="http://www.opengis.uab.cat/vatten-fokus/procedure/22655"/>
+	<om:observedProperty xlink:href="http://www.opengis.uab.cat/vatten-fokus/observedProperty"/>
+	<om:featureOfInterest xlink:href="http://www.opengis.uab.cat/vatten-fokus/featureOfInterest/2"/>
+	<om:result xsi:type="swe:DataRecordPropertyType">
+		<swe:DataRecord>
+			<swe:field name="CREA_DATE">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Creation_Date">
+					<swe:value>07/12/2018 17:23</swe:value>
+				</swe:Text>
+			</swe:field>
+			<swe:field name="SITE_NAME">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Site_name">
+					<swe:value>Dunkershall. V¤gtrumma uppst¤ms.</swe:value>
+				</swe:Text>
+			</swe:field>
+			<swe:field name="LAND_USE">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Land_use_in_the_immediate_surroundings">
+					<swe:value>Agriculture</swe:value>
+				</swe:Text>
+			</swe:field>
+			<swe:field name="BANK_VEGE">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Bank_vegetation">
+					<swe:value>Grass</swe:value>
+				</swe:Text>
+			</swe:field>
+			<swe:field name="NITRATE">
+				<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/NITRATE">
+					<swe:uom/>
+					<swe:value>1.50</swe:value>
+				</swe:Quantity>
+			</swe:field>
+			<swe:field name="PHOSPHATE">
+				<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/PHOSPHATE">
+					<swe:uom/>
+					<swe:value>0.075</swe:value>
+				</swe:Quantity>
+			</swe:field>
+			<swe:field name="WATER_COLOR">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Estimated_water_colour">
+					<swe:value>Colourless</swe:value>
+				</swe:Text>
+			</swe:field>
+		</swe:DataRecord>
+	</om:result>
+</om:OM_Observation>
 ----
 
 The following is an example of how a air quality observation is encoded in JSON:
@@ -105,129 +104,129 @@ The following is an example of how a air quality observation is encoded in JSON:
 [source,json]
 ----
 {
-			"id":"meet-mee-mechelen_1_0",
-			"type" : "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation",
-			"phenomenonTime" : "2017-11-19 17:20:00+01",
-			"resultTime" : "2017-11-19 17:20:00+01",
-			"procedure" : "http://www.opengis.uab.cat/meet-mee-mechelen/procedure/5",
-			"observedProperty" : "http://www.opengis.uab.cat/meet-mee-mechelen/observedProperty",
-			"featureOfInterest" : "http://www.opengis.uab.cat/meet-mee-mechelen/featureOfInterest/1",
-			"result": {
-				"type":"DataRecord",
-				"field":[
-					{
-						"name" : "CAMPAIGN",
-						"type" : "Text",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/field/CAMPAIGN",
-						"value" : "Oct-Nov2017"
-					},
-					{
-						"name" : "bc_aggr",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr",
-						"value" : "3155"
-					},
-					{
-						"name" : "bc_aggr_mi",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_mi",
-						"value" : "80"
-					},
-					{
-						"name" : "bc_aggr_ma",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_ma",
-						"value" : "16413"
-					},
-					{
-						"name" : "bc_aggr_st",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_st",
-						"value" : "3398"
-					},
-					{
-						"name" : "uncertaint",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/uncertaint",
-						"value" : "0.50"
-					}
-				]
+	"id":"meet-mee-mechelen_1_0",
+	"type" : "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation",
+	"phenomenonTime" : "2017-11-19 17:20:00+01",
+	"resultTime" : "2017-11-19 17:20:00+01",
+	"procedure" : "http://www.opengis.uab.cat/meet-mee-mechelen/procedure/5",
+	"observedProperty" : "http://www.opengis.uab.cat/meet-mee-mechelen/observedProperty",
+	"featureOfInterest" : "http://www.opengis.uab.cat/meet-mee-mechelen/featureOfInterest/1",
+	"result": {
+		"type":"DataRecord",
+		"field":[
+			{
+				"name" : "CAMPAIGN",
+				"type" : "Text",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/field/CAMPAIGN",
+				"value" : "Oct-Nov2017"
+			},
+			{
+				"name" : "bc_aggr",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr",
+				"value" : "3155"
+			},
+			{
+				"name" : "bc_aggr_mi",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_mi",
+				"value" : "80"
+			},
+			{
+				"name" : "bc_aggr_ma",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_ma",
+				"value" : "16413"
+			},
+			{
+				"name" : "bc_aggr_st",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_st",
+				"value" : "3398"
+			},
+			{
+				"name" : "uncertaint",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/uncertaint",
+				"value" : "0.50"
 			}
-		},
-		{
-			"id":"meet-mee-mechelen_2_1",
-			"type" : "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation",
-			"phenomenonTime" : "2017-11-19 17:20:06+01",
-			"resultTime" : "2017-11-19 17:20:06+01",
-			"procedure" : "http://www.opengis.uab.cat/meet-mee-mechelen/procedure/5",
-			"observedProperty" : "http://www.opengis.uab.cat/meet-mee-mechelen/observedProperty",
-			"featureOfInterest" : "http://www.opengis.uab.cat/meet-mee-mechelen/featureOfInterest/2",
-			"result": {
-				"type":"DataRecord",
-				"field":[
-					{
-						"name" : "CAMPAIGN",
-						"type" : "Text",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/field/CAMPAIGN",
-						"value" : "Oct-Nov2017"
-					},
-					{
-						"name" : "time_first",
-						"type" : "Text",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/field/time_first",
-						"value" : "2017-11-06 08:00:18+01"
-					},
-					{
-						"name" : "bc_aggr",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr",
-						"value" : "3382"
-					},
-					{
-						"name" : "bc_aggr_mi",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_mi",
-						"value" : "80"
-					},
-					{
-						"name" : "bc_aggr_ma",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_ma",
-						"value" : "17256"
-					},
-					{
-						"name" : "bc_aggr_st",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_st",
-						"value" : "3663"
-					},
-					{
-						"name" : "number_of_",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/number_of_",
-						"value" : "25"
-					},
-					{
-						"name" : "number_o_1",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/number_o_1",
-						"value" : "13"
-					},
-					{
-						"name" : "mean_numbe",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/mean_numbe",
-						"value" : "7"
-					},
-					{
-						"name" : "uncertaint",
-						"type" : "Quantity",
-						"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/uncertaint",
-						"value" : "0.50"
-					}
-				]
+		]
+	}
+},
+{
+	"id":"meet-mee-mechelen_2_1",
+	"type" : "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation",
+	"phenomenonTime" : "2017-11-19 17:20:06+01",
+	"resultTime" : "2017-11-19 17:20:06+01",
+	"procedure" : "http://www.opengis.uab.cat/meet-mee-mechelen/procedure/5",
+	"observedProperty" : "http://www.opengis.uab.cat/meet-mee-mechelen/observedProperty",
+	"featureOfInterest" : "http://www.opengis.uab.cat/meet-mee-mechelen/featureOfInterest/2",
+	"result": {
+		"type":"DataRecord",
+		"field":[
+			{
+				"name" : "CAMPAIGN",
+				"type" : "Text",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/field/CAMPAIGN",
+				"value" : "Oct-Nov2017"
+			},
+			{
+				"name" : "time_first",
+				"type" : "Text",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/field/time_first",
+				"value" : "2017-11-06 08:00:18+01"
+			},
+			{
+				"name" : "bc_aggr",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr",
+				"value" : "3382"
+			},
+			{
+				"name" : "bc_aggr_mi",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_mi",
+				"value" : "80"
+			},
+			{
+				"name" : "bc_aggr_ma",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_ma",
+				"value" : "17256"
+			},
+			{
+				"name" : "bc_aggr_st",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_st",
+				"value" : "3663"
+			},
+			{
+				"name" : "number_of_",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/number_of_",
+				"value" : "25"
+			},
+			{
+				"name" : "number_o_1",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/number_o_1",
+				"value" : "13"
+			},
+			{
+				"name" : "mean_numbe",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/mean_numbe",
+				"value" : "7"
+			},
+			{
+				"name" : "uncertaint",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/uncertaint",
+				"value" : "0.50"
 			}
-		},
+		]
+	}
+},
 ----
 
 These examples were produced by SOS requests to this URL: http://www.ogc3.uab.cat/cgi-bin/CitSci/MiraMon.cgi?. A client connecting to this service can be found here: http://www.ogc3.uab.cat/gt20/
@@ -239,51 +238,73 @@ To illustrate the flexibility of the O&M we have included this Air Quality repor
 [source,xml]
 ----
 <om:OM_Observation gml:id="o_499">
-   <om:type xlink:href="http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement"/>
-   <om:phenomenonTime>
-     <gml:TimeInstant gml:id="phenomenonTime_499">
-       <gml:timePosition>2019-01-01T00:00:12.000Z</gml:timePosition>
-     </gml:TimeInstant>
-   </om:phenomenonTime>
-   <om:resultTime xlink:href="#phenomenonTime_499"/>
-   <om:procedure xlink:href="sensors_arduino_1000"/>
-   <om:parameter>
-     <om:NamedValue>
-       <om:name xlink:href="PM2.5_AirPollutantIndex"/>
-       <om:value xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">bad</om:value>
-     </om:NamedValue>
-   </om:parameter>
-   <om:parameter>
-     <om:NamedValue>
-       <om:name xlink:href="http://www.opengis.net/def/param-name/OGC-OM/2.0/samplingGeometry"/>
-       <om:value xmlns:ns="http://www.opengis.net/gml/3.2" xsi:type="ns:GeometryPropertyType">
-         <ns:Point ns:id="Point_sp_45C0E376C40E98E8EC0D48C05F7558C2FFD15245">
-           <ns:pos srsName="http://www.opengis.net/def/crs/EPSG/0/4326">52.063269625917 4.5077472925186</ns:pos>
-         </ns:Point>
-       </om:value>
-     </om:NamedValue>
-   </om:parameter>
-   <om:parameter>
-     <om:NamedValue>
-       <om:name xlink:href="source"/>
-       <om:value xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">sensors_arduino</om:value>
-     </om:NamedValue>
-   </om:parameter>
-   <om:parameter>
-     <om:NamedValue>
-       <om:name xlink:href="user"/>
-       <om:value xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">sID :1000</om:value>
-     </om:NamedValue>
-   </om:parameter>
-   <om:observedProperty xlink:href="PM2.5_AirPollutantValue" xlink:title="PM2.5_AirPollutantValue"/>
-   <om:featureOfInterest xlink:href="sensors_arduino_1000"/>
-   <om:result xmlns:ns="http://www.opengis.net/gml/3.2" uom="μg/m3" xsi:type="ns:MeasureType">130.67</om:result>
- </om:OM_Observation>
+	<om:type xlink:href="http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement"/>
+	<om:phenomenonTime>
+		<gml:TimeInstant gml:id="phenomenonTime_499">
+			<gml:timePosition>2019-01-01T00:00:12.000Z</gml:timePosition>
+		</gml:TimeInstant>
+	</om:phenomenonTime>
+	<om:resultTime xlink:href="#phenomenonTime_499"/>
+	<om:procedure xlink:href="sensors_arduino_1000"/>
+	<om:parameter>
+		<om:NamedValue>
+			<om:name xlink:href="PM2.5_AirPollutantIndex"/>
+			<om:value xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">bad</om:value>
+		</om:NamedValue>
+	</om:parameter>
+	<om:parameter>
+		<om:NamedValue>
+			<om:name xlink:href="http://www.opengis.net/def/param-name/OGC-OM/2.0/samplingGeometry"/>
+			<om:value xmlns:ns="http://www.opengis.net/gml/3.2" xsi:type="ns:GeometryPropertyType">
+				<ns:Point ns:id="Point_sp_45C0E376C40E98E8EC0D48C05F7558C2FFD15245">
+					<ns:pos srsName="http://www.opengis.net/def/crs/EPSG/0/4326">52.063269625917 4.5077472925186</ns:pos>
+				</ns:Point>
+			</om:value>
+		</om:NamedValue>
+	</om:parameter>
+	<om:parameter>
+		<om:NamedValue>
+			<om:name xlink:href="source"/>
+			<om:value xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">sensors_arduino</om:value>
+		</om:NamedValue>
+	</om:parameter>
+	<om:parameter>
+		<om:NamedValue>
+			<om:name xlink:href="user"/>
+			<om:value xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">sID :1000</om:value>
+		</om:NamedValue>
+	</om:parameter>
+	<om:observedProperty xlink:href="PM2.5_AirPollutantValue" xlink:title="PM2.5_AirPollutantValue"/>
+	<om:featureOfInterest xlink:href="sensors_arduino_1000"/>
+	<om:result xmlns:ns="http://www.opengis.net/gml/3.2" uom="μg/m3" xsi:type="ns:MeasureType">130.67</om:result>
+</om:OM_Observation>
 ----
 A service producing this type of results can be seen here: https://nexos.demo.52north.org/52n-sos-hackair-webapp/service
 
 === GROW example
-TBD: Soil moisture data model
+In the GROW project the SME Hydrologic has develop an SOS service that uses a O&M observation. In this case, a single number is provided as the result of the observation.
+
+[source,xml]
+----
+<OM_Observation xmlns="http://www.opengis.net/om/2.0">
+	<type gml:remoteSchema="http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement" />
+	<phenomenonTime>
+		<gml:TimePeriod>
+			<gml:beginPosition>2018-09-03T09:01:38.000Z</gml:beginPosition>
+			<gml:endPosition>2018-09-03T09:01:38.000Z</gml:endPosition>
+		</gml:TimePeriod>
+	</phenomenonTime>
+	<resultTime>
+		<gml:TimeInstant>
+			<gml:timePosition>2018-09-03T09:01:38.000Z</gml:timePosition>
+		</gml:TimeInstant>
+	</resultTime>
+	<procedure>Grow.Thingful.Sensors_je47sfac</procedure>
+	<observedProperty nilReason="Thingful.Connectors.GROWSensors.AirTemperature" />
+	<featureOfInterest nilReason="je47sfac" />
+	<result>20.64</result>
+</OM_Observation>
+----
 
 === How to encode the procedure. Future work.
 The SWE4CS discussion paper suggest that we use an approach to encode the procedure that takes into account a recommendation extracted from section 6.18.1 of Timeseries Profile of  Observations and Measurements standard (OGC 15-042r5) that provides us with an encoding for both the observation process and the operator of the sensor (the Citizen doing Citizen Science).
