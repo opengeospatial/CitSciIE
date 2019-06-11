@@ -1,0 +1,45 @@
+[[SOS architectures]]
+== SOS architectures
+In this chapter we describe three architectures tested in the Interoperability Experiment that demonstrate end to end architectures as well as interoperability among
+
+=== Architecture 1: SOS services integrated in a SOS client
+
+[#img-MiraMonSOSArchit,reftext='{figure-caption} {counter:figure-num}']]
+.MiraMon SOS Architechture
+image::images/MiraMonSOSArchit.png[MiraMon SOS Architechture]
+
+=== Architecture 2: SOS services integrated in a combined agile service
+
+[#img-GrowSOSArchit,reftext='{figure-caption} {counter:figure-num}']]
+.Grow SOS Architechture
+image::images/GrowSOSArchit.png[Grow SOS Architechture]
+
+=== Architecture 3: SOS service for interoperability and JSON API for fast client
+
+[#img-HelgolandSOSArchit,reftext='{figure-caption} {counter:figure-num}']]
+.Helgoland SOS Architechture
+image::images/HelgolandSOSArchit.png[Helgoland SOS Architechture]
+
+== Setup SOS services
+
+==== SOS in a JavaScript client
+===== SOS and CORS
+
+==== SOS in a data view
+This is the grow and the heveland (52North).
+
+=== SOS tested services
+((This section will describe the different applications tested in the IE))
+
+==== 52 North solution
+SOS of 52north
+
+==== istSOS
+Easily manage your sensor network and distribute your data in a standard way
+
+==== MiraMon SOS
+
+==== GROW SOS
+
+==== Practical Comparative
+((This section will compare the different options with the same hardware and the same HackAir dataset))
