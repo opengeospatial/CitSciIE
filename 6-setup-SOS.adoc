@@ -13,6 +13,8 @@ image::images/MiraMonSOSArchit.png[MiraMon SOS Architechture]
 [#img-GrowSOSArchit,reftext='{figure-caption} {counter:figure-num}']]
 .Grow SOS Architechture
 image::images/GrowSOSArchit.png[Grow SOS Architechture]
+In this architecture a common server pulls two or more SOS requests into a central tabular datastore. This datastore records only the information from the returned SOS data that is required for the final visualisation and removes information that is redundant creating a data warehouse.
+The common server would typically be a cloud server, but for some clients this is not necessary, if a data bridge is created between the data source and the visualisation tool.
 
 === Architecture 3: SOS service for interoperability and JSON API for fast client
 
