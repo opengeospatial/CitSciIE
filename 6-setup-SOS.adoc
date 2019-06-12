@@ -13,6 +13,15 @@ image::images/MiraMonSOSArchit.png[MiraMon SOS Architechture]
 [#img-GrowSOSArchit,reftext='{figure-caption} {counter:figure-num}']]
 .Grow SOS Architechture
 image::images/GrowSOSArchit.png[Grow SOS Architechture]
+In this architecture a common server pulls two or more SOS requests into a central tabular datastore. This datastore records only the information from the returned SOS data that is required for the final visualisation and removes information that is redundant creating a data warehouse representing one one version of the truth.
+In the diagram below, data is stored in the datawarehouse and Microsoft's PowerBI does the heavy lifting for the visualisation of the combined data sources.
+
+[#img-GRowDataFlow,reftext='{figure-caption} {counter:figure-num}']]
+.Grow SOS Data Flow
+image::images/GRowDataFlow.png[Grow SOS Data Flow]
+The common server would typically be a cloud server, but for some clients this is not necessary, in the case of PowerBI a data bridge is created between the data source and the visualisation tool before it is published to a web client.
+Other visualisation tools (such as Tableau ) will have their own methods of connecting to the data warehouse and publishing the results to a web based client.
+In this architecture data is only as up to date as the latest data pull from the SOS servers, in the case of GROW this is done nightly but this could be made more frequent or moved towards real time using a data log pipeline in a kappa architecture.
 
 === Architecture 3: SOS service for interoperability and JSON API for fast client
 

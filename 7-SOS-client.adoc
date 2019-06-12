@@ -1,0 +1,17 @@
+[[SOS Client]]
+== SOS clients
+In this chapter we describe three SOS integrated clients tested in the Interoperability Experiment.
+
+=== Grow Client
+
+[#img-AndyClient,reftext='{figure-caption} {counter:figure-num}']]
+.Andy SOS Client
+image::images/AndyClient.png[Andy SOS Client]
+
+=== MiraMon Client
+
+[#img-MiraMonClient,reftext='{figure-caption} {counter:figure-num}']]
+.MiraMon SOS Client
+image::images/MiraMonClient.png[MiraMon SOS Client]
+
+=== Helgolan Clinet
