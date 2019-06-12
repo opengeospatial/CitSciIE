@@ -1,4 +1,4 @@
-[[SOS architectures]]
+[[SOS_architectures]]
 == SOS architectures
 In this chapter we describe three architectures tested in the Interoperability Experiment that demonstrate end to end architectures as well as interoperability among
 
@@ -7,21 +7,29 @@ In this chapter we describe three architectures tested in the Interoperability E
 [#img-MiraMonSOSArchit,reftext='{figure-caption} {counter:figure-num}']]
 .MiraMon SOS Architechture
 image::images/MiraMonSOSArchit.png[MiraMon SOS Architechture]
+In this architecture (<<MiraMonSOSArchit>>) the client access directly two different SOS services. It formulates a GetFeatureOfInterest to determine the positions of the individual observations and a GetObservation each time it needed to show a complete description of a single point (the user triggers this event by clicking on an icon) or if it needs to represent different icons as a function of the value of the observation. In this case, interoperability happens directly in the client. Since the SOS requests are communicated to the Internet, this client is exposing requests and response, allowing people to explore the SOS protocol with the browser developing tools. It is worth mentioning that this architecture is only possible if both services are declaring their willingness to be combined in the header of the responses. By default, XML or JSON data coming from a Internet domain different from the client itself is not allowed except if the server states in the header that this is allowed. This is known as Cross-Origin Resource Sharing (CORS). The following headers will allow CORS to anybody.
+
+----
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
+----
+
+In the case the server does not allow CORS, our client is still able to force the combination by redirecting the request to our server with an extra parameter ServerToRequest. In this case, our server will cascade the request to the specified server and returning the response back to the client as if there was only one server in only one domain involved.
 
 === Architecture 2: SOS services integrated in a combined agile service
 
 [#img-GrowSOSArchit,reftext='{figure-caption} {counter:figure-num}']]
 .Grow SOS Architechture
 image::images/GrowSOSArchit.png[Grow SOS Architechture]
-In this architecture a common server pulls two or more SOS requests into a central tabular datastore. This datastore records only the information from the returned SOS data that is required for the final visualisation and removes information that is redundant creating a data warehouse representing one one version of the truth.
-In the diagram below, data is stored in the datawarehouse and Microsoft's PowerBI does the heavy lifting for the visualisation of the combined data sources.
+In this architecture (<<GrowSOSArchit>>) a common server pulls two or more SOS requests into a central tabular datastore. This datastore records only the information from the returned SOS data that is required for the final visualisation and removes information that is redundant creating a data warehouse representing only one version of the data. In this approach the interoperability happens internally in the datastore and the SOS requests and responses are not explosed to the final client.
+In the diagram below (<<GRowDataFlow>>), data is stored in the datawarehouse and Microsoft's PowerBI does the heavy lifting for the visualisation of the combined data sources.
 
 [#img-GRowDataFlow,reftext='{figure-caption} {counter:figure-num}']]
 .Grow SOS Data Flow
 image::images/GRowDataFlow.png[Grow SOS Data Flow]
 The common server would typically be a cloud server, but for some clients this is not necessary, in the case of PowerBI a data bridge is created between the data source and the visualisation tool before it is published to a web client.
-Other visualisation tools (such as Tableau ) will have their own methods of connecting to the data warehouse and publishing the results to a web based client.
-In this architecture data is only as up to date as the latest data pull from the SOS servers, in the case of GROW this is done nightly but this could be made more frequent or moved towards real time using a data log pipeline in a kappa architecture.
+Other visualisation tools (such as Tableau) will have their own methods of connecting to the data warehouse and publishing the results to a web based client.
+In this architecture, data is only as up to date as the latest data pull from the SOS servers; in the case of GROW this is done nightly but this could be made more frequent or moved towards real time using a data log pipeline in a kappa architecture.
 
 === Architecture 3: SOS service for interoperability and JSON API for fast client
 
