@@ -1,0 +1,87 @@
+[[CitSciGEOSS]]
+== Connecting Citizen Science data sets to GEOSS
+
+In addition to the developments outlined above, this Interoperability Experiment also examined possibilities for the Citizen Science community to make their projects discoverable and accessible via the Global Earth Observation System of Systems (GEOSS).
+
+NOTE: The worldwide effort to build GEOSS is led by the Group on Earth Observations (GEO). GEO is an intergovernmental organization working to improve the availability, access and use of Earth observations for the benefit of society. GEO works to actively improve and coordinate global Earth Observation systems and promote broad, open data sharing.
+
+We see a major benefit in establishing this connection because GEOSS already provides an established process to clarify data policies together with established data management principles, and to provide the minimum metadata this is required to access the data sets created by Citizen Science projects. This activity thereby helps to surface and to mobilize already existing data sets - with clear acknowledgment Citizen Science contributions. We expect that this work provides concrete contributions to the increasing discussions on how Citizen Science could connect to GEOSS and, more generally, how more in-situ data and derived knowledge could become available on the global level.
+Within this Interoperability Experiment, we particularly explored the possible technical connection with the GEOSS Platform by facilitating OGC standards. We also identified organizational structures that would be required to be put into place in order to provide a more flexible and scalable solution to Citizen Science projects. We consider this as a major need for the future evolution of this connection because of the high number of already existing projects that could potentially be connected to GEOSS. OGC standards can play an essential role to facilitate this connection. This elaboration would also contribute to ongoing debates on increasing the availability of in-situ data in GEOSS.
+Notably, we see the connection with GEOSS as one highly promising way to make Citizen Science data better accessible and more widely used. Complementary efforts might be undertaken, for example, to increase the findability via mainstream search engines, or – more generally – to provide the machine readable information about projects resources that is required for automated harversting by web-crawlers. We come back to this issue in the final part of this section, when outlining possible follow up activities.
+With our exercise so far, we follow the following overarching principles and carry them to the Citizen Science community:
+
+*	https://www.earthobservations.org/documents/dswg/201504_data_management_principles_long_final.pdf[GEO Data Management Principles], including https://www.nature.com/articles/sdata201618[Findable, Accessible, Interoperable, Reusable (FAIR) data management].
+*	Not favoring any silos, i.e. necessitating open data and leveraging open solutions, which in this context means the provision of data as part of the https://www.earthobservations.org/geoss_dsp.shtml[GEOSS Data Core].
+*	Distributed, standards based, and flexible to support interoperability while meeting a range of use cases and needs, which translates to the use of the https://www.geodab.net/[GEOSS Discovery and Access Broker (GEO DAB)] that includes – among other - the support to a large range of OGC standards.
+
+=== Connecting a single Citizen Science project to GEOSS
+The most straight forward way to connect Citizen Science data sets to GEOSS is the registration of the project that collects these data sets at the GEOSS Platform. This process essentially requires the registration of the project in the GEOSS ‘Yellow Pages’ and it can be used to register also multiple data sets from one single project (see also Figure below).
+
+[#img-GEOSSYellowPages,reftext='{figure-caption} {counter:figure-num}']]
+.Sketch on registering a single project at the GEOSS Platform
+image::images/GEOSSYellowPages.png[GEOSS Yellow Pages]
+
+The entry of the Yellow Pages requires information (metadata) such as:
+
+*	Information about the lead organization (name, description, URL, geographical coverage, GEO affiliation, contact points, etc.)
+*	Type of provided online resource (data, vocabulary, model, algorithm, etc.) – in the context of this Interoperability Experiment we focus on data
+*	Data policy, including the option to declare as free and open by choosing “GEOSS Data Core” (see also the figure below)
+*	Indication of GEOSS data management principles that are implemented (see also the figure below)
+*	Relevance for the SDGs
+*	A service endpoint
+*	…
+
+[#img-GEOSSYellowPagesForm,reftext='{figure-caption} {counter:figure-num}']]
+.Parts of the items asked for when registering in the GEOSS Yellow Pages
+image::images/GEOSSYellowPagesForm.png[GEOSS Yellow Pages]
+
+Once compiled, the information provided by the Citizen Science project is passed on to the GEO DAB team. Members of this team check the entries and tests, for example, if the provided endpoint actually serves the intended data, if it needed implements the required standards (from the OGC or comparable alternatives) and if it indeed follows the indicated principles and applies the indicated data policy. This testing might entail a dialogue with the registering Citizen Science project in order to make the project’s offer fit to the promises in the entry for the GEOSS Yellow Pages.
+
+WARNING: TBD: Can we get a few lines and examples for the GEO DAB work of SCENT and GROW here???
+
+Overall, we promote that Citizen Science projects indeed implement the free and open data policy of the GEOSS Data Core, and that all of the GEOSS Data Management Principles are implemented. Furthermore, out of the OGC Citizen Science Domain Working Group (DWG) we offer examples and guidance how this can be realized with OGC standards. However, realistically speaking, and in order to see concrete progress, it appears most feasible that projects first enter what they already support, and at least fulfill the http://geolabel.info/Discoverable.htm[needs to make their data sets discoverable from within the GEOSS Platform] using http://geolabel.info/Metadata.htm[well-documented metadata], and including http://geolabel.info/Quality.htm[information about data quality]. Following the brokering approach of GEOSS, this entails that the projects provide a minimum of required information, and ideally follow one of the multiple standards that are already supported by GEOSS. If it should not be immediately possible to also provide http://geolabel.info/DataAccess.htm[one of the multiple options to make data accessible] or to provide that data in an http://www.geolabel.info/Encoding.htm[already recognized encoding], it might still be considered to register a projects and then update the record in the Yellow Pages once the additional functionalities for harmonized data access are put in place by the project.
+
+=== Why a case-by-case registration might not be the best way forward
+Although the possibility to register Citizen Science e projects of any size in GEOSS exists, we do not recommend that every project should now go ahead and register itself. This is because, at least potentially, the number of relevant contributions is (at least) in the hundreds, see for example, http://data-staging.jrc.it/dataset/jrc-citsci-10004[this project inventory] and the related https://ec-jrc.github.io/citsci-explorer/[prototype of a project catalogue].
+
+[#img-GEOSSCitSciExplorer,reftext='{figure-caption} {counter:figure-num}']]
+.Example Citizen Science explorer providing access to 508 different projects (status: 13 June 2019)
+image::images/GEOSSCitSciExplorer.png[Citizen Science Explorer]
+
+It becomes obvious that a case-by-case registration per project (which each might want to register one data set or more) would create a bottle neck towards the GEO DAB and the team that is responsible to evaluate and test entries in the GEOSS Yellow Pages. As a result of our investigations within this Interoperability Experiment, we therefore suggest to elaborate on and develop an intermediate layer that provides the required organizational and technical support to the Citizen Science community so that their data sets become better discoverable, accessible, and potentially more widely used - thereby also amplifying visibility and impact of the individual projects.
+We consider such structures particularly important in view of larger mobilization campaigns of Citizen Science projects, as, for example, planned within the context of the Earth Challenge 2020 (EC2020). Again, also here the two/multiple-step approach - where project resources become discoverable first and commonly accessible in a second stage - might be most realistic in order to progress more quickly and to have intermediate results.
+In order to move ahead, we identified two main clusters of requirements. On the one hand, there appears a need to slot a technical support for Citizen Science projects in ahead the GEO DAB. This additional support should remove the potential bottle neck and help to scale up the number or Citizen Science projects and their data sets in the GEOSS Platform (and ideally in the GEOSS Data Core). Requirements for this support entail:
+
+*	Support Citizen Science projects in filling the GEOSS Yellow Pages.
+*	Proving examples and guidance on the use of OGC standards for implementing GEOSS requirements for data discovery, quality descriptions, data access, data encodings, etc.
+*	Pre-testing of yellow page entries before registration in GEOSS.
+*	If necessary, interaction with individual projects to correct their entries for the Yellow Pages.
+*	Liaise with the GEO DAB team in order to actually register the new entries.
+*	Possible consider an additional hub that would in fact cluster multiple Citizen Science projects and their endpoints into a single access point, which is then registered within the GEOSS Platform (see also example below).
+*	…
+
+For the above mentioned EC 2020 we could, for example, imagine the following. EC2020 will collect new data and offer those via a dedicated API. At the same time, several already existing Citizen Science projects partner with EC2020 and also provide access to their data (in different forms). For the connection to GEOSS, EC2020 could provide a gateway that connects the newly collected data and the offerings of the different partners to a single discovery service and a single data access service. These two endpoints would be registered via the Yellow Pages with the GEOSS Platform and thereby make the EC2020 resources more widely visible,  together with a clearly defined and well-known data policy and following most recent data management principles. The figure below depicts this setting.
+
+[#img-GEOSS_EC2020Gateway,reftext='{figure-caption} {counter:figure-num}']]
+.Sketch of a possible connection between EC2020 and the GEOSS Platform (one possible scenario), as an example of a more coordinated structure to make Citizen Science data discoverable and accessible via GEOSS
+image::images/GEOSS_EC2020Gateway.png[GEOSS EC2020 Gateway]
+
+On the other hand, and because the offerings made above alone would not be enough to actually advance from the current situation, also the connection to the Citizen Science community deserves dedicated attention. We see, for example, requirements in:
+-	Mobilizing existing data sets, i.e. reaching out to the Citizen Science community and let them know about this work and the linked offering of increased visibility and possibly impact, providing guideless and practical examples on what would need to be done from their side, offering support in establishing the connections.
+
+*	Help in preparing new data sets, i.e. be available to consult Citizen Science projects during their set-up phase, and let the community know about this offer.
+*	Promote FAIR data management and GEOSS as a practical way to get there.
+*	Provide access and training for (OGC) standard-based tool that the community can use to make the connection, and implement the desired data policy and data management principles.
+
+For further discussions and possible realizations, it should be considered if the support outlined above could be provided in a coordinated but decentralized way. We could imagine that the above mentioned support could be set of for different geographic regions, thematic areas, or other sensible divisions (e.g. with a retaliation that is specific for EC2020, which would still need to be discussed). Such settings could also help to disseminate good practices, for example, on the use of OGC standards in this context.
+
+=== Items for further investigation regarding GEOSS
+The experiment helps us to identify current possibilities, and to shape parts of the way ahead. However, it also left a few questions unanswered and raised some new issues. From our experiences, we the particular needs to further investigate the following:
+
+*	Acknowledging that Citizen Science data is already included in GEOSS today, i.e. systematically flagging where Citizen Science already contributed to a knowledge resource on the GEOSS Platform (GEOSS Data Core, ideally).
+*	Develop detailed examples and guidance on how CS projects can implement the different GEO Data Management Principles by using the many already supported OGC standards.
+*	Consider promoting OGC’ SensorThingsAPI to be considered by the GEO DAB, because this standard appears to be taken up by several Citizen Science projects, but so far other standards (such as WFS or WMS) need to be implemented in addition in order to allow harmonized access via the GEOSS Platform.
+*	Develop different scenarios to meet the identified organizational requirements.
+*	Consider Citizen Science not only as a data source, but also explore the possibilities and use of OCG standards when it comes to the engagement of Citizen Scientists as part of data validation.
+*	Also consider Citizen Science as part of the processing capacity, collective intelligence, data cubes, relationship to WPS and work on Artificial Intelligence, etc.
+*	While focusing on the connection to GEOSS here, we should also investigate how this work related to the provision of metadata for ‘flat’ online searches and the accessibility to automatic web crawlers. We might want to address both in a single go. If we will work towards intermediate organizational structures the help the Citizen Science community in using OGC standards and the GEOSS Platform for improved data policies and management, can these intermediaries – and the tools and services they provide – also automatically cover these complementary needs?

@@ -137,7 +137,11 @@ include::5-apply-OandM.adoc[]
 
 include::6-setup-SOS.adoc[]
 
-include::7-data-quality-with-SOS.adoc[]
+include::7-SOS-client.adoc[]
+
+include::8-data-quality-with-SOS.adoc[]
+
+include::9-CitSciGEOSS.adoc[]
 
 // you may add any number of chapters as required here
 
