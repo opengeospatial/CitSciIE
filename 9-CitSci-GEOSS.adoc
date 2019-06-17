@@ -10,8 +10,8 @@ Within this Interoperability Experiment, we particularly explored the possible t
 Notably, we see the connection with GEOSS as one highly promising way to make Citizen Science data better accessible and more widely used. Complementary efforts might be undertaken, for example, to increase the findability via mainstream search engines, or – more generally – to provide the machine readable information about projects resources that is required for automated harversting by web-crawlers. We come back to this issue in the final part of this section, when outlining possible follow up activities.
 With our exercise so far, we follow the following overarching principles and carry them to the Citizen Science community:
 
-*	https://www.earthobservations.org/documents/dswg/201504_data_management_principles_long_final.pdf[GEO Data Management Principles], including https://www.nature.com/articles/sdata201618[Findable, Accessible, Interoperable, Reusable (FAIR) data management].
-*	Not favoring any silos, i.e. necessitating open data and leveraging open solutions, which in this context means the provision of data as part of the https://www.earthobservations.org/geoss_dsp.shtml[GEOSS Data Core].
+*	https://www.earthobservations.org/documents/dswg/201504_data_management_principles_long_final.pdf[GEO Data Management Principles], addressing issues such as discovery, access, traceability, quality documentation and preservation.
+*	Not favoring any silos, i.e. necessitating open data and leveraging open solutions, which in this context means the provision of data as part of the https://www.earthobservations.org/geoss_dsp.shtml[GEOSS Data Core], but also the application of the GEO Architecture Principles, which in addition advocate flexibility, scalability, etc.
 *	Distributed, standards based, and flexible to support interoperability while meeting a range of use cases and needs, which translates to the use of the https://www.geodab.net/[GEOSS Discovery and Access Broker (GEO DAB)] that includes – among other - the support to a large range of OGC standards.
 
 === Connecting a single Citizen Science project to GEOSS
