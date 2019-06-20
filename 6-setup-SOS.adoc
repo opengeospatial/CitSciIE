@@ -37,6 +37,12 @@ In this architecture, data is only as up to date as the latest data pull from th
 .Helgoland SOS Architechture
 image::images/HelgolandSOSArchit.png[Helgoland SOS Architechture]
 
+This architecture was especially optimised to support the development of lightweight Sensor Web applications. This is achieved by avoiding the direct XML encoding/decoding on the client device. Instead, the interactions between the client (in this case the 52°North Helgoland Sensor Web Viewer) and the server components is achieved via a REST and JSON interface (the 52°North Sensor Web API).
+
+This API can be directly exposed by Sensor Web servers such as the 52°North implementation. Alternatively, an available proxy component is also capable to encapsulate existing OGC SOS servers behind the lightweight interface of the 52°North Sensor Web API.
+
+The advantage of this approach is a more lightweight communication pattern to be implemented on the client side. In addition the 52°North Sensor Web API offers further convenience methods as well as functionalities for reducing the transferred data volume (by generalising observation data) and improving the data visualisation (e.g. providing rending hints). A drawback of this approach is a less direct interaction with SOS servers, so that for integrating new SOS servers, a proxy component has to be configured/adjusted.
+
 == Setup SOS services
 
 ==== SOS in a JavaScript client
@@ -49,7 +55,13 @@ This is the grow and the heveland (52North).
 ((This section will describe the different applications tested in the IE))
 
 ==== 52 North solution
-SOS of 52north
+The 52°North Sensor Web Server comprises several server-side modules which closely interact to provide different kinds data access functionality. In detail, this comprises the following elements:
+
+* Data storage: The database for storing the observation data is integrated through an object-relational mapping layer based on the Hibernate framework. This allows the flexible integration of different types of database management systems (e.g. PostgreSQL, Oracle, MS SQL Server, MySQL) and data models. For this Interoperability Experiment, PostgreSQL was used.
+* For the access to observation data, the server offers three dedicated modules, which use the same common Sensor Web database.
+** SOS: The SOS module offers a comprehensive implementation of the OGC Sensor Observation Service 2.0 standard (including beyond the core several extended functionalities, transactional and result handling operations). It also offers several interoperability enhancements such as a support of the INSPIRE Technical Guidance on the SOS as a Download Service.
+** SensorThings API: In addition to the SOS support, a dedicated module is available for supporting the OGC SensorThings API Part 1: Sensing (not yet evaluated as part of this Interoperability Experiment).
+** 52°North Sensor Web API: Complementary to the previous modules, also the 52°North Sensor Web API is offered. This API offers an additional but optional convenience layer for building client applications. While both the SOS and the SensorThings API standards are well suited for enabling the interoperable access to observation data, the Sensor Web REST-API allows to provide additional functionality that significantly facilitates the development of client applications. Typical examples of this additional functionality comprise: generalisation of observation data (important for developing mobile applications), provision of rendering hints (e.g. styling information for time series), conversion of data to mainstream formats such as CSV.
 
 ==== istSOS
 Easily manage your sensor network and distribute your data in a standard way
