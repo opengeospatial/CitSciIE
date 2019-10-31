@@ -29,7 +29,7 @@ The entry of the Yellow Pages requires information (metadata) such as:
 *	Indication of GEOSS data management principles that are implemented (see also the figure below)
 *	Relevance for the SDGs
 *	A service endpoint
-*	…
+
 
 [#img-GEOSSYellowPagesForm,reftext='{figure-caption} {counter:figure-num}']]
 .Parts of the items asked for when registering in the GEOSS Yellow Pages
@@ -37,7 +37,17 @@ image::images/GEOSSYellowPagesForm.png[GEOSS Yellow Pages]
 
 Once compiled, the information provided by the Citizen Science project is passed on to the GEO DAB team. Members of this team check the entries and tests, for example, if the provided endpoint actually serves the intended data, if it needed implements the required standards (from the OGC or comparable alternatives) and if it indeed follows the indicated principles and applies the indicated data policy. This testing might entail a dialogue with the registering Citizen Science project in order to make the project’s offer fit to the promises in the entry for the GEOSS Yellow Pages.
 
-WARNING: TBD: Can we get a few lines and examples for the GEO DAB work of SCENT and GROW here???
+https://scent-project.eu/[SCENT Citizen Observatory] successfully undertook the process to offer its citizen-generated data to GEOSS. Following the administrative registration that was described in detail above, the Interoperability Registration and Brokering workflow took place. This was the second phase and consisted of the following steps:
+
+* Technological Information was provided to the DAB team. More specifically the SCENT web server URL, the endpoints of the SCENT OGC web services (	WMS, WFS) were sent to the DAB team along with the accompanied descriptions. In addition, information was provided about WFS and WMS services versions, the supported relevant operations through the APIs (e.g. GetCapabilities, DescribeFeatureType, GetFeature, etc.), the various feature types, the SCENT data to be integrated to GEOSS (i.e. event, images, video metadata) and the associated geographic regions that they cover (i.e. Kifisos river basin, Attica Greece and Danube Delta, Romania).
+*	DAB team conducted a set of interoperability tests with SCENT WFS and WMS services, including discoverability, accessibility and visualisation use cases. A test report (GEO DAB/SCENT web server Brokering Test Report) was generated as an output of this process.
+*	Notification was received from DAB team regarding the successful conduction of the tests and that no interoperability issue was found. Taking into consideration also suggestions indicated in the test report, metadata information of the datasets provided was further enriched.
+*	As a final step of the process, the DAB team proceeded with the successful integration of SCENT web server into GEOSS Portal (offering its services to production environment). Thus, users can access SCENT resources via the GEOSS Portal catalogue (https://www.geoportal.org/?f:sources=wfsscentID%2CwmsSCENTID) as presented in the following figure.
+
+[#img-ScentResourcesAvailableInGEOSSPortal,reftext='{figure-caption} {counter:figure-num}']]
+.Scent resources available in GEOSS portal
+image::images/ScentResourcesAvailableInGEOSSPortal.png[Scent Resources in GEOSS]
+
 
 Overall, we promote that Citizen Science projects indeed implement the free and open data policy of the GEOSS Data Core, and that all of the GEOSS Data Management Principles are implemented. Furthermore, out of the OGC Citizen Science Domain Working Group (DWG) we offer examples and guidance how this can be realized with OGC standards. However, realistically speaking, and in order to see concrete progress, it appears most feasible that projects first enter what they already support, and at least fulfill the http://geolabel.info/Discoverable.htm[needs to make their data sets discoverable from within the GEOSS Platform] using http://geolabel.info/Metadata.htm[well-documented metadata], and including http://geolabel.info/Quality.htm[information about data quality]. Following the brokering approach of GEOSS, this entails that the projects provide a minimum of required information, and ideally follow one of the multiple standards that are already supported by GEOSS. If it should not be immediately possible to also provide http://geolabel.info/DataAccess.htm[one of the multiple options to make data accessible] or to provide that data in an http://www.geolabel.info/Encoding.htm[already recognized encoding], it might still be considered to register a projects and then update the record in the Yellow Pages once the additional functionalities for harmonized data access are put in place by the project.
 
@@ -58,7 +68,7 @@ In order to move ahead, we identified two main clusters of requirements. On the 
 *	If necessary, interaction with individual projects to correct their entries for the Yellow Pages.
 *	Liaise with the GEO DAB team in order to actually register the new entries.
 *	Possible consider an additional hub that would in fact cluster multiple Citizen Science projects and their endpoints into a single access point, which is then registered within the GEOSS Platform (see also example below).
-*	…
+*	Establish a capacity building mechanism, capable to support and equip existing initiatives with the necessary skills to apply data management principles related to the accessibility, discoverability, re-usability and curation of their resources.
 
 For the above mentioned EC 2020 we could, for example, imagine the following. EC2020 will collect new data and offer those via a dedicated API. At the same time, several already existing Citizen Science projects partner with EC2020 and also provide access to their data (in different forms). For the connection to GEOSS, EC2020 could provide a gateway that connects the newly collected data and the offerings of the different partners to a single discovery service and a single data access service. These two endpoints would be registered via the Yellow Pages with the GEOSS Platform and thereby make the EC2020 resources more widely visible,  together with a clearly defined and well-known data policy and following most recent data management principles. The figure below depicts this setting.
 
