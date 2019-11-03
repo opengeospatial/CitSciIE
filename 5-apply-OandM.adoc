@@ -8,10 +8,10 @@ image::images/observationConcepts.png[Observation main concepts]
 
 For each observation, the O&M allows us to document the following characteristics:
 
-* Where the observation is located: Even if the observations was done remotely with a camera or a drone, it is commonly more important to know the position of the observed phenomena.
-* When the observation took place and what time period it represents: Even if samples were collected and analyzed latter, it is commonly more important to know the instant or period of the observed phenomenon.
+* Where the observation is located: Even if the observations was done remotely with a camera or a drone, it is commonly more relevant to know the position of the observed phenomena (the sensor position can also be recorded).
+* When the observation took place and what time period it represents: Even if samples were collected and analyzed later, it is commonly more relevant to know the instant or period of the observed phenomenon.
 * How the observation was done: This will describe the procedure and instrument used to capture the phenomenon.
-* Who did the observation: The procedure and instrument used to capture the phenomenon was executed by someone. In citizen Science, where many observers contribute small pieces of information, it is particularly important to record the observers.
+* Who did the observation: The procedure and instrument used to capture the phenomenon was installed or used on side by someone. In citizen Science, where many observers contribute small pieces of information that together will form a dataset, it is particularly important to record at least an observer identifier.
 * What was measured: This will define the property names and units of measure of the variables observed.
 * What data was collected: This will record the actual values of the properties measured.
 * What is the expected quality of the observation: If an estimation of the quality of the observation was done, it is important to document it.

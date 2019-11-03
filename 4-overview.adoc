@@ -1,8 +1,8 @@
 [[Overview]]
 == Overview
-This Engineering Report focuses on the findings of the first Citizen Science Interoperability Experiment (CitSciIE).
+This Engineering Report focuses on the findings of the first phase of the Citizen Science Interoperability Experiment (CitSciIE).
 
-The primary focus of the OGC CitSciIE experiment was to demonstrate the interoperability of Citizen Science (CS) projects and the way OGC standards can be applied to Citizen Science, including possible relationships to other relevant standards from the community. In particular, a subset of these topics were being addressed based on the participant organizations:
+The primary focus of the OGC CitSciIE experiment was to demonstrate the interoperability of Citizen Observatories and Citizen Science (CS) projects and the way OGC standards can be applied to Citizen Science, including possible relationships to other relevant standards from the community. In particular, a subset the originally proposed topics were being addressed based on the participant organizations:
 
 * The use of OGC standards (e.g. Sensor Web Enablement for Citizen Science SWE4CS) to support data integration among CS projects, and with other sources, esp. authoritative data;
 *	The use of ISO standards, and OGC publications, and community resources to document data quality aspects (e.g. UncertML, QualityML);
@@ -44,36 +44,31 @@ During the Kick off meeting of the Experiment the following subgroups emerged:
 ** Working item Q.4: Add new entry point the QualityML for other common vocabulary formats like TTL etc.
 *** Connection with: V
 
-For each of the subgroups a chair and the main participants and contributors were identified. Responsibles were also assigned to each of the working items.
+For each of the subgroups a chair and the main participants and contributors were identified. Responsible persons were also assigned to each of the working items.
+
+=== Results detailed in next sections
 
 These are the main activities and outcomes of the interoperability experiment detailed by activity.
 
-V: Vocabularies for organizing Citizen Science projects.
+*Data sharing using OGC standards such as O&M and SOS*
 
-The objective of this activity was to support the Earth Challenge 2020 research questions. The questions were defined during the first month of the experiment and now it is time to analyse them in terms of data needs and thematic vocabularies they are going to use. That is the reason this activity has not resulted in tangible outputs and will be reintroduced in the second interoperability experiment.
+This activity has been the most active one. During the testbed the following servers have been deployed: MiraMon SOS server, Grow SOS, DLR istSOS SOS and 52north SOS. Three clients have also been produced: MiraMon SOS browser, Grow SOS data viewer and 52north Helgoland. In the last meeting at the EGU, the group was able to demonstrate interoperability by connecting the SOS clients to the SOS services and showing the data on clients, sometimes mixing data form different services and datasets in a single view. This is the most significant result of the experiment and is being extensively documented in this Engineering Report in sections 5, 6 and 7
 
-D: Data sharing using OGC standards such as O&M and SOS
+*Data quality*
 
-This activity has been the most active one. During the testbed the following servers have been deployed: MiraMon SOS server, Grow SOS, DLR istSOS SOS and 52north SOS. Three clients have also been produced: MiraMon SOS browser, Grow SOS data viewer and 52north Helgoland. In the last meeting at the EGU, the group was able to demonstrate interoperability by connecting the SOS clients to the SOS services and showing the data on clients, sometimes mixing data form different services and datasets in a single view. This is the most significant result of the experiment and is being extensively documented in this Engineering Report.
+Two quality vocabularies have been detected: an Australian work done by Peter Brenton team (https://github.com/tdwg/bdq) and the QualityML vocabulary developed by CREAF in the GeoViQua project. The intention was to do a comparison of both approaches but we were not able to do that in the timeframe of the first interoperability experiment. Section 8 describes the current status of the activity. It is foreseen that the second IE will continue what was started here.
 
-S: Connection between Landsense federation and JRC user system
+*Definition server for organizing Citizen Science projects*
+
+The objective of this activity was to support the Earth Challenge 2020 research questions. The questions were defined during the first month of the experiment and now it is time to analyse them in terms of data needs and thematic vocabularies they are going to use. That is the reason this activity has not resulted in tangible outputs and will be reintroduced in the second interoperability experiment. Details of this development are described in section 9.
+
+*Connection between Landsense federation and JRC user system*
 
 Andreas Matheus SME (Secure Dimensions) was very active in providing demonstrations and information on how the LandSense federation works and how other projects can be included in the federation and use the single Sign on facility. Unfortunately, no other member of the CoP had the resources to apply the SSO on their services or clients and take advantage of the Andreas offering. The activity resulted in a video demonstrations that are publicly available here: https://portal.opengeospatial.org/files/?artifact_id=81550.
+Section 10 Details the current status of the activity
 
-Q: Data quality
+*Other*
 
-Two quality vocabularies have been detected: an Australian work done by Peter Brenton team (https://github.com/tdwg/bdq) and the QualityML vocabulary developed by CREAF in the GeoViQua project. The intention was to do a comparison of both approaches but we were not able to do that in the timeframe of the first interoperability experiment. It is foreseen that the second IE will continue what was started here.
+Section 11 summarizes the lessons learned that can be applied to GEOSS.
 
 In addition to these activities, another activity about quality annotating scientific documentation in a standard way was proposed by Lucy Bastin. A video was recorded that summarizes the idea: https://portal.opengeospatial.org/files/?artifact_id=82544.
-
-=== Other sections
-
-(( Section 5 introduces the problem of vector tiling. It describes the situation prior to the testbed and discusses the requirements set by the sponsors. ))
-
-(( Section 6 discusses the mathematical model behind the various tiling strategies. It provides recommendations on preferred strategies. ))
-
-(( Section 7 presents the solution developed in this testbed. A clear mapping of requirements to solutions is provided. The section shows additional work is required to implement 3D tiles, which could not be addressed in this activity. ))
-
-(( Section 8 provides a summary of the main findings and discusses links to other tasks such as WFS 3.0 and WMTS 2.3. ))
-
-(( Annex A provides code snippets that illustrate the functionality of the Vector Tiling Engine and shall help to implement similar technology. It briefly discusses the key issues we experienced during implementation.))

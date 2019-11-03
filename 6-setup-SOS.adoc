@@ -43,10 +43,13 @@ This API can be directly exposed by Sensor Web servers such as the 52°North imp
 
 The advantage of this approach is a more lightweight communication pattern to be implemented on the client side. In addition the 52°North Sensor Web API offers further convenience methods as well as functionalities for reducing the transferred data volume (by generalising observation data) and improving the data visualisation (e.g. providing rending hints). A drawback of this approach is a less direct interaction with SOS servers, so that for integrating new SOS servers, a proxy component has to be configured/adjusted.
 
-== Setup SOS services
+=== Setup SOS services
 
 ==== SOS in a JavaScript client
+
+
 ===== SOS and CORS
+
 
 ==== SOS in a data view
 This is the grow and the heveland (52North).

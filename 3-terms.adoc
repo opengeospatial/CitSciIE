@@ -4,7 +4,10 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 
 * Citizen Observatory (CO)
 
- COs are community-based environmental monitoring and information systems, that invite individuals to share observations, typically via mobile phone or the web.
+ COs are community-based environmental monitoring and information systems, that invite individuals to share observations, typically via mobile phone or the web (from: https://www.weobserve.eu/about/citizen-observatories)
+
+* Citizen Science
+ The collection and analysis of data relating to the natural world by members of the general public, typically as part of a collaborative project with professional scientists (from: https://www.uen.org/crowdandcloud/citizen.shtml)
 
  * Citizen Science Association
 
@@ -16,7 +19,7 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 
  * Community of Practice (CoP)
 
- Community which work to consolidate practice-based knowledge of COs sharing information and resources as well as developing guidelines and toolkits for COs. The WeObserve project is promoting four CoP and the one about Interoperability is the responsible of creating this document.
+ Community which work to consolidate practice-based knowledge of COs sharing information and resources as well as developing guidelines and toolkits for COs (from: https://www.weobserve.eu/cops/)
 
 
 ===	Abbreviated terms
@@ -27,16 +30,13 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 * CO Citizen Observatory
 * CoP Community of Practice
 * COST European Cooperation in Science and Technology
-* CREAF Centre for Ecological Research and Forestry Applications
 * CS Citizen Science
 * CS DWG Citizen Science Domain Working Group
 * CSGP Citizen Science Global Partnership
 * ECSA European Association of Citizen Science
 * EO Earth Observation
-* IIASA International Institute for Applied Systems Analysis
 * ICT Information and Communication Technologies
 * IE Interoperability Experiment
-* JRC Joint Research Centre
 * O&M Observation and Measurements
 * PPSR Public Participation in Scientific Research
 * SOS Sensor Observation Service
@@ -44,5 +44,4 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 * SWE Sensor Web Enablement
 * SWE4CS Sensor Web Enablement for Citizen Science
 * TC Technical Committee
-* WMO World Meteorological Organisation
 * WPS Web Processing Service
