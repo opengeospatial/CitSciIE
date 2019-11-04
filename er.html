@@ -101,7 +101,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <li><a href="#Overview">4. Overview</a>
 <ul class="sectlevel2">
 <li><a href="#_structure_of_the_activities">4.1. Structure of the activities</a></li>
-<li><a href="#_other_sections">4.2. Other sections</a></li>
+<li><a href="#_results_detailed_in_next_sections">4.2. Results detailed in next sections</a></li>
 </ul>
 </li>
 <li><a href="#DataModels">5. O&amp;M for Cit Sci</a>
@@ -109,7 +109,12 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <li><a href="#_the_gt20_examples">5.1. The GT20 examples</a></li>
 <li><a href="#_hackair_examples">5.2. HackAir examples</a></li>
 <li><a href="#_grow_example">5.3. GROW example</a></li>
-<li><a href="#_how_to_encode_the_procedure_future_work">5.4. How to encode the procedure. Future work.</a></li>
+<li><a href="#_future_work">5.4. Future work</a>
+<ul class="sectlevel3">
+<li><a href="#_how_to_encode_the_procedure">5.4.1. How to encode the procedure.</a></li>
+<li><a href="#_avoiding_verbosity_by_defining_a_data_streem">5.4.2. Avoiding verbosity by defining a data streem</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#SOS_architectures">6. SOS architectures</a>
@@ -117,44 +122,32 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <li><a href="#_architecture_1_sos_services_integrated_in_a_sos_client">6.1. Architecture 1: SOS services integrated in a SOS client</a></li>
 <li><a href="#_architecture_2_sos_services_integrated_in_a_combined_agile_service">6.2. Architecture 2: SOS services integrated in a combined agile service</a></li>
 <li><a href="#_architecture_3_sos_service_for_interoperability_and_json_api_for_fast_client">6.3. Architecture 3: SOS service for interoperability and JSON API for fast client</a></li>
-<li><a href="#_setup_sos_services">6.4. Setup SOS services</a>
-<ul class="sectlevel3">
-<li><a href="#_sos_in_a_javascript_client">6.4.1. SOS in a JavaScript client</a></li>
-<li><a href="#_sos_in_a_data_view">6.4.2. SOS in a data view</a></li>
 </ul>
 </li>
-<li><a href="#_sos_tested_services">6.5. SOS tested services</a>
-<ul class="sectlevel3">
-<li><a href="#_52_north_solution">6.5.1. 52 North solution</a></li>
-<li><a href="#_istsos">6.5.2. istSOS</a></li>
-<li><a href="#_miramon_sos">6.5.3. MiraMon SOS</a></li>
-<li><a href="#_grow_sos">6.5.4. GROW SOS</a></li>
-<li><a href="#_practical_comparative">6.5.5. Practical Comparative</a></li>
-</ul>
-</li>
-<li><a href="#_grow_client">6.6. Grow Client</a></li>
-<li><a href="#_miramon_client">6.7. MiraMon Client</a></li>
-<li><a href="#_52north_helgoland_sensor_web_viewer">6.8. 52°North Helgoland Sensor Web Viewer</a></li>
-</ul>
-</li>
-<li><a href="#DataQuality">7. Data quality estimations with SOS</a></li>
-<li><a href="#_examples">8. Examples</a>
+<li><a href="#SOS_Server">7. SOS servers</a>
 <ul class="sectlevel2">
-<li><a href="#_headlines">8.1. Headlines</a></li>
-<li><a href="#_figures">8.2. Figures</a></li>
-<li><a href="#_tables">8.3. Tables</a></li>
-<li><a href="#_recommended_asciidoc_environment">8.4. Recommended Asciidoc Environment</a></li>
-<li><a href="#_asciidoc_conversion">8.5. Asciidoc Conversion</a></li>
-<li><a href="#_source_code">8.6. Source Code</a></li>
-<li><a href="#_asciidoctor_syntax_help">8.7. Asciidoc(tor) Syntax Help</a></li>
-<li><a href="#_citations">8.8. Citations</a></li>
+<li><a href="#_52_north_solution">7.1. 52 North solution</a></li>
+<li><a href="#_istsos">7.2. istSOS</a></li>
+<li><a href="#_miramon_sos">7.3. MiraMon SOS</a></li>
+<li><a href="#_grow_sos">7.4. GROW SOS</a></li>
 </ul>
 </li>
-<li><a href="#CitSciGEOSS">9. Connecting Citizen Science data sets to GEOSS</a>
+<li><a href="#SOS_Client">8. SOS clients</a>
 <ul class="sectlevel2">
-<li><a href="#_connecting_a_single_citizen_science_project_to_geoss">9.1. Connecting a single Citizen Science project to GEOSS</a></li>
-<li><a href="#_why_a_case_by_case_registration_might_not_be_the_best_way_forward">9.2. Why a case-by-case registration might not be the best way forward</a></li>
-<li><a href="#_items_for_further_investigation_regarding_geoss">9.3. Items for further investigation regarding GEOSS</a></li>
+<li><a href="#_grow_client">8.1. Grow Client</a></li>
+<li><a href="#_miramon_client">8.2. MiraMon Client</a></li>
+<li><a href="#_52north_helgoland_sensor_web_viewer">8.3. 52°North Helgoland Sensor Web Viewer</a></li>
+<li><a href="#_sos_technology_integration_experiments">8.4. SOS Technology Integration Experiments</a></li>
+</ul>
+</li>
+<li><a href="#DataQuality">9. Data quality estimations with SOS</a></li>
+<li><a href="#DefinitionServer">10. Definition Server</a></li>
+<li><a href="#SSO">11. User authentication</a></li>
+<li><a href="#CitSciGEOSS">12. Connecting Citizen Science data sets to GEOSS</a>
+<ul class="sectlevel2">
+<li><a href="#_connecting_a_single_citizen_science_project_to_geoss">12.1. Connecting a single Citizen Science project to GEOSS</a></li>
+<li><a href="#_why_a_case_by_case_registration_might_not_be_the_best_way_forward">12.2. Why a case-by-case registration might not be the best way forward</a></li>
+<li><a href="#_items_for_further_investigation_regarding_geoss">12.3. Items for further investigation regarding GEOSS</a></li>
 </ul>
 </li>
 <li><a href="#AbstractTestSuite">Appendix A: Abstract Test Suite</a></li>
@@ -333,9 +326,13 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <p>Citizen Observatory (CO)</p>
 <div class="literalblock">
 <div class="content">
-<pre>COs are community-based environmental monitoring and information systems, that invite individuals to share observations, typically via mobile phone or the web.</pre>
+<pre>COs are community-based environmental monitoring and information systems, that invite individuals to share observations, typically via mobile phone or the web (from: https://www.weobserve.eu/about/citizen-observatories)</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Citizen Science
+The collection and analysis of data relating to the natural world by members of the general public, typically as part of a collaborative project with professional scientists (from: <a href="https://www.uen.org/crowdandcloud/citizen.shtml" class="bare">https://www.uen.org/crowdandcloud/citizen.shtml</a>)</p>
 </li>
 <li>
 <p>Citizen Science Association</p>
@@ -357,7 +354,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <p>Community of Practice (CoP)</p>
 <div class="literalblock">
 <div class="content">
-<pre>Community which work to consolidate practice-based knowledge of COs sharing information and resources as well as developing guidelines and toolkits for COs. The WeObserve project is promoting four CoP and the one about Interoperability is the responsible of creating this document.</pre>
+<pre>Community which work to consolidate practice-based knowledge of COs sharing information and resources as well as developing guidelines and toolkits for COs (from: https://www.weobserve.eu/cops/)</pre>
 </div>
 </div>
 </li>
@@ -381,9 +378,6 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <p>COST European Cooperation in Science and Technology</p>
 </li>
 <li>
-<p>CREAF Centre for Ecological Research and Forestry Applications</p>
-</li>
-<li>
 <p>CS Citizen Science</p>
 </li>
 <li>
@@ -399,16 +393,10 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <p>EO Earth Observation</p>
 </li>
 <li>
-<p>IIASA International Institute for Applied Systems Analysis</p>
-</li>
-<li>
 <p>ICT Information and Communication Technologies</p>
 </li>
 <li>
 <p>IE Interoperability Experiment</p>
-</li>
-<li>
-<p>JRC Joint Research Centre</p>
 </li>
 <li>
 <p>O&amp;M Observation and Measurements</p>
@@ -432,7 +420,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <p>TC Technical Committee</p>
 </li>
 <li>
-<p>WMO World Meteorological Organisation</p>
+<p>TIE Technology Integration Experiments</p>
 </li>
 <li>
 <p>WPS Web Processing Service</p>
@@ -446,10 +434,10 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <h2 id="Overview"><a class="anchor" href="#Overview"></a>4. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Engineering Report focuses on the findings of the first Citizen Science Interoperability Experiment (CitSciIE).</p>
+<p>This Engineering Report focuses on the findings of the first phase of the Citizen Science Interoperability Experiment (CitSciIE).</p>
 </div>
 <div class="paragraph">
-<p>The primary focus of the OGC CitSciIE experiment was to demonstrate the interoperability of Citizen Science (CS) projects and the way OGC standards can be applied to Citizen Science, including possible relationships to other relevant standards from the community. In particular, a subset of these topics were being addressed based on the participant organizations:</p>
+<p>The primary focus of the OGC CitSciIE experiment was to demonstrate the interoperability of Citizen Observatories and Citizen Science (CS) projects and the way OGC standards can be applied to Citizen Science, including possible relationships to other relevant standards from the community. In particular, a subset the originally proposed topics were being addressed based on the participant organizations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -587,55 +575,47 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 </ul>
 </div>
 <div class="paragraph">
-<p>For each of the subgroups a chair and the main participants and contributors were identified. Responsibles were also assigned to each of the working items.</p>
+<p>For each of the subgroups a chair and the main participants and contributors were identified. Responsible persons were also assigned to each of the working items.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_results_detailed_in_next_sections"><a class="anchor" href="#_results_detailed_in_next_sections"></a>4.2. Results detailed in next sections</h3>
 <div class="paragraph">
 <p>These are the main activities and outcomes of the interoperability experiment detailed by activity.</p>
 </div>
 <div class="paragraph">
-<p>V: Vocabularies for organizing Citizen Science projects.</p>
+<p><strong>Data sharing using OGC standards such as O&amp;M and SOS</strong></p>
 </div>
 <div class="paragraph">
-<p>The objective of this activity was to support the Earth Challenge 2020 research questions. The questions were defined during the first month of the experiment and now it is time to analyse them in terms of data needs and thematic vocabularies they are going to use. That is the reason this activity has not resulted in tangible outputs and will be reintroduced in the second interoperability experiment.</p>
+<p>This activity has been the most active one. During the testbed the following servers have been deployed: MiraMon SOS server, Grow SOS, DLR istSOS SOS and 52north SOS. Three clients have also been produced: MiraMon SOS browser, Grow SOS data viewer and 52north Helgoland. In the last meeting at the EGU, the group was able to demonstrate interoperability by connecting the SOS clients to the SOS services and showing the data on clients, sometimes mixing data form different services and datasets in a single view. This is the most significant result of the experiment and is being extensively documented in this Engineering Report in sections 5, 6 and 7</p>
 </div>
 <div class="paragraph">
-<p>D: Data sharing using OGC standards such as O&amp;M and SOS</p>
+<p><strong>Data quality</strong></p>
 </div>
 <div class="paragraph">
-<p>This activity has been the most active one. During the testbed the following servers have been deployed: MiraMon SOS server, Grow SOS, DLR istSOS SOS and 52north SOS. Three clients have also been produced: MiraMon SOS browser, Grow SOS data viewer and 52north Helgoland. In the last meeting at the EGU, the group was able to demonstrate interoperability by connecting the SOS clients to the SOS services and showing the data on clients, sometimes mixing data form different services and datasets in a single view. This is the most significant result of the experiment and is being extensively documented in this Engineering Report.</p>
+<p>Two quality vocabularies have been detected: an Australian work done by Peter Brenton team (<a href="https://github.com/tdwg/bdq" class="bare">https://github.com/tdwg/bdq</a>) and the QualityML vocabulary developed by CREAF in the GeoViQua project. The intention was to do a comparison of both approaches but we were not able to do that in the timeframe of the first interoperability experiment. Section 8 describes the current status of the activity. It is foreseen that the second IE will continue what was started here.</p>
 </div>
 <div class="paragraph">
-<p>S: Connection between Landsense federation and JRC user system</p>
+<p><strong>Definition server for organizing Citizen Science projects</strong></p>
 </div>
 <div class="paragraph">
-<p>Andreas Matheus SME (Secure Dimensions) was very active in providing demonstrations and information on how the LandSense federation works and how other projects can be included in the federation and use the single Sign on facility. Unfortunately, no other member of the CoP had the resources to apply the SSO on their services or clients and take advantage of the Andreas offering. The activity resulted in a video demonstrations that are publicly available here: <a href="https://portal.opengeospatial.org/files/?artifact_id=81550" class="bare">https://portal.opengeospatial.org/files/?artifact_id=81550</a>.</p>
+<p>The objective of this activity was to support the Earth Challenge 2020 research questions. The questions were defined during the first month of the experiment and now it is time to analyse them in terms of data needs and thematic vocabularies they are going to use. That is the reason this activity has not resulted in tangible outputs and will be reintroduced in the second interoperability experiment. Details of this development are described in section 9.</p>
 </div>
 <div class="paragraph">
-<p>Q: Data quality</p>
+<p><strong>Connection between Landsense federation and JRC user system</strong></p>
 </div>
 <div class="paragraph">
-<p>Two quality vocabularies have been detected: an Australian work done by Peter Brenton team (<a href="https://github.com/tdwg/bdq" class="bare">https://github.com/tdwg/bdq</a>) and the QualityML vocabulary developed by CREAF in the GeoViQua project. The intention was to do a comparison of both approaches but we were not able to do that in the timeframe of the first interoperability experiment. It is foreseen that the second IE will continue what was started here.</p>
+<p>Andreas Matheus SME (Secure Dimensions) was very active in providing demonstrations and information on how the LandSense federation works and how other projects can be included in the federation and use the single Sign on facility. Unfortunately, no other member of the CoP had the resources to apply the SSO on their services or clients and take advantage of the Andreas offering. The activity resulted in a video demonstrations that are publicly available here: <a href="https://portal.opengeospatial.org/files/?artifact_id=81550" class="bare">https://portal.opengeospatial.org/files/?artifact_id=81550</a>.
+Section 10 Details the current status of the activity</p>
+</div>
+<div class="paragraph">
+<p><strong>Other</strong></p>
+</div>
+<div class="paragraph">
+<p>Section 11 summarizes the lessons learned that can be applied to GEOSS.</p>
 </div>
 <div class="paragraph">
 <p>In addition to these activities, another activity about quality annotating scientific documentation in a standard way was proposed by Lucy Bastin. A video was recorded that summarizes the idea: <a href="https://portal.opengeospatial.org/files/?artifact_id=82544" class="bare">https://portal.opengeospatial.org/files/?artifact_id=82544</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_other_sections"><a class="anchor" href="#_other_sections"></a>4.2. Other sections</h3>
-<div class="paragraph">
-<p>Section 5 introduces the problem of vector tiling. It describes the situation prior to the testbed and discusses the requirements set by the sponsors.</p>
-</div>
-<div class="paragraph">
-<p>Section 6 discusses the mathematical model behind the various tiling strategies. It provides recommendations on preferred strategies.</p>
-</div>
-<div class="paragraph">
-<p>Section 7 presents the solution developed in this testbed. A clear mapping of requirements to solutions is provided. The section shows additional work is required to implement 3D tiles, which could not be addressed in this activity.</p>
-</div>
-<div class="paragraph">
-<p>Section 8 provides a summary of the main findings and discusses links to other tasks such as WFS 3.0 and WMTS 2.3.</p>
-</div>
-<div class="paragraph">
-<p>Annex A provides code snippets that illustrate the functionality of the Vector Tiling Engine and shall help to implement similar technology. It briefly discusses the key issues we experienced during implementation.</p>
 </div>
 </div>
 </div>
@@ -644,7 +624,10 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <h2 id="DataModels"><a class="anchor" href="#DataModels"></a>5. O&amp;M for Cit Sci</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Observations and Measurements(O&amp;M) standard (OGC 10-004r3, Topic 20: Observations and Measurements) defines a data model that observations should follow. Its main concepts a represented in the <a href="#img-observationConcepts">Figure 1</a>:</p>
+<p>In a <em>feature model</em> all characteristics of a feature are considered properties of the feature and are not semantically separated at the abstract level.</p>
+</div>
+<div class="paragraph">
+<p>The Observations and Measurements(O&amp;M) standard (OGC 10-004r3, Topic 20: Observations and Measurements) defines a data model that observations where.  main concepts are separated as represented in the <a href="#img-observationConcepts">Figure 1</a>:</p>
 </div>
 <div id="img-observationConcepts" class="imageblock">
 <div class="content">
@@ -658,16 +641,16 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <div class="ulist">
 <ul>
 <li>
-<p>Where the observation is located: Even if the observations was done remotely with a camera or a drone, it is commonly more important to know the position of the observed phenomena.</p>
+<p>Where the observation is located: Even if the observations was done remotely with a camera or a drone, it is commonly more relevant to know the position of the observed phenomena (the sensor position can also be recorded).</p>
 </li>
 <li>
-<p>When the observation took place and what time period it represents: Even if samples were collected and analyzed latter, it is commonly more important to know the instant or period of the observed phenomenon.</p>
+<p>When the observation took place and what time period it represents: Even if samples were collected and analyzed later, it is commonly more relevant to know the instant or period of the observed phenomenon.</p>
 </li>
 <li>
 <p>How the observation was done: This will describe the procedure and instrument used to capture the phenomenon.</p>
 </li>
 <li>
-<p>Who did the observation: The procedure and instrument used to capture the phenomenon was executed by someone. In citizen Science, where many observers contribute small pieces of information, it is particularly important to record the observers.</p>
+<p>Who did the observation: The procedure and instrument used to capture the phenomenon was installed or used on side by someone. In citizen Science, where many observers contribute small pieces of information that together will form a dataset, it is particularly important to record at least an observer identifier.</p>
 </li>
 <li>
 <p>What was measured: This will define the property names and units of measure of the variables observed.</p>
@@ -681,7 +664,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 </ul>
 </div>
 <div class="paragraph">
-<p>In a <em>feature model</em> all these aspects are considered properties of the feature and are not conceptually separated. In the O&amp;M data model, there aspects are clearly separated semantically as shown in <a href="#img-commonModelForOandM">Figure 2</a>. This is the main value of the O&amp;M model and the use SOS, but it is also the main handicap that require some thought.</p>
+<p>In the O&amp;M data model, there aspects are clearly separated semantically as shown in <a href="#img-commonModelForOandM">Figure 2</a>. This is the main value of the O&amp;M model and its usage SOS (or the SensorThingsAPI that uses a very similar approach to model the data), but it is also the main handicap in applying the standard.</p>
 </div>
 <div id="img-commonModelForOandM" class="imageblock">
 <div class="content">
@@ -742,21 +725,21 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 </tbody>
 </table>
 <div class="paragraph">
-<p>Even if this aspects are separated, the O&amp;M model gives a lot of flexibility in defining the properties and this flexibility can condition the interoperability. The standard give us freedom to select among the different geometries provided by GML to define the featureOfInterest. The standard gives us even more freedom on the data collected that can have any imaginable structure.</p>
+<p>Even if this aspects are separated, the O&amp;M model gives a lot of flexibility in defining the properties and this flexibility can condition  interoperability when trying to combine data from different sources. The standard give us freedom to select among the different geometries provided by GML to define the featureOfInterest. The standard gives us even more freedom on the data collected that can have any imaginable structure.</p>
 </div>
 <div class="paragraph">
-<p>Initially the XML encoding for O&amp;M has selected because in the OGC documentation appears as the only official encoding. As it will be discussed latter, the interpretation of long XML files might be to slow, and, in this cases, JSON encodings is regarded as a good alternative even if it is only described in a discussion paper.</p>
+<p>That is the reason why the data model used to represent the data gathered by a Citizen Observatory need to be carefully considered before even starting the first campaign. Data models can be designed in UML for clarity but they are later encoded in XML. XML is the only official encoding that O&amp;M referenced in the OGC website (OGC 10-025r1 Observations and Measurements - XML Implementation v2.0). Nevertheless, there is JSON alternative discussed in a OGC discussion paper (OGC 15-100r1 OGC Observations and Measurements – JSON implementation) that does not represent an official position of the OGC but can be implemented anyway. As it will be discussed latter, the interpretation of long XML files might be to slow in web browsers, and, in this cases, a JSON encodings is regarded as a good alternative. This alternative can be the proposed OGC 15-100r1 or the alternative proposed by the SensorThings API.</p>
 </div>
 <div class="sect2">
 <h3 id="_the_gt20_examples"><a class="anchor" href="#_the_gt20_examples"></a>5.1. The GT20 examples</h3>
 <div class="paragraph">
-<p>In the Ground Truth 20 we have been using the MiraMon implementation of O&amp;M. This implementation assumes a simplified situation that considers that each observation can be represented by a single row in a CSV or in a single record of a database table. In this situation, we select which column name that represents the phonomenonTime, the procedure and the coordinates. The rest of the columns are considered part of the data record that needs to be provided as data.</p>
+<p>In the Ground Truth 2.0 project we have been using the MiraMon implementation of O&amp;M. This implementation assumes a simplified situation that considers that each observation can be represented by a single row in a CSV or in a single record of a database table. Coordinates are represented as a single point. In this situation, we select which column names represent the <em>phonomenonTime</em>, the <em>procedure</em> (that actually is including the user name) and the <em>featureOfInterest</em> (the coordinates). The rest of the columns are considered part of the data record that needs to be provided as the <em>result</em>.</p>
 </div>
 <div class="paragraph">
-<p>The section 8.2.1 of the OGC 08-094r1, OGC® SWE Common Data Model Encoding Standard v2.0 provide us a way to encode a DataRecord as an array of fields that can numbers, strings, dates, etc. This is what was selected to represent the properties of the observations that cannot be mapped to any other O&amp;M aspect. This practice is consistent with the section 7.2.8 of the SWE4CS discussion paper.</p>
+<p>The section 8.2.1 of the OGC 08-094r1, OGC® SWE Common Data Model Encoding Standard v2.0 describes a way to encode a <em>DataRecord</em> as an array of fields that can numbers, strings, dates, etc. In our simplified assumption, this results ideal to wrap the properties of the observations that cannot be mapped to any other O&amp;M aspect. This practice is consistent with the section 7.2.8 of the SWE4CS discussion paper.</p>
 </div>
 <div class="paragraph">
-<p>The following is an example of how a water quality observation is encoded in XML:</p>
+<p>The following is an example of how a water quality observation is represented following the O&amp;M model and encoded in XML:</p>
 </div>
 <div class="listingblock">
 <div class="title">Example of XML encoding of the water quality observation</div>
@@ -811,7 +794,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 </div>
 </div>
 <div class="paragraph">
-<p>The following is an example of how a air quality observation is encoded in JSON:</p>
+<p>The following is an example of how two  air quality observations are represented following the O&amp;M model and encoded in JSON:</p>
 </div>
 <div class="listingblock">
 <div class="title">Example of encoding of the air quality observation</div>
@@ -939,7 +922,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
                         }
                 ]
         }
-},</code></pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -949,7 +932,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <div class="sect2">
 <h3 id="_hackair_examples"><a class="anchor" href="#_hackair_examples"></a>5.2. HackAir examples</h3>
 <div class="paragraph">
-<p>To illustrate the flexibility of the O&amp;M we have included this Air Quality report that shows how HackAir data is presented by a 52North SOS implementation. In this case the "result" presents a single numerical value while the other information is provided as parameters. This approach is consistent with section 7.2.2.5 of the O&amp;M standard.</p>
+<p>To illustrate the flexibility of the O&amp;M we have included this air quality report that shows how HackAir data is presented by a 52North SOS implementation. In this case the <em>result</em> presents a single numerical value while the other information is provided as parameters. This approach is consistent with section 7.2.2.5 of the O&amp;M standard.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example of encoding of the water quality observation</div>
@@ -1004,7 +987,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <div class="sect2">
 <h3 id="_grow_example"><a class="anchor" href="#_grow_example"></a>5.3. GROW example</h3>
 <div class="paragraph">
-<p>In the GROW project the SME Hydrologic has develop an SOS service that uses a O&amp;M observation. In this case, a single number is provided as the result of the observation.</p>
+<p>In the GROW project the SME Hydrologic has develop an SOS service that uses a O&amp;M observation. In this case, a single number is provided as the <em>result</em> of the observation and additional parameters are transported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1030,15 +1013,29 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 </div>
 </div>
 <div class="sect2">
-<h3 id="_how_to_encode_the_procedure_future_work"><a class="anchor" href="#_how_to_encode_the_procedure_future_work"></a>5.4. How to encode the procedure. Future work.</h3>
+<h3 id="_future_work"><a class="anchor" href="#_future_work"></a>5.4. Future work</h3>
 <div class="paragraph">
-<p>The SWE4CS discussion paper suggest that we use an approach to encode the procedure that takes into account a recommendation extracted from section 6.18.1 of Timeseries Profile of  Observations and Measurements standard (OGC 15-042r5) that provides us with an encoding for both the observation process and the operator of the sensor (the Citizen doing Citizen Science).</p>
+<p>So far we have seen 3 servers using 2 different approaches to represent the result. That is not a problem for a web service (that only outputs data) but it is not the best situation to ensure interoperability at the client side where an integrated client will need to react to any possible encoding variation and deliver the best result.</p>
 </div>
+<div class="sect3">
+<h4 id="_how_to_encode_the_procedure"><a class="anchor" href="#_how_to_encode_the_procedure"></a>5.4.1. How to encode the procedure.</h4>
 <div class="paragraph">
-<p>This approach has not been implemented during the interoperability experiment but it is considered a the way to go in the future. An example of this procedure is provided in the document and reproduced here for completeness.</p>
+<p>The SWE4CS discussion paper suggest that we use an approach to encode the procedure that takes into account a recommendation extracted from section 6.18.1 of Timeseries Profile of Observations and Measurements standard (OGC 15-042r5) that suggests an encoding for both the observation <em>process</em> and the <em>operator</em> of the sensor (the <em>citizen</em> doing Citizen Science) that is based on ISO metadata. This will ensure an uniform way to report on this two important aspects of the observation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This approach has not been implemented during the interoperability experiment but it is considered something we can experiment with in the future. An example of this procedure is provided in the SWE3CS document and reproduced here for convenience
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
-<div class="title">Example of encoding of the procedure (including process and operator)</div>
+<div class="title">Example of encoding of the procedure (including process and operator) extracted from the SWE4CS document</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;om:procedure&gt;</span>
   <span class="tag">&lt;tsml:ObservationProcess</span> <span class="attribute-name">gml:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">op1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -1076,6 +1073,19 @@ SensorML if possible --&gt;</span>
 <span class="tag">&lt;/om:procedure&gt;</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The result is quite verbose what might affect performance when many data is transmitted.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_avoiding_verbosity_by_defining_a_data_streem"><a class="anchor" href="#_avoiding_verbosity_by_defining_a_data_streem"></a>5.4.2. Avoiding verbosity by defining a data streem</h4>
+<div class="paragraph">
+<p>An approach based on providing a coma separated recordset that is described only once at the beginning should be more compact and efficient to parse.</p>
+</div>
+<div class="paragraph">
+<p>The section 8.4.3 of the OGC 08-094r1, OGC® SWE Common Data Model Encoding Standard v2.0 describes a way to encode a <em>DataStream</em> only once and then send the data directly as a CSV format using HTTP of other protocol. A similar solution could be worth to be tested in the future to increase performance.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1083,7 +1093,7 @@ SensorML if possible --&gt;</span>
 <h2 id="SOS_architectures"><a class="anchor" href="#SOS_architectures"></a>6. SOS architectures</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this chapter we describe three architectures tested in the Interoperability Experiment that demonstrate end to end architectures as well as interoperability among</p>
+<p>In this chapter we describe three architectures tested in the Interoperability Experiment that demonstrate end to end architectures as well as interoperability among servers and clients.</p>
 </div>
 <div class="sect2">
 <h3 id="_architecture_1_sos_services_integrated_in_a_sos_client"><a class="anchor" href="#_architecture_1_sos_services_integrated_in_a_sos_client"></a>6.1. Architecture 1: SOS services integrated in a SOS client</h3>
@@ -1094,7 +1104,22 @@ SensorML if possible --&gt;</span>
 <div class="title">Figure 3. MiraMon SOS Architechture</div>
 </div>
 <div class="paragraph">
-<p>In this architecture (<a href="#MiraMonSOSArchit">[MiraMonSOSArchit]</a>) the client access directly two different SOS services. It formulates a GetFeatureOfInterest to determine the positions of the individual observations and a GetObservation each time it needed to show a complete description of a single point (the user triggers this event by clicking on an icon) or if it needs to represent different icons as a function of the value of the observation. In this case, interoperability happens directly in the client. Since the SOS requests are communicated to the Internet, this client is exposing requests and response, allowing people to explore the SOS protocol with the browser developing tools. It is worth mentioning that this architecture is only possible if both services are declaring their willingness to be combined in the header of the responses. By default, XML or JSON data coming from a Internet domain different from the client itself is not allowed except if the server states in the header that this is allowed. This is known as Cross-Origin Resource Sharing (CORS). The following headers will allow CORS to anybody.</p>
+<p>In this architecture (<a href="#MiraMonSOSArchit">[MiraMonSOSArchit]</a>) the client access directly two different SOS services. It formulates a GetFeatureOfInterest to determine the positions of the individual observations and a GetObservation each time it needed to show a complete description of a single point (the user triggers this event by clicking on an icon) or if it needs to represent different icons as a function of the value of the observation. In this case, interoperability happens directly in the client. Since the SOS requests are communicated to the Internet, this client is exposing requests and response, allowing people to explore the SOS protocol with both the map browser console as well as the browser developing tools.</p>
+</div>
+<div id="img-MMNConsole" class="imageblock">
+<div class="content">
+<img src="images/mmn_console.png" alt="MMN console">
+</div>
+<div class="title">Figure 4. MiraMon Map Browser console with both server requests</div>
+</div>
+<div id="img-MMNChrome" class="imageblock">
+<div class="content">
+<img src="images/mmn_chrome.png" alt="Chrome developement tool">
+</div>
+<div class="title">Figure 5. SOS requests as shown in the Chrome development tool</div>
+</div>
+<div class="paragraph">
+<p>It is worth mentioning that this architecture is only possible if both services are declaring their willingness to be combined in the header of the responses. By default, programatically reading XML or JSON data coming from a Internet domain different from the client itself is not allowed except if the server states in the header that this is allowed. This is known as Cross-Origin Resource Sharing (CORS). The following headers will allow CORS with anybody.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1103,7 +1128,7 @@ Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the case the server does not allow CORS, our client is still able to force the combination by redirecting the request to our server with an extra parameter ServerToRequest. In this case, our server will cascade the request to the specified server and returning the response back to the client as if there was only one server in only one domain involved.</p>
+<p>In the case a SOS server does not allow CORS, our client is still able to force a solution by redirecting the request to our server with an extra parameter <em>ServerToRequest</em>. In this case, our server will cascade the request to the specified server and return the response back to the client as if there was only one server involved in only one domain.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1112,7 +1137,7 @@ Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE</pre>
 <div class="content">
 <img src="images/GrowSOSArchit.png" alt="Grow SOS Architechture">
 </div>
-<div class="title">Figure 4. Grow SOS Architechture</div>
+<div class="title">Figure 6. Grow SOS Architechture</div>
 </div>
 <div class="paragraph">
 <p>In this architecture (<a href="#GrowSOSArchit">[GrowSOSArchit]</a>) a common server pulls two or more SOS requests into a central tabular datastore. This datastore records only the information from the returned SOS data that is required for the final visualisation and removes information that is redundant creating a data warehouse representing only one version of the data. In this approach the interoperability happens internally in the datastore and the SOS requests and responses are not explosed to the final client.
@@ -1122,7 +1147,7 @@ In the diagram below (<a href="#GRowDataFlow">[GRowDataFlow]</a>), data is store
 <div class="content">
 <img src="images/GRowDataFlow.png" alt="Grow SOS Data Flow">
 </div>
-<div class="title">Figure 5. Grow SOS Data Flow</div>
+<div class="title">Figure 7. Grow SOS Data Flow</div>
 </div>
 <div class="paragraph">
 <p>The common server would typically be a cloud server, but for some clients this is not necessary, in the case of PowerBI a data bridge is created between the data source and the visualisation tool before it is published to a web client.
@@ -1136,7 +1161,7 @@ In this architecture, data is only as up to date as the latest data pull from th
 <div class="content">
 <img src="images/HelgolandSOSArchit.png" alt="Helgoland SOS Architechture">
 </div>
-<div class="title">Figure 6. Helgoland SOS Architechture</div>
+<div class="title">Figure 8. Helgoland SOS Architechture</div>
 </div>
 <div class="paragraph">
 <p>This architecture was especially optimised to support the development of lightweight Sensor Web applications. This is achieved by avoiding the direct XML encoding/decoding on the client device. Instead, the interactions between the client (in this case the 52°North Helgoland Sensor Web Viewer) and the server components is achieved via a REST and JSON interface (the 52°North Sensor Web API).</p>
@@ -1148,29 +1173,16 @@ In this architecture, data is only as up to date as the latest data pull from th
 <p>The advantage of this approach is a more lightweight communication pattern to be implemented on the client side. In addition the 52°North Sensor Web API offers further convenience methods as well as functionalities for reducing the transferred data volume (by generalising observation data) and improving the data visualisation (e.g. providing rending hints). A drawback of this approach is a less direct interaction with SOS servers, so that for integrating new SOS servers, a proxy component has to be configured/adjusted.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_setup_sos_services"><a class="anchor" href="#_setup_sos_services"></a>6.4. Setup SOS services</h3>
-<div class="sect3">
-<h4 id="_sos_in_a_javascript_client"><a class="anchor" href="#_sos_in_a_javascript_client"></a>6.4.1. SOS in a JavaScript client</h4>
-<div class="sect4">
-<h5 id="_sos_and_cors"><a class="anchor" href="#_sos_and_cors"></a>SOS and CORS</h5>
-
 </div>
 </div>
-<div class="sect3">
-<h4 id="_sos_in_a_data_view"><a class="anchor" href="#_sos_in_a_data_view"></a>6.4.2. SOS in a data view</h4>
+<div class="sect1">
+<h2 id="SOS_Server"><a class="anchor" href="#SOS_Server"></a>7. SOS servers</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>This is the grow and the heveland (52North).</p>
-</div>
-</div>
+<p>In this chapter we describe four SOS servers tested in the Interoperability Experiment.</p>
 </div>
 <div class="sect2">
-<h3 id="_sos_tested_services"><a class="anchor" href="#_sos_tested_services"></a>6.5. SOS tested services</h3>
-<div class="paragraph">
-<p>This section will describe the different applications tested in the IE</p>
-</div>
-<div class="sect3">
-<h4 id="_52_north_solution"><a class="anchor" href="#_52_north_solution"></a>6.5.1. 52 North solution</h4>
+<h3 id="_52_north_solution"><a class="anchor" href="#_52_north_solution"></a>7.1. 52 North solution</h3>
 <div class="paragraph">
 <p>The 52°North Sensor Web Server comprises several server-side modules which closely interact to provide different kinds data access functionality. In detail, this comprises the following elements:</p>
 </div>
@@ -1198,52 +1210,49 @@ In this architecture, data is only as up to date as the latest data pull from th
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_istsos"><a class="anchor" href="#_istsos"></a>6.5.2. istSOS</h4>
+<div class="sect2">
+<h3 id="_istsos"><a class="anchor" href="#_istsos"></a>7.2. istSOS</h3>
 <div class="paragraph">
-<p>Easily manage your sensor network and distribute your data in a standard way</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_miramon_sos"><a class="anchor" href="#_miramon_sos"></a>6.5.3. MiraMon SOS</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_grow_sos"><a class="anchor" href="#_grow_sos"></a>6.5.4. GROW SOS</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_practical_comparative"><a class="anchor" href="#_practical_comparative"></a>6.5.5. Practical Comparative</h4>
-<div class="paragraph">
-<p>This section will compare the different options with the same hardware and the same HackAir dataset</p>
-</div>
-<div class="paragraph">
-<p>[[SOS Client]]
-== SOS clients
-In this chapter we describe three SOS integrated clients tested in the Interoperability Experiment.</p>
-</div>
+<p>Easily manage your sensor network and distribute your data in a standard way
+<a href="http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&amp;request=GetCapabilities&amp;version=1.0.0" class="bare">http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&amp;request=GetCapabilities&amp;version=1.0.0</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_grow_client"><a class="anchor" href="#_grow_client"></a>6.6. Grow Client</h3>
+<h3 id="_miramon_sos"><a class="anchor" href="#_miramon_sos"></a>7.3. MiraMon SOS</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_grow_sos"><a class="anchor" href="#_grow_sos"></a>7.4. GROW SOS</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="SOS_Client"><a class="anchor" href="#SOS_Client"></a>8. SOS clients</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this chapter we describe three SOS integrated clients tested in the Interoperability Experiment.</p>
+</div>
+<div class="sect2">
+<h3 id="_grow_client"><a class="anchor" href="#_grow_client"></a>8.1. Grow Client</h3>
 <div id="img-AndyClient" class="imageblock">
 <div class="content">
 <img src="images/AndyClient.png" alt="Andy SOS Client">
 </div>
-<div class="title">Figure 7. Andy SOS Client</div>
+<div class="title">Figure 9. Andy SOS Client</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_miramon_client"><a class="anchor" href="#_miramon_client"></a>6.7. MiraMon Client</h3>
+<h3 id="_miramon_client"><a class="anchor" href="#_miramon_client"></a>8.2. MiraMon Client</h3>
 <div id="img-MiraMonClient" class="imageblock">
 <div class="content">
 <img src="images/MiraMonClient.png" alt="MiraMon SOS Client">
 </div>
-<div class="title">Figure 8. MiraMon SOS Client</div>
+<div class="title">Figure 10. MiraMon SOS Client</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_52north_helgoland_sensor_web_viewer"><a class="anchor" href="#_52north_helgoland_sensor_web_viewer"></a>6.8. 52°North Helgoland Sensor Web Viewer</h3>
+<h3 id="_52north_helgoland_sensor_web_viewer"><a class="anchor" href="#_52north_helgoland_sensor_web_viewer"></a>8.3. 52°North Helgoland Sensor Web Viewer</h3>
 <div class="paragraph">
 <p>The Helgoland Sensor Web Viewer developed by 52°North is an open source visualisation tool for different kinds of Sensor Web data. It allows to explore available observation data sets and to visualise the actual data (e.g. time series) as diagrams.</p>
 </div>
@@ -1254,7 +1263,7 @@ In this chapter we describe three SOS integrated clients tested in the Interoper
 <div class="content">
 <img src="images/HelgolandMapView.png" alt="Helgoland Map View">
 </div>
-<div class="title">Figure 9. 52°North Helgoland Sensor Web Viewer - Map View</div>
+<div class="title">Figure 11. 52°North Helgoland Sensor Web Viewer - Map View</div>
 </div>
 <div class="paragraph">
 <p>After selecting a specific measurement location, the data can be visualised as a diagram (see Figure 2). It is possible to combine data from multiple sensors, multiple observed properties and even from different providers into a single diagram.</p>
@@ -1263,227 +1272,104 @@ In this chapter we describe three SOS integrated clients tested in the Interoper
 <div class="content">
 <img src="images/HelgolandDiagramView.png" alt="Helgoland Diagram View">
 </div>
-<div class="title">Figure 10. 52°North Helgoland Sensor Web Viewer - Diagram View</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="DataQuality"><a class="anchor" href="#DataQuality"></a>7. Data quality estimations with SOS</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_examples"><a class="anchor" href="#_examples"></a>8. Examples</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The content of this section is copied from the template and will be removed</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="title">Instructions</div>
-<div class="paragraph">
-<p>This section explains some concepts frequently required by Asciidoc novices. Please use this file as a template for your own clauses.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_headlines"><a class="anchor" href="#_headlines"></a>8.1. Headlines</h3>
-<div class="paragraph">
-<p>All headlines are marked by "=" signs. The top level in each each file starts with level 2 ("=="). Important: For whatever strange reason, headings in annexes are marked differently.</p>
+<div class="title">Figure 12. 52°North Helgoland Sensor Web Viewer - Diagram View</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_figures"><a class="anchor" href="#_figures"></a>8.2. Figures</h3>
+<h3 id="_sos_technology_integration_experiments"><a class="anchor" href="#_sos_technology_integration_experiments"></a>8.4. SOS Technology Integration Experiments</h3>
 <div class="paragraph">
-<p>If you want to reference a figure by using a figure number, it is important to use the following syntax. The figure identifier for <a href="#img_mindMap">Figure 11</a> is the first statement of the header. Please adapt the width as appropriate.</p>
+<p>During the IE a set of Technology Integration Experiments (TIE) were conducted. In the client and server architecture a TIE is test that combines a server with a client and demonstrates that communication between client and server is possible and the user (operating the client) is able to see or get some data. The following table summarizes the tests conducted and the degree o success achieved.</p>
 </div>
-<div id="img_mindMap" class="imageblock text-center">
-<div class="content">
-<img src="images/t14MindMap.png" alt="t14MindMap" width="800">
-</div>
-<div class="title">Figure 11. High-Level Mind Map of Testbed-14</div>
-</div>
-<div class="paragraph">
-<p>It is important that you use the same syntax for all images, otherwise the automatic numbering is corrupted!</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_tables"><a class="anchor" href="#_tables"></a>8.3. Tables</h3>
-<div class="paragraph">
-<p>Tables are easy to deal with as long as you keep them simple! To add a table, please use the following syntax.</p>
-</div>
-<table id="table_countries" class="tableblock frame-all grid-all" style="width: 75%;">
-<caption class="title">Table 2. Countries in Europe</caption>
+<table id="table_TIE" class="tableblock frame-all grid-all" style="width: 75%;">
+<caption class="title">Table 2. Technology Integration Experiment results</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Country</th>
-<th class="tableblock halign-center valign-top">Population</th>
-<th class="tableblock halign-right valign-top">Size</th>
+<th class="tableblock halign-left valign-top"><strong>Servers</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Data</strong></th>
+<th class="tableblock halign-left valign-top"><strong>MiraMon Client</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Helgoland Client</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Grow Client</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Monaco</em></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>36371</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1.98</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MiraMon</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ground Truth 2.0</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Gibraltar</em></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>29431</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>6.8</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Helgoland</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HackAir</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>istSOS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HackAir</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Grow</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Grow</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>The first line is used for referencing. You can reference <a href="#table_countries">Table 2</a> in your text. The only thing you should change in that line is the table id, which is "table_countries" in this case. Please do not remove the "#", please do not change anything else in that line.</p>
-</div>
-<div class="paragraph">
-<p>You can define the style and width of each column. In our example, the first column takes 50% of the entire width, the second and third column take 25% each. The total width of the table is 75% of the text width.</p>
-</div>
-<div class="paragraph">
-<p>The letters after the width percentage indicate if the column is e=emphasis, m=monospaced, a=asciidoc, s=strong. The d=default does not need to be set.</p>
-</div>
-<div class="paragraph">
-<p>Cell alignment: If you need to align a column, you may indicate this by setting ^,&lt;, or &gt;. Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>^25m = centered, 25% width, monospaced.</p>
-</li>
-<li>
-<p>&gt;25e = aligned right, 25% width, emphasised</p>
-</li>
-<li>
-<p>&lt;25 = aligned left, 25% width, asciidoc</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In any case, please make sure that your table fit on a piece of A4 or letter-size paper!!</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_recommended_asciidoc_environment"><a class="anchor" href="#_recommended_asciidoc_environment"></a>8.4. Recommended Asciidoc Environment</h3>
-<div class="paragraph">
-<p>We recommend to use <a href="http://asciidoctor.org">asciidoctor</a> and <a href="http://asciidoctor.org/docs/convert-asciidoc-to-pdf/">asciidoctor-pdf</a> in combination with the <a href="https://atom.io">Atom</a> editor.</p>
-</div>
-<div class="paragraph">
-<p>In Atom, you should install the following packages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>asciidoc-preview</p>
-</li>
-<li>
-<p>autocomplete-asciidoc</p>
-</li>
-<li>
-<p>language-asciidoc</p>
-</li>
-<li>
-<p>markdown-writer: requires changing of key-map to allow for keyboard shortcuts such as e.g. <strong>bold</strong></p>
-</li>
-<li>
-<p>platformio-IDE-terminal</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This environment allows you to use keyboard shortcuts, autocomplete, syntax highlighting and a rendered preview for asciidoc; and provides you an terminal window within the editor to convert your asciidoc to html and pdf.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_asciidoc_conversion"><a class="anchor" href="#_asciidoc_conversion"></a>8.5. Asciidoc Conversion</h3>
-<div class="paragraph">
-<p>In order to achieve a uniform look-and-feel of all ERs in both HTML and PDF, we have provided a css and theme file. The following commands can be used to convert the ER:</p>
-</div>
-<div class="paragraph">
-<p><strong>Command for PDF output:</strong>
- asciidoctor-pdf -a pdf-stylesdir=resources -a pdf-style=ogc -a pdf-fontsdir=resources/fonts -o 18-xxx.pdf  er.adoc</p>
-</div>
-<div class="paragraph">
-<p><strong>Command for HTML output:</strong>
- asciidoctor -a data-uri -a stylesheet=ogc.css -a stylesdir=./resources/stylesheets -o 18-xxx er.adoc</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_source_code"><a class="anchor" href="#_source_code"></a>8.6. Source Code</h3>
-<div class="paragraph">
-<p>You can add code snippets using the following syntax:</p>
-</div>
-<div class="listingblock">
-<div class="title">Code Example XML</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;section&gt;</span>
-  <span class="tag">&lt;title&gt;</span>Section Title<span class="tag">&lt;/title&gt;</span> <b class="conum">(1)</b>
-<span class="tag">&lt;/section&gt;</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<ol>
-<li>
-<p>This notation allows to reference particular sections within the code.</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="title">Code Example JSON</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="json">{<span class="key"><span class="delimiter">&quot;</span><span class="content">menu</span><span class="delimiter">&quot;</span></span>: {
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">file</span><span class="delimiter">&quot;</span></span>,
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">File</span><span class="delimiter">&quot;</span></span>,
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">popup</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">menuitem</span><span class="delimiter">&quot;</span></span>: [
-      {<span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">New</span><span class="delimiter">&quot;</span></span>, <span class="key"><span class="delimiter">&quot;</span><span class="content">onclick</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CreateNewDoc()</span><span class="delimiter">&quot;</span></span>},
-      {<span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Open</span><span class="delimiter">&quot;</span></span>, <span class="key"><span class="delimiter">&quot;</span><span class="content">onclick</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">OpenDoc()</span><span class="delimiter">&quot;</span></span>},
-      {<span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Close</span><span class="delimiter">&quot;</span></span>, <span class="key"><span class="delimiter">&quot;</span><span class="content">onclick</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CloseDoc()</span><span class="delimiter">&quot;</span></span>}
-    ]
-  }
-}}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_asciidoctor_syntax_help"><a class="anchor" href="#_asciidoctor_syntax_help"></a>8.7. Asciidoc(tor) Syntax Help</h3>
-<div class="paragraph">
-<p>Is available e.g. here: <a href="http://asciidoctor.org/docs/" class="bare">http://asciidoctor.org/docs/</a></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_citations"><a class="anchor" href="#_citations"></a>8.8. Citations</h3>
-<div class="paragraph">
-<p>Please use the following syntax to insert citations:</p>
-</div>
-<div class="paragraph">
-<p>[<a href="#VanZyl2009">1</a>]</p>
-</div>
-<div class="paragraph">
-<p>Then you need to provide all citation information in the file resources/bibtex-file.bib. Everything else is done automatically.</p>
-</div>
-<div class="paragraph">
-<p>For further information, please consult <a href="https://github.com/asciidoctor/asciidoctor-bibtex" class="bare">https://github.com/asciidoctor/asciidoctor-bibtex</a>.</p>
-</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="CitSciGEOSS"><a class="anchor" href="#CitSciGEOSS"></a>9. Connecting Citizen Science data sets to GEOSS</h2>
+<h2 id="DataQuality"><a class="anchor" href="#DataQuality"></a>9. Data quality estimations with SOS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="DefinitionServer"><a class="anchor" href="#DefinitionServer"></a>10. Definition Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TBD: Waiting for writing materials.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="SSO"><a class="anchor" href="#SSO"></a>11. User authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TBD. This are just some texts from and email discussion for inspiration.</p>
+</div>
+<div class="paragraph">
+<p>We are aware of Gilberto&#8217;s views but as Europeans we do have an issue with having in-situ European data or citizen generated data hosted on commercial platforms that do not adhere to our data protection regulation. More specifically, given the business model of these companies that is based on collecting, and integrating personal data of their users to then sell to third parties personalised databases and services for commercial or political targetting, I question the appropriateness of putting citizen science data on these platforms, thus opening the door to their use of the personal data of those who have collected the data and those who use them, without their consent. We are raising this issues within the GEO community as well because there has been no discussion so far on this point. I understand your perspective may differ, but at least you are informed about our views.</p>
+</div>
+<div class="paragraph">
+<p>This argumentation points directly at a real problem that should be included in an GEO architecture for Citizen Science that needs to provide the necessary anonymity to the Citizens when participating in the Citizen Science activities. The H2020 Landsense federation includes the concept of a criptoname (created when citizens authenticate) that is used by a Citizen Science infrastructure to allow participation but hiding the details of the user. This architecture will be applied in the new project CO4Cloud (I&#8217;m participant. Jaume Piera Leads) that will propose a Cit Sci infrastructure on the EOSC for citizen Science.</p>
+</div>
+<div class="paragraph">
+<p>Good point Joan. The identity management etc. is one of the important aspects. Yet, the issue how hosts, manages and own data is complementary to it. Both require a solid architectural set-up.</p>
+</div>
+<div class="paragraph">
+<p>I agree that the need to ensure appropriate privacy of contributors is essential but there also needs to be a way of acknowledging those Citizen Science participants that may wish to be attributed.  I suspect that it may need to be an opt in process.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="CitSciGEOSS"><a class="anchor" href="#CitSciGEOSS"></a>12. Connecting Citizen Science data sets to GEOSS</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In addition to the developments outlined above, this Interoperability Experiment also examined possibilities for the Citizen Science community to make their projects discoverable and accessible via the Global Earth Observation System of Systems (GEOSS).</p>
@@ -1520,7 +1406,7 @@ With our exercise so far, we follow the following overarching principles and car
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_connecting_a_single_citizen_science_project_to_geoss"><a class="anchor" href="#_connecting_a_single_citizen_science_project_to_geoss"></a>9.1. Connecting a single Citizen Science project to GEOSS</h3>
+<h3 id="_connecting_a_single_citizen_science_project_to_geoss"><a class="anchor" href="#_connecting_a_single_citizen_science_project_to_geoss"></a>12.1. Connecting a single Citizen Science project to GEOSS</h3>
 <div class="paragraph">
 <p>The most straight forward way to connect Citizen Science data sets to GEOSS is the registration of the project that collects these data sets at the GEOSS Platform. This process essentially requires the registration of the project in the GEOSS ‘Yellow Pages’ and it can be used to register also multiple data sets from one single project (see also Figure below).</p>
 </div>
@@ -1528,7 +1414,7 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/GEOSSYellowPages.png" alt="GEOSS Yellow Pages">
 </div>
-<div class="title">Figure 12. Sketch on registering a single project at the GEOSS Platform</div>
+<div class="title">Figure 13. Sketch on registering a single project at the GEOSS Platform</div>
 </div>
 <div class="paragraph">
 <p>The entry of the Yellow Pages requires information (metadata) such as:</p>
@@ -1559,7 +1445,7 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/GEOSSYellowPagesForm.png" alt="GEOSS Yellow Pages">
 </div>
-<div class="title">Figure 13. Parts of the items asked for when registering in the GEOSS Yellow Pages</div>
+<div class="title">Figure 14. Parts of the items asked for when registering in the GEOSS Yellow Pages</div>
 </div>
 <div class="paragraph">
 <p>Once compiled, the information provided by the Citizen Science project is passed on to the GEO DAB team. Members of this team check the entries and tests, for example, if the provided endpoint actually serves the intended data, if it needed implements the required standards (from the OGC or comparable alternatives) and if it indeed follows the indicated principles and applies the indicated data policy. This testing might entail a dialogue with the registering Citizen Science project in order to make the project’s offer fit to the promises in the entry for the GEOSS Yellow Pages.</p>
@@ -1587,14 +1473,14 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/ScentResourcesAvailableInGEOSSPortal.png" alt="Scent Resources in GEOSS">
 </div>
-<div class="title">Figure 14. Scent resources available in GEOSS portal</div>
+<div class="title">Figure 15. Scent resources available in GEOSS portal</div>
 </div>
 <div class="paragraph">
 <p>Overall, we promote that Citizen Science projects indeed implement the free and open data policy of the GEOSS Data Core, and that all of the GEOSS Data Management Principles are implemented. Furthermore, out of the OGC Citizen Science Domain Working Group (DWG) we offer examples and guidance how this can be realized with OGC standards. However, realistically speaking, and in order to see concrete progress, it appears most feasible that projects first enter what they already support, and at least fulfill the <a href="http://geolabel.info/Discoverable.htm">needs to make their data sets discoverable from within the GEOSS Platform</a> using <a href="http://geolabel.info/Metadata.htm">well-documented metadata</a>, and including <a href="http://geolabel.info/Quality.htm">information about data quality</a>. Following the brokering approach of GEOSS, this entails that the projects provide a minimum of required information, and ideally follow one of the multiple standards that are already supported by GEOSS. If it should not be immediately possible to also provide <a href="http://geolabel.info/DataAccess.htm">one of the multiple options to make data accessible</a> or to provide that data in an <a href="http://www.geolabel.info/Encoding.htm">already recognized encoding</a>, it might still be considered to register a projects and then update the record in the Yellow Pages once the additional functionalities for harmonized data access are put in place by the project.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_why_a_case_by_case_registration_might_not_be_the_best_way_forward"><a class="anchor" href="#_why_a_case_by_case_registration_might_not_be_the_best_way_forward"></a>9.2. Why a case-by-case registration might not be the best way forward</h3>
+<h3 id="_why_a_case_by_case_registration_might_not_be_the_best_way_forward"><a class="anchor" href="#_why_a_case_by_case_registration_might_not_be_the_best_way_forward"></a>12.2. Why a case-by-case registration might not be the best way forward</h3>
 <div class="paragraph">
 <p>Although the possibility to register Citizen Science e projects of any size in GEOSS exists, we do not recommend that every project should now go ahead and register itself. This is because, at least potentially, the number of relevant contributions is (at least) in the hundreds, see for example, <a href="http://data-staging.jrc.it/dataset/jrc-citsci-10004">this project inventory</a> and the related <a href="https://ec-jrc.github.io/citsci-explorer/">prototype of a project catalogue</a>.</p>
 </div>
@@ -1602,7 +1488,7 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/GEOSSCitSciExplorer.png" alt="Citizen Science Explorer">
 </div>
-<div class="title">Figure 15. Example Citizen Science explorer providing access to 508 different projects (status: 13 June 2019)</div>
+<div class="title">Figure 16. Example Citizen Science explorer providing access to 508 different projects (status: 13 June 2019)</div>
 </div>
 <div class="paragraph">
 <p>It becomes obvious that a case-by-case registration per project (which each might want to register one data set or more) would create a bottle neck towards the GEO DAB and the team that is responsible to evaluate and test entries in the GEOSS Yellow Pages. As a result of our investigations within this Interoperability Experiment, we therefore suggest to elaborate on and develop an intermediate layer that provides the required organizational and technical support to the Citizen Science community so that their data sets become better discoverable, accessible, and potentially more widely used - thereby also amplifying visibility and impact of the individual projects.
@@ -1641,7 +1527,7 @@ In order to move ahead, we identified two main clusters of requirements. On the 
 <div class="content">
 <img src="images/GEOSS_EC2020Gateway.png" alt="GEOSS EC2020 Gateway">
 </div>
-<div class="title">Figure 16. Sketch of a possible connection between EC2020 and the GEOSS Platform (one possible scenario), as an example of a more coordinated structure to make Citizen Science data discoverable and accessible via GEOSS</div>
+<div class="title">Figure 17. Sketch of a possible connection between EC2020 and the GEOSS Platform (one possible scenario), as an example of a more coordinated structure to make Citizen Science data discoverable and accessible via GEOSS</div>
 </div>
 <div class="paragraph">
 <p>On the other hand, and because the offerings made above alone would not be enough to actually advance from the current situation, also the connection to the Citizen Science community deserves dedicated attention. We see, for example, requirements in:
@@ -1665,7 +1551,7 @@ In order to move ahead, we identified two main clusters of requirements. On the 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_items_for_further_investigation_regarding_geoss"><a class="anchor" href="#_items_for_further_investigation_regarding_geoss"></a>9.3. Items for further investigation regarding GEOSS</h3>
+<h3 id="_items_for_further_investigation_regarding_geoss"><a class="anchor" href="#_items_for_further_investigation_regarding_geoss"></a>12.3. Items for further investigation regarding GEOSS</h3>
 <div class="paragraph">
 <p>The experiment helps us to identify current possibilities, and to shape parts of the way ahead. However, it also left a few questions unanswered and raised some new issues. From our experiences, we the particular needs to further investigate the following:</p>
 </div>
@@ -2040,19 +1926,12 @@ owsServiceProvider.xsd</pre>
 <div class="paragraph">
 <p>OGC 17-019 OGC Testbed-13 MapML ER</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a id="VanZyl2009"></a>T. van Zyl, I. Simonis, and G. McFerren, “The Sensor Web: Systems of Sensor Systems,” <em>International Journal of Digital Earth</em>, vol. 2, no. 1, pp. 16–30, Mar. 2009.</p>
-</li>
-</ol>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-31 07:50:05 +0100
+Last updated 2019-11-04 20:20:31 +0100
 </div>
 </div>
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
