@@ -1,0 +1,20 @@
+[[SOS_Server]]
+== SOS servers
+In this chapter we describe four SOS servers tested in the Interoperability Experiment.
+
+==== 52 North solution
+The 52°North Sensor Web Server comprises several server-side modules which closely interact to provide different kinds data access functionality. In detail, this comprises the following elements:
+
+* Data storage: The database for storing the observation data is integrated through an object-relational mapping layer based on the Hibernate framework. This allows the flexible integration of different types of database management systems (e.g. PostgreSQL, Oracle, MS SQL Server, MySQL) and data models. For this Interoperability Experiment, PostgreSQL was used.
+* For the access to observation data, the server offers three dedicated modules, which use the same common Sensor Web database.
+** SOS: The SOS module offers a comprehensive implementation of the OGC Sensor Observation Service 2.0 standard (including beyond the core several extended functionalities, transactional and result handling operations). It also offers several interoperability enhancements such as a support of the INSPIRE Technical Guidance on the SOS as a Download Service.
+** SensorThings API: In addition to the SOS support, a dedicated module is available for supporting the OGC SensorThings API Part 1: Sensing (not yet evaluated as part of this Interoperability Experiment).
+** 52°North Sensor Web API: Complementary to the previous modules, also the 52°North Sensor Web API is offered. This API offers an additional but optional convenience layer for building client applications. While both the SOS and the SensorThings API standards are well suited for enabling the interoperable access to observation data, the Sensor Web REST-API allows to provide additional functionality that significantly facilitates the development of client applications. Typical examples of this additional functionality comprise: generalisation of observation data (important for developing mobile applications), provision of rendering hints (e.g. styling information for time series), conversion of data to mainstream formats such as CSV.
+
+==== istSOS
+Easily manage your sensor network and distribute your data in a standard way
+http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&request=GetCapabilities&version=1.0.0
+
+==== MiraMon SOS
+
+==== GROW SOS

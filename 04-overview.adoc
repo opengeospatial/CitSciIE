@@ -1,0 +1,74 @@
+[[Overview]]
+== Overview
+This Engineering Report focuses on the findings of the first phase of the Citizen Science Interoperability Experiment (CitSciIE).
+
+The primary focus of the OGC CitSciIE experiment was to demonstrate the interoperability of Citizen Observatories and Citizen Science (CS) projects and the way OGC standards can be applied to Citizen Science, including possible relationships to other relevant standards from the community. In particular, a subset the originally proposed topics were being addressed based on the participant organizations:
+
+* The use of OGC standards (e.g. Sensor Web Enablement for Citizen Science SWE4CS) to support data integration among CS projects, and with other sources, esp. authoritative data;
+*	The use of ISO standards, and OGC publications, and community resources to document data quality aspects (e.g. UncertML, QualityML);
+* The integration of CS projects/campaigns in a Single Sign-On system (SSO) federation;
+* The relationships between OGC standards and data and metadata standards currently used by Citizen Science projects.
+
+The desired outcome of this experiment was to:
+
+1. Successfully demonstrate how OGC standards (e.g. SWE) are applicable to Citizen Science, document available supporting tools, identify the challenges of using OGC SWE standards (or Internet of Things equivalent solutions) within current Citizen Science projects, and propose a way forward. Make recommendations to the Earth Science 2020 initiative on which OGC standards should be utilized to underpin interoperable data collection and sharing.
+2. Successfully demonstrate how to estimate Citizen Science data quality and make the quality indicators and conformity available in the document and in supporting tools, and link them to the OGC SWE standards (or Internet of Things equivalent solutions) within current CS projects, and propose a way forward.
+3. Determine the security considerations and the available tools to support an SSO federation that helps users in participating in several projects by using a single user account.
+4. Assess the possible relationships of OGC standards (e.g. SensorML) with other existing standards in the field (e.g. Public Participation in Scientific Research (PPSR) - Core, the ontology developed by the COST Action on Citizen Science, and the Citizen Science Definition Service (CS-DS) developed in the NextGEOSS project).
+5. Satisfy and document the necessary requirements to integrate Citizen Science into Global Earth Observations System of Systems (GEOSS) by using OGC standards.
+
+This IE has been promoted by the OGC Citizen Science Domain Working Group, the WeObserve and NextGEOSS H2020 projects, and The Earth Challenge 2020 project as supported by National Geographic Society. This IE contributes not only to the interoperability and possibly standardization program of the OGC, but also to the Global Earth Observation System of Systems (GEOSS). This work is also relevant to the foundational objectives of the Citizen Science Global Partnership (CSGP). Regional and national Citizen Science Associations will equally benefit from the results of this OGC IE.
+
+=== Structure of the activities
+
+The official kick off meeting for the OGC CitSciIE experiment was held on Friday 14th September 2018 at the OGC TC meeting in Stuttgart. Activities have continued until March 2019.
+
+During the Kick off meeting of the Experiment the following subgroups emerged:
+
+* V: Vocabularies for organizing Citizen Science projects. There was a discussion on essential variables but also on other kind of practices that can be associated to vocabularies, i.e. on how to publish vocabularies (PublishingDefs) or on defining a list of vocabularies that could be useful to experiment with (observations, project descriptions, general glossaries of terms).
+** Working item V.1: A list of the current projects that Wilson Center knows that can align with the Earth Challenge topics (air and water quality, pollution, human health and eventually biodiversity) and extraction of a common set of variables they usually cover.
+** Working item V.2: Analysis of data models that contributors in the experiment can bring in: Air quality (HackAir), Biodiversity (Atlas of Living Australia & Natusfera), Mosquito (CREAF), Land Use (IIASA), Phenology (CREAF), Invasive Alien Species (JRC).
+** Working item V.3: Consider the COST action metadata model for inclusions as another vocabulary, this might include a set of definitions of phenomena that are being addressed by CS initiatives (based on the inventory of citizen science activities for environment policies).
+* D: Data sharing using OGC standards such as O&M and SOS. A pool of services were identified for participating in an interoperability experiment, including SOS services and clients and citizen science project databases and APIs.
+** Working item D.1: A set of instructions on how a CS project can easily setup an SOS service. It could include 52North implementation and might include MiraMon SOS (with some work in the implementation). It should address the case of a small project contributing to the Earth Challenge 2020.
+** Working item D.2: Create an SOS endpoint for HackAir data with minimum resources
+** Working item D.3: Define the requirements for a data provider that could assist Wilson Center in setting up the challenge database. It should consider upload of data into the system. It seemed to go for a harvest system instead of a federated system. It could describe a possible architecture to allow the dialog between the central database and the small contributing projects. It should impose data sharing requirements (services o APIs) on the central database.
+* S: Connection between Landsense federation and JRC user system.
+** Working item S.1: Interoperability test on the integration of LS-SSO and JRC-SSO
+* Q: Data quality
+** Working item Q.1: Write a document on perspectives of the different quality aspects: Quality assessment (ISO 19157-QualityML), Quality improvement, Quality plan, Data Management principles (ISO 8001), Quality documentation, Quality communication
+** Working item Q.2: Perfect the quality measurement system based on WPS and SOS harvest by demonstrating the concept in practice. Also include in the SOS harvesting the possibility to have a query for assessing the quality of "views"/"selections"/"fragments" of a dataset.
+*** Connection with: D.2
+** Working item Q.3: Refine the QualityML vocabulary with new entries considering the work done in Australia
+*** Connection with: D.3
+** Working item Q.4: Add new entry point the QualityML for other common vocabulary formats like TTL etc.
+*** Connection with: V
+
+For each of the subgroups a chair and the main participants and contributors were identified. Responsible persons were also assigned to each of the working items.
+
+=== Results detailed in next sections
+
+These are the main activities and outcomes of the interoperability experiment detailed by activity.
+
+*Data sharing using OGC standards such as O&M and SOS*
+
+This activity has been the most active one. During the testbed the following servers have been deployed: MiraMon SOS server, Grow SOS, DLR istSOS SOS and 52north SOS. Three clients have also been produced: MiraMon SOS browser, Grow SOS data viewer and 52north Helgoland. In the last meeting at the EGU, the group was able to demonstrate interoperability by connecting the SOS clients to the SOS services and showing the data on clients, sometimes mixing data form different services and datasets in a single view. This is the most significant result of the experiment and is being extensively documented in this Engineering Report in sections 5, 6 and 7
+
+*Data quality*
+
+Two quality vocabularies have been detected: an Australian work done by Peter Brenton team (https://github.com/tdwg/bdq) and the QualityML vocabulary developed by CREAF in the GeoViQua project. The intention was to do a comparison of both approaches but we were not able to do that in the timeframe of the first interoperability experiment. Section 8 describes the current status of the activity. It is foreseen that the second IE will continue what was started here.
+
+*Definition server for organizing Citizen Science projects*
+
+The objective of this activity was to support the Earth Challenge 2020 research questions. The questions were defined during the first month of the experiment and now it is time to analyse them in terms of data needs and thematic vocabularies they are going to use. That is the reason this activity has not resulted in tangible outputs and will be reintroduced in the second interoperability experiment. Details of this development are described in section 9.
+
+*Connection between Landsense federation and JRC user system*
+
+Andreas Matheus SME (Secure Dimensions) was very active in providing demonstrations and information on how the LandSense federation works and how other projects can be included in the federation and use the single Sign on facility. Unfortunately, no other member of the CoP had the resources to apply the SSO on their services or clients and take advantage of the Andreas offering. The activity resulted in a video demonstrations that are publicly available here: https://portal.opengeospatial.org/files/?artifact_id=81550.
+Section 10 Details the current status of the activity
+
+*Other*
+
+Section 11 summarizes the lessons learned that can be applied to GEOSS.
+
+In addition to these activities, another activity about quality annotating scientific documentation in a standard way was proposed by Lucy Bastin. A video was recorded that summarizes the idea: https://portal.opengeospatial.org/files/?artifact_id=82544.

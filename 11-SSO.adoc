@@ -1,0 +1,12 @@
+[[SSO]]
+== User authentication
+
+TBD. This are just some texts from and email discussion for inspiration.
+
+We are aware of Gilberto's views but as Europeans we do have an issue with having in-situ European data or citizen generated data hosted on commercial platforms that do not adhere to our data protection regulation. More specifically, given the business model of these companies that is based on collecting, and integrating personal data of their users to then sell to third parties personalised databases and services for commercial or political targetting, I question the appropriateness of putting citizen science data on these platforms, thus opening the door to their use of the personal data of those who have collected the data and those who use them, without their consent. We are raising this issues within the GEO community as well because there has been no discussion so far on this point. I understand your perspective may differ, but at least you are informed about our views.
+
+This argumentation points directly at a real problem that should be included in an GEO architecture for Citizen Science that needs to provide the necessary anonymity to the Citizens when participating in the Citizen Science activities. The H2020 Landsense federation includes the concept of a criptoname (created when citizens authenticate) that is used by a Citizen Science infrastructure to allow participation but hiding the details of the user. This architecture will be applied in the new project CO4Cloud (I'm participant. Jaume Piera Leads) that will propose a Cit Sci infrastructure on the EOSC for citizen Science.
+
+Good point Joan. The identity management etc. is one of the important aspects. Yet, the issue how hosts, manages and own data is complementary to it. Both require a solid architectural set-up.
+
+I agree that the need to ensure appropriate privacy of contributors is essential but there also needs to be a way of acknowledging those Citizen Science participants that may wish to be attributed.  I suspect that it may need to be an opt in process.

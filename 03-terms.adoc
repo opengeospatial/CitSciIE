@@ -1,0 +1,48 @@
+== Terms and definitions
+
+For the purposes of this report, the definitions specified in Clause 4 of the OWS Common Implementation Standard https://portal.opengeospatial.org/files/?artifact_id=38867&version=2[OGC 06-121r9] shall apply. In addition, the following terms and definitions apply.
+
+* Citizen Observatory (CO)
+
+ COs are community-based environmental monitoring and information systems, that invite individuals to share observations, typically via mobile phone or the web (from: https://www.weobserve.eu/about/citizen-observatories)
+
+* Citizen Science
+ The collection and analysis of data relating to the natural world by members of the general public, typically as part of a collaborative project with professional scientists (from: https://www.uen.org/crowdandcloud/citizen.shtml)
+
+ * Citizen Science Association
+
+ A network that seeks to promote and advance citizen science in a region or around the world. Examples are the American Citizen Science Association (CSA), The European Citizen Science Association (ECSA) or even the Citizen Science Global Partnership (CSGP)
+
+ * Citizen Science Federation
+
+ A network of Citizen Science that aims to aggregate innovative EO technologies, mobile devices, community-based environmental monitoring, data collection, interpretation and information delivery systems to empower communities to monitor and report on their environment. An example of this is the The LandSense Federation
+
+ * Community of Practice (CoP)
+
+ Community which work to consolidate practice-based knowledge of COs sharing information and resources as well as developing guidelines and toolkits for COs (from: https://www.weobserve.eu/cops/)
+
+
+===	Abbreviated terms
+
+.NOTE: The abbreviated terms clause gives a list of the abbreviated terms and the symbols necessary for understanding this document. All symbols should be listed in alphabetical order. Some more frequently used abbreviated terms are provided below as examples.
+
+* CitSciIE Citizen Science Interoperability Experiment
+* CO Citizen Observatory
+* CoP Community of Practice
+* COST European Cooperation in Science and Technology
+* CS Citizen Science
+* CS DWG Citizen Science Domain Working Group
+* CSGP Citizen Science Global Partnership
+* ECSA European Association of Citizen Science
+* EO Earth Observation
+* ICT Information and Communication Technologies
+* IE Interoperability Experiment
+* O&M Observation and Measurements
+* PPSR Public Participation in Scientific Research
+* SOS Sensor Observation Service
+* SSO Single Sign On
+* SWE Sensor Web Enablement
+* SWE4CS Sensor Web Enablement for Citizen Science
+* TC Technical Committee
+* TIE Technology Integration Experiments
+* WPS Web Processing Service
