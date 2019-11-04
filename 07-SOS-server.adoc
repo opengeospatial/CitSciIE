@@ -11,10 +11,274 @@ The 52°North Sensor Web Server comprises several server-side modules which clos
 ** SensorThings API: In addition to the SOS support, a dedicated module is available for supporting the OGC SensorThings API Part 1: Sensing (not yet evaluated as part of this Interoperability Experiment).
 ** 52°North Sensor Web API: Complementary to the previous modules, also the 52°North Sensor Web API is offered. This API offers an additional but optional convenience layer for building client applications. While both the SOS and the SensorThings API standards are well suited for enabling the interoperable access to observation data, the Sensor Web REST-API allows to provide additional functionality that significantly facilitates the development of client applications. Typical examples of this additional functionality comprise: generalisation of observation data (important for developing mobile applications), provision of rendering hints (e.g. styling information for time series), conversion of data to mainstream formats such as CSV.
 
+The URL of the instance used in this IE was: https://nexos.demo.52north.org/52n-sos-hackair-webapp/service.
+
+More information about the initiative can be found here: https://52north.org/software/software-projects/sos/
+
 === istSOS
-Easily manage your sensor network and distribute your data in a standard way
-http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&request=GetCapabilities&version=1.0.0
+istSOS (Istituto Scienze della Terra Sensor Observation Service) is an OGC SOS server implementation written in Python. istSOS allows for managing and dispatch observations from monitoring sensors according to the Sensor Observation Service standard.
+
+istSOS evolved in time from being a SOS service provider to complete data management system. But the standard does not account for a number of functionalities that were later included in the software. Some of the extending capabilities are:
+
+* Handle of irregular time series
+* On-the-fly aggregation of observed measures with no-data management.
+* Capability to filter observations based on partial observed property names ( LIKE filtering support).
+* Native support for data validation and data quality index associated with each observation
+
+The project also provides also a Graphical user Interface that allows for easing the daily operations and a RESTFul Web API for automatizing administration procedures.
+
+The URL of the instance used in this IE was: http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&request=GetCapabilities&version=1.0.0
+More information about the initiative can be found here: http://istsos.org/
 
 === MiraMon SOS
+MiraMon Server is a stand alone CGI application that runs on Windows operating systems that can be used in combination with a web server such as Internet Information Server or Apache for Windows. It is the ideal solution for people that already uses MiraMon professional on desktop because it uses the same MiraMon formats in the back-end. MiraMon server is based on the same libraries that are used by MiraMon professional and has the same capabilities in terms of CRS support, interpolation algorithms, MMZX compression etc. One particularity of the software is the internal tiled schema required to serve maps and tiles in a fast an scalable way. MiraMon Server uses OGC web services as a baseline for the interaction to the client. Currently, MiraMon server provides support for the following standards:
+* Web Map Service (all versions)
+* Web Map Tile Service (all versions)
+* Web Coverage Service (version 1.0)
+* Web Feature Service (version 2.0)
+* Web Processing Service (version 1.0)
+* Sensor Observing Service (version 2.0)
+
+The Sensor Observing Service capacity is used in tandem with the Web Feature Service and uses the same MiraMon topologically structured formats in the back-end. It has been developed in the Ground Truth 2.0 project to server interoperable data from the Citizen Observatories created during the project. The current implementation is incomplete and only supports GetFeatureOfInterest and GetOBservation operation with limited capabilities. The objective of the minimum capabilities developed was to repont to the requirements of a viewer client needs to represent a map of the features of interest provided by the service and to allow for a query in a point to get more information about the observations there. Each dataset in MiraMon becomes a observedProperty in the SOS service. Each observation is a position in a PNT file that has a DBF record associated that is transformed to a O&M DataRecord automatically. Internally, it is possible to mark field names in the DBF that are associated to concepts in the O&M such as the phenomenon time and the user name.
+
+This is the internal format for the small REL5 document necessary to include the extra information that the server requires.
+
+.Internal format of the DBF and
+....
+file name: C:\inetpub\SIWeb\gt20\VattenFokus\VattenFokusT.dbf
+[Extended DBF (no dBASE compatible)]
+Last update on: 24-01-2019
+Number of records: 254
+Number of fields per record: 32
+Character set: Windows ANSI (88, 0x58)
+
+Field characteristics:
+-------------------------------------------------------------------------------------------
+NUM |               NAME |                                       DESCRIPTOR | T | SIZ | REL
+-------------------------------------------------------------------------------------------
+  1 |          ID_GRAFIC |                      Identificador Gràfic intern | N |   3 |
+  2 |            USER_ID |                                          User ID | N |   5 |
+  3 |          SAMPLE_ID |                                        Sample ID | N |   5 |
+  4 |          CREA_DATE |                                    Creation Date | C |  16 |
+  5 |          CHAN_DATE |                                Modification date | C |  16 |
+  6 |         SAMPLEDATE |                                      Sample date | C |  16 |
+  7 |           GROUP_ID |                                         Group ID | C |  34 |
+  8 |          SITE_NAME |                                        Site name | C | 111 |
+  9 |   Sample_date_time |                                 Sample date/time | C |  16 |
+ 10 |      N_PARTICIPANT |                     Total number of participants | N |   3 |
+ 11 |              NOTES |                                            Notes | C | 276 |
+ 12 |         WATER_TYPE |                             Freshwater body type | C |   7 |
+ 13 |   OTHER_WATER_TYPE |                       Other freshwater body type | C |  50 |
+ 14 |           LAND_USE |           Land use in the immediate surroundings | C |  17 |
+ 15 |     OTHER_LAND_USE | Other the land use in the immediate surroundings | C |  84 |
+ 16 |          BANK_VEGE |                                  Bank vegetation | C |  36 |
+ 17 |    OTHER_BANK_VEGE |                            Other bank vegetation | C |  74 |
+ 18 |           ON_WATER |                             On the water surface | C |  30 |
+ 19 |      POPUT_SOURCES |  Pollution sources in the immediate surroundings | C |  46 |
+ 20 |          WaterUses |                           Evidence of water uses | C |  33 |
+ 21 |    OTHER_WATER_USE |                     Other evidence of water uses | C |  10 |
+ 22 |       AQUATIC_LIVE |                         Evidence of aquatic life | C |  69 |
+ 23 | OTHER_AQUATIC_LIVE |                   Other evidence of aquatic life | C |  38 |
+ 24 |              ALGUE |                                   Algae presence | C |  16 |
+ 25 |         WATER_FLOW |                         Estimated the water flow | C |   7 |
+ 26 |        WATER_LEVEL |                            Estimated water level | C |   7 |
+ 27 |            NITRATE |                                          Nitrate | N |   4 |
+ 28 |          PHOSPHATE |                                        Phosphate | N |   5 |
+ 29 |          TURBIDITY |           Water Quality Secchi Tube (Turbidity). | C |   7 |
+ 30 |             RESULT |                                           Result | N |   3 |
+ 31 |        WATER_COLOR |                           Estimated water colour | C |  10 |
+ 32 |  OTHER_WATER_COLOR |                     Other estimated water colour | C |  43 |
+....
+
+.Internal REL5 format to expose a MiraMon topologically structured file as a SOS offering.
+[source,ini]
+----
+[VERSIO]
+Vers=5
+SubVers=0
+
+[GetObservation]
+GetObsservation_Vers=5
+GetOBservation_SubVers=0
+Fitxer=MeetMeeMechelenT.rel
+CampDataHoraFenomen=time_last
+CampNomSensor=street_nam
+----
+
+Final representation as XML O&M of the same structure:
+[source,xml]
+----
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<sos:GetObservationResponse xmlns:sos="http://www.opengis.net/sos/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:om="http://www.opengis.net/om/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0">
+	<sos:observationData>
+		<om:OM_Observation gml:id="vatten-fokus_2_1">
+			<om:type xlink:href="http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation"/>
+			<om:procedure xlink:href="http://www.opengis.uab.cat/vatten-fokus/procedure/22655"/>
+			<om:observedProperty xlink:href="http://www.opengis.uab.cat/vatten-fokus/observedProperty"/>
+			<om:featureOfInterest xlink:href="http://www.opengis.uab.cat/vatten-fokus/featureOfInterest/2"/>
+			<om:result xsi:type="swe:DataRecordPropertyType">
+				<swe:DataRecord>
+					<swe:field name="SAMPLE_ID">
+						<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/SAMPLE_ID">
+							<swe:uom/>
+							<swe:value>45821</swe:value>
+						</swe:Quantity>
+					</swe:field>
+					<swe:field name="CREA_DATE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Creation_Date">
+							<swe:value>07/12/2018 17:23</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="CHAN_DATE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Modification_date">
+							<swe:value>07/12/2018 17:23</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="SAMPLEDATE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Sample_date">
+							<swe:value>07/12/2018 15:00</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="GROUP_ID">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Group_ID">
+							<swe:value>Dunkern, Group ID: 38438</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="SITE_NAME">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Site_name">
+							<swe:value>Dunkershall. V¤gtrumma uppst¤ms.</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="Sample_date_time">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Sample_date/time">
+							<swe:value>07/12/2018 15:00</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="N_PARTICIPANT">
+						<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/N_PARTICIPANT">
+							<swe:uom/>
+							<swe:value>1</swe:value>
+						</swe:Quantity>
+					</swe:field>
+					<swe:field name="NOTES">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Notes">
+							<swe:value>+2 grader C.</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="WATER_TYPE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Freshwater_body_type">
+							<swe:value>Other</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="OTHER_WATER_TYPE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Other_freshwater_body_type">
+							<swe:value>Dike</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="LAND_USE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Land_use_in_the_immediate_surroundings">
+							<swe:value>Agriculture</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="OTHER_LAND_USE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Other_the_land_use_in_the_immediate_surroundings">
+							<swe:value></swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="BANK_VEGE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Bank_vegetation">
+							<swe:value>Grass</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="OTHER_BANK_VEGE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Other_bank_vegetation">
+							<swe:value></swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="ON_WATER">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/On_the_water_surface">
+							<swe:value>None</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="POPUT_SOURCES">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Pollution_sources_in_the_immediate_surroundings">
+							<swe:value>Other</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="WaterUses">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Evidence_of_water_uses">
+							<swe:value></swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="OTHER_WATER_USE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Other_evidence_of_water_uses">
+							<swe:value></swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="AQUATIC_LIVE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Evidence_of_aquatic_life">
+							<swe:value></swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="OTHER_AQUATIC_LIVE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Other_evidence_of_aquatic_life">
+							<swe:value></swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="ALGUE">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Algae_presence">
+							<swe:value>No algae</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="WATER_FLOW">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Estimated_the_water_flow">
+							<swe:value>Surging</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="WATER_LEVEL">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Estimated_water_level">
+							<swe:value>Average</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="NITRATE">
+						<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/NITRATE">
+							<swe:uom/>
+							<swe:value>1.50</swe:value>
+						</swe:Quantity>
+					</swe:field>
+					<swe:field name="PHOSPHATE">
+						<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/PHOSPHATE">
+							<swe:uom/>
+							<swe:value>0.075</swe:value>
+						</swe:Quantity>
+					</swe:field>
+					<swe:field name="TURBIDITY">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Water_Quality_Secchi_Tube_(Turbidity).">
+							<swe:value>&lt;14</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="RESULT">
+						<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/RESULT">
+							<swe:uom/>
+							<swe:value></swe:value>
+						</swe:Quantity>
+					</swe:field>
+					<swe:field name="WATER_COLOR">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Estimated_water_colour">
+							<swe:value>Colourless</swe:value>
+						</swe:Text>
+					</swe:field>
+					<swe:field name="OTHER_WATER_COLOR">
+						<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Other_estimated_water_colour">
+							<swe:value></swe:value>
+						</swe:Text>
+					</swe:field>
+				</swe:DataRecord>
+			</om:result>
+		</om:OM_Observation>
+	</sos:observationData>
+...
+</sos:GetObservationResponse>
+----
 
 === GROW SOS
