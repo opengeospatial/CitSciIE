@@ -1,4 +1,25 @@
 [[DataQuality]]
-== Data quality estimations with SOS
+== Data quality estimations in the client side
 
-TBD
+=== Quality estimation on vector data
+The SOS protocol and the GetObservation operation enables a client to retrieve all the information about the results of the observations. With this data, the client can perform all sorts of analysis on the observations including to apply some quality checks. This section will discuss a pilot that was done in the GroundTruth 2.0 project that demonstrates this capability in some practical cases.
+
+The selected cases and its implementation is based on the QualityML vocabulary. The scenario of rapidly growing geodata catalogues requires tools focused on facilitate users the choice of products. QualityML is a dictionary that contains hierarchically structured concepts to precisely define and relate quality levels: from quality classes to quality measurements. This levels are used to encode quality semantics for geospatial data by mapping them to the corresponding metadata schemas. The benefits of having encoded quality semantics, in the case of data producers, are related with improvements in their product discovery and better transmission of their characteristics. In the case of data users, they would better compare quality and uncertainty measures to take the best selection of data as well as to perform dataset intercomparison. Also it allows other components (such as visualization, discovery, or comparison tools) to be quality-aware and interoperable. On one hand, the QualityML is a profile of the ISO geospatial metadata standards (e.g. ISO 19157) providing a set of rules for precisely documenting quality measure parameters that is structured in 5 levels. On the other hand, QualityML includes semantics and vocabularies for the quality concepts. Whenever possible, it uses statistic expressions from the UncertML dictionary (http://www.uncertml.org) encoding. However it also extends UncertML to provide a list of alternative metrics that are commonly used to quantify quality beyond the uncertainty concept.
+
+==== Case 1: Positional accuracy at the dataset level.
+Many citizen Science projects, use a mobile phone to get observations. In this process they use the location capabilities of the phone, including GPS, 3G triangulation, Wify antenna location or IP address registration. Each of this methods has different known positional accuracies and the phone is able to estimate that ad the same time as it estimates the position. In this case we will assume that the individual observations has got a position an some estimation of the positional uncertainty and this are recorded by the service and offered as properties of the observation.
+
+In the QualityML vocabulary we can find the...
+
+Select the uncertainly field
+
+Get the result back
+
+Show the result to the user.
+
+==== Case 2:
+
+=== Quality estimation on raster data
+
+=== Future work
+Saving the quality report in the GUF Nimmbus database. Extending this to other quality statistics.
