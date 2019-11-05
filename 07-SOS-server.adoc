@@ -282,3 +282,33 @@ Final representation as XML O&M of the same structure:
 ----
 
 === GROW SOS
+The GROW SOS service is tightly integrated into the GROW platform based around Hydrologic's existing Hydronet 4 platform.  The SOS 2.0 service runs concurrently with the GROW standards API in the HydroNET GROW Server.
+
+The service implements two .net packages that disseminate GROW data to the SOS 2.0 standard within the GROW instance of HydroNET 4 Server. A SOS package covers the mapping of SOS 2.0 requests to GROW requests and the mapping of GROW data structures to SOS 2.0 standards. A second package Ogc.Wrapper.Entities contains the SOS 2.0 entity definitions.
+
+The Base URL of the GROW SOS 2.0 service:
+http://grow-beta-api.hydronet.com/api/service/sos
+
+SOS 2.0 knows four core operations: GetCapabilities, DescribeSensor, GetObservation and GetFeatureOfInterest.
+
+
+==== GetCapabilities
+This operation lists all available metadata in the service and provides a detailed list of all other operations that are provided in the service itself. It provides the information you need to execute other operations within the SOS 2.0 effectively.
+
+==== GetObservation
+This operation gives the client access to observation data from sensors. What data is returned is dependent on the parameters you give as a client.
+
+The GetObservation operation requires the following parameters:
+
+* Procedure: The identifier of the sensor. The procedure can be found in the GetCapabilities response.
+* ObservedProperty: The parameter that you want to query data for. A sensor can provide data for multiple parameters (e.g.: soil moisture, temperature). Which ObservedProperies are available for this sensor can be found in the GetCapabilities response, or the DescribeSensor response of the relevant sensor.
+* TemporalFilter: The timespan for which you want to query data. Datetimes follow the ISO 8601  standard. The full timespan of data that the sensor provides can be found in the GetCapabilities or DescribeSensor (for the relevant sensor) response.
+
+==== GetFeatureOfInterest
+This operation provides information about features of interest (name, description, coordinates etc.) of a sensor or an observation.
+
+The GetFeatureOfInterest operation requires the following parameters:
+
+* procedure:The identifier of the sensor. The procedure can be found in the GetCapabilities response
+
+The SOS 2.0 service in GROW provides two response types: xml and json. The client can provide ResponseFormat in the parameters to define which response is desired. If no ResponseFormat is given the service returns xml by default.
