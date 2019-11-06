@@ -1,5 +1,10 @@
 [[DataQuality]]
 == Data quality estimations in the client side
+One of the main concerns in using and adopting citizen science based data is the quality of observations. Citizen Observatories (and, by extension, Citizen Science) are particularly sensible to data quality because the number of contributors is bigger and more heterogeneous than in a traditional data survey campaign. An additional difficulty is that active Citizen Observatories are receiving continuous inputs and updates from citizens. GroundTruth 2.0 has developed a tool to document well the quality of datasets in order to increase the trust on the information collected by citizens integrated in the MiraMon Map browser.
+
+The tool requires that data is exposed in the Web as a service using Sensor Observation Service (SOS). It presents a set of tests like positional accuracy, attribute consistency or confusion matrix that can be applied to a complete dataset or to an area the user is visualizing. Results include an overall quality indicator for the dataset.
+
+The Ground Truth 2.0 Data Quality tool uses an interoperable approach based on QualityML that allows to parametrize the different statistics that are used to assess the quality of the data, and it focus on data quality indicators for Citizen Science datasets from the QualityML list. The quality module is encoded in JavaScript and has been made available as part of the web based MiraMon Map Browser (https://github.com/joanma747/MiraMonMapBrowser).
 
 === Quality estimation on vector data
 The SOS protocol and the GetObservation operation enables a client to retrieve all the information about the results of the observations. With this data, the client can perform all sorts of analysis on the observations including to apply some quality checks. This section will discuss a pilot that was done in the GroundTruth 2.0 project that demonstrates this capability in some practical cases.
@@ -175,6 +180,7 @@ The discrepancy makes sense. A big park in the city is identified as artificial 
 There are some points the authors of this chapter believe it is worth to develop or explore.
 
 * In the implementation of the confusion matrix there is no connection to the QualityML. It should be done.
+* Highlight the observations that were detected as less accurate could be an interesting feature to have.
 * We would like to be able to share the quality assessments with other users. One possibility is usinge the OGC Geospatial user feedback to report data quality assessments and share them with other users. Saving the quality report in the NiMMbus database (www.opengis.uab.cat/nimmbus) implemented in the NextGEOSS project will allow that.
 * The computations done in the MiraMon map browser are just an small subset of the QualityML vocabulary. We would like to extend the implementation to cover a better range of possibilities.
 * QualityML is a vocabulary for data quality. The OGC definitions server presented in <<DefinitionServer>> is a generic tool to share vocabularies. Translating QualityML into a format that can be ingested by the Definitions Server should be a priority of the next interoperability experiment.

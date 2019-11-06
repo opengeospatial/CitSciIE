@@ -30,11 +30,11 @@ This OGC Interoperability Experiment ended on June 2019, but a second IE is fore
 
 New possible topics for next IE to be discussed among the members include the following:
 
-● There is a need for clarifying how to coordinate infrastructures for citizen science in Europe, and adopt standard procedures for data sharing and single sign on. Solving this issue will help in connecting CitSci to GEO. Steffen Fritz (IIASA) has proposed a side event in the next EuroGEOSS workshop to discuss this with the relevant players. This is emerging as a new activity in the WeObserve Interoperability Community of Practice that is related but not directly connected to the IEs.
+* There is a need for clarifying how to coordinate infrastructures for citizen science in Europe, and adopt standard procedures for data sharing and single sign on. Solving this issue will help in connecting CitSci to GEO. Steffen Fritz (IIASA) has proposed a side event in the next EuroGEOSS workshop to discuss this with the relevant players. This is emerging as a new activity in the WeObserve Interoperability Community of Practice that is related but not directly connected to the IEs.
 
-● The WMO (World Meteorological Organization) is concerned about the amount of different CitSci activities that are being organized by meteorological organizations. It is looking for ways of taking advantage of this new data stream but problems of standardization of what is measured and how data is being shared arise. WMO has detected the potential of these data streams and would like to harmonize the situations to make data more useful for weather predictions in the future.
+* The WMO (World Meteorological Organization) is concerned about the amount of different CitSci activities that are being organized by meteorological organizations. It is looking for ways of taking advantage of this new data stream but problems of standardization of what is measured and how data is being shared arise. WMO has detected the potential of these data streams and would like to harmonize the situations to make data more useful for weather predictions in the future.
 
-● OGC is promoting a new generation of web services based on OpenAPI. It is unclear how this could impact the use of OGC standards by CitSci projects but it is seen as an opportunity to make OGC standards more usable and compatible with IT mainstream. A hackathon to develop OGC API specifications is organized on June 20-21 in London.
+* OGC is promoting a new generation of web services based on OpenAPI. It is unclear how this could impact the use of OGC standards by CitSci projects but it is seen as an opportunity to make OGC standards more usable and compatible with IT mainstream. A hackathon to develop OGC API specifications is organized on June 20-21 in London.
 
 The definition of the follow up IE will start in June when the first one will finalize and the ER is produced.
 
@@ -52,7 +52,9 @@ All questions regarding this document should be directed to the editor or the co
 |====================
 |Name |Organization
 |Joan Maso | CREAF
-|((contributor)) | ((from org))
+|Andy Cobley | University of Dundee
+|Valantis Tsiakos | Institute of Communication & Computer Systems (ICCS)
+|Simon Jirka | 52 North
 |====================
 
 
