@@ -1,5 +1,5 @@
 [[SSO]]
-== User authentication and federation
+== User authentication and applications federation
 
 In the Interoperability experiment, we experimented with the federated identity provider developed in the project H2020 Landsense as authorization server that enables a federation of applications.
 
@@ -19,6 +19,7 @@ The platform is extensible to any other login providers as long it is compliant 
 
 The LandSense Authorization Server acts as a GDPR compliant broker between the personal information received after a user’s login and registered applications based on user approval. In order to honour GDPR data minimisation, the AS requests from the Identity Provider (IdP) at login only that amount of personal information, as it is required by a registered application. This amount (and which attributes in detail) is controlled by the registration / login level. The AS provides five levels of which the first two do not enable an application to obtain personal information: AUTH, CRYPTO, PROFILE, EMAIL, PROFILE+EMAIL.
 
+[[SSOLevelsOfPrivacy]]
 ==== Five levels of personal information in the federation
 AUTH: Any application that is registered with this level must not be GDPR compliant, as there is no information about the user other than “yes we know that you have successfully logged in with one of the LandSense IdPs). After login with Level AUTH you will not see any personal information.
 

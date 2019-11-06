@@ -185,19 +185,38 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 </li>
 </ul>
 </li>
-<li><a href="#SSO">11. User authentication</a></li>
+<li><a href="#SSO">11. User authentication and applications federation</a>
+<ul class="sectlevel2">
+<li><a href="#_the_lanssense_authorization_server">11.1. The LansSense Authorization Server</a>
+<ul class="sectlevel3">
+<li><a href="#SSOLevelsOfPrivacy">11.1.1. Five levels of personal information in the federation</a></li>
+<li><a href="#_how_add_an_web_application_into_the_federation">11.1.2. How add an web application into the federation</a></li>
+</ul>
+</li>
+<li><a href="#_landsense_engagement_platform">11.2. LandSense Engagement Platform</a></li>
+<li><a href="#_scent_harmonization_platform">11.3. Scent Harmonization Platform</a></li>
+<li><a href="#_nimmbus_geospatial_user_feedback">11.4. NiMMBus Geospatial User Feedback</a></li>
+</ul>
+</li>
 <li><a href="#CitSciGEOSS">12. Connecting Citizen Science data sets to GEOSS</a>
 <ul class="sectlevel2">
 <li><a href="#_connecting_a_single_citizen_science_project_to_geoss">12.1. Connecting a single Citizen Science project to GEOSS</a></li>
-<li><a href="#_why_a_case_by_case_registration_might_not_be_the_best_way_forward">12.2. Why a case-by-case registration might not be the best way forward</a></li>
-<li><a href="#_items_for_further_investigation_regarding_geoss">12.3. Items for further investigation regarding GEOSS</a></li>
+<li><a href="#_why_a_case_by_case_registration_is_not_the_best_way_forward">12.2. Why a case-by-case registration is not the best way forward</a></li>
+<li><a href="#_how_to_improve_the_connection_of_citizen_science_into_geoss">12.3. How to improve the connection of Citizen Science into GEOSS</a>
+<ul class="sectlevel3">
+<li><a href="#_provide_technical_support_to_connect_to_the_geoss_platform">12.3.1. Provide technical support to connect to the GEOSS platform</a></li>
+<li><a href="#_federate_multiple_citizen_science_projects_and_their_endpoints_into_a_single_access_point">12.3.2. Federate multiple Citizen Science projects and their endpoints into a single access point</a></li>
+<li><a href="#_improve_networking_and_capacity_building">12.3.3. Improve networking and capacity building</a></li>
 </ul>
 </li>
-<li><a href="#AbstractTestSuite">Appendix A: Abstract Test Suite</a></li>
-<li><a href="#XMLSchemaDocuments">Appendix B: XML Schema Documents</a></li>
-<li><a href="#UMLModel">Appendix C: UML model</a></li>
-<li><a href="#RevisionHistory">Appendix D: Revision History</a></li>
-<li><a href="#Bibliography">Appendix E: Bibliography</a></li>
+<li><a href="#_future_work_regarding_to_the_geoss_integration">12.4. Future work regarding to the GEOSS integration</a>
+<ul class="sectlevel3">
+<li><a href="#GEO-privacy">12.4.1. Citizen privacy and protection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#RevisionHistory">Appendix A: Revision History</a></li>
 </ul>
 </div>
 <div style="page-break-after: always;"></div>
@@ -207,19 +226,13 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <h2 id="_summary"><a class="anchor" href="#_summary"></a>1. Summary</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TBD</p>
+<p>This Engineering report describes the first phase of the citizen science Interoperability experiment organized by the EU H2020 WeObserve project under the OGC innovation program and supported by the EU H2020 NEXTGEOSS project. The activity covered aspects of data sharing architectures for citizen science data, data quality, data definitions and user authentication.</p>
 </div>
 <div class="paragraph">
-<p>The Summary clause shall define without ambiguity the subject of this document and the aspect(s) covered. It shall be succinct so that it can be used as a text for bibliographic purposes. Briefly, it shall contain the key results of the work described in the ER.</p>
+<p>The final aim was to propose solutions on how Citizen Science data could be integrated in the Global Earth Observation System of Systems (GEOSS). The solution is necessarily a combination of technical and networking components, being the first ones the focus of this work. The applications of international geospatial standards in current citizen science and citizen observatory projects to improve interoperability and foster innovation is one of the main tasks in during the experiment to achieve the final aim.</p>
 </div>
 <div class="paragraph">
-<p>The summary shall further contain a business value statement that should describe the value of this Engineering Report to improve interoperability, advance location-based technologies or realize innovations.</p>
-</div>
-<div class="paragraph">
-<p>The summary shall contain the key findings in a concise form. A more detailed description of the findings should be in the body of the report.</p>
-</div>
-<div class="paragraph">
-<p>This section shall be between 2-3 paragraphs and not longer than 507 words.</p>
+<p>The main results of the activity was to demonstrate that Sensor Observing Services can be used for citizen science data (as proposed in the OGC SWE4CS discussion paper) by implementing it in several clients and server that has been combined to show Citizen Science observations. In addition an authentication server was used to create a federation between three projects. This federated approach is part of the proposed solution for GEOSS that can be found in the last chapter. Many open issues has been identified and are expected to be addressed in the second phase of the experiment, including the use of a definitions server.</p>
 </div>
 <div class="sect2">
 <h3 id="_requirements_research_motivation"><a class="anchor" href="#_requirements_research_motivation"></a>1.1. Requirements &amp; Research Motivation</h3>
@@ -245,7 +258,9 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <div class="sect2">
 <h3 id="_prior_after_comparison"><a class="anchor" href="#_prior_after_comparison"></a>1.2. Prior-After Comparison</h3>
 <div class="paragraph">
-<p>This section shall provide a prior-after comparison. It describes the situation/status of discussion in the OGC working groups being most relevant for the addressed topic. This part is reviewed in close detail by the appropriate SWG/DWG to ensure that the latest developments have been considered. The section will be complemented at the end of the initiative by comparing the results documented in the ER with the original situation.</p>
+<p>This is the first Citizen Science interoperability experiment conducted by the OGC. Prior to this activity there was a proposed discussion paper on how to apply the SWE standards in Citizen Science (SWE4CS). This experiment positively tested the proposed route using Sensor Observing Services but also has open the door to future exploration fo SensorThings API.
+Prior this activity there was a H2020 project with a Authentication Service and after the activity three H2020 formed a bigger federation demonstrating the route to federating and aggregating Citizen Science projects to contribute to GEO objectives.
+This work is relevant to the OGC Citizen Science Domain Working Group.</p>
 </div>
 </div>
 <div class="sect2">
@@ -301,7 +316,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Joan Maso</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CREAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UAB-CREAF</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Andy Cobley</p></td>
@@ -321,6 +336,40 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p><strong>Initiators</strong></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Organization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Universtat Autònoma de Barcelona - CREAF (UAB-CREAF)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">International Institute for Applied Systems Analysis (IIASA)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joint Research Center (JRC)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">European Space Agency (ESA)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Woodrow Wilson International Center for Scholars (Wilson Center)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The WeObserve project has received funding from the European Union’s Horizon 2020 Research and Innovation Programme under grant agreement No. 776740.
+This presentation reflects only the author&#8217;s views and the EU Agency is not responsible for any use that may be made of the information it contains.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_foreword"><a class="anchor" href="#_foreword"></a>1.5. Foreword</h3>
@@ -1638,11 +1687,36 @@ CampNomSensor=street_nam</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_grow_client"><a class="anchor" href="#_grow_client"></a>8.1. Grow Client</h3>
+<div class="paragraph">
+<p>The GROW client is a demonstrator application showing the how data sources can be combined in a tabular data warehouse and off the shelf visualisation tools can be used to create rich visualisations.  In the case of this demonstrator, Microsoft&#8217;s PowerBi was used although commercial tools such as Tableau, Spotfire can be used.  In addition, free tools such as Grafana, Rawgraphs or Apache Superset can of course be employed.</p>
+</div>
+<div class="paragraph">
+<p>The diagram below shows a typical output using PowerBi, showing GROW sensor locations combined with Airhack sensor locations.</p>
+</div>
 <div id="img-AndyClient" class="imageblock">
 <div class="content">
 <img src="images/AndyClient.png" alt="Andy SOS Client">
 </div>
-<div class="title">Figure 9. Andy SOS Client</div>
+<div class="title">Figure 9. GROW SOS Client</div>
+</div>
+<div class="paragraph">
+<p>In this application data is pulled from two SOS sources (GROW and AirHack) via a python script, usually overnight.  This data is stored in a tabular data warehouse, in this prototype this is just flat files, however a full scale data warehouse such as Microsoft&#8217;s Analysis services or a tabular database such as Cassandra could be used.
+Data from the warehouse is pulled nightly into Microsoft&#8217;s cloud and then published to a web page that makes heavy use of javascript to provide an rich exporable interface.</p>
+</div>
+<div id="img-GROWSOSFlow" class="imageblock">
+<div class="content">
+<img src="images/GROWSOSFlow.png" alt="SOS Client">
+</div>
+<div class="title">Figure 10. GROW data follow</div>
+</div>
+<div class="paragraph">
+<p>This approach can be extended to mix different types of data into one visualisation.  In the figure below gridded data (locations of sensors) is combined with time series data so that the user can explore the data more fully.  In this application when a user click on a sensor, the time series data from that sensor is displayed to the user.   In this case the tool takes the time series data and displays the average, minimum and maximum of the time series data.</p>
+</div>
+<div id="img-GrowData" class="imageblock">
+<div class="content">
+<img src="images/GrowData.png" alt="SOS Client">
+</div>
+<div class="title">Figure 11. GROW SOS Client data</div>
 </div>
 </div>
 <div class="sect2">
@@ -1682,7 +1756,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/MiraMonClient.png" alt="MiraMon SOS Client">
 </div>
-<div class="title">Figure 10. MiraMon SOS Client</div>
+<div class="title">Figure 12. MiraMon SOS Client</div>
 </div>
 </div>
 <div class="sect2">
@@ -1697,7 +1771,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/HelgolandMapView.png" alt="Helgoland Map View">
 </div>
-<div class="title">Figure 11. 52°North Helgoland Sensor Web Viewer - Map View</div>
+<div class="title">Figure 13. 52°North Helgoland Sensor Web Viewer - Map View</div>
 </div>
 <div class="paragraph">
 <p>After selecting a specific measurement location, the data can be visualised as a diagram (see Figure 2). It is possible to combine data from multiple sensors, multiple observed properties and even from different providers into a single diagram.</p>
@@ -1706,7 +1780,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/HelgolandDiagramView.png" alt="Helgoland Diagram View">
 </div>
-<div class="title">Figure 12. 52°North Helgoland Sensor Web Viewer - Diagram View</div>
+<div class="title">Figure 14. 52°North Helgoland Sensor Web Viewer - Diagram View</div>
 </div>
 </div>
 <div class="sect2">
@@ -1795,16 +1869,16 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-quality.png" alt="DQ Quality">
 </div>
-<div class="title">Figure 13. Data Quality context menu</div>
+<div class="title">Figure 15. Data Quality context menu</div>
 </div>
 <div class="paragraph">
-<p>Data quality indicators are presented following the QualityML model. For a quality class (in the <a href="#img-DQ-indicator-qml">Figure 14</a> "Thematic classification correctness"), there could be one or more quality measures (in the <a href="#img-DQ-indicator-qml">Figure 14</a> "Misclassification"), that are done by applying some metrics (in the <a href="#img-DQ-indicator-qml">Figure 14</a> "MeanAbsolute and StandardDeviation") over a domain (in the first entry of <a href="#img-DQ-indicator-qml">Figure 14</a> "Omission Error" over the categories "water" and "no water")</p>
+<p>Data quality indicators are presented following the QualityML model. For a quality class (in the <a href="#img-DQ-indicator-qml">Figure 16</a> "Thematic classification correctness"), there could be one or more quality measures (in the <a href="#img-DQ-indicator-qml">Figure 16</a> "Misclassification"), that are done by applying some metrics (in the <a href="#img-DQ-indicator-qml">Figure 16</a> "MeanAbsolute and StandardDeviation") over a domain (in the first entry of <a href="#img-DQ-indicator-qml">Figure 16</a> "Omission Error" over the categories "water" and "no water")</p>
 </div>
 <div id="img-DQ-indicator-qml" class="imageblock">
 <div class="content">
 <img src="images/dq-indicator-qml.png" alt="DQ Indicator in QualityML">
 </div>
-<div class="title">Figure 14. Data Quality indicators presented following the QualityML data model.</div>
+<div class="title">Figure 16. Data Quality indicators presented following the QualityML data model.</div>
 </div>
 <div class="paragraph">
 <p>Every concept used here is connected to the QualityML vocabulary to know more details about it.</p>
@@ -1813,7 +1887,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-mean-absolute-qml.png" alt="DQ Indicator in QualityML">
 </div>
-<div class="title">Figure 15. Connection to the QualityML dictionary.</div>
+<div class="title">Figure 17. Connection to the QualityML dictionary.</div>
 </div>
 </div>
 <div class="sect3">
@@ -1825,7 +1899,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-compute.png" alt="DQ Compute">
 </div>
-<div class="title">Figure 16. Data Quality compute context menu</div>
+<div class="title">Figure 18. Data Quality compute context menu</div>
 </div>
 <div class="paragraph">
 <p>This option opens a dialog box that offers a short list of four quality indicators that will grow with new tests.</p>
@@ -1834,7 +1908,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-indicator.png" alt="DQ Indicator">
 </div>
-<div class="title">Figure 17. Data Quality indicator list</div>
+<div class="title">Figure 19. Data Quality indicator list</div>
 </div>
 </div>
 <div class="sect3">
@@ -1849,7 +1923,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-positional_uncertainty_field.png" alt="Positional Uncertainty Field">
 </div>
-<div class="title">Figure 18. Selection of the positional uncertainty field</div>
+<div class="title">Figure 20. Selection of the positional uncertainty field</div>
 </div>
 <div class="paragraph">
 <p>The calculated data quality parameter is not shown immediately but added to the previous recorded data quality indicators.</p>
@@ -1858,7 +1932,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-done.png" alt="DQ done">
 </div>
-<div class="title">Figure 19. Calculation complete message</div>
+<div class="title">Figure 21. Calculation complete message</div>
 </div>
 <div class="paragraph">
 <p>The result is a quality report that can be found in the <code>quality</code> option in the context menu by clicking in the layer name in the legend.</p>
@@ -1867,7 +1941,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-positional_accuracy.png" alt="DQ positional accuracy">
 </div>
-<div class="title">Figure 20. Calculated positional accuracy</div>
+<div class="title">Figure 22. Calculated positional accuracy</div>
 </div>
 <div class="paragraph">
 <p>Several things can be commented here. The first one indicates that the scope is not the full dataset but the view used for calculating the quality indicator: "Dataset fragment of this area: x=[-1.22,4.76], y=[40.36,42.97]". Secondly, the statement reports that not all observations has positional uncertainties: "There are 140 of 254 that does not have uncertainty information". The accuracy is reported as a <em>half-length confidence interval</em> with a confidence <em>level</em> of 0.683. An uncertainty of 180.39m is not particularly good indicating the heterogeneity of the methods used to calculate the positions of the observations, some of the with big uncertainties.</p>
@@ -1888,7 +1962,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-logical-consistency.png" alt="DQ Logical Consistency">
 </div>
-<div class="title">Figure 21. Computation of logical consistency</div>
+<div class="title">Figure 23. Computation of logical consistency</div>
 </div>
 <div class="paragraph">
 <p>A new quality indicator will be added to the list of quality indicators related to this layer.</p>
@@ -1897,7 +1971,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-logical-consistency-result.png" alt="DQ Logical Consistency Result">
 </div>
-<div class="title">Figure 22. Domain consistency result</div>
+<div class="title">Figure 24. Domain consistency result</div>
 </div>
 <div class="paragraph">
 <p>Only 129 of the 249 species scientific name are consistent with the legend. In addition, 5 observations have no scientific name (probably because the observer did not know it).</p>
@@ -1915,7 +1989,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-temporal-validity.png" alt="DQ Temporal Validity">
 </div>
-<div class="title">Figure 23. Computation of temporal validity</div>
+<div class="title">Figure 25. Computation of temporal validity</div>
 </div>
 <div class="paragraph">
 <p>A new quality indicator will be added to the list of quality indicators related to this layer.</p>
@@ -1924,7 +1998,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-temporal-validity-result.png" alt="DQ Temporal Validity Result">
 </div>
-<div class="title">Figure 24. Temporal validity result</div>
+<div class="title">Figure 26. Temporal validity result</div>
 </div>
 <div class="paragraph">
 <p>In this case we see that all the observations has passed the test.</p>
@@ -1942,7 +2016,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-position-validity.png" alt="DQ Positional validity">
 </div>
-<div class="title">Figure 25. Computation of positional validity</div>
+<div class="title">Figure 27. Computation of positional validity</div>
 </div>
 <div class="paragraph">
 <p>A new quality indicator will be added to the list of quality indicators related to this layer.</p>
@@ -1951,7 +2025,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dq-position-validity-result.png" alt="DQ Positional validity result">
 </div>
-<div class="title">Figure 26. Positional validity result</div>
+<div class="title">Figure 28. Positional validity result</div>
 </div>
 <div class="paragraph">
 <p>The result identifies 35 observations in this view that are clearly outside the boundaries of Catalonia.</p>
@@ -1975,28 +2049,28 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dqr-coimbra.png" alt="DQ OSM LUM">
 </div>
-<div class="title">Figure 27. Open street map version of the land use map</div>
+<div class="title">Figure 29. Open street map version of the land use map</div>
 </div>
 <div id="img-DQR-creaf" class="imageblock">
 <div class="content">
 <img src="images/dqr-creaf.png" alt="DQ RS LUM">
 </div>
-<div class="title">Figure 28. Remote sensing version of the land use map</div>
+<div class="title">Figure 30. Remote sensing version of the land use map</div>
 </div>
 <div id="img-DQR-lum-legend" class="imageblock">
 <div class="content">
 <img src="images/dqr-lum-legend.png" alt="DQ LUM legend">
 </div>
-<div class="title">Figure 29. Land use map legend</div>
+<div class="title">Figure 31. Land use map legend</div>
 </div>
 <div class="paragraph">
-<p>The process of creating a confusion matrix starts by requesting the combination of both maps in a single layer those pixels will contain classes that are all possible permutations of the legend. In the <a href="#img-DQR-layer-combination">Figure 30</a> the Coimbra version is the one generated from OSM while the CREAF-RS version is the one created by remote sensing. The result of the combination is shown in <a href="#img-DQR-layer-combination">Figure 30</a>. In principle even the number of combinations is 25, there are only 5 many colors present, corresponding to the classes that are the same in both maps.</p>
+<p>The process of creating a confusion matrix starts by requesting the combination of both maps in a single layer those pixels will contain classes that are all possible permutations of the legend. In the <a href="#img-DQR-layer-combination">Figure 32</a> the Coimbra version is the one generated from OSM while the CREAF-RS version is the one created by remote sensing. The result of the combination is shown in <a href="#img-DQR-layer-combination">Figure 32</a>. In principle even the number of combinations is 25, there are only 5 many colors present, corresponding to the classes that are the same in both maps.</p>
 </div>
 <div id="img-DQR-layer-combination" class="imageblock">
 <div class="content">
 <img src="images/dqr-layer-combination.png" alt="DQ Layer combination LUM request">
 </div>
-<div class="title">Figure 30. Request for a layer combination of both land use maps</div>
+<div class="title">Figure 32. Request for a layer combination of both land use maps</div>
 </div>
 <div class="paragraph">
 <p>Now we can request the confusion matrix as a statistical summary of the combination by selecting the option in the context menu.</p>
@@ -2005,7 +2079,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dqr-layer-combination-result.png" alt="DQ Layer combination LUM">
 </div>
-<div class="title">Figure 31. Layer combination of both land use maps</div>
+<div class="title">Figure 33. Layer combination of both land use maps</div>
 </div>
 <div class="paragraph">
 <p>The diagonal values of the matrix (represented in green) correspond to the pixels that have the same value in both maps. The non-diagonal values are the pixels that has different classes in both maps. We can also see some information about the most similar classes (<em>artificial surfaces</em> and <em>forest and semi natural areas</em>) as well as the Kappa coefficient that is 0.81 (the closes to 1 the better).</p>
@@ -2014,7 +2088,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dqr-confusion-matrix-request.png" alt="DQ confusion matrix request">
 </div>
-<div class="title">Figure 32. Request for the confusion matrix</div>
+<div class="title">Figure 34. Request for the confusion matrix</div>
 </div>
 <div class="paragraph">
 <p>A manual exploration of the dataset allow to discover a big purple area the is <em>artificial surfaces</em> from the OSM and <em>forest and semi natural areas</em> from the RS map.</p>
@@ -2023,19 +2097,19 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/dqr-confusion-matrix-result.png" alt="DQ confusion matrix LUM">
 </div>
-<div class="title">Figure 33. Request for the confusion matrix result</div>
+<div class="title">Figure 35. Request for the confusion matrix result</div>
 </div>
 <div id="img-DQR-layer-combination-confusion" class="imageblock">
 <div class="content">
 <img src="images/dqr-layer-combination-confusion.png" alt="DQ confusion zoom LUM">
 </div>
-<div class="title">Figure 34. Zoom to an area of discrepancies</div>
+<div class="title">Figure 36. Zoom to an area of discrepancies</div>
 </div>
 <div id="img-DQR-layer-combination-confusion-reason" class="imageblock">
 <div class="content">
 <img src="images/dqr-layer-combination-confusion-reason.png" alt="DQ confusion reason">
 </div>
-<div class="title">Figure 35. Reason for the discrepancies</div>
+<div class="title">Figure 37. Reason for the discrepancies</div>
 </div>
 <div class="paragraph">
 <p>The discrepancy makes sense. A big park in the city is identified as artificial in the OSM version that is more focus on land use while is seen as a forest area from remote sensing due to its green land cover.</p>
@@ -2105,13 +2179,13 @@ CampNomSensor=street_nam</code></pre>
 <p>The "Web-friendly" way of using an identifier (i.e. a URL) to get more information is augmented by "content negotiation" - the Definitions Server can deliver both user friendly Web pages and other forms of resource representations, e.g. JSON-LD or Turtle (TTL).</p>
 </div>
 <div class="paragraph">
-<p><a href="#img-DS_representations">Figure 36</a> shows different views of a resource HY_Feature. The left panel shows an HTML representation, the middle shows the same information using TTL, and the right using JSON. All three representations have the same content, but differ in its serialization/format. This allows both human users to explore the OGC Definition Server, as well as machines to process its content.</p>
+<p><a href="#img-DS_representations">Figure 38</a> shows different views of a resource HY_Feature. The left panel shows an HTML representation, the middle shows the same information using TTL, and the right using JSON. All three representations have the same content, but differ in its serialization/format. This allows both human users to explore the OGC Definition Server, as well as machines to process its content.</p>
 </div>
 <div id="img-DS_representations" class="imageblock">
 <div class="content">
 <img src="images/ds_representations.png" alt="Definition server representations">
 </div>
-<div class="title">Figure 36. Various representations of the same content (fragments, HTML left, TTL middle, JSON right)</div>
+<div class="title">Figure 38. Various representations of the same content (fragments, HTML left, TTL middle, JSON right)</div>
 </div>
 </div>
 <div class="sect2">
@@ -2198,7 +2272,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/ds_search.png" alt="Search">
 </div>
-<div class="title">Figure 37. Search option</div>
+<div class="title">Figure 39. Search option</div>
 </div>
 <div class="paragraph">
 <p>This provides machine readable outputs if requested via the _format parameter or the HTTP Accept: header. <a href="https://defs.opengis.net/elda-common/ogc-def/concept?labelcontains=Catchment&amp;_format=ttl" class="bare">https://defs.opengis.net/elda-common/ogc-def/concept?labelcontains=Catchment&amp;_format=ttl</a></p>
@@ -2222,7 +2296,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/ds_alternates_link.png" alt="Alternates link">
 </div>
-<div class="title">Figure 38. Alternates link</div>
+<div class="title">Figure 40. Alternates link</div>
 </div>
 <div class="paragraph">
 <p>(This link can be accessed by qualifying any Definitions Server hosted URIs with _view=alternates or _profile=alternates. A W3C compliant view for the specific concept (not the dataset as a whole) can be accessed with _profile=all ) This view lists available formats for both the individual term and the collection or package that defines it:</p>
@@ -2231,7 +2305,7 @@ CampNomSensor=street_nam</code></pre>
 <div class="content">
 <img src="images/ds_alternates.png" alt="Alternates">
 </div>
-<div class="title">Figure 39. Available alternate representations</div>
+<div class="title">Figure 41. Available alternate representations</div>
 </div>
 <div class="paragraph">
 <p>ConceptSchemes offer download options for original sources of definitions - for example an Application Schema will have a download link for the canonical UML model file.</p>
@@ -2247,22 +2321,126 @@ CampNomSensor=street_nam</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="SSO"><a class="anchor" href="#SSO"></a>11. User authentication</h2>
+<h2 id="SSO"><a class="anchor" href="#SSO"></a>11. User authentication and applications federation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TBD. This are just some texts from and email discussion for inspiration.</p>
+<p>In the Interoperability experiment, we experimented with the federated identity provider developed in the project H2020 Landsense as authorization server that enables a federation of applications.</p>
 </div>
 <div class="paragraph">
-<p>We are aware of Gilberto&#8217;s views but as Europeans we do have an issue with having in-situ European data or citizen generated data hosted on commercial platforms that do not adhere to our data protection regulation. More specifically, given the business model of these companies that is based on collecting, and integrating personal data of their users to then sell to third parties personalised databases and services for commercial or political targetting, I question the appropriateness of putting citizen science data on these platforms, thus opening the door to their use of the personal data of those who have collected the data and those who use them, without their consent. We are raising this issues within the GEO community as well because there has been no discussion so far on this point. I understand your perspective may differ, but at least you are informed about our views.</p>
+<p>The Landsense project contributed the Engagement Platform (<a href="https://lep.landsense.eu/Project/LEP" class="bare">https://lep.landsense.eu/Project/LEP</a>), the H2020 Scent project contributed the Scent Harmonisation Platform Visualisation Site (<a href="https://scent-harm.iccs.gr/" class="bare">https://scent-harm.iccs.gr/</a>) and the H2020 NextGEOSS contributed the NiMMbus Geospatial user feedback system (<a href="https://www.opengis.uab.cat/nimmbus/" class="bare">https://www.opengis.uab.cat/nimmbus/</a>). The three platforms were able to work together and use the Landsense authorization server to authenticate users and create a Single Sign On experience. From the user perspective, once logged in one of the three platforms it can use the other two in a transparent way without having to authenticate again.</p>
+</div>
+<div id="img-federation-diagram" class="imageblock">
+<div class="content">
+<img src="images/federation-diagram.png" alt="Federation diagram">
+</div>
+<div class="title">Figure 42. Federation diagram</div>
 </div>
 <div class="paragraph">
-<p>This argumentation points directly at a real problem that should be included in an GEO architecture for Citizen Science that needs to provide the necessary anonymity to the Citizens when participating in the Citizen Science activities. The H2020 Landsense federation includes the concept of a criptoname (created when citizens authenticate) that is used by a Citizen Science infrastructure to allow participation but hiding the details of the user. This architecture will be applied in the new project CO4Cloud (I&#8217;m participant. Jaume Piera Leads) that will propose a Cit Sci infrastructure on the EOSC for citizen Science.</p>
+<p>The federation is designed in a way that is complain with the GDPR EU regulation and the user is in full control of which information is releasing, to whom and with that purpose. In an extreme case, the user can decide to do not release any adentity information to an application in the federation.</p>
+</div>
+<div class="sect2">
+<h3 id="_the_lanssense_authorization_server"><a class="anchor" href="#_the_lanssense_authorization_server"></a>11.1. The LansSense Authorization Server</h3>
+<div class="paragraph">
+<p>With the Authorization Server (AS), the federation supports users to authenticate from a variety of login providers including social media, organizations and Academic institutions participating in eduGAIN. Based on the trust in the login providers, services, tools and Application Programming Interfaces (APIs) can be provided to the platform by either operating a compliant SAML2 Service Provider or an Open Authorization 2 (OAuth2) Resource Server that accepts JSON Web Token (JWT) Access Tokens from any LandSense compliant OAuth2/OpenID Connect Provider.</p>
 </div>
 <div class="paragraph">
-<p>Good point Joan. The identity management etc. is one of the important aspects. Yet, the issue how hosts, manages and own data is complementary to it. Both require a solid architectural set-up.</p>
+<p>The platform is extensible to any other login providers as long it is compliant with the Federation requirement regarding the participation as a login provider: deployment of a Security Assertion Markup Language v2 (SAML2) compliant Identity Provider. The LandSense Coordination Centre digitally signs and hosts the SAML metadata of the Engagement Platform by which trust is established between the SAML2 Identity and the Service Providers (the LandSense Federation).</p>
 </div>
 <div class="paragraph">
-<p>I agree that the need to ensure appropriate privacy of contributors is essential but there also needs to be a way of acknowledging those Citizen Science participants that may wish to be attributed.  I suspect that it may need to be an opt in process.</p>
+<p>The LandSense Authorization Server acts as a GDPR compliant broker between the personal information received after a user’s login and registered applications based on user approval. In order to honour GDPR data minimisation, the AS requests from the Identity Provider (IdP) at login only that amount of personal information, as it is required by a registered application. This amount (and which attributes in detail) is controlled by the registration / login level. The AS provides five levels of which the first two do not enable an application to obtain personal information: AUTH, CRYPTO, PROFILE, EMAIL, PROFILE+EMAIL.</p>
+</div>
+<div class="sect3">
+<h4 id="SSOLevelsOfPrivacy"><a class="anchor" href="#SSOLevelsOfPrivacy"></a>11.1.1. Five levels of personal information in the federation</h4>
+<div class="paragraph">
+<p>AUTH: Any application that is registered with this level must not be GDPR compliant, as there is no information about the user other than “yes we know that you have successfully logged in with one of the LandSense IdPs). After login with Level AUTH you will not see any personal information.</p>
+</div>
+<div class="paragraph">
+<p>CRYPTONAME:
+Any application that is registered with this level will receive a crypto name for the user. This crypto name is unique in LandSense and generated after a successful login. The crypto name is not stored which ensures that no personal information can be obtained based on the single possession of the crypto name. This allows applications to cluster (group) user contributions without knowing the real identity of the user. Because of that, any registered application processing the crypto name must not be GDPR compliant.  After login with Level CRYPTO you will see your crypto name as value of the personal claim “sub”.</p>
+</div>
+<div class="paragraph">
+<p>PROFILE: Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (provide URL) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level PROFILE you will see the crypto name plus all available personal information that fall into the scope profile.</p>
+</div>
+<div class="paragraph">
+<p>EMAIL: Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (provide URL) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level EMAIL you will see the crypto name plus all available personal information that fall into the scope profile.</p>
+</div>
+<div class="paragraph">
+<p>PROFILE+EMAIL: This is a combination of scopes PROFILE and EMAIL. After login you see your crypto name, email address, whether it is validated and all the personal information received for scope profile.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_add_an_web_application_into_the_federation"><a class="anchor" href="#_how_add_an_web_application_into_the_federation"></a>11.1.2. How add an web application into the federation</h4>
+<div class="paragraph">
+<p>Any application (mobile or web browser based) can be included if they support OpenID connect and the are registered with the LandSense OpenID Connect provider. Assuming successful registration, the application can then be used on own provisioning and offerings from the Federation.</p>
+</div>
+<div id="img-Landsense-application-registration" class="imageblock">
+<div class="content">
+<img src="images/LandsenseApplicationRegistration.png" alt="Federation app registration">
+</div>
+<div class="title">Figure 43. Federation Application Registration</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_landsense_engagement_platform"><a class="anchor" href="#_landsense_engagement_platform"></a>11.2. LandSense Engagement Platform</h3>
+<div class="paragraph">
+<p>In a nutshell, the LandSense Engagement Platform (<a href="https://lep.landsense.eu" class="bare">https://lep.landsense.eu</a>) is to become the marketplace where citizens can participate in the various Land Use and Land Cover (LULC) related campaigns and interested parties can reuse existing services and register new applications.</p>
+</div>
+<div class="paragraph">
+<p>The first version of the LandSense Engagement Platform was realized based on the existing tools, services and platforms from LandSense partners as well as new applications built for the Demo Cases.</p>
+</div>
+<div id="img-Landsense-login" class="imageblock">
+<div class="content">
+<img src="images/LandsenseLogin.png" alt="LEP login">
+</div>
+<div class="title">Figure 44. LandSense Engagement Platform login</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scent_harmonization_platform"><a class="anchor" href="#_scent_harmonization_platform"></a>11.3. Scent Harmonization Platform</h3>
+<div class="paragraph">
+<p>Scent Harmonisation Platform Visualisation Site (<a href="https://scent-harm.iccs.gr/" class="bare">https://scent-harm.iccs.gr/</a>) is a client application tailored for the purposes of inspecting and visualising traditional in-situ and citizen-generated observations.</p>
+</div>
+<div class="paragraph">
+<p>The Visualisation site constitutes a custom innovative application that exposes the resources made available from the Scent Harmonisation Platform. The application conforms to OGC SensorThings API standard and it consists of the following main characteristics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User-friendly interfaces enabling both time-series analysis and spatial representation of SensorThings API resources with support to time-series analysis, metadata and visualisation and a dashboard.</p>
+</li>
+<li>
+<p>An interactive campaign dashboard that enables the spatial visualisation and graphic representation of the images of Land Cover/ Land Use elements that have been collected from the volunteers</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Scent Harmonisation Platform manages a variety of citizen-generated data as well as environmental data that been collected through in-situ monitoring stations in Kifisos river basin, Attica, Greece. All the data are being maintained and have been structured according to widely accepted standards, such as the Open Geospatial Consortium (OGC) in order to be compliant with open and unified frameworks (such as SensorThings API).</p>
+</div>
+<div id="img-Scent-Harmonization-Platform-Login" class="imageblock">
+<div class="content">
+<img src="images/ScentHarmonizationPlatform.png" alt="Scent Harmonization Platform">
+</div>
+<div class="title">Figure 45. Scent Harmonization Platform Login</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nimmbus_geospatial_user_feedback"><a class="anchor" href="#_nimmbus_geospatial_user_feedback"></a>11.4. NiMMBus Geospatial User Feedback</h3>
+<div class="paragraph">
+<p>The NiMMBus web portal records geospatial user feedback about existing geospatial resources. The user is able to provide comments, rates, quality reports and publications related to a geospatial resource. It can be used to comment on datasets but also on individual observations. The system allows to creating a citation of an external resource (in an external catalogue or repository) and associate feedback items about it. It builds upon a service developed in the H2020-funded NextGEOSS project, adding the capability of integration into the LandSense federation authentication.</p>
+</div>
+<div class="paragraph">
+<p>The system is based on the NiMMbus; a solution for storing geospatial resources on the MiraMon cloud. The system implements the Geospatial User Feedback (GUF) standard developed in the OGC GUF (and started in the FP7-funded GeoViQua project).</p>
+</div>
+<div class="paragraph">
+<p>The solution is composed by three elements: the open source code for a JavaScript the client, a server that stores the feedback information and a well document API that allows for interacting with the client.</p>
+</div>
+<div id="img-NiMMbus-GUF" class="imageblock">
+<div class="content">
+<img src="images/NiMMbusGUF.png" alt="NiMMbus GUF">
+</div>
+<div class="title">Figure 46. NiMMbus  NiMMBus Geospatial User Feedback Login</div>
+</div>
 </div>
 </div>
 </div>
@@ -2285,10 +2463,16 @@ The worldwide effort to build GEOSS is led by the Group on Earth Observations (G
 </table>
 </div>
 <div class="paragraph">
-<p>We see a major benefit in establishing this connection because GEOSS already provides an established process to clarify data policies together with established data management principles, and to provide the minimum metadata this is required to access the data sets created by Citizen Science projects. This activity thereby helps to surface and to mobilize already existing data sets - with clear acknowledgment Citizen Science contributions. We expect that this work provides concrete contributions to the increasing discussions on how Citizen Science could connect to GEOSS and, more generally, how more in-situ data and derived knowledge could become available on the global level.
-Within this Interoperability Experiment, we particularly explored the possible technical connection with the GEOSS Platform by facilitating OGC standards. We also identified organizational structures that would be required to be put into place in order to provide a more flexible and scalable solution to Citizen Science projects. We consider this as a major need for the future evolution of this connection because of the high number of already existing projects that could potentially be connected to GEOSS. OGC standards can play an essential role to facilitate this connection. This elaboration would also contribute to ongoing debates on increasing the availability of in-situ data in GEOSS.
-Notably, we see the connection with GEOSS as one highly promising way to make Citizen Science data better accessible and more widely used. Complementary efforts might be undertaken, for example, to increase the findability via mainstream search engines, or – more generally – to provide the machine readable information about projects resources that is required for automated harversting by web-crawlers. We come back to this issue in the final part of this section, when outlining possible follow up activities.
-With our exercise so far, we follow the following overarching principles and carry them to the Citizen Science community:</p>
+<p>We see a major benefit in establishing this connection because GEOSS already provides an established process to clarify data policies together with established data management principles, and to provide the minimum metadata required to access the data sets created by Citizen Science projects. This activity thereby helps to surface and to mobilize already existing data sets - with clear acknowledgment of the Citizen Science contributions. We expect that this work provides concrete contributions to the increasing discussions on how Citizen Science could connect to GEOSS and, more generally, how more in-situ data and derived knowledge could become available at the global level.</p>
+</div>
+<div class="paragraph">
+<p>Within this Interoperability Experiment, we particularly explored the possible technical connection with the GEOSS Platform facilitated by OGC standards. We also identified organizational structures that would be required in order to provide a more flexible and scalable solution to Citizen Science projects, both big successful ones and small ones. We consider this as a major need for the future evolution of the Citizen Science contribution because of the high number of already existing projects that could potentially be connected to GEOSS. OGC standards can play an essential role to facilitate this connection. This elaboration would be also generalized to ongoing debates on increasing the availability of in-situ datin GEOSS.</p>
+</div>
+<div class="paragraph">
+<p>Notably, we see the connection with GEOSS as one highly promising way to make Citizen Science data better accessible and more widely used. For example, complementary efforts might be undertaken, to increase the findability via mainstream search engines, or – more generally – to provide the machine readable information about projects resources that is required for automated harvesting by web-crawlers. We come back to this issue in the final part of this section, when outlining possible follow up activities.</p>
+</div>
+<div class="paragraph">
+<p>With our exercise so far, we follow the next overarching principles and carry them to the Citizen Science community:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2296,7 +2480,7 @@ With our exercise so far, we follow the following overarching principles and car
 <p><a href="https://www.earthobservations.org/documents/dswg/201504_data_management_principles_long_final.pdf">GEO Data Management Principles</a>, addressing issues such as discovery, access, traceability, quality documentation and preservation.</p>
 </li>
 <li>
-<p>Not favoring any silos, i.e. necessitating open data and leveraging open solutions, which in this context means the provision of data as part of the <a href="https://www.earthobservations.org/geoss_dsp.shtml">GEOSS Data Core</a>, but also the application of the GEO Architecture Principles, which in addition advocate flexibility, scalability, etc.</p>
+<p>Not favoring any silos, i.e. need for open data and leveraging open solutions, which in this context means the provision of data as part of the <a href="https://www.earthobservations.org/geoss_dsp.shtml">GEOSS Data Core</a>, but also the application of the GEO Architecture Principles, which in addition advocate flexibility, scalability, etc.</p>
 </li>
 <li>
 <p>Distributed, standards based, and flexible to support interoperability while meeting a range of use cases and needs, which translates to the use of the <a href="https://www.geodab.net/">GEOSS Discovery and Access Broker (GEO DAB)</a> that includes – among other - the support to a large range of OGC standards.</p>
@@ -2306,13 +2490,13 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="sect2">
 <h3 id="_connecting_a_single_citizen_science_project_to_geoss"><a class="anchor" href="#_connecting_a_single_citizen_science_project_to_geoss"></a>12.1. Connecting a single Citizen Science project to GEOSS</h3>
 <div class="paragraph">
-<p>The most straight forward way to connect Citizen Science data sets to GEOSS is the registration of the project that collects these data sets at the GEOSS Platform. This process essentially requires the registration of the project in the GEOSS ‘Yellow Pages’ and it can be used to register also multiple data sets from one single project (see also Figure below).</p>
+<p>The most straight forward way to connect Citizen Science data sets to GEOSS is the inclusion of the project that collects these data sets at the GEOSS Platform. This process essentially requires the registration of the project in the GEOSS ‘Yellow Pages’ and it can be used to register also multiple data sets from one single project (see also <a href="#img-GEOSSYellowPages">Figure 47</a> below).</p>
 </div>
 <div id="img-GEOSSYellowPages" class="imageblock">
 <div class="content">
 <img src="images/GEOSSYellowPages.png" alt="GEOSS Yellow Pages">
 </div>
-<div class="title">Figure 40. Sketch on registering a single project at the GEOSS Platform</div>
+<div class="title">Figure 47. Sketch on registering a single project at the GEOSS Platform</div>
 </div>
 <div class="paragraph">
 <p>The entry of the Yellow Pages requires information (metadata) such as:</p>
@@ -2320,22 +2504,22 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="ulist">
 <ul>
 <li>
-<p>Information about the lead organization (name, description, URL, geographical coverage, GEO affiliation, contact points, etc.)</p>
+<p><em>Lead organization</em> (name, description, URL, geographical coverage, GEO affiliation, contact points, etc.)</p>
 </li>
 <li>
-<p>Type of provided online resource (data, vocabulary, model, algorithm, etc.) – in the context of this Interoperability Experiment we focus on data</p>
+<p><em>Type of</em> provided online <em>resource</em> (data, vocabulary, model, algorithm, etc.) – in the context of this Interoperability Experiment we focus on data</p>
 </li>
 <li>
-<p>Data policy, including the option to declare as free and open by choosing “GEOSS Data Core” (see also the figure below)</p>
+<p><em>Data policy</em>, including the option to declare as free and open by choosing “GEOSS Data Core” (see <a href="#img-GEOSSYellowPagesForm">Figure 48</a> below)</p>
 </li>
 <li>
-<p>Indication of GEOSS data management principles that are implemented (see also the figure below)</p>
+<p>Indication of GEOSS <em>data management principles</em> that are implemented (see <a href="#img-GEOSSYellowPagesForm">Figure 48</a> below)</p>
 </li>
 <li>
-<p>Relevance for the SDGs</p>
+<p>Relevance for the <em>Sustainable Development Goals</em></p>
 </li>
 <li>
-<p>A service endpoint</p>
+<p>A service <em>endpoint</em></p>
 </li>
 </ul>
 </div>
@@ -2343,10 +2527,10 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/GEOSSYellowPagesForm.png" alt="GEOSS Yellow Pages">
 </div>
-<div class="title">Figure 41. Parts of the items asked for when registering in the GEOSS Yellow Pages</div>
+<div class="title">Figure 48. Parts of the items asked for when registering in the GEOSS Yellow Pages</div>
 </div>
 <div class="paragraph">
-<p>Once compiled, the information provided by the Citizen Science project is passed on to the GEO DAB team. Members of this team check the entries and tests, for example, if the provided endpoint actually serves the intended data, if it needed implements the required standards (from the OGC or comparable alternatives) and if it indeed follows the indicated principles and applies the indicated data policy. This testing might entail a dialogue with the registering Citizen Science project in order to make the project’s offer fit to the promises in the entry for the GEOSS Yellow Pages.</p>
+<p>Once completed, the information provided by the Citizen Science project is passed on to the GEO DAB team. Members of this team check the entries and run some tests (for example, if the provided endpoint actually serves the intended data, if it needed to implement the required standards (from the OGC or comparable alternatives) and if it indeed follows the indicated principles and applies the indicated data policy). This testing might entail a dialogue with the registering Citizen Science project in order to make the project’s offer fit to the promises in the entry for the GEOSS Yellow Pages.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://scent-project.eu/">SCENT Citizen Observatory</a> successfully undertook the process to offer its citizen-generated data to GEOSS. Following the administrative registration that was described in detail above, the Interoperability Registration and Brokering workflow took place. This was the second phase and consisted of the following steps:</p>
@@ -2354,7 +2538,7 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="ulist">
 <ul>
 <li>
-<p>Technological Information was provided to the DAB team. More specifically the SCENT web server URL, the endpoints of the SCENT OGC web services (	WMS, WFS) were sent to the DAB team along with the accompanied descriptions. In addition, information was provided about WFS and WMS services versions, the supported relevant operations through the APIs (e.g. GetCapabilities, DescribeFeatureType, GetFeature, etc.), the various feature types, the SCENT data to be integrated to GEOSS (i.e. event, images, video metadata) and the associated geographic regions that they cover (i.e. Kifisos river basin, Attica Greece and Danube Delta, Romania).</p>
+<p>Technological Information was provided to the DAB team. More specifically the SCENT web server URL, the endpoints of the SCENT OGC web services (WMS, WFS) were sent to the DAB team along with the accompanied descriptions. In addition, information was provided about WFS and WMS services versions, the supported relevant operations through the APIs (e.g. GetCapabilities, DescribeFeatureType, GetFeature, etc.), the various feature types, the SCENT data to be integrated to GEOSS (i.e. event, images, video metadata) and the associated geographic regions that they cover (i.e. Kifisos river basin, Attica Greece and Danube Delta, Romania).</p>
 </li>
 <li>
 <p>DAB team conducted a set of interoperability tests with SCENT WFS and WMS services, including discoverability, accessibility and visualisation use cases. A test report (GEO DAB/SCENT web server Brokering Test Report) was generated as an output of this process.</p>
@@ -2363,7 +2547,7 @@ With our exercise so far, we follow the following overarching principles and car
 <p>Notification was received from DAB team regarding the successful conduction of the tests and that no interoperability issue was found. Taking into consideration also suggestions indicated in the test report, metadata information of the datasets provided was further enriched.</p>
 </li>
 <li>
-<p>As a final step of the process, the DAB team proceeded with the successful integration of SCENT web server into GEOSS Portal (offering its services to production environment). Thus, users can access SCENT resources via the GEOSS Portal catalogue (<a href="https://www.geoportal.org/?f:sources=wfsscentID%2CwmsSCENTID" class="bare">https://www.geoportal.org/?f:sources=wfsscentID%2CwmsSCENTID</a>) as presented in the following figure.</p>
+<p>As a final step of the process, the DAB team proceeded with the successful integration of SCENT web server into GEOSS Portal (offering its services to production environment). Thus, users can access SCENT resources via the GEOSS Portal catalogue (<a href="https://www.geoportal.org/?f:sources=wfsscentID%2CwmsSCENTID" class="bare">https://www.geoportal.org/?f:sources=wfsscentID%2CwmsSCENTID</a>) as presented in the <a href="#img-ScentResourcesAvailableInGEOSSPortal">Figure 49</a>.</p>
 </li>
 </ul>
 </div>
@@ -2371,27 +2555,39 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/ScentResourcesAvailableInGEOSSPortal.png" alt="Scent Resources in GEOSS">
 </div>
-<div class="title">Figure 42. Scent resources available in GEOSS portal</div>
+<div class="title">Figure 49. Scent resources available in GEOSS portal</div>
 </div>
 <div class="paragraph">
-<p>Overall, we promote that Citizen Science projects indeed implement the free and open data policy of the GEOSS Data Core, and that all of the GEOSS Data Management Principles are implemented. Furthermore, out of the OGC Citizen Science Domain Working Group (DWG) we offer examples and guidance how this can be realized with OGC standards. However, realistically speaking, and in order to see concrete progress, it appears most feasible that projects first enter what they already support, and at least fulfill the <a href="http://geolabel.info/Discoverable.htm">needs to make their data sets discoverable from within the GEOSS Platform</a> using <a href="http://geolabel.info/Metadata.htm">well-documented metadata</a>, and including <a href="http://geolabel.info/Quality.htm">information about data quality</a>. Following the brokering approach of GEOSS, this entails that the projects provide a minimum of required information, and ideally follow one of the multiple standards that are already supported by GEOSS. If it should not be immediately possible to also provide <a href="http://geolabel.info/DataAccess.htm">one of the multiple options to make data accessible</a> or to provide that data in an <a href="http://www.geolabel.info/Encoding.htm">already recognized encoding</a>, it might still be considered to register a projects and then update the record in the Yellow Pages once the additional functionalities for harmonized data access are put in place by the project.</p>
+<p>Overall, we proved that Citizen Science projects indeed can implement the free and open data policy of the GEOSS Data Core, and that all of the GEOSS Data Management Principles are followed by Scent. Furthermore, out of the OGC Citizen Science Domain Working Group (DWG) we offer examples and guidance on how this can be realized with OGC standards. However, realistically speaking, and in order to see concrete progress, it appears more feasible that projects first enter what they already support, and at least fulfill the <a href="http://geolabel.info/Discoverable.htm">needs to make their data sets discoverable from within the GEOSS Platform</a> using <a href="http://geolabel.info/Metadata.htm">well-documented metadata</a>, and including <a href="http://geolabel.info/Quality.htm">information about data quality</a>. Following the brokering approach of GEOSS, this entails that the projects provide a minimum of required information, and ideally follow one of the multiple standards that are already supported by the GEOSS platform. If it should not be immediately possible to also provide <a href="http://geolabel.info/DataAccess.htm">one of the multiple options to make data accessible</a> or to provide that data in an <a href="http://www.geolabel.info/Encoding.htm">already recognized encoding</a>, it might still be considered to register a projects and then update the record in the Yellow Pages once the additional functionalities for harmonized data access are put in place by the project.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_why_a_case_by_case_registration_might_not_be_the_best_way_forward"><a class="anchor" href="#_why_a_case_by_case_registration_might_not_be_the_best_way_forward"></a>12.2. Why a case-by-case registration might not be the best way forward</h3>
+<h3 id="_why_a_case_by_case_registration_is_not_the_best_way_forward"><a class="anchor" href="#_why_a_case_by_case_registration_is_not_the_best_way_forward"></a>12.2. Why a case-by-case registration is not the best way forward</h3>
 <div class="paragraph">
-<p>Although the possibility to register Citizen Science e projects of any size in GEOSS exists, we do not recommend that every project should now go ahead and register itself. This is because, at least potentially, the number of relevant contributions is (at least) in the hundreds, see for example, <a href="http://data-staging.jrc.it/dataset/jrc-citsci-10004">this project inventory</a> and the related <a href="https://ec-jrc.github.io/citsci-explorer/">prototype of a project catalogue</a>.</p>
+<p>Although the possibility to register Citizen Science projects of any size in GEOSS exists and has been illustrated in the previous section, we do not recommend that each and every project go ahead and register by itself now. Potentially, the number of relevant contributions is (at least) in the hundreds, see for example, <a href="http://data-staging.jrc.it/dataset/jrc-citsci-10004">this project inventory</a> and the related <a href="https://ec-jrc.github.io/citsci-explorer/">prototype of a project catalogue</a> (<a href="#img-GEOSSCitSciExplorer">Figure 50</a>).</p>
 </div>
 <div id="img-GEOSSCitSciExplorer" class="imageblock">
 <div class="content">
 <img src="images/GEOSSCitSciExplorer.png" alt="Citizen Science Explorer">
 </div>
-<div class="title">Figure 43. Example Citizen Science explorer providing access to 508 different projects (status: 13 June 2019)</div>
+<div class="title">Figure 50. Example Citizen Science explorer providing access to 508 different projects (status: 13 June 2019)</div>
 </div>
 <div class="paragraph">
-<p>It becomes obvious that a case-by-case registration per project (which each might want to register one data set or more) would create a bottle neck towards the GEO DAB and the team that is responsible to evaluate and test entries in the GEOSS Yellow Pages. As a result of our investigations within this Interoperability Experiment, we therefore suggest to elaborate on and develop an intermediate layer that provides the required organizational and technical support to the Citizen Science community so that their data sets become better discoverable, accessible, and potentially more widely used - thereby also amplifying visibility and impact of the individual projects.
-We consider such structures particularly important in view of larger mobilization campaigns of Citizen Science projects, as, for example, planned within the context of the Earth Challenge 2020 (EC2020). Again, also here the two/multiple-step approach - where project resources become discoverable first and commonly accessible in a second stage - might be most realistic in order to progress more quickly and to have intermediate results.
-In order to move ahead, we identified two main clusters of requirements. On the one hand, there appears a need to slot a technical support for Citizen Science projects in ahead the GEO DAB. This additional support should remove the potential bottle neck and help to scale up the number or Citizen Science projects and their data sets in the GEOSS Platform (and ideally in the GEOSS Data Core). Requirements for this support entail:</p>
+<p>It becomes obvious that a case-by-case registration per project (which each might want to register one data set or more) would create a bottle neck towards the GEO DAB and the team that is responsible to evaluate and test entries in the GEOSS Yellow Pages. As a result of our investigations within this Interoperability Experiment, we therefore suggest to elaborate on and develop an <strong>intermediate layer</strong> that provides the required organizational and technical support to the Citizen Science community so that their data sets become better discoverable, accessible, and potentially more widely used - thereby also amplifying visibility and impact of the individual projects.</p>
+</div>
+<div class="paragraph">
+<p>We consider such structures particularly important in view of larger mobilization campaigns of Citizen Science projects, as, for example, planned within the context of the Earth Challenge 2020 (EC2020). Again, also here the two/multiple-step approach - where project resources become discoverable first and commonly accessible in a second stage - might be most realistic in order to progress more quickly and to have intermediate results.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_improve_the_connection_of_citizen_science_into_geoss"><a class="anchor" href="#_how_to_improve_the_connection_of_citizen_science_into_geoss"></a>12.3. How to improve the connection of Citizen Science into GEOSS</h3>
+<div class="paragraph">
+<p>In order to move ahead, we identified requirements that we are grouping in different approaches that complement each other.</p>
+</div>
+<div class="sect3">
+<h4 id="_provide_technical_support_to_connect_to_the_geoss_platform"><a class="anchor" href="#_provide_technical_support_to_connect_to_the_geoss_platform"></a>12.3.1. Provide technical support to connect to the GEOSS platform</h4>
+<div class="paragraph">
+<p>There appears a need to slot a technical support for Citizen Science projects in ahead the GEO DAB. This additional support should remove the potential bottle neck and help to scale up the number or Citizen Science projects and their data sets in the GEOSS Platform (and ideally in the GEOSS Data Core). Requirements for this support entail:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2411,28 +2607,87 @@ In order to move ahead, we identified two main clusters of requirements. On the 
 <p>Liaise with the GEO DAB team in order to actually register the new entries.</p>
 </li>
 <li>
-<p>Possible consider an additional hub that would in fact cluster multiple Citizen Science projects and their endpoints into a single access point, which is then registered within the GEOSS Platform (see also example below).</p>
-</li>
-<li>
 <p>Establish a capacity building mechanism, capable to support and equip existing initiatives with the necessary skills to apply data management principles related to the accessibility, discoverability, re-usability and curation of their resources.</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_federate_multiple_citizen_science_projects_and_their_endpoints_into_a_single_access_point"><a class="anchor" href="#_federate_multiple_citizen_science_projects_and_their_endpoints_into_a_single_access_point"></a>12.3.2. Federate multiple Citizen Science projects and their endpoints into a single access point</h4>
 <div class="paragraph">
-<p>For the above mentioned EC 2020 we could, for example, imagine the following. EC2020 will collect new data and offer those via a dedicated API. At the same time, several already existing Citizen Science projects partner with EC2020 and also provide access to their data (in different forms). For the connection to GEOSS, EC2020 could provide a gateway that connects the newly collected data and the offerings of the different partners to a single discovery service and a single data access service. These two endpoints would be registered via the Yellow Pages with the GEOSS Platform and thereby make the EC2020 resources more widely visible,  together with a clearly defined and well-known data policy and following most recent data management principles. The figure below depicts this setting.</p>
+<p>To reduce the number of endpoints connected to the GEOSS Platform, federations of citizen Science projects could act as hubs that would in fact cluster multiple Citizen Science projects and their endpoints into a single access point, which is then registered within the GEOSS Platform (see <a href="#img-GEOSS_EC2020Gateway">Figure 51</a>).</p>
+</div>
+<div class="paragraph">
+<p>This federations could be thematic or regional and take advantage of the current structure of activities in the GEO work program.</p>
+</div>
+<div class="paragraph">
+<p>Considering the Earth Challenge 2020 we could imagine the following architecture: EC2020 will collect new data and offer it via a dedicated API. At the same time, several already existing Citizen Science projects partner with EC2020 and also provide access to their data (in different forms). For the connection to GEOSS, EC2020 could provide a gateway that federates the newly collected data and the offerings of the different partners to a single discovery service and a single data access service. These two endpoints would be registered via the Yellow Pages with the GEOSS Platform only once and thereby make the EC2020 resources more widely visible, together with a clearly defined and well-known data policy and following most recent data management principles. The figure below depicts this setting.</p>
 </div>
 <div id="img-GEOSS_EC2020Gateway" class="imageblock">
 <div class="content">
 <img src="images/GEOSS_EC2020Gateway.png" alt="GEOSS EC2020 Gateway">
 </div>
-<div class="title">Figure 44. Sketch of a possible connection between EC2020 and the GEOSS Platform (one possible scenario), as an example of a more coordinated structure to make Citizen Science data discoverable and accessible via GEOSS</div>
+<div class="title">Figure 51. Sketch of a possible connection between EC2020 and the GEOSS Platform (one possible scenario), as an example of a more coordinated structure to make Citizen Science data discoverable and accessible via GEOSS</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+It is important to realize that we are not proposing a single federation maintained by GEO but a collection of self organized federation that act as a aggregation point and provide services to the citizen science projects. This federations can have different scales and can be thematic or regional.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_extra_considerations_for_citizen_science_federations"><a class="anchor" href="#_extra_considerations_for_citizen_science_federations"></a>Extra considerations for Citizen science federations</h5>
+<div class="paragraph">
+<p>A federation of services can provide extra services to the citizen science projects. This is a short list of examples that can grow with time.</p>
 </div>
 <div class="paragraph">
-<p>On the other hand, and because the offerings made above alone would not be enough to actually advance from the current situation, also the connection to the Citizen Science community deserves dedicated attention. We see, for example, requirements in:
--	Mobilizing existing data sets, i.e. reaching out to the Citizen Science community and let them know about this work and the linked offering of increased visibility and possibly impact, providing guideless and practical examples on what would need to be done from their side, offering support in establishing the connections.</p>
+<p><strong>Standard translation</strong></p>
+</div>
+<div class="paragraph">
+<p>Currently the GEO DAB does not fully support Sensor Web Enablement (SWE) standards such as OGC Sensor Observing System and OGC SensorThingsAPI. A service in the federatino can provide the translationof services to other supported ones such as WFS or WMS allowing for an harmonized access via the GEOSS Platform.</p>
+</div>
+<div class="paragraph">
+<p><strong>Data agregation</strong></p>
+</div>
+<div class="paragraph">
+<p>Some compatible projects can be aggregated into bigger virtual datasets that can be served on demand.</p>
+</div>
+<div class="paragraph">
+<p><strong>Federated authentication</strong></p>
+</div>
+<div class="paragraph">
+<p>As discussed in <a href="#SSO">User authentication and applications federation</a>, a federation could provide a mechanism to authenticate user that can them provide observations to several projects in the federation from a single app or from multiple apps used in parallel. This can be useful on the data input case (data capture) but could be also used for a pull of experts validating data coming from different projects. A federated authentication can also protect the privacy of the citizens as will be discussed in <a href="#GEO-privacy">Citizen privacy and protection</a></p>
+</div>
+<div class="paragraph">
+<p><strong>Data preservation</strong></p>
+</div>
+<div class="paragraph">
+<p>A federation can provide a service that allow for archiving data from project campaigns from ephemeral citizen science projects or projects that can no longer be maintain.</p>
+</div>
+<div class="paragraph">
+<p><strong>Common definitions</strong></p>
+</div>
+<div class="paragraph">
+<p>Sharing common definitions (with tools such as the definition server proposed in <a href="#DefinitionServer">Definition Server</a>) will be essential to ensure data integration and should be a part of the federation.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_improve_networking_and_capacity_building"><a class="anchor" href="#_improve_networking_and_capacity_building"></a>12.3.3. Improve networking and capacity building</h4>
+<div class="paragraph">
+<p>On the other hand, and because the offerings made above alone would not be enough to actually advance from the current situation, also the networking the Citizen Science community deserves dedicated attention. The current Earth Observations Citizen Science community activity in the GEO work program could provide additional help. The following requirements has been identified:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>Mobilizing existing data sets, i.e. reaching out to the Citizen Science community and let them know about this work and the linked offering of increased visibility and possibly impact, providing guidelines and practical examples on what would need to be done from their side, offering support in establishing the connections.</p>
+</li>
 <li>
 <p>Help in preparing new data sets, i.e. be available to consult Citizen Science projects during their set-up phase, and let the community know about this offer.</p>
 </li>
@@ -2440,7 +2695,7 @@ In order to move ahead, we identified two main clusters of requirements. On the 
 <p>Promote FAIR data management and GEOSS as a practical way to get there.</p>
 </li>
 <li>
-<p>Provide access and training for (OGC) standard-based tool that the community can use to make the connection, and implement the desired data policy and data management principles.</p>
+<p>Provide access and training for (OGC) standard-based tools that the community can use to make the connection, and implement the desired data policy and data management principles.</p>
 </li>
 </ul>
 </div>
@@ -2448,10 +2703,11 @@ In order to move ahead, we identified two main clusters of requirements. On the 
 <p>For further discussions and possible realizations, it should be considered if the support outlined above could be provided in a coordinated but decentralized way. We could imagine that the above mentioned support could be set of for different geographic regions, thematic areas, or other sensible divisions (e.g. with a retaliation that is specific for EC2020, which would still need to be discussed). Such settings could also help to disseminate good practices, for example, on the use of OGC standards in this context.</p>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_items_for_further_investigation_regarding_geoss"><a class="anchor" href="#_items_for_further_investigation_regarding_geoss"></a>12.3. Items for further investigation regarding GEOSS</h3>
+<h3 id="_future_work_regarding_to_the_geoss_integration"><a class="anchor" href="#_future_work_regarding_to_the_geoss_integration"></a>12.4. Future work regarding to the GEOSS integration</h3>
 <div class="paragraph">
-<p>The experiment helps us to identify current possibilities, and to shape parts of the way ahead. However, it also left a few questions unanswered and raised some new issues. From our experiences, we the particular needs to further investigate the following:</p>
+<p>The experiment helps us to identify current possibilities, and to shape parts of the way forward. However, it has also left a few questions unanswered and raised some new issues. We should	develop different scenarios to meet the identified organizational requirements exposed before. From our experiences, we see particular needs to further investigate the following aspects:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2462,291 +2718,39 @@ In order to move ahead, we identified two main clusters of requirements. On the 
 <p>Develop detailed examples and guidance on how CS projects can implement the different GEO Data Management Principles by using the many already supported OGC standards.</p>
 </li>
 <li>
-<p>Consider promoting OGC’ SensorThingsAPI to be considered by the GEO DAB, because this standard appears to be taken up by several Citizen Science projects, but so far other standards (such as WFS or WMS) need to be implemented in addition in order to allow harmonized access via the GEOSS Platform.</p>
-</li>
-<li>
-<p>Develop different scenarios to meet the identified organizational requirements.</p>
+<p>Consider promoting Sensor Web Enablement (SWE) standards such as OGC Sensor Observing System and OGC SensorThingsAPI to be considered by the GEO DAB, because both standards appear to be taken up by several Citizen Science projects, but at the moment to write this lines the are not supported by the GEO DAB, so other standards (such as WFS or WMS) need to be implemented in addition to allow harmonized access via the GEOSS Platform.</p>
 </li>
 <li>
 <p>Consider Citizen Science not only as a data source, but also explore the possibilities and use of OCG standards when it comes to the engagement of Citizen Scientists as part of data validation.</p>
 </li>
 <li>
-<p>Also consider Citizen Science as part of the processing capacity, collective intelligence, data cubes, relationship to WPS and work on Artificial Intelligence, etc.</p>
-</li>
-<li>
-<p>While focusing on the connection to GEOSS here, we should also investigate how this work related to the provision of metadata for ‘flat’ online searches and the accessibility to automatic web crawlers. We might want to address both in a single go. If we will work towards intermediate organizational structures the help the Citizen Science community in using OGC standards and the GEOSS Platform for improved data policies and management, can these intermediaries – and the tools and services they provide – also automatically cover these complementary needs?</p>
+<p>Also consider Citizen Science as part of the processing capacity, collective intelligence, data cubes, relationship to Web Processing Service (WPS), work on Artificial Intelligence, etc.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="AbstractTestSuite"><a class="anchor" href="#AbstractTestSuite"></a>Appendix A: Abstract Test Suite</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>An Abstract Test Suite may be relevant to an Engineering Report.</p>
+<p>While focusing on the connection to GEOSS here, we should also investigate how this work related to the provision of metadata for ‘flat’ online searches (e.g. Google search) and the accessibility to automatic web crawlers. We might want to address both in a single go. If we will work towards intermediate organizational structures the help the Citizen Science community in using OGC standards and the GEOSS Platform for improved data policies and management, can these intermediaries – and the tools and services they provide – also automatically cover these complementary needs?</p>
 </div>
+<div class="sect3">
+<h4 id="GEO-privacy"><a class="anchor" href="#GEO-privacy"></a>12.4.1. Citizen privacy and protection</h4>
 <div class="paragraph">
-<p>An Abstract Test Suite is specified in Clause 9 and Annex A of ISO 19105. That Clause and Annex specify the ISO/TC 211 requirements for Abstract Test Suites. Examples of Abstract Test Suites are available in an annex of most ISO 191XX documents, one of the more useful is in ISO 19136. Note that this guidance may be more abstract than needed in an OGC® Implementation Standard.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. A.1.1	Conformance level 1</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test identifier</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">/test/case/id</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test purpose:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Confirm that the IUT satisfies all applicable requirements for conformance level 1.</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test method:</p></th>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Functional testing performed in an automated and/or manual manner. Verify the behaviour of the IUT for the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>GetCapabilities (mandatory)</p>
-</li>
-<li>
-<p>DescribeRecord (mandatory)</p>
-</li>
-<li>
-<p>GetRecords (mandatory)</p>
-</li>
-<li>
-<p>GetRecordById (mandatory)</p>
-</li>
-<li>
-<p>GetRepositoryItem (mandatory)</p>
-</li>
-<li>
-<p>GetDomain (optional)</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Requirement:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OGC 07-110: cl. 2.2</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test type:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Capability</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. A.1.2	Test case for validity of XML response entity</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test identifier</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.opengis.net/spec/xxx/conf/WRS.General-ValidResponse" class="bare">http://www.opengis.net/spec/xxx/conf/WRS.General-ValidResponse</a></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test purpose:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The XML response entity is valid.</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test method:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Validate content of response entity against corresponding element declaration.</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Requirement:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OGC 07-006r1: cl. 10.2.5.1, p. 118</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test type:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Capability</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. A.2.1	Conformance level 2</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test identifier</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">/test/case/id</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test purpose:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Confirm that the IUT satisfies all applicable requirements for conformance level 1.</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test method:</p></th>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Functional testing performed in an automated and/or manual manner. Verify the behaviour of the IUT for the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>GetCapabilities (mandatory)</p>
-</li>
-<li>
-<p>DescribeRecord (mandatory)</p>
-</li>
-<li>
-<p>GetRecords (mandatory)</p>
-</li>
-<li>
-<p>GetRecordById (mandatory)</p>
-</li>
-<li>
-<p>GetRepositoryItem (mandatory)</p>
-</li>
-<li>
-<p>GetDomain (optional)</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Requirement:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OGC 07-110: cl. 2.2</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test type:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Capability</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. A.2.2	Test case for validity of XML response entity</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test identifier</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.opengis.net/spec/xxx/conf/WRS.General-ValidResponse" class="bare">http://www.opengis.net/spec/xxx/conf/WRS.General-ValidResponse</a></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test purpose:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The XML response entity is valid.</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test method:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Validate content of response entity against corresponding element declaration.</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Requirement:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OGC 07-006r1: cl. 10.2.5.1, p. 118</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">Test type:</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Capability</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="XMLSchemaDocuments"><a class="anchor" href="#XMLSchemaDocuments"></a>Appendix B: XML Schema Documents</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>XML Schema Documents may be relevant to an Engineering Report.</p>
+<p>The aspect of citizen privacy and personal data protection is a serious issue that should not be undermined. There has been recent examples of commercial companies using social media companies personal data and citizen profiles for unethical purposes of for their own profit. In extreme cases companies business model was based on collecting, and integrating personal data of their users to then sell to third parties personalized databases and services for commercial or political targeting. Accidentally allowing citizen science data to be gathered by these platforms, thus opening the door to their use of the personal data of those who have collected the data and those who use them, without their consent. This is clearly against the data protection regulations in Europe and other areas in some but still done by some if technically possible.</p>
 </div>
 <div class="paragraph">
-<p>The term “XML schema“ means all the XML schema parts having the same XML namespace, usually separated into multiple XML Schema Document files (with the file type “.xsd“. The XML schema parts in one XML namespace are usually separated into multiple XML Schema Documents to ease human understanding.</p>
+<p>This important issue needs to be addressed by the individual citizen science projects the emerging federations and the GEOSS platform at large. This is a real problem that should be included in an GEO architecture ensuring a good balance between the necessary anonymity of the citizens personal data as well as the acknowledgement of their individual contributions when participating in the Citizen Science activities. The proposed federation discussed in the <a href="#SSO">User authentication and applications federation</a> has an embedded component taking care of this aspect (see  <a href="#SSOLevelsOfPrivacy">Five levels of personal information in the federation</a>) with two levels that ensure absolute privacy while other levels allow for some degree of acknowledgement and recognition. This needs to be complemented with the way  hosts, manage and own data</p>
 </div>
 <div class="paragraph">
-<p>In addition to this document, this report includes several XML Schema Documents. These XML Schema Documents are bundled in a zip file with the present document.</p>
+<p>It is our responsibility to raise this issues within the GEO community and find the right solution that will probably require a composition of technical, management and legal aspects.</p>
 </div>
-<div class="paragraph">
-<p>The TBD abilities now specified in this document use TBD specified XML Schema Documents included in the zip file with this document. These XML Schema Documents combine the XML schema fragments listed in various subclauses of this document, eliminating duplications.</p>
-</div>
-<div class="paragraph">
-<p>These XML Schema Documents roughly match the TBD UML packages described in Annex B, and are named:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>TBD.xsd
-TBD.xsd</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>These XML Schema Documents use and build on the OWS common XML Schema Documents specified [OGC 06-121r3], named:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>ows19115subset.xsd
-owsCommon.xsd
-owsDataIdentification.xsd
-owsExceptionReport.xsd
-owsGetCapabilities.xsd
-owsOperationsMetadata.xsd
-owsServiceIdentification.xsd
-owsServiceProvider.xsd</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>All these XML Schema Documents contain documentation of the meaning of each element and attribute, and this documentation shall be considered normative as specified in Subclause 11.6.3 of [OGC 06-121r9].</p>
-</div>
-<div class="listingblock">
-<div class="title">GetCapabilities.xsd</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;ows:Operation</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">GetCapabilities</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;ows:DCP&gt;</span>
-    <span class="tag">&lt;ows:HTTP&gt;</span>
-      <span class="tag">&lt;ows:Post</span> <span class="attribute-name">xlink:href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.net/?</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;ows:Constraint</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">PostEncoding</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-          <span class="tag">&lt;allowedValues&gt;</span>
-            <span class="tag">&lt;ows:Value&gt;</span>SOAP<span class="tag">&lt;/ows:Value&gt;</span>
-          <span class="tag">&lt;/ows:AllowedValues&gt;</span>
-        <span class="tag">&lt;/ows:Constraint&gt;</span>
-      <span class="tag">&lt;/ows:Post&gt;</span>
-    <span class="tag">&lt;/ows:HTTP&gt;</span>
-  <span class="tag">&lt;/ows:DCP&gt;</span>
-<span class="tag">&lt;/ows:Operation&gt;</span>
-<span class="tag">&lt;ows:Operation</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">GetTile</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;ows:DCP&gt;</span>
-    <span class="tag">&lt;ows:HTTP&gt;</span>
-      <span class="tag">&lt;ows:Post</span> <span class="attribute-name">xlink:href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.net/?</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;ows:Constraint</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">PostEncoding</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-          <span class="tag">&lt;ows:AllowedValues&gt;</span>
-            <span class="tag">&lt;ows:Value&gt;</span>SOAP<span class="tag">&lt;/ows:Value&gt;</span>
-          <span class="tag">&lt;/ows:AllowedValues&gt;</span>
-        <span class="tag">&lt;/ows:Constraint&gt;</span>
-      <span class="tag">&lt;/ows:Post&gt;</span>
-    <span class="tag">&lt;/ows:HTTP&gt;</span>
-  <span class="tag">&lt;/ows:DCP&gt;</span>
-<span class="tag">&lt;/ows:Operation&gt;</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="UMLModel"><a class="anchor" href="#UMLModel"></a>Appendix C: UML model</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A UML model may be relevant to an Engineering Report. This template thus includes this annex as the place for recording this UML model.</p>
-</div>
-<div class="paragraph">
-<p>Instructions and guidelines on the usage of UML models are provided in OGC document <a href="https://portal.opengeospatial.org/files/?artifact_id=38867"> OGC-121r9</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="RevisionHistory"><a class="anchor" href="#RevisionHistory"></a>Appendix D: Revision History</h2>
+<h2 id="RevisionHistory"><a class="anchor" href="#RevisionHistory"></a>Appendix A: Revision History</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all" style="width: 90%;">
-<caption class="title">Table 7. Revision History</caption>
+<caption class="title">Table 3. Revision History</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2782,18 +2786,10 @@ owsServiceProvider.xsd</pre>
 </table>
 </div>
 </div>
-<div class="sect1">
-<h2 id="Bibliography"><a class="anchor" href="#Bibliography"></a>Appendix E: Bibliography</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>OGC 17-019 OGC Testbed-13 MapML ER</p>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-04 20:20:31 +0100
+Last updated 2019-11-06 21:10:47 +0100
 </div>
 </div>
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">

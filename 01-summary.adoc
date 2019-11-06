@@ -1,13 +1,9 @@
 == Summary
-TBD
+This Engineering report describes the first phase of the citizen science Interoperability experiment organized by the EU H2020 WeObserve project under the OGC innovation program and supported by the EU H2020 NEXTGEOSS project. The activity covered aspects of data sharing architectures for citizen science data, data quality, data definitions and user authentication.
 
-(( The Summary clause shall define without ambiguity the subject of this document and the aspect(s) covered. It shall be succinct so that it can be used as a text for bibliographic purposes. Briefly, it shall contain the key results of the work described in the ER. ))
+The final aim was to propose solutions on how Citizen Science data could be integrated in the Global Earth Observation System of Systems (GEOSS). The solution is necessarily a combination of technical and networking components, being the first ones the focus of this work. The applications of international geospatial standards in current citizen science and citizen observatory projects to improve interoperability and foster innovation is one of the main tasks in during the experiment to achieve the final aim.
 
-(( The summary shall further contain a business value statement that should describe the value of this Engineering Report to improve interoperability, advance location-based technologies or realize innovations. ))
-
-(( The summary shall contain the key findings in a concise form. A more detailed description of the findings should be in the body of the report. ))
-
-(( This section shall be between 2-3 paragraphs and not longer than 507 words.))
+The main results of the activity was to demonstrate that Sensor Observing Services can be used for citizen science data (as proposed in the OGC SWE4CS discussion paper) by implementing it in several clients and server that has been combined to show Citizen Science observations. In addition an authentication server was used to create a federation between three projects. This federated approach is part of the proposed solution for GEOSS that can be found in the last chapter. Many open issues has been identified and are expected to be addressed in the second phase of the experiment, including the use of a definitions server.
 
 === Requirements & Research Motivation
 This experiment was designed to demonstrate how current ICT-based tools can be applied together to allow better citizen participation in CS projects and enable better reuse of the data gathered. Citizen Science is highly transdisciplinary and heterogeneous by nature, and current standardization efforts already occur in the OGC (e.g. addressing data model and sharing issues) as well as outside the OGC (primarily addressing project descriptions and data set metadata). Citizen Science projects might benefit from concrete examples  and best practices  required to achieve the full benefits of interoperability. OGC is in the ideal position to develop and provide such best practice guidance to the international community. Developed solutions in this IE should be applicable to most Citizen Science projects. Findings from this IE will be generalized in this manner and might set the basis for additional experimentation in the future.
@@ -23,7 +19,9 @@ In anticipation of the 50th Anniversary of Earth Day in 2020, Earth Day Network,
 (( A precise descriptions of the requirements that have been addressed by the work documented in this Engineering Report; together with the research motivation that answers the fundamental question: What motivated us to address this topic in this report? ))
 
 === Prior-After Comparison
-(( This section shall provide a prior-after comparison. It describes the situation/status of discussion in the OGC working groups being most relevant for the addressed topic. This part is reviewed in close detail by the appropriate SWG/DWG to ensure that the latest developments have been considered. The section will be complemented at the end of the initiative by comparing the results documented in the ER with the original situation. ))
+This is the first Citizen Science interoperability experiment conducted by the OGC. Prior to this activity there was a proposed discussion paper on how to apply the SWE standards in Citizen Science (SWE4CS). This experiment positively tested the proposed route using Sensor Observing Services but also has open the door to future exploration fo SensorThings API.
+Prior this activity there was a H2020 project with a Authentication Service and after the activity three H2020 formed a bigger federation demonstrating the route to federating and aggregating Citizen Science projects to contribute to GEO objectives.
+This work is relevant to the OGC Citizen Science Domain Working Group.
 
 === Recommendations for Future Work
 This OGC Interoperability Experiment ended on June 2019, but a second IE is foreseen for next year.
@@ -51,13 +49,26 @@ All questions regarding this document should be directed to the editor or the co
 [width="80%",options="header",caption=""]
 |====================
 |Name |Organization
-|Joan Maso | CREAF
+|Joan Maso | UAB-CREAF
 |Andy Cobley | University of Dundee
 |Valantis Tsiakos | Institute of Communication & Computer Systems (ICCS)
 |Simon Jirka | 52 North
 |Sven Shade | Joint Research Center
 |====================
 
+*Initiators*
+[width="50%",options="header",caption=""]
+|====================
+|Organization
+|Universtat Autònoma de Barcelona - CREAF (UAB-CREAF)
+|International Institute for Applied Systems Analysis (IIASA)
+|Joint Research Center (JRC)
+|European Space Agency (ESA)
+|Woodrow Wilson International Center for Scholars (Wilson Center)
+|====================
+
+The WeObserve project has received funding from the European Union’s Horizon 2020 Research and Innovation Programme under grant agreement No. 776740.
+This presentation reflects only the author's views and the EU Agency is not responsible for any use that may be made of the information it contains.
 
 // *****************************************************************************
 // Editors please do not change the Foreword.
