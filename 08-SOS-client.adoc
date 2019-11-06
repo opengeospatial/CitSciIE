@@ -3,10 +3,14 @@
 In this chapter we describe three SOS integrated clients tested in the Interoperability Experiment.
 
 === Grow Client
+The GROW client is a demonstrator application showing the how data sources can be combined in a tabular data warehouse and off the shelf visualisation tools can be used to create rich visualisations.  In the case of this demomnstrator, Microsoft's PowerBi was used although commercial tools such as Tableau, Spotfire can be used.  In addition, free tools such as Grafana, Rawgraphs or Apache Superset can of course be used.
 
+The diagram below shows a typical output using PowerBi, showing GROW sensor locations combined with Airhack sensor locations.
 [#img-AndyClient,reftext='{figure-caption} {counter:figure-num}']]
 .Andy SOS Client
 image::images/AndyClient.png[Andy SOS Client]
+
+
 
 === MiraMon Client
 The MiraMon map Browser is a long term developing effort to create a visualization, analysis and download tool that runs in modern web browsers. Only based on HTML5 and JavaScript it uses Open Geospatial Consortium web service protocols to connect to web services and show the information to the user. The objective of the development is to assign to web browser and the JavaScript engine as much work as possible, limiting interactions to the server to the minimum possible and the transfer of information to a format that is as raw as possible. This approach can be surprising, these days were many application prefer to perform processing functionalities in the cloud and not by the client machine. Most of the time, the MiraMon map Browser is the direct responsible to create the visualization on the flight based on the raw data, allowing the user to change visualization properties, perform analysis, statistics or build time series in the client side directly. In the <<DataQuality>> section we will show how the same principle can be used to compute overall data set quality can be computed on the flight too.
