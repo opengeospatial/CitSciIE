@@ -3,13 +3,25 @@
 In this chapter we describe three SOS integrated clients tested in the Interoperability Experiment.
 
 === Grow Client
-The GROW client is a demonstrator application showing the how data sources can be combined in a tabular data warehouse and off the shelf visualisation tools can be used to create rich visualisations.  In the case of this demomnstrator, Microsoft's PowerBi was used although commercial tools such as Tableau, Spotfire can be used.  In addition, free tools such as Grafana, Rawgraphs or Apache Superset can of course be used.
+The GROW client is a demonstrator application showing the how data sources can be combined in a tabular data warehouse and off the shelf visualisation tools can be used to create rich visualisations.  In the case of this demonstrator, Microsoft's PowerBi was used although commercial tools such as Tableau, Spotfire can be used.  In addition, free tools such as Grafana, Rawgraphs or Apache Superset can of course be employed.
 
 The diagram below shows a typical output using PowerBi, showing GROW sensor locations combined with Airhack sensor locations.
 [#img-AndyClient,reftext='{figure-caption} {counter:figure-num}']]
-.Andy SOS Client
+.GROW SOS Client
 image::images/AndyClient.png[Andy SOS Client]
 
+In this application data is pulled from two SOS sources (GROW and AirHack) via a python script, usually overnight.  This data is stored in a tabular data warehouse, in this prototype this is just flat files, however a full scale data warehouse such as Microsoft's Analysis services or a tabular database such as Cassandra could be used.
+Data from the warehouse is pulled nightly into Microsoft's cloud and then published to a web page that makes heavy use of javascript to provide an rich exporable interface.
+
+[#img-GROWSOSFlow,reftext='{figure-caption} {counter:figure-num}']]
+.GROW data follow
+image::images/GROWSOSFlow.png[SOS Client]
+
+This approach can be extended to mix different types of data into one visualisation.  In the figure below gridded data (locations of sensors) is combined with time series data so that the user can explore the data more fully.  In this application when a user click on a sensor, the time series data from that sensor is displayed to the user.   In this case the tool takes the time series data and displays the average, minimum and maximum of the time series data.
+
+[#img-GrowData,reftext='{figure-caption} {counter:figure-num}']]
+.GROW SOS Client data
+image::images/GrowData.png[SOS Client]
 
 
 === MiraMon Client
