@@ -46,7 +46,6 @@ This is the internal format for the small REL5 document necessary to include the
 .Internal format of the DBF and
 ....
 file name: C:\inetpub\SIWeb\gt20\VattenFokus\VattenFokusT.dbf
-[Extended DBF (no dBASE compatible)]
 Last update on: 24-01-2019
 Number of records: 254
 Number of fields per record: 32
@@ -56,38 +55,38 @@ Field characteristics:
 -------------------------------------------------------------------------------------------
 NUM |               NAME |                                       DESCRIPTOR | T | SIZ | REL
 -------------------------------------------------------------------------------------------
-  1 |          ID_GRAFIC |                      Identificador Gràfic intern | N |   3 |
-  2 |            USER_ID |                                          User ID | N |   5 |
-  3 |          SAMPLE_ID |                                        Sample ID | N |   5 |
-  4 |          CREA_DATE |                                    Creation Date | C |  16 |
-  5 |          CHAN_DATE |                                Modification date | C |  16 |
-  6 |         SAMPLEDATE |                                      Sample date | C |  16 |
-  7 |           GROUP_ID |                                         Group ID | C |  34 |
-  8 |          SITE_NAME |                                        Site name | C | 111 |
-  9 |   Sample_date_time |                                 Sample date/time | C |  16 |
- 10 |      N_PARTICIPANT |                     Total number of participants | N |   3 |
- 11 |              NOTES |                                            Notes | C | 276 |
- 12 |         WATER_TYPE |                             Freshwater body type | C |   7 |
- 13 |   OTHER_WATER_TYPE |                       Other freshwater body type | C |  50 |
- 14 |           LAND_USE |           Land use in the immediate surroundings | C |  17 |
- 15 |     OTHER_LAND_USE | Other the land use in the immediate surroundings | C |  84 |
- 16 |          BANK_VEGE |                                  Bank vegetation | C |  36 |
- 17 |    OTHER_BANK_VEGE |                            Other bank vegetation | C |  74 |
- 18 |           ON_WATER |                             On the water surface | C |  30 |
- 19 |      POPUT_SOURCES |  Pollution sources in the immediate surroundings | C |  46 |
- 20 |          WaterUses |                           Evidence of water uses | C |  33 |
- 21 |    OTHER_WATER_USE |                     Other evidence of water uses | C |  10 |
- 22 |       AQUATIC_LIVE |                         Evidence of aquatic life | C |  69 |
- 23 | OTHER_AQUATIC_LIVE |                   Other evidence of aquatic life | C |  38 |
- 24 |              ALGUE |                                   Algae presence | C |  16 |
- 25 |         WATER_FLOW |                         Estimated the water flow | C |   7 |
- 26 |        WATER_LEVEL |                            Estimated water level | C |   7 |
- 27 |            NITRATE |                                          Nitrate | N |   4 |
- 28 |          PHOSPHATE |                                        Phosphate | N |   5 |
- 29 |          TURBIDITY |           Water Quality Secchi Tube (Turbidity). | C |   7 |
- 30 |             RESULT |                                           Result | N |   3 |
- 31 |        WATER_COLOR |                           Estimated water colour | C |  10 |
- 32 |  OTHER_WATER_COLOR |                     Other estimated water colour | C |  43 |
+  1 |          ID_GRAFIC |       Identificador Gràfic ID | N |   3 |
+  2 |            USER_ID |                       User ID | N |   5 |
+  3 |          SAMPLE_ID |                     Sample ID | N |   5 |
+  4 |          CREA_DATE |                 Creation Date | C |  16 |
+  5 |          CHAN_DATE |             Modification date | C |  16 |
+  6 |         SAMPLEDATE |                   Sample date | C |  16 |
+  7 |           GROUP_ID |                      Group ID | C |  34 |
+  8 |          SITE_NAME |                     Site name | C | 111 |
+  9 |   Sample_date_time |              Sample date/time | C |  16 |
+ 10 |      N_PARTICIPANT |  Total number of participants | N |   3 |
+ 11 |              NOTES |                         Notes | C | 276 |
+ 12 |         WATER_TYPE |          Freshwater body type | C |   7 |
+ 13 |   OTHER_WATER_TYPE |    Other freshwater body type | C |  50 |
+ 14 |           LAND_USE |      Land use in surroundings | C |  17 |
+ 15 |     OTHER_LAND_USE | Other land use in surrounding | C |  84 |
+ 16 |          BANK_VEGE |               Bank vegetation | C |  36 |
+ 17 |    OTHER_BANK_VEGE |         Other bank vegetation | C |  74 |
+ 18 |           ON_WATER |          On the water surface | C |  30 |
+ 19 |      POPUT_SOURCES |     Pollution in surroundings | C |  46 |
+ 20 |          WaterUses |        Evidence of water uses | C |  33 |
+ 21 |    OTHER_WATER_USE |  Other evidence of water uses | C |  10 |
+ 22 |       AQUATIC_LIVE |      Evidence of aquatic life | C |  69 |
+ 23 | OTHER_AQUATIC_LIVE |    Other evidence of aq. life | C |  38 |
+ 24 |              ALGUE |                Algae presence | C |  16 |
+ 25 |         WATER_FLOW |      Estimated the water flow | C |   7 |
+ 26 |        WATER_LEVEL |         Estimated water level | C |   7 |
+ 27 |            NITRATE |                       Nitrate | N |   4 |
+ 28 |          PHOSPHATE |                     Phosphate | N |   5 |
+ 29 |          TURBIDITY |       Water Quality Turbidity | C |   7 |
+ 30 |             RESULT |                        Result | N |   3 |
+ 31 |        WATER_COLOR |        Estimated water colour | C |  10 |
+ 32 |  OTHER_WATER_COLOR |  Other estimated water colour | C |  43 |
 ....
 
 .Internal REL5 format to expose a MiraMon topologically structured file as a SOS offering.

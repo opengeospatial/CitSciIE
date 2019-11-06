@@ -55,6 +55,7 @@ All questions regarding this document should be directed to the editor or the co
 |Andy Cobley | University of Dundee
 |Valantis Tsiakos | Institute of Communication & Computer Systems (ICCS)
 |Simon Jirka | 52 North
+|Sven Shade | Joint Research Center
 |====================
 
 

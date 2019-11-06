@@ -14,7 +14,7 @@ The selected cases and its implementation is based on the QualityML vocabulary. 
 ==== How data quality is presented
 Datasets can have precomputed data quality indicators associated. This is part of the metadata of the datasets, but in the map browser it has a prominent place in the _quality_ option in the context menu of the layer name in the legend.
 
-[#img-DQ-compute,reftext='{figure-caption} {counter:figure-num}']]
+[#img-DQ-quality,reftext='{figure-caption} {counter:figure-num}']]
 .Data Quality context menu
 image::images/dq-quality.png[DQ Quality]
 
@@ -153,25 +153,22 @@ image::images/dqr-layer-combination-result.png[DQ Layer combination LUM]
 
 The diagonal values of the matrix (represented in green) correspond to the pixels that have the same value in both maps. The non-diagonal values are the pixels that has different classes in both maps. We can also see some information about the most similar classes (_artificial surfaces_ and _forest and semi natural areas_) as well as the Kappa coefficient that is 0.81 (the closes to 1 the better).
 
-[#img-DQR-confusion matrix-request,reftext='{figure-caption} {counter:figure-num}']]
+[#img-DQR-confusion-matrix-request,reftext='{figure-caption} {counter:figure-num}']]
 .Request for the confusion matrix
-image::images/dqr-confusion matrix-request.png[DQ confusion matrix request]
+image::images/dqr-confusion-matrix-request.png[DQ confusion matrix request]
 
 A manual exploration of the dataset allow to discover a big purple area the is _artificial surfaces_ from the OSM and _forest and semi natural areas_ from the RS map.
 
-dqr-confusion matrix-result.png
 [#img-DQR-confusion-matrix-result,reftext='{figure-caption} {counter:figure-num}']]
 .Request for the confusion matrix result
 image::images/dqr-confusion-matrix-result.png[DQ confusion matrix LUM]
 
-dqr-layer-combination-confusion.png
 [#img-DQR-layer-combination-confusion,reftext='{figure-caption} {counter:figure-num}']]
 .Zoom to an area of discrepancies
 image::images/dqr-layer-combination-confusion.png[DQ confusion zoom LUM]
 
-dqr-layer-combination-confusion-reason.png
 [#img-DQR-layer-combination-confusion-reason,reftext='{figure-caption} {counter:figure-num}']]
-.Reason for te discrepancies
+.Reason for the discrepancies
 image::images/dqr-layer-combination-confusion-reason.png[DQ confusion reason]
 
 The discrepancy makes sense. A big park in the city is identified as artificial in the OSM version that is more focus on land use while is seen as a forest area from remote sensing due to its green land cover.

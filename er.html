@@ -129,7 +129,13 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <li><a href="#_52_north_solution">7.1. 52 North solution</a></li>
 <li><a href="#_istsos">7.2. istSOS</a></li>
 <li><a href="#_miramon_sos">7.3. MiraMon SOS</a></li>
-<li><a href="#_grow_sos">7.4. GROW SOS</a></li>
+<li><a href="#_grow_sos">7.4. GROW SOS</a>
+<ul class="sectlevel3">
+<li><a href="#_getcapabilities">7.4.1. GetCapabilities</a></li>
+<li><a href="#_getobservation">7.4.2. GetObservation</a></li>
+<li><a href="#_getfeatureofinterest">7.4.3. GetFeatureOfInterest</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#SOS_Client">8. SOS clients</a>
@@ -140,8 +146,45 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <li><a href="#_sos_technology_integration_experiments">8.4. SOS Technology Integration Experiments</a></li>
 </ul>
 </li>
-<li><a href="#DataQuality">9. Data quality estimations with SOS</a></li>
-<li><a href="#DefinitionServer">10. Definition Server</a></li>
+<li><a href="#DataQuality">9. Data quality estimations in the client side</a>
+<ul class="sectlevel2">
+<li><a href="#_quality_estimation_on_vector_data">9.1. Quality estimation on vector data</a>
+<ul class="sectlevel3">
+<li><a href="#_how_data_quality_is_presented">9.1.1. How data quality is presented</a></li>
+<li><a href="#_how_to_start_computing_data_quality">9.1.2. How to start computing data quality</a></li>
+<li><a href="#_case_1_positional_accuracy_of_the_layer_from_observation_uncertainties">9.1.3. Case 1: Positional accuracy of the layer from observation uncertainties</a></li>
+<li><a href="#_case_2_logical_consistency_of_the_thematic_attributes">9.1.4. Case 2: Logical consistency of the thematic attributes</a></li>
+<li><a href="#_case_3_temporal_validity_of_the_observation_date">9.1.5. Case 3: Temporal validity of the observation date</a></li>
+<li><a href="#_case_4_validity_of_the_positions_of_observations_by_bounding_box">9.1.6. Case 4: Validity of the positions of observations (by bounding box)</a></li>
+</ul>
+</li>
+<li><a href="#_quality_estimation_on_raster_data">9.2. Quality estimation on raster data</a>
+<ul class="sectlevel3">
+<li><a href="#_confusion_matrix">9.2.1. Confusion matrix</a></li>
+</ul>
+</li>
+<li><a href="#_future_work_2">9.3. Future work</a></li>
+</ul>
+</li>
+<li><a href="#DefinitionServer">10. Definition Server</a>
+<ul class="sectlevel2">
+<li><a href="#_what_the_definition_server_does">10.1. What the definition server does.</a></li>
+<li><a href="#_interoperability_in_the_definition_server">10.2. Interoperability in the definition server</a>
+<ul class="sectlevel3">
+<li><a href="#_content_interoperability">10.2.1. Content interoperability</a></li>
+<li><a href="#_encoding_interoperability">10.2.2. Encoding Interoperability</a></li>
+</ul>
+</li>
+<li><a href="#_using_the_definitions_server">10.3. Using the Definitions Server</a>
+<ul class="sectlevel3">
+<li><a href="#_uri_access">10.3.1. URI access</a></li>
+<li><a href="#_conceptschemes_collections_and_semantics">10.3.2. ConceptSchemes, Collections and Semantics</a></li>
+<li><a href="#_search">10.3.3. Search</a></li>
+<li><a href="#_downloading_data">10.3.4. Downloading Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#SSO">11. User authentication</a></li>
 <li><a href="#CitSciGEOSS">12. Connecting Citizen Science data sets to GEOSS</a>
 <ul class="sectlevel2">
@@ -213,14 +256,18 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <div class="paragraph">
 <p>New possible topics for next IE to be discussed among the members include the following:</p>
 </div>
-<div class="paragraph">
-<p>● There is a need for clarifying how to coordinate infrastructures for citizen science in Europe, and adopt standard procedures for data sharing and single sign on. Solving this issue will help in connecting CitSci to GEO. Steffen Fritz (IIASA) has proposed a side event in the next EuroGEOSS workshop to discuss this with the relevant players. This is emerging as a new activity in the WeObserve Interoperability Community of Practice that is related but not directly connected to the IEs.</p>
-</div>
-<div class="paragraph">
-<p>● The WMO (World Meteorological Organization) is concerned about the amount of different CitSci activities that are being organized by meteorological organizations. It is looking for ways of taking advantage of this new data stream but problems of standardization of what is measured and how data is being shared arise. WMO has detected the potential of these data streams and would like to harmonize the situations to make data more useful for weather predictions in the future.</p>
-</div>
-<div class="paragraph">
-<p>● OGC is promoting a new generation of web services based on OpenAPI. It is unclear how this could impact the use of OGC standards by CitSci projects but it is seen as an opportunity to make OGC standards more usable and compatible with IT mainstream. A hackathon to develop OGC API specifications is organized on June 20-21 in London.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There is a need for clarifying how to coordinate infrastructures for citizen science in Europe, and adopt standard procedures for data sharing and single sign on. Solving this issue will help in connecting CitSci to GEO. Steffen Fritz (IIASA) has proposed a side event in the next EuroGEOSS workshop to discuss this with the relevant players. This is emerging as a new activity in the WeObserve Interoperability Community of Practice that is related but not directly connected to the IEs.</p>
+</li>
+<li>
+<p>The WMO (World Meteorological Organization) is concerned about the amount of different CitSci activities that are being organized by meteorological organizations. It is looking for ways of taking advantage of this new data stream but problems of standardization of what is measured and how data is being shared arise. WMO has detected the potential of these data streams and would like to harmonize the situations to make data more useful for weather predictions in the future.</p>
+</li>
+<li>
+<p>OGC is promoting a new generation of web services based on OpenAPI. It is unclear how this could impact the use of OGC standards by CitSci projects but it is seen as an opportunity to make OGC standards more usable and compatible with IT mainstream. A hackathon to develop OGC API specifications is organized on June 20-21 in London.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The definition of the follow up IE will start in June when the first one will finalize and the ER is produced.</p>
@@ -257,8 +304,20 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <td class="tableblock halign-left valign-top"><p class="tableblock">CREAF</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">contributor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">from org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Andy Cobley</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">University of Dundee</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valantis Tsiakos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Institute of Communication &amp; Computer Systems (ICCS)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Simon Jirka</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">52 North</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sven Shade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joint Research Center</p></td>
 </tr>
 </tbody>
 </table>
@@ -1209,21 +1268,365 @@ In this architecture, data is only as up to date as the latest data pull from th
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The URL of the instance used in this IE was: <a href="https://nexos.demo.52north.org/52n-sos-hackair-webapp/service" class="bare">https://nexos.demo.52north.org/52n-sos-hackair-webapp/service</a>.</p>
+</div>
+<div class="paragraph">
+<p>More information about the initiative can be found here: <a href="https://52north.org/software/software-projects/sos/" class="bare">https://52north.org/software/software-projects/sos/</a></p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_istsos"><a class="anchor" href="#_istsos"></a>7.2. istSOS</h3>
 <div class="paragraph">
-<p>Easily manage your sensor network and distribute your data in a standard way
-<a href="http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&amp;request=GetCapabilities&amp;version=1.0.0" class="bare">http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&amp;request=GetCapabilities&amp;version=1.0.0</a></p>
+<p>istSOS (Istituto Scienze della Terra Sensor Observation Service) is an OGC SOS server implementation written in Python. istSOS allows for managing and dispatch observations from monitoring sensors according to the Sensor Observation Service standard.</p>
+</div>
+<div class="paragraph">
+<p>istSOS evolved in time from being a SOS service provider to complete data management system. But the standard does not account for a number of functionalities that were later included in the software. Some of the extending capabilities are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Handle of irregular time series</p>
+</li>
+<li>
+<p>On-the-fly aggregation of observed measures with no-data management.</p>
+</li>
+<li>
+<p>Capability to filter observations based on partial observed property names ( LIKE filtering support).</p>
+</li>
+<li>
+<p>Native support for data validation and data quality index associated with each observation</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The project also provides also a Graphical user Interface that allows for easing the daily operations and a RESTFul Web API for automatizing administration procedures.</p>
+</div>
+<div class="paragraph">
+<p>The URL of the instance used in this IE was: <a href="http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&amp;request=GetCapabilities&amp;version=1.0.0" class="bare">http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&amp;request=GetCapabilities&amp;version=1.0.0</a>
+More information about the initiative can be found here: <a href="http://istsos.org/" class="bare">http://istsos.org/</a></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_miramon_sos"><a class="anchor" href="#_miramon_sos"></a>7.3. MiraMon SOS</h3>
+<div class="paragraph">
+<p>MiraMon Server is a stand alone CGI application that runs on Windows operating systems that can be used in combination with a web server such as Internet Information Server or Apache for Windows. It is the ideal solution for people that already uses MiraMon professional on desktop because it uses the same MiraMon formats in the back-end. MiraMon server is based on the same libraries that are used by MiraMon professional and has the same capabilities in terms of CRS support, interpolation algorithms, MMZX compression etc. One particularity of the software is the internal tiled schema required to serve maps and tiles in a fast an scalable way. MiraMon Server uses OGC web services as a baseline for the interaction to the client. Currently, MiraMon server provides support for the following standards:
+* Web Map Service (all versions)
+* Web Map Tile Service (all versions)
+* Web Coverage Service (version 1.0)
+* Web Feature Service (version 2.0)
+* Web Processing Service (version 1.0)
+* Sensor Observing Service (version 2.0)</p>
+</div>
+<div class="paragraph">
+<p>The Sensor Observing Service capacity is used in tandem with the Web Feature Service and uses the same MiraMon topologically structured formats in the back-end. It has been developed in the Ground Truth 2.0 project to server interoperable data from the Citizen Observatories created during the project. The current implementation is incomplete and only supports GetFeatureOfInterest and GetOBservation operation with limited capabilities. The objective of the minimum capabilities developed was to repont to the requirements of a viewer client needs to represent a map of the features of interest provided by the service and to allow for a query in a point to get more information about the observations there. Each dataset in MiraMon becomes a observedProperty in the SOS service. Each observation is a position in a PNT file that has a DBF record associated that is transformed to a O&amp;M DataRecord automatically. Internally, it is possible to mark field names in the DBF that are associated to concepts in the O&amp;M such as the phenomenon time and the user name.</p>
+</div>
+<div class="paragraph">
+<p>This is the internal format for the small REL5 document necessary to include the extra information that the server requires.</p>
+</div>
+<div class="literalblock">
+<div class="title">Internal format of the DBF and</div>
+<div class="content">
+<pre>file name: C:\inetpub\SIWeb\gt20\VattenFokus\VattenFokusT.dbf
+Last update on: 24-01-2019
+Number of records: 254
+Number of fields per record: 32
+Character set: Windows ANSI (88, 0x58)
 
+Field characteristics:
+-------------------------------------------------------------------------------------------
+NUM |               NAME |                                       DESCRIPTOR | T | SIZ | REL
+-------------------------------------------------------------------------------------------
+  1 |          ID_GRAFIC |       Identificador Gràfic ID | N |   3 |
+  2 |            USER_ID |                       User ID | N |   5 |
+  3 |          SAMPLE_ID |                     Sample ID | N |   5 |
+  4 |          CREA_DATE |                 Creation Date | C |  16 |
+  5 |          CHAN_DATE |             Modification date | C |  16 |
+  6 |         SAMPLEDATE |                   Sample date | C |  16 |
+  7 |           GROUP_ID |                      Group ID | C |  34 |
+  8 |          SITE_NAME |                     Site name | C | 111 |
+  9 |   Sample_date_time |              Sample date/time | C |  16 |
+ 10 |      N_PARTICIPANT |  Total number of participants | N |   3 |
+ 11 |              NOTES |                         Notes | C | 276 |
+ 12 |         WATER_TYPE |          Freshwater body type | C |   7 |
+ 13 |   OTHER_WATER_TYPE |    Other freshwater body type | C |  50 |
+ 14 |           LAND_USE |      Land use in surroundings | C |  17 |
+ 15 |     OTHER_LAND_USE | Other land use in surrounding | C |  84 |
+ 16 |          BANK_VEGE |               Bank vegetation | C |  36 |
+ 17 |    OTHER_BANK_VEGE |         Other bank vegetation | C |  74 |
+ 18 |           ON_WATER |          On the water surface | C |  30 |
+ 19 |      POPUT_SOURCES |     Pollution in surroundings | C |  46 |
+ 20 |          WaterUses |        Evidence of water uses | C |  33 |
+ 21 |    OTHER_WATER_USE |  Other evidence of water uses | C |  10 |
+ 22 |       AQUATIC_LIVE |      Evidence of aquatic life | C |  69 |
+ 23 | OTHER_AQUATIC_LIVE |    Other evidence of aq. life | C |  38 |
+ 24 |              ALGUE |                Algae presence | C |  16 |
+ 25 |         WATER_FLOW |      Estimated the water flow | C |   7 |
+ 26 |        WATER_LEVEL |         Estimated water level | C |   7 |
+ 27 |            NITRATE |                       Nitrate | N |   4 |
+ 28 |          PHOSPHATE |                     Phosphate | N |   5 |
+ 29 |          TURBIDITY |       Water Quality Turbidity | C |   7 |
+ 30 |             RESULT |                        Result | N |   3 |
+ 31 |        WATER_COLOR |        Estimated water colour | C |  10 |
+ 32 |  OTHER_WATER_COLOR |  Other estimated water colour | C |  43 |</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Internal REL5 format to expose a MiraMon topologically structured file as a SOS offering.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ini">[VERSIO]
+Vers=5
+SubVers=0
+
+[GetObservation]
+GetObsservation_Vers=5
+GetOBservation_SubVers=0
+Fitxer=MeetMeeMechelenT.rel
+CampDataHoraFenomen=time_last
+CampNomSensor=street_nam</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Final representation as XML O&amp;M of the same structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="tag">&lt;sos:GetObservationResponse</span> <span class="attribute-name">xmlns:sos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.net/sos/2.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:xlink</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/1999/xlink</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:om</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.net/om/2.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:gml</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.net/gml/3.2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:swe</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.net/swe/2.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;sos:observationData&gt;</span>
+                <span class="tag">&lt;om:OM_Observation</span> <span class="attribute-name">gml:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">vatten-fokus_2_1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;om:type</span> <span class="attribute-name">xlink:href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+                        <span class="tag">&lt;om:procedure</span> <span class="attribute-name">xlink:href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/procedure/22655</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+                        <span class="tag">&lt;om:observedProperty</span> <span class="attribute-name">xlink:href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/observedProperty</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+                        <span class="tag">&lt;om:featureOfInterest</span> <span class="attribute-name">xlink:href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/featureOfInterest/2</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+                        <span class="tag">&lt;om:result</span> <span class="attribute-name">xsi:type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">swe:DataRecordPropertyType</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                <span class="tag">&lt;swe:DataRecord&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SAMPLE_ID</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Quantity</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/variable/SAMPLE_ID</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:uom</span><span class="tag">/&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>45821<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Quantity&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CREA_DATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Creation_Date</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>07/12/2018 17:23<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CHAN_DATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Modification_date</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>07/12/2018 17:23<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SAMPLEDATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Sample_date</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>07/12/2018 15:00<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">GROUP_ID</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Group_ID</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Dunkern, Group ID: 38438<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SITE_NAME</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Site_name</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Dunkershall. V¤gtrumma uppst¤ms.<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Sample_date_time</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Sample_date/time</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>07/12/2018 15:00<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">N_PARTICIPANT</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Quantity</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/variable/N_PARTICIPANT</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:uom</span><span class="tag">/&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>1<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Quantity&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NOTES</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Notes</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>+2 grader C.<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">WATER_TYPE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Freshwater_body_type</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Other<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">OTHER_WATER_TYPE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Other_freshwater_body_type</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Dike<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LAND_USE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Land_use_in_the_immediate_surroundings</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Agriculture<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">OTHER_LAND_USE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Other_the_land_use_in_the_immediate_surroundings</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span><span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">BANK_VEGE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Bank_vegetation</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Grass<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">OTHER_BANK_VEGE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Other_bank_vegetation</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span><span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ON_WATER</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/On_the_water_surface</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>None<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">POPUT_SOURCES</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Pollution_sources_in_the_immediate_surroundings</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Other<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">WaterUses</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Evidence_of_water_uses</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span><span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">OTHER_WATER_USE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Other_evidence_of_water_uses</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span><span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">AQUATIC_LIVE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Evidence_of_aquatic_life</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span><span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">OTHER_AQUATIC_LIVE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Other_evidence_of_aquatic_life</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span><span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ALGUE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Algae_presence</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>No algae<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">WATER_FLOW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Estimated_the_water_flow</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Surging<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">WATER_LEVEL</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Estimated_water_level</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Average<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NITRATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Quantity</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/variable/NITRATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:uom</span><span class="tag">/&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>1.50<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Quantity&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">PHOSPHATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Quantity</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/variable/PHOSPHATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:uom</span><span class="tag">/&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>0.075<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Quantity&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">TURBIDITY</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Water_Quality_Secchi_Tube_(Turbidity).</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span><span class="entity">&amp;lt;</span>14<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">RESULT</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Quantity</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/variable/RESULT</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:uom</span><span class="tag">/&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span><span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Quantity&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">WATER_COLOR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Estimated_water_colour</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span>Colourless<span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                        <span class="tag">&lt;swe:field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">OTHER_WATER_COLOR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;swe:Text</span> <span class="attribute-name">definition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.opengis.uab.cat/vatten-fokus/field/Other_estimated_water_colour</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                        <span class="tag">&lt;swe:value&gt;</span><span class="tag">&lt;/swe:value&gt;</span>
+                                                <span class="tag">&lt;/swe:Text&gt;</span>
+                                        <span class="tag">&lt;/swe:field&gt;</span>
+                                <span class="tag">&lt;/swe:DataRecord&gt;</span>
+                        <span class="tag">&lt;/om:result&gt;</span>
+                <span class="tag">&lt;/om:OM_Observation&gt;</span>
+        <span class="tag">&lt;/sos:observationData&gt;</span>
+...
+<span class="tag">&lt;/sos:GetObservationResponse&gt;</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_grow_sos"><a class="anchor" href="#_grow_sos"></a>7.4. GROW SOS</h3>
-
+<div class="paragraph">
+<p>The GROW SOS service is tightly integrated into the GROW platform based around Hydrologic&#8217;s existing Hydronet 4 platform.  The SOS 2.0 service runs concurrently with the GROW standards API in the HydroNET GROW Server.</p>
+</div>
+<div class="paragraph">
+<p>The service implements two .net packages that disseminate GROW data to the SOS 2.0 standard within the GROW instance of HydroNET 4 Server. A SOS package covers the mapping of SOS 2.0 requests to GROW requests and the mapping of GROW data structures to SOS 2.0 standards. A second package Ogc.Wrapper.Entities contains the SOS 2.0 entity definitions.</p>
+</div>
+<div class="paragraph">
+<p>The Base URL of the GROW SOS 2.0 service:
+<a href="http://grow-beta-api.hydronet.com/api/service/sos" class="bare">http://grow-beta-api.hydronet.com/api/service/sos</a></p>
+</div>
+<div class="paragraph">
+<p>SOS 2.0 knows four core operations: GetCapabilities, DescribeSensor, GetObservation and GetFeatureOfInterest.</p>
+</div>
+<div class="sect3">
+<h4 id="_getcapabilities"><a class="anchor" href="#_getcapabilities"></a>7.4.1. GetCapabilities</h4>
+<div class="paragraph">
+<p>This operation lists all available metadata in the service and provides a detailed list of all other operations that are provided in the service itself. It provides the information you need to execute other operations within the SOS 2.0 effectively.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_getobservation"><a class="anchor" href="#_getobservation"></a>7.4.2. GetObservation</h4>
+<div class="paragraph">
+<p>This operation gives the client access to observation data from sensors. What data is returned is dependent on the parameters you give as a client.</p>
+</div>
+<div class="paragraph">
+<p>The GetObservation operation requires the following parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Procedure: The identifier of the sensor. The procedure can be found in the GetCapabilities response.</p>
+</li>
+<li>
+<p>ObservedProperty: The parameter that you want to query data for. A sensor can provide data for multiple parameters (e.g.: soil moisture, temperature). Which ObservedProperies are available for this sensor can be found in the GetCapabilities response, or the DescribeSensor response of the relevant sensor.</p>
+</li>
+<li>
+<p>TemporalFilter: The timespan for which you want to query data. Datetimes follow the ISO 8601  standard. The full timespan of data that the sensor provides can be found in the GetCapabilities or DescribeSensor (for the relevant sensor) response.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_getfeatureofinterest"><a class="anchor" href="#_getfeatureofinterest"></a>7.4.3. GetFeatureOfInterest</h4>
+<div class="paragraph">
+<p>This operation provides information about features of interest (name, description, coordinates etc.) of a sensor or an observation.</p>
+</div>
+<div class="paragraph">
+<p>The GetFeatureOfInterest operation requires the following parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>procedure:The identifier of the sensor. The procedure can be found in the GetCapabilities response</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The SOS 2.0 service in GROW provides two response types: xml and json. The client can provide ResponseFormat in the parameters to define which response is desired. If no ResponseFormat is given the service returns xml by default.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1244,6 +1647,37 @@ In this architecture, data is only as up to date as the latest data pull from th
 </div>
 <div class="sect2">
 <h3 id="_miramon_client"><a class="anchor" href="#_miramon_client"></a>8.2. MiraMon Client</h3>
+<div class="paragraph">
+<p>The MiraMon map Browser is a long term developing effort to create a visualization, analysis and download tool that runs in modern web browsers. Only based on HTML5 and JavaScript it uses Open Geospatial Consortium web service protocols to connect to web services and show the information to the user. The objective of the development is to assign to web browser and the JavaScript engine as much work as possible, limiting interactions to the server to the minimum possible and the transfer of information to a format that is as raw as possible. This approach can be surprising, these days were many application prefer to perform processing functionalities in the cloud and not by the client machine. Most of the time, the MiraMon map Browser is the direct responsible to create the visualization on the flight based on the raw data, allowing the user to change visualization properties, perform analysis, statistics or build time series in the client side directly. In the <a href="#DataQuality">Data quality estimations in the client side</a> section we will show how the same principle can be used to compute overall data set quality can be computed on the flight too.</p>
+</div>
+<div class="paragraph">
+<p>This are the main functionalities and standards used to achieve them:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Raster visualization and query by location is possible using OGC Web Map Service and Web Map Tile Service.</p>
+</li>
+<li>
+<p>Raster analytics is possible by using the OGC Web Map Service in an special way that transmits binary arrays of values (raw or RLE encoded) instead of pictorial representations. Pixel based analysis is performed directly in JavaScript in the client side and visualized on the flight.</p>
+</li>
+<li>
+<p>Vector visualization and query by location is possible using OGC Web Feature Service and Sensor Observation Service. The client accepts both XML an JSON formats.</p>
+</li>
+<li>
+<p>Data download is limited to the use of Web Coverage Service v.1.0.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Several layers of data coming from different servers and using different protocols can be overlaid simultaneously. Some layers represent data from a single dataset while other can be a virtual datasets computed on the flight for each zoom and pan, and created by combining data form more than one dataset and server.</p>
+</div>
+<div class="paragraph">
+<p>Both WFS and SOS visualization are currently limited to points that are represented in a HTML5 canvas as icons, circles and texts and could be easily extended to lines and polygons in the near future. This functionalities where particularly useful to show occasional observations done by citizens in different places. We where able to show together Ground Truth 2.0 observations with HackAir observations using the SOS protocol directly in XML and in JSON. Some of the visualization functionalities were actually improved during the Interoperability Experiment such as the capability to condition the color of a circle by an attribute (or an observed <em>result</em>) of the feature. This way it was possible to represent the level of concentration of a pollutant as a colored circle using  color code that was represented in the legend.</p>
+</div>
+<div class="paragraph">
+<p>Representing the positions of the observations will only require the GetFeatureOfInterest operation except if the visualization of the feature should depend on the <em>result</em> of the observation. In the later case, a GetObservation is performed and all the information on the features is loaded in the client making query bay location non dependent on the server anymore.</p>
+</div>
 <div id="img-MiraMonClient" class="imageblock">
 <div class="content">
 <img src="images/MiraMonClient.png" alt="MiraMon SOS Client">
@@ -1333,10 +1767,305 @@ In this architecture, data is only as up to date as the latest data pull from th
 </div>
 </div>
 <div class="sect1">
-<h2 id="DataQuality"><a class="anchor" href="#DataQuality"></a>9. Data quality estimations with SOS</h2>
+<h2 id="DataQuality"><a class="anchor" href="#DataQuality"></a>9. Data quality estimations in the client side</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TBD</p>
+<p>One of the main concerns in using and adopting citizen science based data is the quality of observations. Citizen Observatories (and, by extension, Citizen Science) are particularly sensible to data quality because the number of contributors is bigger and more heterogeneous than in a traditional data survey campaign. An additional difficulty is that active Citizen Observatories are receiving continuous inputs and updates from citizens. GroundTruth 2.0 has developed a tool to document well the quality of datasets in order to increase the trust on the information collected by citizens integrated in the MiraMon Map browser.</p>
+</div>
+<div class="paragraph">
+<p>The tool requires that data is exposed in the Web as a service using Sensor Observation Service (SOS). It presents a set of tests like positional accuracy, attribute consistency or confusion matrix that can be applied to a complete dataset or to an area the user is visualizing. Results include an overall quality indicator for the dataset.</p>
+</div>
+<div class="paragraph">
+<p>The Ground Truth 2.0 Data Quality tool uses an interoperable approach based on QualityML that allows to parametrize the different statistics that are used to assess the quality of the data, and it focus on data quality indicators for Citizen Science datasets from the QualityML list. The quality module is encoded in JavaScript and has been made available as part of the web based MiraMon Map Browser (<a href="https://github.com/joanma747/MiraMonMapBrowser" class="bare">https://github.com/joanma747/MiraMonMapBrowser</a>).</p>
+</div>
+<div class="sect2">
+<h3 id="_quality_estimation_on_vector_data"><a class="anchor" href="#_quality_estimation_on_vector_data"></a>9.1. Quality estimation on vector data</h3>
+<div class="paragraph">
+<p>The SOS protocol and the GetObservation operation enables a client to retrieve all the information about the results of the observations. With this data, the client can perform all sorts of analysis on the observations including to apply some quality checks. This section will discuss a pilot that was done in the GroundTruth 2.0 project that demonstrates this capability in some practical cases.</p>
+</div>
+<div class="paragraph">
+<p>The selected cases and its implementation is based on the QualityML vocabulary. The scenario of rapidly growing geodata catalogues requires tools focused on facilitate users the choice of products. QualityML is a dictionary that contains hierarchically structured concepts to precisely define and relate quality levels: from quality classes to quality measurements. This levels are used to encode quality semantics for geospatial data by mapping them to the corresponding metadata schemas. The benefits of having encoded quality semantics, in the case of data producers, are related with improvements in their product discovery and better transmission of their characteristics. In the case of data users, they would better compare quality and uncertainty measures to take the best selection of data as well as to perform dataset intercomparison. Also it allows other components (such as visualization, discovery, or comparison tools) to be quality-aware and interoperable. On one hand, the QualityML is a profile of the ISO geospatial metadata standards (e.g. ISO 19157) providing a set of rules for precisely documenting quality measure parameters that is structured in 5 levels. On the other hand, QualityML includes semantics and vocabularies for the quality concepts. Whenever possible, it uses statistic expressions from the UncertML dictionary (<a href="http://www.uncertml.org" class="bare">http://www.uncertml.org</a>) encoding. However it also extends UncertML to provide a list of alternative metrics that are commonly used to quantify quality beyond the uncertainty concept.</p>
+</div>
+<div class="sect3">
+<h4 id="_how_data_quality_is_presented"><a class="anchor" href="#_how_data_quality_is_presented"></a>9.1.1. How data quality is presented</h4>
+<div class="paragraph">
+<p>Datasets can have precomputed data quality indicators associated. This is part of the metadata of the datasets, but in the map browser it has a prominent place in the <em>quality</em> option in the context menu of the layer name in the legend.</p>
+</div>
+<div id="img-DQ-quality" class="imageblock">
+<div class="content">
+<img src="images/dq-quality.png" alt="DQ Quality">
+</div>
+<div class="title">Figure 13. Data Quality context menu</div>
+</div>
+<div class="paragraph">
+<p>Data quality indicators are presented following the QualityML model. For a quality class (in the <a href="#img-DQ-indicator-qml">Figure 14</a> "Thematic classification correctness"), there could be one or more quality measures (in the <a href="#img-DQ-indicator-qml">Figure 14</a> "Misclassification"), that are done by applying some metrics (in the <a href="#img-DQ-indicator-qml">Figure 14</a> "MeanAbsolute and StandardDeviation") over a domain (in the first entry of <a href="#img-DQ-indicator-qml">Figure 14</a> "Omission Error" over the categories "water" and "no water")</p>
+</div>
+<div id="img-DQ-indicator-qml" class="imageblock">
+<div class="content">
+<img src="images/dq-indicator-qml.png" alt="DQ Indicator in QualityML">
+</div>
+<div class="title">Figure 14. Data Quality indicators presented following the QualityML data model.</div>
+</div>
+<div class="paragraph">
+<p>Every concept used here is connected to the QualityML vocabulary to know more details about it.</p>
+</div>
+<div id="img-DQ-mean-absolute-qml" class="imageblock">
+<div class="content">
+<img src="images/dq-mean-absolute-qml.png" alt="DQ Indicator in QualityML">
+</div>
+<div class="title">Figure 15. Connection to the QualityML dictionary.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_to_start_computing_data_quality"><a class="anchor" href="#_how_to_start_computing_data_quality"></a>9.1.2. How to start computing data quality</h4>
+<div class="paragraph">
+<p>The MiraMon Map Browser described in the section <a href="#SOS_Client">SOS clients</a> allows for computing some data quality indicators. To start the process, we should select the right option in the context menu by clicking in the layer name in the legend.</p>
+</div>
+<div id="img-DQ-compute" class="imageblock">
+<div class="content">
+<img src="images/dq-compute.png" alt="DQ Compute">
+</div>
+<div class="title">Figure 16. Data Quality compute context menu</div>
+</div>
+<div class="paragraph">
+<p>This option opens a dialog box that offers a short list of four quality indicators that will grow with new tests.</p>
+</div>
+<div id="img-DQ-indicator" class="imageblock">
+<div class="content">
+<img src="images/dq-indicator.png" alt="DQ Indicator">
+</div>
+<div class="title">Figure 17. Data Quality indicator list</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_case_1_positional_accuracy_of_the_layer_from_observation_uncertainties"><a class="anchor" href="#_case_1_positional_accuracy_of_the_layer_from_observation_uncertainties"></a>9.1.3. Case 1: Positional accuracy of the layer from observation uncertainties</h4>
+<div class="paragraph">
+<p>Many citizen Science projects, use a mobile phone to get observations. In this process they use the location capabilities of the phone, including GPS, 3G triangulation, Wify antenna location or IP address registration. Each of this methods has different known positional accuracies and the phone is able to estimate that ad the same time as it estimates the position. In this case we will assume that the individual observations has got a position an some estimation of the positional uncertainty and this are recorded by the service and offered as properties of the observation.</p>
+</div>
+<div class="paragraph">
+<p>To compute this indicator we should select the property associated with the observation that contains the positional uncertainty.</p>
+</div>
+<div id="img-DQ-positional-uncertainty-field" class="imageblock">
+<div class="content">
+<img src="images/dq-positional_uncertainty_field.png" alt="Positional Uncertainty Field">
+</div>
+<div class="title">Figure 18. Selection of the positional uncertainty field</div>
+</div>
+<div class="paragraph">
+<p>The calculated data quality parameter is not shown immediately but added to the previous recorded data quality indicators.</p>
+</div>
+<div id="img-DQ-done" class="imageblock">
+<div class="content">
+<img src="images/dq-done.png" alt="DQ done">
+</div>
+<div class="title">Figure 19. Calculation complete message</div>
+</div>
+<div class="paragraph">
+<p>The result is a quality report that can be found in the <code>quality</code> option in the context menu by clicking in the layer name in the legend.</p>
+</div>
+<div id="img-DQ-positional_accuracy" class="imageblock">
+<div class="content">
+<img src="images/dq-positional_accuracy.png" alt="DQ positional accuracy">
+</div>
+<div class="title">Figure 20. Calculated positional accuracy</div>
+</div>
+<div class="paragraph">
+<p>Several things can be commented here. The first one indicates that the scope is not the full dataset but the view used for calculating the quality indicator: "Dataset fragment of this area: x=[-1.22,4.76], y=[40.36,42.97]". Secondly, the statement reports that not all observations has positional uncertainties: "There are 140 of 254 that does not have uncertainty information". The accuracy is reported as a <em>half-length confidence interval</em> with a confidence <em>level</em> of 0.683. An uncertainty of 180.39m is not particularly good indicating the heterogeneity of the methods used to calculate the positions of the observations, some of the with big uncertainties.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_case_2_logical_consistency_of_the_thematic_attributes"><a class="anchor" href="#_case_2_logical_consistency_of_the_thematic_attributes"></a>9.1.4. Case 2: Logical consistency of the thematic attributes</h4>
+<div class="paragraph">
+<p>Many Citizen Science projects provide the citizens with comprehensive instructions on how to conduct some observational tasks. In some cases observations are limited to a set of possibilities for a list. In cases more complex, once selected an option in the first list, only some values are possible in a second list. Sometimes apps control user inputs preventing citizens to input a value that is not listed in the instructions, but in some cases (such as bulk input form a csv) there might be no controls and unwanted values or incompatible value combinations could end up in the database.</p>
+</div>
+<div class="paragraph">
+<p>In the case of RitmeNatura citizen observatory, we rely on Natusfera software that is designed for biodiversity in general allowing any possible scientific name while RitmeNatura is asking for a limited set of species. Obviously, if nobody filters them, there is a chance that observations report on species not contemplated by the RitmeNatura subset.</p>
+</div>
+<div class="paragraph">
+<p>The logical consistency test can count how many observations are not consistent with a controlled list of possibilities. To compute this indicator we should select the property (or properties) associated with the observation that are affected by a controlled list of possibilities and list the possible combinations of attributes. In this simple case, we will test if the <code>scientific name</code> is compatible with the list of possibilities described in the legend.</p>
+</div>
+<div id="img-DQ-logical-consistency" class="imageblock">
+<div class="content">
+<img src="images/dq-logical-consistency.png" alt="DQ Logical Consistency">
+</div>
+<div class="title">Figure 21. Computation of logical consistency</div>
+</div>
+<div class="paragraph">
+<p>A new quality indicator will be added to the list of quality indicators related to this layer.</p>
+</div>
+<div id="img-DQ-logical-consistency-result" class="imageblock">
+<div class="content">
+<img src="images/dq-logical-consistency-result.png" alt="DQ Logical Consistency Result">
+</div>
+<div class="title">Figure 22. Domain consistency result</div>
+</div>
+<div class="paragraph">
+<p>Only 129 of the 249 species scientific name are consistent with the legend. In addition, 5 observations have no scientific name (probably because the observer did not know it).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_case_3_temporal_validity_of_the_observation_date"><a class="anchor" href="#_case_3_temporal_validity_of_the_observation_date"></a>9.1.5. Case 3: Temporal validity of the observation date</h4>
+<div class="paragraph">
+<p>One very simple quality control that can be performed is to check if the observations has an associated data, if the date is in the right format and if the date is in a range of plausible values.</p>
+</div>
+<div class="paragraph">
+<p>In this example, we test if the observations where done after the year 2000 because we know there should not be observations before this date.</p>
+</div>
+<div id="img-DQ-temporal-validity" class="imageblock">
+<div class="content">
+<img src="images/dq-temporal-validity.png" alt="DQ Temporal Validity">
+</div>
+<div class="title">Figure 23. Computation of temporal validity</div>
+</div>
+<div class="paragraph">
+<p>A new quality indicator will be added to the list of quality indicators related to this layer.</p>
+</div>
+<div id="img-DQ-temporal-validity-result" class="imageblock">
+<div class="content">
+<img src="images/dq-temporal-validity-result.png" alt="DQ Temporal Validity Result">
+</div>
+<div class="title">Figure 24. Temporal validity result</div>
+</div>
+<div class="paragraph">
+<p>In this case we see that all the observations has passed the test.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_case_4_validity_of_the_positions_of_observations_by_bounding_box"><a class="anchor" href="#_case_4_validity_of_the_positions_of_observations_by_bounding_box"></a>9.1.6. Case 4: Validity of the positions of observations (by bounding box)</h4>
+<div class="paragraph">
+<p>One very common mistake in data gathering projects is the presence of observations in places that does not have much sense. Tipical mistakes is swap latitude and longitude values or simply have them in the middle of the Atlantic ocean at the 0,0 position.</p>
+</div>
+<div class="paragraph">
+<p>In this cases we are going to run a test to find how many observations are in the Catalonian bounding box.</p>
+</div>
+<div id="img-DQ-positional-validity" class="imageblock">
+<div class="content">
+<img src="images/dq-position-validity.png" alt="DQ Positional validity">
+</div>
+<div class="title">Figure 25. Computation of positional validity</div>
+</div>
+<div class="paragraph">
+<p>A new quality indicator will be added to the list of quality indicators related to this layer.</p>
+</div>
+<div id="img-DQ-positional-validity-result" class="imageblock">
+<div class="content">
+<img src="images/dq-position-validity-result.png" alt="DQ Positional validity result">
+</div>
+<div class="title">Figure 26. Positional validity result</div>
+</div>
+<div class="paragraph">
+<p>The result identifies 35 observations in this view that are clearly outside the boundaries of Catalonia.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quality_estimation_on_raster_data"><a class="anchor" href="#_quality_estimation_on_raster_data"></a>9.2. Quality estimation on raster data</h3>
+<div class="paragraph">
+<p>As explained before, the WMS protocol can be used to transport binary arrays instead of pictures. During this Interoperability experiment, we have implemented a comparison functionality that can be used to compare two categorical maps with the same legend. This comparison results in a new map with all combinations of the two maps categories allowing us to discover changes in this maps.</p>
+</div>
+<div class="paragraph">
+<p>This can be used to compare maps but also to quality control maps if we assume that one map represents the truth.</p>
+</div>
+<div class="sect3">
+<h4 id="_confusion_matrix"><a class="anchor" href="#_confusion_matrix"></a>9.2.1. Confusion matrix</h4>
+<div class="paragraph">
+<p>In this exercise we will combine one land cover map created from Open Street Map with another one created by remote sensing.</p>
+</div>
+<div id="img-DQR-coimbra" class="imageblock">
+<div class="content">
+<img src="images/dqr-coimbra.png" alt="DQ OSM LUM">
+</div>
+<div class="title">Figure 27. Open street map version of the land use map</div>
+</div>
+<div id="img-DQR-creaf" class="imageblock">
+<div class="content">
+<img src="images/dqr-creaf.png" alt="DQ RS LUM">
+</div>
+<div class="title">Figure 28. Remote sensing version of the land use map</div>
+</div>
+<div id="img-DQR-lum-legend" class="imageblock">
+<div class="content">
+<img src="images/dqr-lum-legend.png" alt="DQ LUM legend">
+</div>
+<div class="title">Figure 29. Land use map legend</div>
+</div>
+<div class="paragraph">
+<p>The process of creating a confusion matrix starts by requesting the combination of both maps in a single layer those pixels will contain classes that are all possible permutations of the legend. In the <a href="#img-DQR-layer-combination">Figure 30</a> the Coimbra version is the one generated from OSM while the CREAF-RS version is the one created by remote sensing. The result of the combination is shown in <a href="#img-DQR-layer-combination">Figure 30</a>. In principle even the number of combinations is 25, there are only 5 many colors present, corresponding to the classes that are the same in both maps.</p>
+</div>
+<div id="img-DQR-layer-combination" class="imageblock">
+<div class="content">
+<img src="images/dqr-layer-combination.png" alt="DQ Layer combination LUM request">
+</div>
+<div class="title">Figure 30. Request for a layer combination of both land use maps</div>
+</div>
+<div class="paragraph">
+<p>Now we can request the confusion matrix as a statistical summary of the combination by selecting the option in the context menu.</p>
+</div>
+<div id="img-DQR-layer-combination-result" class="imageblock">
+<div class="content">
+<img src="images/dqr-layer-combination-result.png" alt="DQ Layer combination LUM">
+</div>
+<div class="title">Figure 31. Layer combination of both land use maps</div>
+</div>
+<div class="paragraph">
+<p>The diagonal values of the matrix (represented in green) correspond to the pixels that have the same value in both maps. The non-diagonal values are the pixels that has different classes in both maps. We can also see some information about the most similar classes (<em>artificial surfaces</em> and <em>forest and semi natural areas</em>) as well as the Kappa coefficient that is 0.81 (the closes to 1 the better).</p>
+</div>
+<div id="img-DQR-confusion-matrix-request" class="imageblock">
+<div class="content">
+<img src="images/dqr-confusion-matrix-request.png" alt="DQ confusion matrix request">
+</div>
+<div class="title">Figure 32. Request for the confusion matrix</div>
+</div>
+<div class="paragraph">
+<p>A manual exploration of the dataset allow to discover a big purple area the is <em>artificial surfaces</em> from the OSM and <em>forest and semi natural areas</em> from the RS map.</p>
+</div>
+<div id="img-DQR-confusion-matrix-result" class="imageblock">
+<div class="content">
+<img src="images/dqr-confusion-matrix-result.png" alt="DQ confusion matrix LUM">
+</div>
+<div class="title">Figure 33. Request for the confusion matrix result</div>
+</div>
+<div id="img-DQR-layer-combination-confusion" class="imageblock">
+<div class="content">
+<img src="images/dqr-layer-combination-confusion.png" alt="DQ confusion zoom LUM">
+</div>
+<div class="title">Figure 34. Zoom to an area of discrepancies</div>
+</div>
+<div id="img-DQR-layer-combination-confusion-reason" class="imageblock">
+<div class="content">
+<img src="images/dqr-layer-combination-confusion-reason.png" alt="DQ confusion reason">
+</div>
+<div class="title">Figure 35. Reason for the discrepancies</div>
+</div>
+<div class="paragraph">
+<p>The discrepancy makes sense. A big park in the city is identified as artificial in the OSM version that is more focus on land use while is seen as a forest area from remote sensing due to its green land cover.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_future_work_2"><a class="anchor" href="#_future_work_2"></a>9.3. Future work</h3>
+<div class="paragraph">
+<p>There are some points the authors of this chapter believe it is worth to develop or explore.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In the implementation of the confusion matrix there is no connection to the QualityML. It should be done.</p>
+</li>
+<li>
+<p>Highlight the observations that were detected as less accurate could be an interesting feature to have.</p>
+</li>
+<li>
+<p>We would like to be able to share the quality assessments with other users. One possibility is usinge the OGC Geospatial user feedback to report data quality assessments and share them with other users. Saving the quality report in the NiMMbus database (www.opengis.uab.cat/nimmbus) implemented in the NextGEOSS project will allow that.</p>
+</li>
+<li>
+<p>The computations done in the MiraMon map browser are just an small subset of the QualityML vocabulary. We would like to extend the implementation to cover a better range of possibilities.</p>
+</li>
+<li>
+<p>QualityML is a vocabulary for data quality. The OGC definitions server presented in <a href="#DefinitionServer">Definition Server</a> is a generic tool to share vocabularies. Translating QualityML into a format that can be ingested by the Definitions Server should be a priority of the next interoperability experiment.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1344,7 +2073,176 @@ In this architecture, data is only as up to date as the latest data pull from th
 <h2 id="DefinitionServer"><a class="anchor" href="#DefinitionServer"></a>10. Definition Server</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TBD: Waiting for writing materials.</p>
+<p>The definition server is service that allows for storing, querying and linking definitions. The definition server provides a common way to resolve terms published by the OGC to get details of definitions (instead of downloading large complex documents in varying formats).</p>
+</div>
+<div class="paragraph">
+<p>Currently the definitions server has a complete set of terms that have been defined by the OGC since the inception of the OGC Naming Authority - which aims to keep all such URL references consistent. In Citizen Science we can find hundreds of projects dealing with similar topics but it is difficult to know if they are collecting variables that can be directly compared. By trying to link to a previous definition on the server they become connected to other projects. By exposing their definitions in the definition server other citizen science projects can reuse the same definitions and methodologies.</p>
+</div>
+<div class="paragraph">
+<p>It has the ability to get machine readable versions of these details (e.g. JSON to allow simple integration of details into Web and mobile applications). It has a flexible capability to cross-link between terms and the ability to use any information model to extend available details. It allows for per-term or as-package download.</p>
+</div>
+<div class="paragraph">
+<p>In this Interoperability Experiment the defintion server was improved and presented by the OGC to the other participants in the IE. As of Nov 2019 he API is undergoing an upgrade to comply with the emerging W3C Recommendation for "Content Negotiation by Profile" [<a href="https://www.w3.org/TR/dx-prof-conneg/" class="bare">https://www.w3.org/TR/dx-prof-conneg/</a>]. In the next phase of the IE, we will test the applicability of the definition server for citizen Science purposes.</p>
+</div>
+<div class="sect2">
+<h3 id="_what_the_definition_server_does"><a class="anchor" href="#_what_the_definition_server_does"></a>10.1. What the definition server does.</h3>
+<div class="paragraph">
+<p>The OGC Definitions Server is a Web accessible source of information about things ("concepts") the OGC defines or that communities ask the OGC to host on their behalf. It applies FAIR principles to the key concepts that underpin interoperability in systems using OGC specifications. These things can be anything that is important in the course of interoperability around spatial information where the OGC plays a role in facilitating common understanding - either through publishing specifications or assisting communities to share related concepts. OGC uses stable web addresses (URIs) to unambiguously identify concepts in its specifications. The Definitions Server makes those URIs "work" - i.e. makes them dereference to a definition that can be used.</p>
+</div>
+<div class="paragraph">
+<p>The OGC Naming Authority manages the Definitions Server to ensure all URIs are stable with transparent governance. These identifiers can thus be safely used in external context. All content is freely available for re-use. Re-use is envisaged largely through the machine-readable versions</p>
+</div>
+<div class="paragraph">
+<p>Examples include the OGC glossary, technical terms from application schemas, for example the HY schema from the <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_HydroFeature" class="bare">https://www.opengis.net/def/appschema/hy_features/hyf/HY_HydroFeature</a> [hydrology domain], or many others.</p>
+</div>
+<div class="paragraph">
+<p>Even though currently a limited search capability is provided, the Definitions Server is implemented using Linked Data principles - so the combination of stable URIs allowing references to be made from outside, and "follow your nose" navigation via links from one concept to related concepts provides enhanced findability.</p>
+</div>
+<div class="paragraph">
+<p>The Definitions Server does not make any assumptions about the client software that may be used now or in the future, other than the use of HTTP protocols. This enhances accessibility for different environments.</p>
+</div>
+<div class="paragraph">
+<p>The "Web-friendly" way of using an identifier (i.e. a URL) to get more information is augmented by "content negotiation" - the Definitions Server can deliver both user friendly Web pages and other forms of resource representations, e.g. JSON-LD or Turtle (TTL).</p>
+</div>
+<div class="paragraph">
+<p><a href="#img-DS_representations">Figure 36</a> shows different views of a resource HY_Feature. The left panel shows an HTML representation, the middle shows the same information using TTL, and the right using JSON. All three representations have the same content, but differ in its serialization/format. This allows both human users to explore the OGC Definition Server, as well as machines to process its content.</p>
+</div>
+<div id="img-DS_representations" class="imageblock">
+<div class="content">
+<img src="images/ds_representations.png" alt="Definition server representations">
+</div>
+<div class="title">Figure 36. Various representations of the same content (fragments, HTML left, TTL middle, JSON right)</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_interoperability_in_the_definition_server"><a class="anchor" href="#_interoperability_in_the_definition_server"></a>10.2. Interoperability in the definition server</h3>
+<div class="paragraph">
+<p>The interoperability of these resources is a key goal. There are several aspects of this handled using different mechanisms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Content model: can the client understand how the data is structured?</p>
+</li>
+<li>
+<p>Encoding: can the client parse the response</p>
+</li>
+<li>
+<p>Interaction: how can a client ask for the form it needs?</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_content_interoperability"><a class="anchor" href="#_content_interoperability"></a>10.2.1. Content interoperability</h4>
+<div class="paragraph">
+<p>The identifiers mentioned above, i.e. the URLs that can deliver content to the user, are termed Concepts and are organized into ConceptSchemes - and Collections. Concept, ConceptScheme, and Collections are defined by SKOS. SKOS, the Simple Knowledge Organization System, is a common data model for sharing and linking knowledge organization systems via the Web. It is a W3C recommendation.</p>
+</div>
+<div class="paragraph">
+<p>So why SKOS? Many knowledge organization systems, such as thesauri, taxonomies, classification schemes and subject heading systems, share an almost similar structure, and are used in almost similar applications. Even though they might even share exact semantics, you need to learn that by explicitly discovering, accessing, and evaluating the content. Without a standardized interface, this endeavor is labor-intensive and can hardly be executed by machines.</p>
+</div>
+<div class="paragraph">
+<p>SKOS captures much of this similarity and makes it explicit. It enables data and technology sharing across diverse applications by providing a lightweight, intuitive language for developing and sharing knowledge. In most cases, existing knowledge can be transformed into SKOS, because the SKOS data model provides a standard, low-cost migration path for porting existing knowledge organization systems.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_encoding_interoperability"><a class="anchor" href="#_encoding_interoperability"></a>10.2.2. Encoding Interoperability</h4>
+<div class="paragraph">
+<p>The Definitions Server currently offers a range of encodings for all terms: 1. HTML 2. JSON (using JSON-LD augmentations to specify URLs ) 3. RDF (as XML,TTL or JSON-LD) 4. Plain text</p>
+</div>
+<div class="paragraph">
+<p>Where applicable certain types of resources are also available in the original or additional formats. For example Application Schemas will be made available as XML schema (XSD) and UML (XMI) forms.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_the_definitions_server"><a class="anchor" href="#_using_the_definitions_server"></a>10.3. Using the Definitions Server</h3>
+<div class="sect3">
+<h4 id="_uri_access"><a class="anchor" href="#_uri_access"></a>10.3.1. URI access</h4>
+<div class="paragraph">
+<p>Access definitions by following any URI supported.</p>
+</div>
+<div class="paragraph">
+<p>The server will respond with a HTTP 303 URI redirect to the current service interface appropriate to the requested profile(view) and format.</p>
+</div>
+<div class="paragraph">
+<p><a href="http://www.opengis.net/def/docs/03-003r10" class="bare">http://www.opengis.net/def/docs/03-003r10</a> ⇒ HTTP 303 Location: <a href="http://defs.opengis.net/elda-common/ogc-def/resource?uri=http://www.opengis.net/def/docs/03-003r10" class="bare">http://defs.opengis.net/elda-common/ogc-def/resource?uri=http://www.opengis.net/def/docs/03-003r10</a></p>
+</div>
+<div class="paragraph">
+<p>(the actual final resource URL may change as we improve the interface - but the original URI will always work)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_conceptschemes_collections_and_semantics"><a class="anchor" href="#_conceptschemes_collections_and_semantics"></a>10.3.2. ConceptSchemes, Collections and Semantics</h4>
+<div class="paragraph">
+<p>Every term belongs to a "ConceptScheme" which will usually be part of the path</p>
+</div>
+<div class="paragraph">
+<p><a href="http://www.opengis.net/def/docs/03-003r10" class="bare">http://www.opengis.net/def/docs/03-003r10</a> skos:inScheme <a href="http://www.opengis.net/def/docs" class="bare">http://www.opengis.net/def/docs</a></p>
+</div>
+<div class="paragraph">
+<p>Each part of the path ending with "/" will represent a Collection that contains a list of members <a href="http://www.opengis.net/def/docs" class="bare">http://www.opengis.net/def/docs</a> policy:collectionView <a href="http://www.opengis.net/def/docs/" class="bare">http://www.opengis.net/def/docs/</a></p>
+</div>
+<div class="paragraph">
+<p>Terms may also a non-overlapping set of broader/narrower relationships, with the top of each hierarchy linked via skos:hasTopConcept from the ConceptScheme</p>
+</div>
+<div class="paragraph">
+<p>This supports the following linkages: 1) ConceptSchemes are the "unit of governance" where metadata and download links for sets of definitions can be accessed 2) Collections are a flexible nested way of listing related subsets of terms - where lists may overlap - but do not state semantic relationships between terms 3) Terms are the basic resources with definitions 4) Terms may be semantically related using broader/narrower and other match (e.g. skos:exactMatch)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_search"><a class="anchor" href="#_search"></a>10.3.3. Search</h4>
+<div class="paragraph">
+<p>A basic search capability is provided via the underlying interface e.g. <a href="http://defs.opengis.net/elda-common/ogc-def/concept?labelcontains=Catchment" class="bare">http://defs.opengis.net/elda-common/ogc-def/concept?labelcontains=Catchment</a></p>
+</div>
+<div id="img-DS_search" class="imageblock">
+<div class="content">
+<img src="images/ds_search.png" alt="Search">
+</div>
+<div class="title">Figure 37. Search option</div>
+</div>
+<div class="paragraph">
+<p>This provides machine readable outputs if requested via the _format parameter or the HTTP Accept: header. <a href="https://defs.opengis.net/elda-common/ogc-def/concept?labelcontains=Catchment&amp;_format=ttl" class="bare">https://defs.opengis.net/elda-common/ogc-def/concept?labelcontains=Catchment&amp;_format=ttl</a></p>
+</div>
+<div class="paragraph">
+<p>Searches may be constrained to a specific concept scheme:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://defs.opengis.net/elda-common/ogc-def/concept?labelcontains=Profile&amp;scheme=http://www.opengis.net/def/docs" class="bare">https://defs.opengis.net/elda-common/ogc-def/concept?labelcontains=Profile&amp;scheme=http://www.opengis.net/def/docs</a></p>
+</div>
+<div class="paragraph">
+<p>(note URL encoding is required for parameters with URI values - browsers tend to do this automatically)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_downloading_data"><a class="anchor" href="#_downloading_data"></a>10.3.4. Downloading Data</h4>
+<div class="paragraph">
+<p>Every term includes a link to an "alternates" view</p>
+</div>
+<div id="img-DS_alternates_link" class="imageblock">
+<div class="content">
+<img src="images/ds_alternates_link.png" alt="Alternates link">
+</div>
+<div class="title">Figure 38. Alternates link</div>
+</div>
+<div class="paragraph">
+<p>(This link can be accessed by qualifying any Definitions Server hosted URIs with _view=alternates or _profile=alternates. A W3C compliant view for the specific concept (not the dataset as a whole) can be accessed with _profile=all ) This view lists available formats for both the individual term and the collection or package that defines it:</p>
+</div>
+<div id="img-DS_alternates" class="imageblock">
+<div class="content">
+<img src="images/ds_alternates.png" alt="Alternates">
+</div>
+<div class="title">Figure 39. Available alternate representations</div>
+</div>
+<div class="paragraph">
+<p>ConceptSchemes offer download options for original sources of definitions - for example an Application Schema will have a download link for the canonical UML model file.</p>
+</div>
+<div class="paragraph">
+<p>Collections allow list of concepts to be downloaded.</p>
+</div>
+<div class="paragraph">
+<p>Concepts allow simple packages of information about the concept itself to be accessed.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1414,7 +2312,7 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/GEOSSYellowPages.png" alt="GEOSS Yellow Pages">
 </div>
-<div class="title">Figure 13. Sketch on registering a single project at the GEOSS Platform</div>
+<div class="title">Figure 40. Sketch on registering a single project at the GEOSS Platform</div>
 </div>
 <div class="paragraph">
 <p>The entry of the Yellow Pages requires information (metadata) such as:</p>
@@ -1445,7 +2343,7 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/GEOSSYellowPagesForm.png" alt="GEOSS Yellow Pages">
 </div>
-<div class="title">Figure 14. Parts of the items asked for when registering in the GEOSS Yellow Pages</div>
+<div class="title">Figure 41. Parts of the items asked for when registering in the GEOSS Yellow Pages</div>
 </div>
 <div class="paragraph">
 <p>Once compiled, the information provided by the Citizen Science project is passed on to the GEO DAB team. Members of this team check the entries and tests, for example, if the provided endpoint actually serves the intended data, if it needed implements the required standards (from the OGC or comparable alternatives) and if it indeed follows the indicated principles and applies the indicated data policy. This testing might entail a dialogue with the registering Citizen Science project in order to make the project’s offer fit to the promises in the entry for the GEOSS Yellow Pages.</p>
@@ -1473,7 +2371,7 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/ScentResourcesAvailableInGEOSSPortal.png" alt="Scent Resources in GEOSS">
 </div>
-<div class="title">Figure 15. Scent resources available in GEOSS portal</div>
+<div class="title">Figure 42. Scent resources available in GEOSS portal</div>
 </div>
 <div class="paragraph">
 <p>Overall, we promote that Citizen Science projects indeed implement the free and open data policy of the GEOSS Data Core, and that all of the GEOSS Data Management Principles are implemented. Furthermore, out of the OGC Citizen Science Domain Working Group (DWG) we offer examples and guidance how this can be realized with OGC standards. However, realistically speaking, and in order to see concrete progress, it appears most feasible that projects first enter what they already support, and at least fulfill the <a href="http://geolabel.info/Discoverable.htm">needs to make their data sets discoverable from within the GEOSS Platform</a> using <a href="http://geolabel.info/Metadata.htm">well-documented metadata</a>, and including <a href="http://geolabel.info/Quality.htm">information about data quality</a>. Following the brokering approach of GEOSS, this entails that the projects provide a minimum of required information, and ideally follow one of the multiple standards that are already supported by GEOSS. If it should not be immediately possible to also provide <a href="http://geolabel.info/DataAccess.htm">one of the multiple options to make data accessible</a> or to provide that data in an <a href="http://www.geolabel.info/Encoding.htm">already recognized encoding</a>, it might still be considered to register a projects and then update the record in the Yellow Pages once the additional functionalities for harmonized data access are put in place by the project.</p>
@@ -1488,7 +2386,7 @@ With our exercise so far, we follow the following overarching principles and car
 <div class="content">
 <img src="images/GEOSSCitSciExplorer.png" alt="Citizen Science Explorer">
 </div>
-<div class="title">Figure 16. Example Citizen Science explorer providing access to 508 different projects (status: 13 June 2019)</div>
+<div class="title">Figure 43. Example Citizen Science explorer providing access to 508 different projects (status: 13 June 2019)</div>
 </div>
 <div class="paragraph">
 <p>It becomes obvious that a case-by-case registration per project (which each might want to register one data set or more) would create a bottle neck towards the GEO DAB and the team that is responsible to evaluate and test entries in the GEOSS Yellow Pages. As a result of our investigations within this Interoperability Experiment, we therefore suggest to elaborate on and develop an intermediate layer that provides the required organizational and technical support to the Citizen Science community so that their data sets become better discoverable, accessible, and potentially more widely used - thereby also amplifying visibility and impact of the individual projects.
@@ -1527,7 +2425,7 @@ In order to move ahead, we identified two main clusters of requirements. On the 
 <div class="content">
 <img src="images/GEOSS_EC2020Gateway.png" alt="GEOSS EC2020 Gateway">
 </div>
-<div class="title">Figure 17. Sketch of a possible connection between EC2020 and the GEOSS Platform (one possible scenario), as an example of a more coordinated structure to make Citizen Science data discoverable and accessible via GEOSS</div>
+<div class="title">Figure 44. Sketch of a possible connection between EC2020 and the GEOSS Platform (one possible scenario), as an example of a more coordinated structure to make Citizen Science data discoverable and accessible via GEOSS</div>
 </div>
 <div class="paragraph">
 <p>On the other hand, and because the offerings made above alone would not be enough to actually advance from the current situation, also the connection to the Citizen Science community deserves dedicated attention. We see, for example, requirements in:
@@ -1847,21 +2745,6 @@ owsServiceProvider.xsd</pre>
 <div class="sect1">
 <h2 id="RevisionHistory"><a class="anchor" href="#RevisionHistory"></a>Appendix D: Revision History</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="title">Example History (Delete this note).</div>
-<div class="paragraph">
-<p>replace below entries as needed</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption class="title">Table 7. Revision History</caption>
 <colgroup>
@@ -1882,39 +2765,18 @@ owsServiceProvider.xsd</pre>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">June 15, 2016</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">I. Simonis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">June 15, 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joan Maso</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">initial version</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">July 22, 2016</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">I. Simonis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">October 6, 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joan Maso</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">.9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">comments integrate</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">September 7, 2016</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S. Simmons</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">preparation for publication</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">March 23, 2017</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">I. Simonis</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">template simplified</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">January 18, 2018</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S. Serich</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">additional guidance to Editors; clean up headings in appendices</p></td>
 </tr>
 </tbody>
 </table>
