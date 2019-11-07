@@ -5,7 +5,8 @@
 .Revision History
 [width="90%",options="header"]
 |====================
-|Date |Editor |Release | Primary clauses modified |Descriptions
-|June 15, 2019 |Joan Maso | .1 |all |initial version
+|Date           |Editor |Release | Primary clauses modified |Descriptions
+|June 15, 2019  |Joan Maso | .1 |all |initial version
 |October 6, 2019 |Joan Maso | .9 |all |preparation for publication
+|November 7, 2019|Andreas Matheus | .10 | section 4 and 11| proof read
 |====================

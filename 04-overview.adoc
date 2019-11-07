@@ -62,10 +62,10 @@ Two quality vocabularies have been detected: an Australian work done by Peter Br
 
 The objective of this activity was to support the Earth Challenge 2020 research questions. The questions were defined during the first month of the experiment and now it is time to analyse them in terms of data needs and thematic vocabularies they are going to use. That is the reason this activity has not resulted in tangible outputs and will be reintroduced in the second interoperability experiment. Details of this development are described in section 9.
 
-*Connection between Landsense federation and JRC user system*
+*Connection between LandSense federation and other user systems*
 
-Andreas Matheus SME (Secure Dimensions) was very active in providing demonstrations and information on how the LandSense federation works and how other projects can be included in the federation and use the single Sign on facility. Unfortunately, no other member of the CoP had the resources to apply the SSO on their services or clients and take advantage of the Andreas offering. The activity resulted in a video demonstrations that are publicly available here: https://portal.opengeospatial.org/files/?artifact_id=81550.
-Section 10 Details the current status of the activity
+Secure Dimensions (Andreas Matheus) was very active in providing demonstrations and information on how the LandSense federation works and how other projects can be included in the federation and use the Single-Sign-On (SSO) facility. Unfortunately, no other member of the CoP had the resources to apply the SSO on their services or clients and take advantage of the LandSense offering. The activity resulted in a video demonstration that is publicly available here: https://portal.opengeospatial.org/files/?artifact_id=81550.
+Section 11 Details the current status of the activity.
 
 *Other*
 
