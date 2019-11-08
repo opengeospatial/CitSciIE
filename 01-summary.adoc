@@ -49,11 +49,12 @@ All questions regarding this document should be directed to the editor or the co
 [width="80%",options="header",caption=""]
 |====================
 |Name |Organization
-|Joan Maso | UAB-CREAF
-|Andy Cobley | University of Dundee
-|Valantis Tsiakos | Institute of Communication & Computer Systems (ICCS)
-|Simon Jirka | 52 North
-|Sven Shade | Joint Research Center
+|Joan Maso |UAB-CREAF
+|Andy Cobley |University of Dundee
+|Valantis Tsiakos |Institute of Communication & Computer Systems (ICCS)
+|Simon Jirka |52 North
+|Sven Shade |European Commission, Joint Research Center (JRC)
+|Andreas Matheus |Secure Dimensions
 |====================
 
 *Initiators*

@@ -33,7 +33,7 @@ During the Kick off meeting of the Experiment the following subgroups emerged:
 ** Working item D.1: A set of instructions on how a CS project can easily setup an SOS service. It could include 52North implementation and might include MiraMon SOS (with some work in the implementation). It should address the case of a small project contributing to the Earth Challenge 2020.
 ** Working item D.2: Create an SOS endpoint for HackAir data with minimum resources
 ** Working item D.3: Define the requirements for a data provider that could assist Wilson Center in setting up the challenge database. It should consider upload of data into the system. It seemed to go for a harvest system instead of a federated system. It could describe a possible architecture to allow the dialog between the central database and the small contributing projects. It should impose data sharing requirements (services o APIs) on the central database.
-* S: Connection between Landsense federation and JRC user system.
+* S: Connection between LandSense federation and JRC user system.
 ** Working item S.1: Interoperability test on the integration of LS-SSO and JRC-SSO
 * Q: Data quality
 ** Working item Q.1: Write a document on perspectives of the different quality aspects: Quality assessment (ISO 19157-QualityML), Quality improvement, Quality plan, Data Management principles (ISO 8001), Quality documentation, Quality communication
