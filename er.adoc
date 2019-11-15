@@ -1,4 +1,4 @@
-
+﻿
 // *****************************************************************************
 // Editors: For background information, please visit the OGC ER process page at
 // "https://portal.opengeospatial.org/files/?artifact_id=73351".
@@ -119,29 +119,35 @@ Title: {titletext}
 // Editors please do not alter these first several included-file inputs.
 // *****************************************************************************
 
-include::0-preface.adoc[]
+include::00-preface.adoc[]
 
-include::1-summary.adoc[]
+include::01-summary.adoc[]
 
-include::2-references.adoc[]
+include::02-references.adoc[]
 
-include::3-terms.adoc[]
+include::03-terms.adoc[]
 
-include::4-overview.adoc[]
+include::04-overview.adoc[]
 
 // *****************************************************************************
 // Editors organize included-file inputs as appropriate starting here.
 // *****************************************************************************
 
-include::5-apply-OandM.adoc[]
+include::05-apply-OandM.adoc[]
 
-include::6-setup-SOS.adoc[]
+include::06-SOS-architechture.adoc[]
 
-include::7-SOS-client.adoc[]
+include::07-SOS-server.adoc[]
 
-include::8-data-quality-with-SOS.adoc[]
+include::08-SOS-client.adoc[]
 
-include::9-CitSciGEOSS.adoc[]
+include::09-data-quality-with-SOS.adoc[]
+
+include::10-vocabularies.adoc[]
+
+include::11-SSO.adoc[]
+
+include::12-CitSci-GEOSS.adoc[]
 
 // you may add any number of chapters as required here
 
@@ -149,11 +155,11 @@ include::9-CitSciGEOSS.adoc[]
 // Editors add or remove annexes as necessary.
 // *****************************************************************************
 
-include::annex-a.adoc[]
+//include::annex-a.adoc[]
 
-include::annex-b.adoc[]
+//include::annex-b.adoc[]
 
-include::annex-c.adoc[]
+//include::annex-c.adoc[]
 
 // *****************************************************************************
 // Revision History should be the last annex before the Bibliography.
@@ -162,7 +168,7 @@ include::annex-c.adoc[]
 
 include::annex-history.adoc[]
 
-include::annex-bibliography.adoc[]
+//include::annex-bibliography.adoc[]
 
 // *****************************************************************************
 // Editors please proceed to edit the content of 2-references.adoc[],
