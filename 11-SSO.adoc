@@ -3,7 +3,7 @@
 
 In the Interoperability experiment, we experimented with the federated identity provider developed in the project H2020 LandSense as Authorization Server that enables a federation of applications with user Single-Sign-On.
 
-The Landsense project contributed the Engagement Platform (https://lep.landsense.eu/Project/LEP), the H2020 Scent project contributed the Scent Harmonisation Platform Visualisation Site (https://scent-harm.iccs.gr/) and the H2020 NextGEOSS contributed the NiMMbus Geospatial user feedback system (https://www.opengis.uab.cat/nimmbus/). The three platforms were able to work together and use the LandSense Authorization Server to authenticate users and create a Single-Sign-On experience. From the user perspective, once logged in one of the three platforms it can use the other two in a transparent way without having to authenticate again.
+The Landsense project contributed the Engagement Platform (https://lep.landsense.eu/Project/LEP), the H2020 Scent project contributed the Scent Harmonisation Platform Visualisation Site (https://scent-harm.iccs.gr/) as well as the Scent Explore and Measure mobile applications (https://scent-project.eu/scent-toolbox) and the H2020 NextGEOSS contributed the NiMMbus Geospatial user feedback system (https://www.opengis.uab.cat/nimmbus/). The abovementioned platforms and applications were able to work together and use the LandSense Authorization Server to authenticate users and create a Single-Sign-On experience. From the user perspective, once logged in one of the platforms it can use the other two in a transparent way without having to authenticate again.
 
 [#img-federation-diagram,reftext='{figure-caption} {counter:figure-num}']]
 .Federation diagram
@@ -21,7 +21,7 @@ The LandSense Authorization Server acts as a GDPR compliant broker between the p
 
 [[SSOLevelsOfPrivacy]]
 ==== Levels of personal information
-*AUTH*: Any application that is registered with this level must not be GDPR compliant, as there is no information about the user other than “yes we know that you have successfully logged in with one of the trusted IdPs). After login with Level AUTH the user will not see any personal information. 
+*AUTH*: Any application that is registered with this level must not be GDPR compliant, as there is no information about the user other than “yes we know that you have successfully logged in with one of the trusted IdPs). After login with Level AUTH the user will not see any personal information.
 
 An example application could be a simple geo-fencing service where there only is polygons in and out.
 
@@ -30,7 +30,7 @@ Any application that is registered with this level will receive a cryptoname for
 
 The cryptoname is not stored at the Authorization Server which ensures that no personal information can be obtained based on the single possession of the cryptoname. This allows applications to cluster (group) user contributions without knowing the real identity of the user. Because of that, any registered application processing just the cryptoname must not be GDPR compliant.  After login with Level CRYPTONAME you will see your cryptoname as value of the personal claim “sub”.
 
-An example API registered with this level could generate quality indexes on citizen science contributions based on user contributions stored at participating Resource Servers without knowing the actual identity of the original user(s). Even though a Resource Server stores more personal information, only the cryptoname would be released (with the actual data), as the level(s) can be verified with the Authorization Server. 
+An example API registered with this level could generate quality indexes on citizen science contributions based on user contributions stored at participating Resource Servers without knowing the actual identity of the original user(s). Even though a Resource Server stores more personal information, only the cryptoname would be released (with the actual data), as the level(s) can be verified with the Authorization Server.
 
 *SAML*:
 This level allows the registered application to obtain metadata about the Identity Provider, the user has used to login:  country, federation identifier, and name of the federation the IdP is registered with. This level can used as an add-on for the levels PROFILE and EMAIL.
@@ -66,14 +66,37 @@ Scent Harmonisation Platform Visualisation Site (https://scent-harm.iccs.gr/) is
 
 The Visualisation site constitutes a custom innovative application that exposes the resources made available from the Scent Harmonisation Platform. The application conforms to OGC SensorThings API standard and it consists of the following main characteristics:
 
-* User-friendly interfaces enabling both time-series analysis and spatial representation of SensorThings API resources with support to time-series analysis, metadata and visualisation and a dashboard.
-* An interactive campaign dashboard that enables the spatial visualisation and graphic representation of the images of Land Cover/ Land Use elements that have been collected from the volunteers
+* User-friendly interfaces enabling both time-series analysis and spatial representation of SensorThings API resources including graphical visualisations with filtering capabilities per observed phenomenon and sensor as well as low-level interaction with the Harmonisation Platform SensorThings driven schema.
+* An interactive campaign dashboard that enables the spatial visualisation and graphic representation of the images of Land Cover/ Land Use elements that have been collected from the volunteers in the context of the project's citizen science campaigns.
 
 Scent Harmonisation Platform manages a variety of citizen-generated data as well as environmental data that has been collected through in-situ monitoring stations in Kifisos river basin, Attica, Greece. All the data are being maintained and have been structured according to widely accepted standards, such as the Open Geospatial Consortium (OGC) in order to be compliant with open and unified frameworks (such as SensorThings API).
+
+Details regarding the integration of Scent Harmonisation Platform Visualisation Site with LandSense authorisation server are provided in Annex D.
 
 [#img-Scent-Harmonization-Platform-Login,reftext='{figure-caption} {counter:figure-num}']]
 .Scent Harmonization Platform Login
 image::images/ScentHarmonizationPlatform.png[Scent Harmonization Platform]
+
+=== Scent Explore
+Scent Explore is a mobile application that enables citizens to capture environmental related information. It provides a user-friendly interface through which citizens are guided to areas where essential environmental information is needed. There, they may collect images of LC/LU elements along with textual descriptions, measure water level and flow velocity and report flood related events like the existence of obstacles in the river, flooded locations, etc. Citizens use the app in a playful way, by discovering and collecting little characters hiding in places around them and thus collecting points.
+
+Details regarding the integration of Scent Explore with LandSense authorisation server are provided in Annex D.
+
+[#img-Scent-Explore-application,reftext='{figure-caption} {counter:figure-num}']]
+.Scent Explore Application Login
+image::images/ScentExplore.png[Scent Explore application]
+
+=== Scent Measure
+Scent Measure is a mobile application that works in tandem with a potable smart sensor (Xiaomi International Version Flower Care Smart Monitor), connected to the user’s mobile device aiming to measure soil conditions. Users can simply insert the sensor into the ground and, select whether to measure and report soil moisture levels and/or air temperature and receive the measurements directly to the app.
+
+It constitutes an Android application that has been developed with Java as it enables easy system modelling and has support for many cross-platform software libraries.
+The Scent Measure application, can be easily modified/adapted to support any kind of smart measuring sensors providing they have a Bluetooth connection interface with the portable devices and Bluetooth support for the messages exchange from the sensor to the portable device.
+
+Details regarding the integration of Scent Measure with LandSense authorisation server are provided in Annex D.
+
+[#img-Scent-Measure-application,reftext='{figure-caption} {counter:figure-num}']]
+.Scent Measure Application Login
+image::images/ScentMeasure.png[Scent Measure application]
 
 === NiMMBus Geospatial User Feedback
 The NiMMBus web portal records geospatial user feedback about existing geospatial resources. The user is able to provide comments, rates, quality reports and publications related to a geospatial resource. It can be used to comment on datasets but also on individual observations. The system allows to creating a citation of an external resource (in an external catalogue or repository) and associate feedback items about it. It builds upon a service developed in the H2020-funded NextGEOSS project. Registered as an Web Browser based application with the LandSense Authorization Server, the application can be used to collect user feedback with resources provided by other Resource Servers (APIs) also registered with the LandSense Authorizaiton Server.
