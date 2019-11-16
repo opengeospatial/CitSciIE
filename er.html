@@ -128,12 +128,13 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <ul class="sectlevel2">
 <li><a href="#_52_north_solution">7.1. 52 North solution</a></li>
 <li><a href="#_istsos">7.2. istSOS</a></li>
-<li><a href="#_miramon_sos">7.3. MiraMon SOS</a></li>
-<li><a href="#_grow_sos">7.4. GROW SOS</a>
+<li><a href="#_comparison_of_52_north_sos_and_istsos_implementations">7.3. Comparison of 52 North SOS and istSOS implementations</a></li>
+<li><a href="#_miramon_sos_server">7.4. MiraMon SOS Server</a></li>
+<li><a href="#_grow_sos_server_implementation">7.5. GROW SOS server implementation</a>
 <ul class="sectlevel3">
-<li><a href="#_getcapabilities">7.4.1. GetCapabilities</a></li>
-<li><a href="#_getobservation">7.4.2. GetObservation</a></li>
-<li><a href="#_getfeatureofinterest">7.4.3. GetFeatureOfInterest</a></li>
+<li><a href="#_getcapabilities">7.5.1. GetCapabilities</a></li>
+<li><a href="#_getobservation">7.5.2. GetObservation</a></li>
+<li><a href="#_getfeatureofinterest">7.5.3. GetFeatureOfInterest</a></li>
 </ul>
 </li>
 </ul>
@@ -351,6 +352,14 @@ This work is relevant to the OGC Citizen Science Domain Working Group.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stefano Tamascelli</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XTeam Software Solutions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friederike Klan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Citizen Science Group, Institute of Data Science, DLR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trupti Padiya</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Citizen Science Group, Institute of Data Science, DLR, Friedrich-Schiller-University Jena</p></td>
 </tr>
 </tbody>
 </table>
@@ -1375,7 +1384,16 @@ More information about the initiative can be found here: <a href="http://istsos.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_miramon_sos"><a class="anchor" href="#_miramon_sos"></a>7.3. MiraMon SOS</h3>
+<h3 id="_comparison_of_52_north_sos_and_istsos_implementations"><a class="anchor" href="#_comparison_of_52_north_sos_and_istsos_implementations"></a>7.3. Comparison of 52 North SOS and istSOS implementations</h3>
+<div class="paragraph">
+<p>52 North and istSOS are both RESTful implementations of OGC SOS standard. We provide a short comparison of these tools, which might help end-users to choose a tool based on their requirements.</p>
+</div>
+<div class="paragraph">
+<p>52 North and istSOS both provide support for all core operations defined in the OGC SOS specification. 52 North SOS is a Java based implementation whereas istSOS is a Python based implementation. As they are based on different programming languages, their supported hosting application server differs. In order to deploy 52 North SOS, the end-user can either use Tomcat, Jetty or Glassfish. In order to deploy istSOS, Apache mod_wsgi is required. Both implementations have a restful web interface and support JSON, XML and plain text for data encoding. 52 North offers bindings like KVP, SOAP, POX, and EXI. istSOS offers bindings like KVP and SOAP. They both run on major OS like Windows, Mac and Linux. They both support Postgres/PostGIS as underlying database management system. 52 North implementation also supports database like Oracle, Microsoft SQL Server and MySQL. 52 North implementation provides multilingual support for querying data. istSOS offers automatic notifications via email, twitter or other social media. Both SOS implementations provide a user-friendly graphical interface which includes a built-in client, data viewer and data manager. Both tools come with a detailed documentation with proper examples. They both have a friendly support community which is easily reachable via email and have a supporting emailing list where users can post questions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_miramon_sos_server"><a class="anchor" href="#_miramon_sos_server"></a>7.4. MiraMon SOS Server</h3>
 <div class="paragraph">
 <p>MiraMon Server is a stand alone CGI application that runs on Windows operating systems that can be used in combination with a web server such as Internet Information Server or Apache for Windows. It is the ideal solution for people that already uses MiraMon professional on desktop because it uses the same MiraMon formats in the back-end. MiraMon server is based on the same libraries that are used by MiraMon professional and has the same capabilities in terms of CRS support, interpolation algorithms, MMZX compression etc. One particularity of the software is the internal tiled schema required to serve maps and tiles in a fast an scalable way. MiraMon Server uses OGC web services as a baseline for the interaction to the client. Currently, MiraMon server provides support for the following standards:
 * Web Map Service (all versions)
@@ -1633,7 +1651,7 @@ CampNomSensor=street_nam</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_grow_sos"><a class="anchor" href="#_grow_sos"></a>7.4. GROW SOS</h3>
+<h3 id="_grow_sos_server_implementation"><a class="anchor" href="#_grow_sos_server_implementation"></a>7.5. GROW SOS server implementation</h3>
 <div class="paragraph">
 <p>The GROW SOS service is tightly integrated into the GROW platform based around Hydrologic&#8217;s existing Hydronet 4 platform.  The SOS 2.0 service runs concurrently with the GROW standards API in the HydroNET GROW Server.</p>
 </div>
@@ -1648,13 +1666,13 @@ CampNomSensor=street_nam</code></pre>
 <p>SOS 2.0 knows four core operations: GetCapabilities, DescribeSensor, GetObservation and GetFeatureOfInterest.</p>
 </div>
 <div class="sect3">
-<h4 id="_getcapabilities"><a class="anchor" href="#_getcapabilities"></a>7.4.1. GetCapabilities</h4>
+<h4 id="_getcapabilities"><a class="anchor" href="#_getcapabilities"></a>7.5.1. GetCapabilities</h4>
 <div class="paragraph">
 <p>This operation lists all available metadata in the service and provides a detailed list of all other operations that are provided in the service itself. It provides the information you need to execute other operations within the SOS 2.0 effectively.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_getobservation"><a class="anchor" href="#_getobservation"></a>7.4.2. GetObservation</h4>
+<h4 id="_getobservation"><a class="anchor" href="#_getobservation"></a>7.5.2. GetObservation</h4>
 <div class="paragraph">
 <p>This operation gives the client access to observation data from sensors. What data is returned is dependent on the parameters you give as a client.</p>
 </div>
@@ -1676,7 +1694,7 @@ CampNomSensor=street_nam</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_getfeatureofinterest"><a class="anchor" href="#_getfeatureofinterest"></a>7.4.3. GetFeatureOfInterest</h4>
+<h4 id="_getfeatureofinterest"><a class="anchor" href="#_getfeatureofinterest"></a>7.5.3. GetFeatureOfInterest</h4>
 <div class="paragraph">
 <p>This operation provides information about features of interest (name, description, coordinates etc.) of a sensor or an observation.</p>
 </div>
