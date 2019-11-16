@@ -55,7 +55,7 @@ All questions regarding this document should be directed to the editor or the co
 |Nikolaos Tousert |Institute of Communication & Computer Systems (ICCS)
 |Theodoros Theodoropoulos |Institute of Communication & Computer Systems (ICCS)
 |Simon Jirka |52 North
-|Sven Shade |European Commission, Joint Research Center (JRC)
+|Sven Schade |European Commission, Joint Research Center (JRC)
 |Andreas Matheus |Secure Dimensions
 |Stefano Tamascelli |XTeam Software Solutions
 |====================

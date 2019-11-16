@@ -21,27 +21,31 @@ The LandSense Authorization Server acts as a GDPR compliant broker between the p
 
 [[SSOLevelsOfPrivacy]]
 ==== Levels of personal information
-*AUTH*: Any application that is registered with this level must not be GDPR compliant, as there is no information about the user other than “yes we know that you have successfully logged in with one of the trusted IdPs). After login with Level AUTH the user will not see any personal information.
+*AUTH*
+Any application that is registered with this level must not be GDPR compliant, as there is no information about the user other than _yes we know that you have successfully logged in with one of the trusted IdPs). After login with Level AUTH the user will not see any personal information. 
 
 An example application could be a simple geo-fencing service where there only is polygons in and out.
 
-*CRYPTONAME*:
+*CRYPTONAME*
 Any application that is registered with this level will receive a cryptoname for the user. This cryptoname is unique across all trusted IdPs and generated after a successful login. Based on the concept of creating a cryptoname for a user, it can be guaranteed that the identifier is still correct after more IdPs join. At the current state, LandSense federation trusts approx. 2850 Identity Providers worldwide.
 
-The cryptoname is not stored at the Authorization Server which ensures that no personal information can be obtained based on the single possession of the cryptoname. This allows applications to cluster (group) user contributions without knowing the real identity of the user. Because of that, any registered application processing just the cryptoname must not be GDPR compliant.  After login with Level CRYPTONAME you will see your cryptoname as value of the personal claim “sub”.
+The cryptoname is not stored at the Authorization Server which ensures that no personal information can be obtained based on the single possession of the cryptoname. This allows applications to cluster (group) user contributions without knowing the real identity of the user. Because of that, any registered application processing just the cryptoname must not be GDPR compliant.  After login with Level CRYPTONAME you will see your cryptoname as value of the personal claim _sub_.
 
-An example API registered with this level could generate quality indexes on citizen science contributions based on user contributions stored at participating Resource Servers without knowing the actual identity of the original user(s). Even though a Resource Server stores more personal information, only the cryptoname would be released (with the actual data), as the level(s) can be verified with the Authorization Server.
+An example API registered with this level could generate quality indexes on citizen science contributions based on user contributions stored at participating Resource Servers without knowing the actual identity of the original user(s). Even though a Resource Server stores more personal information, only the cryptoname would be released (with the actual data), as the level(s) can be verified with the Authorization Server. 
 
-*SAML*:
+*SAML*
 This level allows the registered application to obtain metadata about the Identity Provider, the user has used to login:  country, federation identifier, and name of the federation the IdP is registered with. This level can used as an add-on for the levels PROFILE and EMAIL.
 
 For an application that operates with CRYPTONAMEs, this level is a valuable add-on as it allows to associate the user with one IdP.
 
-*PROFILE*: Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (https://openid.net/specs/openid-connect-core-1_0.html) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level PROFILE you will see the cryptoname plus all available personal information that fall into the scope profile.
+*PROFILE*
+Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (https://openid.net/specs/openid-connect-core-1_0.html) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level PROFILE you will see the cryptoname plus all available personal information that fall into the scope profile.
 
-*EMAIL*: Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (https://openid.net/specs/openid-connect-core-1_0.html) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level EMAIL you will see the cryptoname plus all available personal information that fall into the scope profile.
+*EMAIL*
+Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (https://openid.net/specs/openid-connect-core-1_0.html) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level EMAIL you will see the cryptoname plus all available personal information that fall into the scope profile.
 
-*PROFILE+EMAIL*: This is a combination of scopes PROFILE and EMAIL. After login you see your crypto name, email address, whether it is validated and all the personal information received for scope profile.
+*PROFILE+EMAIL*
+This is a combination of scopes PROFILE and EMAIL. After login you see your crypto name, email address, whether it is validated and all the personal information received for scope profile.
 
 ==== How to register an application
 
