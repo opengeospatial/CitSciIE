@@ -58,6 +58,8 @@ All questions regarding this document should be directed to the editor or the co
 |Sven Schade |European Commission, Joint Research Center (JRC)
 |Andreas Matheus |Secure Dimensions
 |Stefano Tamascelli |XTeam Software Solutions
+|Friederike Klan |Citizen Science Group, Institute of Data Science, DLR
+|Trupti Padiya |Citizen Science Group, Institute of Data Science, DLR, Friedrich-Schiller-University Jena
 |====================
 
 *Initiators*

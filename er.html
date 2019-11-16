@@ -195,7 +195,9 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 </li>
 <li><a href="#_landsense_engagement_platform">11.2. LandSense Engagement Platform</a></li>
 <li><a href="#_scent_harmonization_platform">11.3. Scent Harmonization Platform</a></li>
-<li><a href="#_nimmbus_geospatial_user_feedback">11.4. NiMMBus Geospatial User Feedback</a></li>
+<li><a href="#_scent_explore">11.4. Scent Explore</a></li>
+<li><a href="#_scent_measure">11.5. Scent Measure</a></li>
+<li><a href="#_nimmbus_geospatial_user_feedback">11.6. NiMMBus Geospatial User Feedback</a></li>
 </ul>
 </li>
 <li><a href="#CitSciGEOSS">12. Connecting Citizen Science data sets to GEOSS</a>
@@ -226,7 +228,7 @@ To obtain additional rights of use, visit <a href="http://www.opengeospatial.org
 <h2 id="_summary"><a class="anchor" href="#_summary"></a>1. Summary</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Engineering report describes the first phase of the citizen science Interoperability experiment organized by the EU H2020 WeObserve project under the OGC innovation program and supported by the EU H2020 NEXTGEOSS project. The activity covered aspects of data sharing architectures for citizen science data, data quality, data definitions and user authentication.</p>
+<p>This Engineering report describes the first phase of the citizen science Interoperability experiment organized by the EU H2020 WeObserve project under the OGC innovation program and supported by the four H2020 Citizen Observatories projects (SCENT, GROW, LandSense &amp; GroundTruth 2.0) as well as the EU H2020 NEXTGEOSS project. The activity covered aspects of data sharing architectures for citizen science data, data quality, data definitions and user authentication.</p>
 </div>
 <div class="paragraph">
 <p>The final aim was to propose solutions on how Citizen Science data could be integrated in the Global Earth Observation System of Systems (GEOSS). The solution is necessarily a combination of technical and networking components, being the first ones the focus of this work. The applications of international geospatial standards in current citizen science and citizen observatory projects to improve interoperability and foster innovation is one of the main tasks in during the experiment to achieve the final aim.</p>
@@ -327,16 +329,28 @@ This work is relevant to the OGC Citizen Science Domain Working Group.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Institute of Communication &amp; Computer Systems (ICCS)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nikolaos Tousert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Institute of Communication &amp; Computer Systems (ICCS)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Theodoros Theodoropoulos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Institute of Communication &amp; Computer Systems (ICCS)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Simon Jirka</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">52 North</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sven Shade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sven Schade</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">European Commission, Joint Research Center (JRC)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Andreas Matheus</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Secure Dimensions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stefano Tamascelli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XTeam Software Solutions</p></td>
 </tr>
 </tbody>
 </table>
@@ -2331,7 +2345,7 @@ Data from the warehouse is pulled nightly into Microsoft&#8217;s cloud and then 
 <p>In the Interoperability experiment, we experimented with the federated identity provider developed in the project H2020 LandSense as Authorization Server that enables a federation of applications with user Single-Sign-On.</p>
 </div>
 <div class="paragraph">
-<p>The Landsense project contributed the Engagement Platform (<a href="https://lep.landsense.eu/Project/LEP" class="bare">https://lep.landsense.eu/Project/LEP</a>), the H2020 Scent project contributed the Scent Harmonisation Platform Visualisation Site (<a href="https://scent-harm.iccs.gr/" class="bare">https://scent-harm.iccs.gr/</a>) and the H2020 NextGEOSS contributed the NiMMbus Geospatial user feedback system (<a href="https://www.opengis.uab.cat/nimmbus/" class="bare">https://www.opengis.uab.cat/nimmbus/</a>). The three platforms were able to work together and use the LandSense Authorization Server to authenticate users and create a Single-Sign-On experience. From the user perspective, once logged in one of the three platforms it can use the other two in a transparent way without having to authenticate again.</p>
+<p>The Landsense project contributed the Engagement Platform (<a href="https://lep.landsense.eu/Project/LEP" class="bare">https://lep.landsense.eu/Project/LEP</a>), the H2020 Scent project contributed the Scent Harmonisation Platform Visualisation Site (<a href="https://scent-harm.iccs.gr/" class="bare">https://scent-harm.iccs.gr/</a>) as well as the Scent Explore and Measure mobile applications (<a href="https://scent-project.eu/scent-toolbox" class="bare">https://scent-project.eu/scent-toolbox</a>) and the H2020 NextGEOSS contributed the NiMMbus Geospatial user feedback system (<a href="https://www.opengis.uab.cat/nimmbus/" class="bare">https://www.opengis.uab.cat/nimmbus/</a>). The abovementioned platforms and applications were able to work together and use the LandSense Authorization Server to authenticate users and create a Single-Sign-On experience. From the user perspective, once logged in one of the platforms it can use the other two in a transparent way without having to authenticate again.</p>
 </div>
 <div id="img-federation-diagram" class="imageblock">
 <div class="content">
@@ -2356,36 +2370,40 @@ Data from the warehouse is pulled nightly into Microsoft&#8217;s cloud and then 
 <div class="sect3">
 <h4 id="SSOLevelsOfPrivacy"><a class="anchor" href="#SSOLevelsOfPrivacy"></a>11.1.1. Levels of personal information</h4>
 <div class="paragraph">
-<p><strong>AUTH</strong>: Any application that is registered with this level must not be GDPR compliant, as there is no information about the user other than “yes we know that you have successfully logged in with one of the trusted IdPs). After login with Level AUTH the user will not see any personal information.</p>
+<p><strong>AUTH</strong>
+Any application that is registered with this level must not be GDPR compliant, as there is no information about the user other than _yes we know that you have successfully logged in with one of the trusted IdPs). After login with Level AUTH the user will not see any personal information.</p>
 </div>
 <div class="paragraph">
 <p>An example application could be a simple geo-fencing service where there only is polygons in and out.</p>
 </div>
 <div class="paragraph">
-<p><strong>CRYPTONAME</strong>:
+<p><strong>CRYPTONAME</strong>
 Any application that is registered with this level will receive a cryptoname for the user. This cryptoname is unique across all trusted IdPs and generated after a successful login. Based on the concept of creating a cryptoname for a user, it can be guaranteed that the identifier is still correct after more IdPs join. At the current state, LandSense federation trusts approx. 2850 Identity Providers worldwide.</p>
 </div>
 <div class="paragraph">
-<p>The cryptoname is not stored at the Authorization Server which ensures that no personal information can be obtained based on the single possession of the cryptoname. This allows applications to cluster (group) user contributions without knowing the real identity of the user. Because of that, any registered application processing just the cryptoname must not be GDPR compliant.  After login with Level CRYPTONAME you will see your cryptoname as value of the personal claim “sub”.</p>
+<p>The cryptoname is not stored at the Authorization Server which ensures that no personal information can be obtained based on the single possession of the cryptoname. This allows applications to cluster (group) user contributions without knowing the real identity of the user. Because of that, any registered application processing just the cryptoname must not be GDPR compliant.  After login with Level CRYPTONAME you will see your cryptoname as value of the personal claim <em>sub</em>.</p>
 </div>
 <div class="paragraph">
 <p>An example API registered with this level could generate quality indexes on citizen science contributions based on user contributions stored at participating Resource Servers without knowing the actual identity of the original user(s). Even though a Resource Server stores more personal information, only the cryptoname would be released (with the actual data), as the level(s) can be verified with the Authorization Server.</p>
 </div>
 <div class="paragraph">
-<p><strong>SAML</strong>:
+<p><strong>SAML</strong>
 This level allows the registered application to obtain metadata about the Identity Provider, the user has used to login:  country, federation identifier, and name of the federation the IdP is registered with. This level can used as an add-on for the levels PROFILE and EMAIL.</p>
 </div>
 <div class="paragraph">
 <p>For an application that operates with CRYPTONAMEs, this level is a valuable add-on as it allows to associate the user with one IdP.</p>
 </div>
 <div class="paragraph">
-<p><strong>PROFILE</strong>: Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (<a href="https://openid.net/specs/openid-connect-core-1_0.html" class="bare">https://openid.net/specs/openid-connect-core-1_0.html</a>) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level PROFILE you will see the cryptoname plus all available personal information that fall into the scope profile.</p>
+<p><strong>PROFILE</strong>
+Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (<a href="https://openid.net/specs/openid-connect-core-1_0.html" class="bare">https://openid.net/specs/openid-connect-core-1_0.html</a>) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level PROFILE you will see the cryptoname plus all available personal information that fall into the scope profile.</p>
 </div>
 <div class="paragraph">
-<p><strong>EMAIL</strong>: Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (<a href="https://openid.net/specs/openid-connect-core-1_0.html" class="bare">https://openid.net/specs/openid-connect-core-1_0.html</a>) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level EMAIL you will see the cryptoname plus all available personal information that fall into the scope profile.</p>
+<p><strong>EMAIL</strong>
+Any application that is registered with this level will be able to receive personal information as defined in the OpenID Connect specification for the scope profile (<a href="https://openid.net/specs/openid-connect-core-1_0.html" class="bare">https://openid.net/specs/openid-connect-core-1_0.html</a>) after the user has given their approval. Any application operating on this level must be fully GDPR compliant, which means that the registration process requires to provide a URL to the privacy statement of the application. This privacy statement defines which personal information is requested, for which purpose and which operators will be able to also process the personal information. After login with Level EMAIL you will see the cryptoname plus all available personal information that fall into the scope profile.</p>
 </div>
 <div class="paragraph">
-<p><strong>PROFILE+EMAIL</strong>: This is a combination of scopes PROFILE and EMAIL. After login you see your crypto name, email address, whether it is validated and all the personal information received for scope profile.</p>
+<p><strong>PROFILE+EMAIL</strong>
+This is a combination of scopes PROFILE and EMAIL. After login you see your crypto name, email address, whether it is validated and all the personal information received for scope profile.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2427,15 +2445,18 @@ This level allows the registered application to obtain metadata about the Identi
 <div class="ulist">
 <ul>
 <li>
-<p>User-friendly interfaces enabling both time-series analysis and spatial representation of SensorThings API resources with support to time-series analysis, metadata and visualisation and a dashboard.</p>
+<p>User-friendly interfaces enabling both time-series analysis and spatial representation of SensorThings API resources including graphical visualisations with filtering capabilities per observed phenomenon and sensor as well as low-level interaction with the Harmonisation Platform SensorThings driven schema.</p>
 </li>
 <li>
-<p>An interactive campaign dashboard that enables the spatial visualisation and graphic representation of the images of Land Cover/ Land Use elements that have been collected from the volunteers</p>
+<p>An interactive campaign dashboard that enables the spatial visualisation and graphic representation of the images of Land Cover/ Land Use elements that have been collected from the volunteers in the context of the project&#8217;s citizen science campaigns.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Scent Harmonisation Platform manages a variety of citizen-generated data as well as environmental data that has been collected through in-situ monitoring stations in Kifisos river basin, Attica, Greece. All the data are being maintained and have been structured according to widely accepted standards, such as the Open Geospatial Consortium (OGC) in order to be compliant with open and unified frameworks (such as SensorThings API).</p>
+</div>
+<div class="paragraph">
+<p>Details regarding the integration of Scent Harmonisation Platform Visualisation Site with LandSense authorisation server are provided in Annex D.</p>
 </div>
 <div id="img-Scent-Harmonization-Platform-Login" class="imageblock">
 <div class="content">
@@ -2445,7 +2466,41 @@ This level allows the registered application to obtain metadata about the Identi
 </div>
 </div>
 <div class="sect2">
-<h3 id="_nimmbus_geospatial_user_feedback"><a class="anchor" href="#_nimmbus_geospatial_user_feedback"></a>11.4. NiMMBus Geospatial User Feedback</h3>
+<h3 id="_scent_explore"><a class="anchor" href="#_scent_explore"></a>11.4. Scent Explore</h3>
+<div class="paragraph">
+<p>Scent Explore is a mobile application that enables citizens to capture environmental related information. It provides a user-friendly interface through which citizens are guided to areas where essential environmental information is needed. There, they may collect images of LC/LU elements along with textual descriptions, measure water level and flow velocity and report flood related events like the existence of obstacles in the river, flooded locations, etc. Citizens use the app in a playful way, by discovering and collecting little characters hiding in places around them and thus collecting points.</p>
+</div>
+<div class="paragraph">
+<p>Details regarding the integration of Scent Explore with LandSense authorisation server are provided in Annex D.</p>
+</div>
+<div id="img-Scent-Explore-application" class="imageblock">
+<div class="content">
+<img src="images/ScentExplore.png" alt="Scent Explore application">
+</div>
+<div class="title">Figure 46. Scent Explore Application Login</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scent_measure"><a class="anchor" href="#_scent_measure"></a>11.5. Scent Measure</h3>
+<div class="paragraph">
+<p>Scent Measure is a mobile application that works in tandem with a potable smart sensor (Xiaomi International Version Flower Care Smart Monitor), connected to the user’s mobile device aiming to measure soil conditions. Users can simply insert the sensor into the ground and, select whether to measure and report soil moisture levels and/or air temperature and receive the measurements directly to the app.</p>
+</div>
+<div class="paragraph">
+<p>It constitutes an Android application that has been developed with Java as it enables easy system modelling and has support for many cross-platform software libraries.
+The Scent Measure application, can be easily modified/adapted to support any kind of smart measuring sensors providing they have a Bluetooth connection interface with the portable devices and Bluetooth support for the messages exchange from the sensor to the portable device.</p>
+</div>
+<div class="paragraph">
+<p>Details regarding the integration of Scent Measure with LandSense authorisation server are provided in Annex D.</p>
+</div>
+<div id="img-Scent-Measure-application" class="imageblock">
+<div class="content">
+<img src="images/ScentMeasure.png" alt="Scent Measure application">
+</div>
+<div class="title">Figure 47. Scent Measure Application Login</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nimmbus_geospatial_user_feedback"><a class="anchor" href="#_nimmbus_geospatial_user_feedback"></a>11.6. NiMMBus Geospatial User Feedback</h3>
 <div class="paragraph">
 <p>The NiMMBus web portal records geospatial user feedback about existing geospatial resources. The user is able to provide comments, rates, quality reports and publications related to a geospatial resource. It can be used to comment on datasets but also on individual observations. The system allows to creating a citation of an external resource (in an external catalogue or repository) and associate feedback items about it. It builds upon a service developed in the H2020-funded NextGEOSS project. Registered as an Web Browser based application with the LandSense Authorization Server, the application can be used to collect user feedback with resources provided by other Resource Servers (APIs) also registered with the LandSense Authorizaiton Server.</p>
 </div>
@@ -2459,7 +2514,7 @@ This level allows the registered application to obtain metadata about the Identi
 <div class="content">
 <img src="images/NiMMbusGUF.png" alt="NiMMbus GUF">
 </div>
-<div class="title">Figure 46. NiMMbus  NiMMBus Geospatial User Feedback Login</div>
+<div class="title">Figure 48. NiMMbus  NiMMBus Geospatial User Feedback Login</div>
 </div>
 </div>
 </div>
@@ -2510,13 +2565,13 @@ The worldwide effort to build GEOSS is led by the Group on Earth Observations (G
 <div class="sect2">
 <h3 id="_connecting_a_single_citizen_science_project_to_geoss"><a class="anchor" href="#_connecting_a_single_citizen_science_project_to_geoss"></a>12.1. Connecting a single Citizen Science project to GEOSS</h3>
 <div class="paragraph">
-<p>The most straight forward way to connect Citizen Science data sets to GEOSS is the inclusion of the project that collects these data sets at the GEOSS Platform. This process essentially requires the registration of the project in the GEOSS ‘Yellow Pages’ and it can be used to register also multiple data sets from one single project (see also <a href="#img-GEOSSYellowPages">Figure 47</a> below).</p>
+<p>The most straight forward way to connect Citizen Science data sets to GEOSS is the inclusion of the project that collects these data sets at the GEOSS Platform. This process essentially requires the registration of the project in the GEOSS ‘Yellow Pages’ and it can be used to register also multiple data sets from one single project (see also <a href="#img-GEOSSYellowPages">Figure 49</a> below).</p>
 </div>
 <div id="img-GEOSSYellowPages" class="imageblock">
 <div class="content">
 <img src="images/GEOSSYellowPages.png" alt="GEOSS Yellow Pages">
 </div>
-<div class="title">Figure 47. Sketch on registering a single project at the GEOSS Platform</div>
+<div class="title">Figure 49. Sketch on registering a single project at the GEOSS Platform</div>
 </div>
 <div class="paragraph">
 <p>The entry of the Yellow Pages requires information (metadata) such as:</p>
@@ -2530,10 +2585,10 @@ The worldwide effort to build GEOSS is led by the Group on Earth Observations (G
 <p><em>Type of</em> provided online <em>resource</em> (data, vocabulary, model, algorithm, etc.) – in the context of this Interoperability Experiment we focus on data</p>
 </li>
 <li>
-<p><em>Data policy</em>, including the option to declare as free and open by choosing “GEOSS Data Core” (see <a href="#img-GEOSSYellowPagesForm">Figure 48</a> below)</p>
+<p><em>Data policy</em>, including the option to declare as free and open by choosing “GEOSS Data Core” (see <a href="#img-GEOSSYellowPagesForm">Figure 50</a> below)</p>
 </li>
 <li>
-<p>Indication of GEOSS <em>data management principles</em> that are implemented (see <a href="#img-GEOSSYellowPagesForm">Figure 48</a> below)</p>
+<p>Indication of GEOSS <em>data management principles</em> that are implemented (see <a href="#img-GEOSSYellowPagesForm">Figure 50</a> below)</p>
 </li>
 <li>
 <p>Relevance for the <em>Sustainable Development Goals</em></p>
@@ -2547,7 +2602,7 @@ The worldwide effort to build GEOSS is led by the Group on Earth Observations (G
 <div class="content">
 <img src="images/GEOSSYellowPagesForm.png" alt="GEOSS Yellow Pages">
 </div>
-<div class="title">Figure 48. Parts of the items asked for when registering in the GEOSS Yellow Pages</div>
+<div class="title">Figure 50. Parts of the items asked for when registering in the GEOSS Yellow Pages</div>
 </div>
 <div class="paragraph">
 <p>Once completed, the information provided by the Citizen Science project is passed on to the GEO DAB team. Members of this team check the entries and run some tests (for example, if the provided endpoint actually serves the intended data, if it needed to implement the required standards (from the OGC or comparable alternatives) and if it indeed follows the indicated principles and applies the indicated data policy). This testing might entail a dialogue with the registering Citizen Science project in order to make the project’s offer fit to the promises in the entry for the GEOSS Yellow Pages.</p>
@@ -2567,7 +2622,7 @@ The worldwide effort to build GEOSS is led by the Group on Earth Observations (G
 <p>Notification was received from DAB team regarding the successful conduction of the tests and that no interoperability issue was found. Taking into consideration also suggestions indicated in the test report, metadata information of the datasets provided was further enriched.</p>
 </li>
 <li>
-<p>As a final step of the process, the DAB team proceeded with the successful integration of SCENT web server into GEOSS Portal (offering its services to production environment). Thus, users can access SCENT resources via the GEOSS Portal catalogue (<a href="https://www.geoportal.org/?f:sources=wfsscentID%2CwmsSCENTID" class="bare">https://www.geoportal.org/?f:sources=wfsscentID%2CwmsSCENTID</a>) as presented in the <a href="#img-ScentResourcesAvailableInGEOSSPortal">Figure 49</a>.</p>
+<p>As a final step of the process, the DAB team proceeded with the successful integration of SCENT web server into GEOSS Portal (offering its services to production environment). Thus, users can access SCENT resources via the GEOSS Portal catalogue (<a href="https://www.geoportal.org/?f:sources=wfsscentID%2CwmsSCENTID" class="bare">https://www.geoportal.org/?f:sources=wfsscentID%2CwmsSCENTID</a>) as presented in the <a href="#img-ScentResourcesAvailableInGEOSSPortal">Figure 51</a>.</p>
 </li>
 </ul>
 </div>
@@ -2575,7 +2630,7 @@ The worldwide effort to build GEOSS is led by the Group on Earth Observations (G
 <div class="content">
 <img src="images/ScentResourcesAvailableInGEOSSPortal.png" alt="Scent Resources in GEOSS">
 </div>
-<div class="title">Figure 49. Scent resources available in GEOSS portal</div>
+<div class="title">Figure 51. Scent resources available in GEOSS portal</div>
 </div>
 <div class="paragraph">
 <p>Overall, we proved that Citizen Science projects indeed can implement the free and open data policy of the GEOSS Data Core, and that all of the GEOSS Data Management Principles are followed by Scent. Furthermore, out of the OGC Citizen Science Domain Working Group (DWG) we offer examples and guidance on how this can be realized with OGC standards. However, realistically speaking, and in order to see concrete progress, it appears more feasible that projects first enter what they already support, and at least fulfill the <a href="http://geolabel.info/Discoverable.htm">needs to make their data sets discoverable from within the GEOSS Platform</a> using <a href="http://geolabel.info/Metadata.htm">well-documented metadata</a>, and including <a href="http://geolabel.info/Quality.htm">information about data quality</a>. Following the brokering approach of GEOSS, this entails that the projects provide a minimum of required information, and ideally follow one of the multiple standards that are already supported by the GEOSS platform. If it should not be immediately possible to also provide <a href="http://geolabel.info/DataAccess.htm">one of the multiple options to make data accessible</a> or to provide that data in an <a href="http://www.geolabel.info/Encoding.htm">already recognized encoding</a>, it might still be considered to register a projects and then update the record in the Yellow Pages once the additional functionalities for harmonized data access are put in place by the project.</p>
@@ -2584,13 +2639,13 @@ The worldwide effort to build GEOSS is led by the Group on Earth Observations (G
 <div class="sect2">
 <h3 id="_why_a_case_by_case_registration_is_not_the_best_way_forward"><a class="anchor" href="#_why_a_case_by_case_registration_is_not_the_best_way_forward"></a>12.2. Why a case-by-case registration is not the best way forward</h3>
 <div class="paragraph">
-<p>Although the possibility to register Citizen Science projects of any size in GEOSS exists and has been illustrated in the previous section, we do not recommend that each and every project go ahead and register by itself now. Potentially, the number of relevant contributions is (at least) in the hundreds, see for example, <a href="http://data-staging.jrc.it/dataset/jrc-citsci-10004">this project inventory</a> and the related <a href="https://ec-jrc.github.io/citsci-explorer/">prototype of a project catalogue</a> (<a href="#img-GEOSSCitSciExplorer">Figure 50</a>).</p>
+<p>Although the possibility to register Citizen Science projects of any size in GEOSS exists and has been illustrated in the previous section, we do not recommend that each and every project go ahead and register by itself now. Potentially, the number of relevant contributions is (at least) in the hundreds, see for example, <a href="http://data-staging.jrc.it/dataset/jrc-citsci-10004">this project inventory</a> and the related <a href="https://ec-jrc.github.io/citsci-explorer/">prototype of a project catalogue</a> (<a href="#img-GEOSSCitSciExplorer">Figure 52</a>).</p>
 </div>
 <div id="img-GEOSSCitSciExplorer" class="imageblock">
 <div class="content">
 <img src="images/GEOSSCitSciExplorer.png" alt="Citizen Science Explorer">
 </div>
-<div class="title">Figure 50. Example Citizen Science explorer providing access to 508 different projects (status: 13 June 2019)</div>
+<div class="title">Figure 52. Example Citizen Science explorer providing access to 508 different projects (status: 13 June 2019)</div>
 </div>
 <div class="paragraph">
 <p>It becomes obvious that a case-by-case registration per project (which each might want to register one data set or more) would create a bottle neck towards the GEO DAB and the team that is responsible to evaluate and test entries in the GEOSS Yellow Pages. As a result of our investigations within this Interoperability Experiment, we therefore suggest to elaborate on and develop an <strong>intermediate layer</strong> that provides the required organizational and technical support to the Citizen Science community so that their data sets become better discoverable, accessible, and potentially more widely used - thereby also amplifying visibility and impact of the individual projects.</p>
@@ -2635,7 +2690,7 @@ The worldwide effort to build GEOSS is led by the Group on Earth Observations (G
 <div class="sect3">
 <h4 id="_federate_multiple_citizen_science_projects_and_their_endpoints_into_a_single_access_point"><a class="anchor" href="#_federate_multiple_citizen_science_projects_and_their_endpoints_into_a_single_access_point"></a>12.3.2. Federate multiple Citizen Science projects and their endpoints into a single access point</h4>
 <div class="paragraph">
-<p>To reduce the number of endpoints connected to the GEOSS Platform, federations of citizen Science projects could act as hubs that would in fact cluster multiple Citizen Science projects and their endpoints into a single access point, which is then registered within the GEOSS Platform (see <a href="#img-GEOSS_EC2020Gateway">Figure 51</a>).</p>
+<p>To reduce the number of endpoints connected to the GEOSS Platform, federations of citizen Science projects could act as hubs that would in fact cluster multiple Citizen Science projects and their endpoints into a single access point, which is then registered within the GEOSS Platform (see <a href="#img-GEOSS_EC2020Gateway">Figure 53</a>).</p>
 </div>
 <div class="paragraph">
 <p>This federations could be thematic or regional and take advantage of the current structure of activities in the GEO work program.</p>
@@ -2647,7 +2702,7 @@ The worldwide effort to build GEOSS is led by the Group on Earth Observations (G
 <div class="content">
 <img src="images/GEOSS_EC2020Gateway.png" alt="GEOSS EC2020 Gateway">
 </div>
-<div class="title">Figure 51. Sketch of a possible connection between EC2020 and the GEOSS Platform (one possible scenario), as an example of a more coordinated structure to make Citizen Science data discoverable and accessible via GEOSS</div>
+<div class="title">Figure 53. Sketch of a possible connection between EC2020 and the GEOSS Platform (one possible scenario), as an example of a more coordinated structure to make Citizen Science data discoverable and accessible via GEOSS</div>
 </div>
 <div class="admonitionblock note">
 <table>

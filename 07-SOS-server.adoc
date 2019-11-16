@@ -30,7 +30,12 @@ The project also provides also a Graphical user Interface that allows for easing
 The URL of the instance used in this IE was: http://artemis.geogr.uni-jena.de/istsos_ie/soil?service=SOS&request=GetCapabilities&version=1.0.0
 More information about the initiative can be found here: http://istsos.org/
 
-=== MiraMon SOS
+=== Comparison of 52 North SOS and istSOS implementations
+52 North and istSOS are both RESTful implementations of OGC SOS standard. We provide a short comparison of these tools, which might help end-users to choose a tool based on their requirements.
+
+52 North and istSOS both provide support for all core operations defined in the OGC SOS specification. 52 North SOS is a Java based implementation whereas istSOS is a Python based implementation. As they are based on different programming languages, their supported hosting application server differs. In order to deploy 52 North SOS, the end-user can either use Tomcat, Jetty or Glassfish. In order to deploy istSOS, Apache mod_wsgi is required. Both implementations have a restful web interface and support JSON, XML and plain text for data encoding. 52 North offers bindings like KVP, SOAP, POX, and EXI. istSOS offers bindings like KVP and SOAP. They both run on major OS like Windows, Mac and Linux. They both support Postgres/PostGIS as underlying database management system. 52 North implementation also supports database like Oracle, Microsoft SQL Server and MySQL. 52 North implementation provides multilingual support for querying data. istSOS offers automatic notifications via email, twitter or other social media. Both SOS implementations provide a user-friendly graphical interface which includes a built-in client, data viewer and data manager. Both tools come with a detailed documentation with proper examples. They both have a friendly support community which is easily reachable via email and have a supporting emailing list where users can post questions.
+
+=== MiraMon SOS Server
 MiraMon Server is a stand alone CGI application that runs on Windows operating systems that can be used in combination with a web server such as Internet Information Server or Apache for Windows. It is the ideal solution for people that already uses MiraMon professional on desktop because it uses the same MiraMon formats in the back-end. MiraMon server is based on the same libraries that are used by MiraMon professional and has the same capabilities in terms of CRS support, interpolation algorithms, MMZX compression etc. One particularity of the software is the internal tiled schema required to serve maps and tiles in a fast an scalable way. MiraMon Server uses OGC web services as a baseline for the interaction to the client. Currently, MiraMon server provides support for the following standards:
 * Web Map Service (all versions)
 * Web Map Tile Service (all versions)
@@ -280,7 +285,7 @@ Final representation as XML O&M of the same structure:
 </sos:GetObservationResponse>
 ----
 
-=== GROW SOS
+=== GROW SOS server implementation
 The GROW SOS service is tightly integrated into the GROW platform based around Hydrologic's existing Hydronet 4 platform.  The SOS 2.0 service runs concurrently with the GROW standards API in the HydroNET GROW Server.
 
 The service implements two .net packages that disseminate GROW data to the SOS 2.0 standard within the GROW instance of HydroNET 4 Server. A SOS package covers the mapping of SOS 2.0 requests to GROW requests and the mapping of GROW data structures to SOS 2.0 standards. A second package Ogc.Wrapper.Entities contains the SOS 2.0 entity definitions.
