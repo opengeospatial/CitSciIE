@@ -1,5 +1,5 @@
 == Summary
-This Engineering report describes the first phase of the citizen science Interoperability experiment organized by the EU H2020 WeObserve project under the OGC innovation program and supported by the EU H2020 NEXTGEOSS project. The activity covered aspects of data sharing architectures for citizen science data, data quality, data definitions and user authentication.
+This Engineering report describes the first phase of the citizen science Interoperability experiment organized by the EU H2020 WeObserve project under the OGC innovation program and supported by the four H2020 Citizen Observatories projects (SCENT, GROW, LandSense & GroundTruth 2.0) as well as the EU H2020 NEXTGEOSS project. The activity covered aspects of data sharing architectures for citizen science data, data quality, data definitions and user authentication.
 
 The final aim was to propose solutions on how Citizen Science data could be integrated in the Global Earth Observation System of Systems (GEOSS). The solution is necessarily a combination of technical and networking components, being the first ones the focus of this work. The applications of international geospatial standards in current citizen science and citizen observatory projects to improve interoperability and foster innovation is one of the main tasks in during the experiment to achieve the final aim.
 
@@ -52,9 +52,12 @@ All questions regarding this document should be directed to the editor or the co
 |Joan Maso |UAB-CREAF
 |Andy Cobley |University of Dundee
 |Valantis Tsiakos |Institute of Communication & Computer Systems (ICCS)
+|Nikolaos Tousert |Institute of Communication & Computer Systems (ICCS)
+|Theodoros Theodoropoulos |Institute of Communication & Computer Systems (ICCS)
 |Simon Jirka |52 North
 |Sven Shade |European Commission, Joint Research Center (JRC)
 |Andreas Matheus |Secure Dimensions
+|Stefano Tamascelli |XTeam Software Solutions
 |====================
 
 *Initiators*
