@@ -1,6 +1,6 @@
 [appendix]
 [[Scent-Landsense]]
-= Technical Annex - Integration between SCENT & LandSense
+= Integration between SCENT & LandSense
 
 .[big]*A.1 Introduction*
 
