@@ -1,12 +1,14 @@
 [appendix]
+[[Scent-Landsense]]
 = Technical Annex - Integration between SCENT & LandSense
 
-== Introduction
+.[big]*A.1 Introduction*
+
 During the past few years a variety of citizen-science tools have been implemented, aiming to enable citizens and relevant associations and groups to be involved and engaged with environmental monitoring. The scope and functionalities of such tools may vary, ranging from mobile applications enabling collection and semantic annotation of multimedia and communication with portable sensors to visualisation engines and content creation and campaign configuration applications.
 
 One of the scopes of this activity, is to demonstrate interoperability and integration between implemented processes of authentication and authorisation. In particular, three applications developed within the H2020 SCENT Citizen Observatory project, the visualisation site of SCENT Harmonisation platform, SCENT Explore and SCENT Measure are integrated with an authorisation server implemented by H2020 LandSense Citizen Observatory. Thus, this chapter aims to showcase both the results arising from this process as well as to constitute a guide aiming primarily to assist integration of existing citizen-science applications with LandSense authorisation server or even to replicate this process within their own infrastructure.
 
-== Setting the scene
+.[big]*A.2 Setting the scene*
 
 Authorisation depends on, but is rather separated from authentication. The first term refers to the process of deciding whether an application should be allowed to conduct an operation following the reception of a request by the user, whilst the second lies on determining the identity of the user or program sending that request. A characteristic of an authentication mechanism constitutes the Single Sign On (SSO), that relates to the user’s identity being used to provide access across multiple systems (i.e. services, applications). SSO allows a single authentication process (managed by a single Identity Provider, or other authentication mechanism) to be used across multiple systems within a single organization or across multiple organizations (i.e. common login credentials across systems). Last but not least, establishing a federation involves the management and mapping of user identities between Identity Providers across organizations (and security domains) via trust relationships.
 In the context of this experiment, the following paradigms (use cases) were assessed:
@@ -18,7 +20,7 @@ In the context of this experiment, the following paradigms (use cases) were asse
 .Architectural overview of integration between SCENT applications and LandSense authorisation server
 image::images/SCENTLANDSENSEINTEGRATION.png[Scent-LandSense]
 
-== SCENT Harmonisation Platform visualisation site
+.[big]*A.3 SCENT Harmonisation Platform visualisation site*
 
 SCENT Harmonisation platform visualisation site, constitutes a single page web application written in JavaScript. To achieve integration with LandSense authorisation server, the ‘implicit grant’ modality of OAuth2 protocol is implemented. The reason for using Implicit Grant Type is because the Harmonisation Platform (and any front-end javascript application) cannot guarantee the client secret confidentiality (which is essential for the other OAuth2 flows).  Following the user log in, the access_token is issued immediately allowing users to access and use protected resources and operations. In addition to the access token, an ID token is also issued from the Authorisation Server. The ID token takes the form of a JWT (JSON Web Token) which is a JSON payload that is signed with the private key of the issuer (LandSense Identity Manager) and can be parsed by the Harmonisation Platform. Inside the JWT (ID token), there are a handful of defined property names that provide information to the application (e.g. the Harmonisation Platform). This info includes a unique identifier for the user, the identifier for the server that issued the token, the identifier for the client that requested the token, etc. But it also includes some user attributes (email, name, etc) so as for the client (e.g. Harmonisation Platform) to be able to display the user info in the navigation bar.
 
@@ -53,11 +55,11 @@ The aforementioned configuration file has been used by the library vuex-oidc (ur
 
 * The user inserts his credential by selecting one of the systems registered to the LandSense authentication server. Following the conclusion of this process, the access and ID tokens are sent to the SCENT Harmonisation visualisation site and the user is automatically transferred back to the application.
 
-== SCENT Measure
+.[big]*A.4 SCENT Measure*
 Scent Measure is a mobile application that works in tandem with a potable smart sensor (Xiaomi International Version Flower Care Smart Monitor), connected to the user’s mobile device aiming to measure soil conditions. The application is available for Android versions newer that 4.3 Jelly Bean and it requires devices with Bluetooth version greater than 4.1 and offers a maximum measurement update frequency of 15sec.
 The section below describes the process from the integration of SCENT Measure with LandSense authorization server, while also constituting a guide that can facilitate integration of any android application with Identity Management System that adopt the OAuth2 protocol.
 
-=== Integration with LandSense: Guide for Android applications
+.A.4.1 Integration with LandSense: Guide for Android applications
 
 In order to enable login in to your application with Landsense you will have to implement the openid connect authentication code flow. In order to speed-up the development process you can use (AppAuth) which is publicly available and documented in the following link.
 
@@ -159,7 +161,7 @@ The following diagram summarizes the process as perceived by Scent Measure’s u
 .Login sequence diagram for Scent Measure
 image::images/MeasureLogin.jpg[Measure-Login]
 
-== Scent Explore
+.[big]*A.5 Scent Explore*
 
 Scent Explore is a mobile application for crowdsourcing that allows users to take pictures, while walking around specific geographic areas - points of interest (PoIs). It exploits some gamification mechanics such us points and badges to engage users. Explore is an Alternate Reality Gaming (ARG) app related to an Authoring tool which generates and visualizes the PoIs on the map. When approaching a point of interest, the application activates the camera and shows an Augmented reality entity to be captured simply by tapping on the screen while taking a picture of the area.
 
