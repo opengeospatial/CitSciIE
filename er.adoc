@@ -37,7 +37,7 @@
 // The title here should match the title on the first page.
 // *****************************************************************************
 
-:title: OGC Citizen Science engeneering report
+:title: OGC Citizen Science Interoperability Experiment Engineering Report
 
 // *****************************************************************************
 // Document identifier, with format "OGC YY-nnn" (e.g., OGC 17-067).
@@ -45,7 +45,7 @@
 // https://portal.opengeospatial.org/?m=public&subtab=request&tab=1.
 // *****************************************************************************
 
-:docReference: OGC YY-nnn
+:docReference: OGC 19-083
 
 // *****************************************************************************
 // Date posted to OGC Portal>Pending Documents, with format: yyyy-mm-dd.
