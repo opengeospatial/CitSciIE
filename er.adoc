@@ -51,7 +51,7 @@
 // Date posted to OGC Portal>Pending Documents, with format: yyyy-mm-dd.
 // *****************************************************************************
 
-:submissionDate: YYYY-MM-DD
+:submissionDate: 2019-11-18
 
 // *****************************************************************************
 // Names of all editors, comma-separated (e.g., John Doe, Sue Smith)
@@ -74,9 +74,9 @@
 // Editors please do not alter the administrative front matter below.
 // *****************************************************************************
 :publicationDate: YYYY-MM-DD
-:approvalDate: YYYY-MM-DD
+:approvalDate: 2019-12-25
 :referenceURLID: D012
-:copyrightYear: 2018
+:copyrightYear: 2020
 //
 :titletext: {title}
 :doctype: book

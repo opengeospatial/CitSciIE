@@ -1,15 +1,15 @@
 [[SOS_Server]]
 == SOS servers
-In this chapter we describe four SOS servers tested in the Interoperability Experiment.
+In this chapter we describe four SOS servers tested in the IE.
 
 === 52 North solution
-The 52°North Sensor Web Server comprises several server-side modules which closely interact to provide different kinds data access functionality. In detail, this comprises the following elements:
+The 52°North Sensor Web Server comprises several server-side modules which closely interact to provide different kinds data access functionality. In detail, server comprises the following elements.
 
-* Data storage: The database for storing the observation data is integrated through an object-relational mapping layer based on the Hibernate framework. This allows the flexible integration of different types of database management systems (e.g. PostgreSQL, Oracle, MS SQL Server, MySQL) and data models. For this Interoperability Experiment, PostgreSQL was used.
+* Data storage: The database for storing the observation data is integrated through an object-relational mapping layer based on the Hibernate framework. This allows the flexible integration of different types of database management systems (e.g., PostgreSQL, Oracle, MS SQL Server, MySQL) and data models. For this IE, PostgreSQL was used.
 * For the access to observation data, the server offers three dedicated modules, which use the same common Sensor Web database.
-** SOS: The SOS module offers a comprehensive implementation of the OGC Sensor Observation Service 2.0 standard (including beyond the core several extended functionalities, transactional and result handling operations). It also offers several interoperability enhancements such as a support of the INSPIRE Technical Guidance on the SOS as a Download Service.
-** SensorThings API: In addition to the SOS support, a dedicated module is available for supporting the OGC SensorThings API Part 1: Sensing (not yet evaluated as part of this Interoperability Experiment).
-** 52°North Sensor Web API: Complementary to the previous modules, also the 52°North Sensor Web API is offered. This API offers an additional but optional convenience layer for building client applications. While both the SOS and the SensorThings API standards are well suited for enabling the interoperable access to observation data, the Sensor Web REST-API allows to provide additional functionality that significantly facilitates the development of client applications. Typical examples of this additional functionality comprise: generalisation of observation data (important for developing mobile applications), provision of rendering hints (e.g. styling information for time series), conversion of data to mainstream formats such as CSV.
+** SOS: The SOS module offers a comprehensive implementation of the OGC Sensor Observation Service 2.0 standard (including beyond the core several extended functionalities, transactional, and result handling operations). It also offers several interoperability enhancements such as a support of the INSPIRE Technical Guidance on the SOS as a Download Service.
+** SensorThings API: In addition to the SOS support, a dedicated module is available for supporting the OGC SensorThings API Part 1: Sensing (not yet evaluated as part of this IE).
+** 52°North Sensor Web API: Complementary to the previous modules, the 52°North Sensor Web API is also offered. This API offers an additional, but optional, convenience layer for building client applications. While both the SOS and the SensorThings API standards are well suited for enabling the interoperable access to observation data, the Sensor Web REST-API allows to provide additional functionality that significantly facilitates the development of client applications. Typical examples of this additional functionality comprise: generalization of observation data (important for developing mobile applications), provision of rendering hints (e.g., styling information for time series), and conversion of data to mainstream formats such as CSV.
 
 The URL of the instance used in this IE was: https://nexos.demo.52north.org/52n-sos-hackair-webapp/service.
 
@@ -18,12 +18,12 @@ More information about the initiative can be found here: https://52north.org/sof
 === istSOS
 istSOS (Istituto Scienze della Terra Sensor Observation Service) is an OGC SOS server implementation written in Python. istSOS allows for managing and dispatch observations from monitoring sensors according to the Sensor Observation Service standard.
 
-istSOS evolved in time from being a SOS service provider to complete data management system. But the standard does not account for a number of functionalities that were later included in the software. Some of the extending capabilities are:
+istSOS evolved over time from being a SOS service provider to complete data management system. But the standard does not account for a number of functionalities that were later included in the software. Some of the extending capabilities are:
 
-* Handle of irregular time series
-* On-the-fly aggregation of observed measures with no-data management.
-* Capability to filter observations based on partial observed property names ( LIKE filtering support).
-* Native support for data validation and data quality index associated with each observation
+* Handle of irregular time series;
+* On-the-fly aggregation of observed measures with no-data management;
+* Capability to filter observations based on partial observed property names (LIKE filtering support); and
+* Native support for data validation and data quality index associated with each observation.
 
 The project also provides also a Graphical user Interface that allows for easing the daily operations and a RESTFul Web API for automatizing administration procedures.
 
@@ -33,20 +33,26 @@ More information about the initiative can be found here: http://istsos.org/
 === Comparison of 52 North SOS and istSOS implementations
 52 North and istSOS are both RESTful implementations of OGC SOS standard. We provide a short comparison of these tools, which might help end-users to choose a tool based on their requirements.
 
-52 North and istSOS both provide support for all core operations defined in the OGC SOS specification. 52 North SOS is a Java based implementation whereas istSOS is a Python based implementation. As they are based on different programming languages, their supported hosting application server differs. In order to deploy 52 North SOS, the end-user can either use Tomcat, Jetty or Glassfish. In order to deploy istSOS, Apache mod_wsgi is required. Both implementations have a restful web interface and support JSON, XML and plain text for data encoding. 52 North offers bindings like KVP, SOAP, POX, and EXI. istSOS offers bindings like KVP and SOAP. They both run on major OS like Windows, Mac and Linux. They both support Postgres/PostGIS as underlying database management system. 52 North implementation also supports database like Oracle, Microsoft SQL Server and MySQL. 52 North implementation provides multilingual support for querying data. istSOS offers automatic notifications via email, twitter or other social media. Both SOS implementations provide a user-friendly graphical interface which includes a built-in client, data viewer and data manager. Both tools come with a detailed documentation with proper examples. They both have a friendly support community which is easily reachable via email and have a supporting emailing list where users can post questions.
+52 North and istSOS both provide support for all core operations defined in the OGC SOS specification. 52 North SOS is a Java based implementation whereas istSOS is a Python based implementation. As they are based on different programming languages, their supported hosting application server differs. In order to deploy 52 North SOS, the end-user can either use Tomcat, Jetty, or Glassfish. In order to deploy istSOS, Apache mod_wsgi is required. Both implementations have a restful web interface and support JSON, XML, and plain text for data encoding. 52 North offers bindings like KVP, SOAP, POX, and EXI. istSOS offers bindings like KVP and SOAP. They both run on major OSs like Windows, Mac, and Linux. They both support Postgres/PostGIS as underlying database management system. 52 North implementation also supports database like Oracle, Microsoft SQL Server and MySQL. 52 North implementation provides multilingual support for querying data. istSOS offers automatic notifications via email, Twitter, or other social media. Both SOS implementations provide a user-friendly graphical interface which includes a built-in client, data viewer, and data manager. Both tools come with a detailed documentation with proper examples. They both have a friendly support community which is easily reachable via email and have a supporting emailing list where users can post questions.
 
 === MiraMon SOS Server
-MiraMon Server is a stand alone CGI application that runs on Windows operating systems that can be used in combination with a web server such as Internet Information Server or Apache for Windows. It is the ideal solution for people that already uses MiraMon professional on desktop because it uses the same MiraMon formats in the back-end. MiraMon server is based on the same libraries that are used by MiraMon professional and has the same capabilities in terms of CRS support, interpolation algorithms, MMZX compression etc. One particularity of the software is the internal tiled schema required to serve maps and tiles in a fast an scalable way. MiraMon Server uses OGC web services as a baseline for the interaction to the client. Currently, MiraMon server provides support for the following standards:
+MiraMon Server is a stand alone CGI application that runs on Windows operating systems that can be used in combination with a web server such as Internet Information Server or Apache for Windows. It is the ideal solution for people that already uses MiraMon professional on desktop because it uses the same MiraMon formats in the back-end. MiraMon server is based on the same libraries that are used by MiraMon professional and has the same capabilities in terms of CRS support, interpolation algorithms, MMZX compression, etc. One particularity of the software is the internal tiled schema required to serve maps and tiles in a fast an scalable way. MiraMon Server uses OGC web services as a baseline for the interaction to the client. Currently, MiraMon server provides support for the following standards:
+
 * Web Map Service (all versions)
+
 * Web Map Tile Service (all versions)
+
 * Web Coverage Service (version 1.0)
+
 * Web Feature Service (version 2.0)
+
 * Web Processing Service (version 1.0)
+
 * Sensor Observing Service (version 2.0)
 
-The Sensor Observing Service capacity is used in tandem with the Web Feature Service and uses the same MiraMon topologically structured formats in the back-end. It has been developed in the Ground Truth 2.0 project to server interoperable data from the Citizen Observatories created during the project. The current implementation is incomplete and only supports GetFeatureOfInterest and GetOBservation operation with limited capabilities. The objective of the minimum capabilities developed was to repont to the requirements of a viewer client needs to represent a map of the features of interest provided by the service and to allow for a query in a point to get more information about the observations there. Each dataset in MiraMon becomes a observedProperty in the SOS service. Each observation is a position in a PNT file that has a DBF record associated that is transformed to a O&M DataRecord automatically. Internally, it is possible to mark field names in the DBF that are associated to concepts in the O&M such as the phenomenon time and the user name.
+The SOS capacity is used in tandem with the Web Feature Service and uses the same MiraMon topologically-structured formats in the back-end. It has been developed in the Ground Truth 2.0 project to serve interoperable data from the Citizen Observatories created during that project. The current implementation is incomplete and only supports GetFeatureOfInterest and GetOBservation operation with limited capabilities. The objective of the minimum capabilities developed was to report the requirements of a viewer client needed to represent a map of the features of interest provided by the service and to allow for a query in a point to get more information about the observations at that point. Each dataset in MiraMon becomes a observedProperty in the SOS service. Each observation is a position in a PNT file that has a DBF record associated that is automatically transformed to a O&M DataRecord. Internally, it is possible to mark field names in the DBF that are associated to concepts in the O&M, such as the phenomenon time and the user name.
 
-This is the internal format for the small REL5 document necessary to include the extra information that the server requires.
+Below is the internal format for the small REL5 document necessary to include the extra information that the server requires.
 
 .Internal format of the DBF and
 ....
@@ -293,8 +299,7 @@ The service implements two .net packages that disseminate GROW data to the SOS 2
 The Base URL of the GROW SOS 2.0 service:
 http://grow-beta-api.hydronet.com/api/service/sos
 
-SOS 2.0 knows four core operations: GetCapabilities, DescribeSensor, GetObservation and GetFeatureOfInterest.
-
+SOS 2.0 knows four core operations: GetCapabilities, DescribeSensor, GetObservation, and GetFeatureOfInterest.
 
 ==== GetCapabilities
 This operation lists all available metadata in the service and provides a detailed list of all other operations that are provided in the service itself. It provides the information you need to execute other operations within the SOS 2.0 effectively.
@@ -302,17 +307,19 @@ This operation lists all available metadata in the service and provides a detail
 ==== GetObservation
 This operation gives the client access to observation data from sensors. What data is returned is dependent on the parameters you give as a client.
 
-The GetObservation operation requires the following parameters:
+The GetObservation operation requires the following parameters.
 
 * Procedure: The identifier of the sensor. The procedure can be found in the GetCapabilities response.
-* ObservedProperty: The parameter that you want to query data for. A sensor can provide data for multiple parameters (e.g.: soil moisture, temperature). Which ObservedProperies are available for this sensor can be found in the GetCapabilities response, or the DescribeSensor response of the relevant sensor.
+
+* ObservedProperty: The parameter that you want to query data for. A sensor can provide data for multiple parameters (e.g., soil moisture, temperature). Which ObservedProperies are available for this sensor can be found in the GetCapabilities response or the DescribeSensor response of the relevant sensor.
+
 * TemporalFilter: The timespan for which you want to query data. Datetimes follow the ISO 8601  standard. The full timespan of data that the sensor provides can be found in the GetCapabilities or DescribeSensor (for the relevant sensor) response.
 
 ==== GetFeatureOfInterest
-This operation provides information about features of interest (name, description, coordinates etc.) of a sensor or an observation.
+This operation provides information about features of interest (name, description, coordinates, etc.) of a sensor or an observation.
 
-The GetFeatureOfInterest operation requires the following parameters:
+The GetFeatureOfInterest operation requires the following parameter:
 
-* procedure:The identifier of the sensor. The procedure can be found in the GetCapabilities response
+* procedure: The identifier of the sensor. The procedure can be found in the GetCapabilities response.
 
-The SOS 2.0 service in GROW provides two response types: xml and json. The client can provide ResponseFormat in the parameters to define which response is desired. If no ResponseFormat is given the service returns xml by default.
+The SOS 2.0 service in GROW provides two response types: XML and JSON. The client can provide ResponseFormat in the parameters to define which response is desired. If no ResponseFormat is given, the service returns XML by default.

@@ -10,6 +10,6 @@ The following normative documents are referenced in this document.
 * http://portal.opengeospatial.org/files/?artifact_id=41157[OGC 08-094r1, OGC® SWE Common Data Model Encoding Standard	v2.0]
 * http://docs.opengeospatial.org/is/15-042r5/15-042r5.html[15-042r5 OGC TimeseriesML – XML Encoding of the Timeseries Profile of Observations and Measurements v1.2]
 
-Even if the following is an OGC discussion paper that is not an OGC standard and cannot be considered strictly a normative reference, it is actually the bases for several sections of this document and should be considered as and important background:
+Although the following is an OGC Discussion Paper that is not an OGC standard and cannot be considered strictly a normative reference, it is actually the basis for several sections of this document and should be considered as important background:
 
 * https://portal.opengeospatial.org/files/?artifact_id=70328[OGC 16-129, Standardized Information Models to Optimize Exchange, Reusability and Comparability of Citizen Science Data (SWE4CS)]

@@ -1,13 +1,14 @@
 [[SOS_architectures]]
 == SOS architectures
-In this chapter we describe three architectures tested in the Interoperability Experiment that demonstrate end to end architectures as well as interoperability among servers and clients.
+In this chapter, we describe three architectures tested in the IE that demonstrate end-to-end architectures as well as interoperability among servers and clients.
 
 === Architecture 1: SOS services integrated in a SOS client
 
 [#img-MiraMonSOSArchit,reftext='{figure-caption} {counter:figure-num}']]
 .MiraMon SOS Architechture
 image::images/MiraMonSOSArchit.png[MiraMon SOS Architechture]
-In this architecture (<<MiraMonSOSArchit>>) the client access directly two different SOS services. It formulates a GetFeatureOfInterest to determine the positions of the individual observations and a GetObservation each time it needed to show a complete description of a single point (the user triggers this event by clicking on an icon) or if it needs to represent different icons as a function of the value of the observation. In this case, interoperability happens directly in the client. Since the SOS requests are communicated to the Internet, this client is exposing requests and response, allowing people to explore the SOS protocol with both the map browser console as well as the browser developing tools.
+
+In this architecture (<<MiraMonSOSArchit>>), the client access directly two different SOS services. It formulates a GetFeatureOfInterest to determine the positions of the individual observations and a GetObservation each time it needs to show a complete description of a single point (the user triggers this event by clicking on an icon) or if it needs to represent different icons as a function of the value of the observation. In this case, interoperability happens directly in the client. Since the SOS requests are communicated to the Internet, this client is exposing requests and response, allowing people to explore the SOS protocol with both the map browser console as well as the browser developer tools.
 
 [#img-MMNConsole,reftext='{figure-caption} {counter:figure-num}']]
 .MiraMon Map Browser console with both server requests
@@ -31,15 +32,20 @@ In the case a SOS server does not allow CORS, our client is still able to force 
 [#img-GrowSOSArchit,reftext='{figure-caption} {counter:figure-num}']]
 .Grow SOS Architechture
 image::images/GrowSOSArchit.png[Grow SOS Architechture]
-In this architecture (<<GrowSOSArchit>>) a common server pulls two or more SOS requests into a central tabular datastore. This datastore records only the information from the returned SOS data that is required for the final visualisation and removes information that is redundant creating a data warehouse representing only one version of the data. In this approach the interoperability happens internally in the datastore and the SOS requests and responses are not explosed to the final client.
-In the diagram below (<<GRowDataFlow>>), data is stored in the datawarehouse and Microsoft's PowerBI does the heavy lifting for the visualisation of the combined data sources.
+
+In this architecture (<<GrowSOSArchit>>), a common server pulls two or more SOS requests into a central tabular datastore. This datastore records only the information from the returned SOS data that is required for the final visualization and removes information that is redundant, creating a data warehouse representing only one version of the data. In this approach, the interoperability happens internally in the datastore and the SOS requests and responses are not exposed to the final client.
+
+In the diagram below (<<GRowDataFlow>>), data is stored in the data warehouse and Microsoft's PowerBI does the heavy lifting for the visualization of the combined data sources.
 
 [#img-GRowDataFlow,reftext='{figure-caption} {counter:figure-num}']]
 .Grow SOS Data Flow
 image::images/GRowDataFlow.png[Grow SOS Data Flow]
-The common server would typically be a cloud server, but for some clients this is not necessary, in the case of PowerBI a data bridge is created between the data source and the visualisation tool before it is published to a web client.
-Other visualisation tools (such as Tableau) will have their own methods of connecting to the data warehouse and publishing the results to a web based client.
-In this architecture, data is only as up to date as the latest data pull from the SOS servers; in the case of GROW this is done nightly but this could be made more frequent or moved towards real time using a data log pipeline in a kappa architecture.
+
+The common server would typically be a cloud server, but for some clients this is not necessary, in the case of PowerBI, a data bridge is created between the data source and the visualization tool before it is published to a web client.
+
+Other visualization tools (such as Tableau) will have their own methods of connecting to the data warehouse and publishing the results to a web based client.
+
+In this architecture, data is only as up-to-date as the latest data pull from the SOS servers; in the case of GROW, this is done nightly, but this could be made more frequent or moved towards real time using a data log pipeline in a kappa architecture.
 
 === Architecture 3: SOS service for interoperability and JSON API for fast client
 
@@ -47,8 +53,8 @@ In this architecture, data is only as up to date as the latest data pull from th
 .Helgoland SOS Architechture
 image::images/HelgolandSOSArchit.png[Helgoland SOS Architechture]
 
-This architecture was especially optimised to support the development of lightweight Sensor Web applications. This is achieved by avoiding the direct XML encoding/decoding on the client device. Instead, the interactions between the client (in this case the 52°North Helgoland Sensor Web Viewer) and the server components is achieved via a REST and JSON interface (the 52°North Sensor Web API).
+This architecture was especially optimized to support the development of lightweight Sensor Web applications. This is achieved by avoiding the direct XML encoding/decoding on the client device. Instead, the interactions between the client (in this case the 52°North Helgoland Sensor Web Viewer) and the server components is achieved via a REST and JSON interface (the 52°North Sensor Web API).
 
-This API can be directly exposed by Sensor Web servers such as the 52°North implementation. Alternatively, an available proxy component is also capable to encapsulate existing OGC SOS servers behind the lightweight interface of the 52°North Sensor Web API.
+This API can be directly exposed by Sensor Web servers such as the 52°North implementation. Alternatively, an available proxy component is also able to encapsulate existing OGC SOS servers behind the lightweight interface of the 52°North Sensor Web API.
 
-The advantage of this approach is a more lightweight communication pattern to be implemented on the client side. In addition the 52°North Sensor Web API offers further convenience methods as well as functionalities for reducing the transferred data volume (by generalising observation data) and improving the data visualisation (e.g. providing rending hints). A drawback of this approach is a less direct interaction with SOS servers, so that for integrating new SOS servers, a proxy component has to be configured/adjusted.
+The advantage of this approach is a more lightweight communication pattern to be implemented on the client side. In addition, the 52°North Sensor Web API offers further convenience methods as well as functionalities for reducing the transferred data volume (by generalizing observation data) and improving the data visualization (e.g., providing rending hints). A drawback of this approach is a less direct interaction with SOS servers, so that for integrating new SOS servers, a proxy component has to be configured/adjusted.
