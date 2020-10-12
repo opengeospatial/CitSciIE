@@ -1,0 +1,9 @@
+[[SOS STA Models]]
+== SOS and O&M  Experience
+The last ER had some experience but ther was one missing that came later.
+
+=== Earth Challance experince and recomendations
+The 52°North STA comprises...
+
+=== Possible extension for STA
+STA does not consider de Citizen directly (only things).

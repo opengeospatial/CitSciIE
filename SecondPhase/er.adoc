@@ -37,7 +37,7 @@
 // The title here should match the title on the first page.
 // *****************************************************************************
 
-:title: OGC Testbed-14:
+:title: OGC Citizen Science Interoperability Experiment Second Engineering Report
 
 // *****************************************************************************
 // Document identifier, with format "OGC YY-nnn" (e.g., OGC 17-067).
@@ -57,13 +57,13 @@
 // Names of all editors, comma-separated (e.g., John Doe, Sue Smith)
 // *****************************************************************************
 
-:editor: Name(s)
+:editor: Joan Maso
 
 // *****************************************************************************
 // Proposed working group for review (e.g. Architecture DWG, WCS SWG)
 // *****************************************************************************
 
-:workingGroup: SWG/DWG for Review: Name(s)
+:workingGroup: Sensor Web Enablement
 
 // *****************************************************************************
 // End of Editor's front-matter elements.
@@ -76,8 +76,8 @@
 :category: OGC Public Engineering Report
 :publicationDate: YYYY-MM-DD
 :approvalDate: YYYY-MM-DD
-:referenceURLID: ID
-:copyrightYear: 2018
+:referenceURLID:  CitSciIE-2
+:copyrightYear: 2020
 //
 :titletext: {title}
 :doctype: book
@@ -136,9 +136,15 @@ include::4-overview.adoc[]
 // Editors organize included-file inputs as appropriate starting here.
 // *****************************************************************************
 
-include::5-example.adoc[]
+include::5-API-proliferation.adoc[]
 
-include::6-math_example.adoc[]
+include::6-SOS-STA-model.adoc[]
+
+include::7-STA-server.adoc[]
+
+include::8-STA-client.adoc[]
+
+include::9-vocabularies.adoc[]
 
 // you may add any number of chapters as required here
 
