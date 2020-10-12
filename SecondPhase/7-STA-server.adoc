@@ -1,9 +1,9 @@
-[[STAClients]]
-== STA Clients
+[[STAServers]]
+== STA servers
 In this chapter we describe four SOS servers tested in the IE.
 
-=== STA Andy
-Andy client is based on...
+=== STA 52North
+The 52°North STA comprises...
 
-=== STA MiraMon
-MiraMon client has not been developed yet but we should!.
+=== STA SecureDimensions
+The Secure Dimensions STA implemetation is based on frauhofer...
