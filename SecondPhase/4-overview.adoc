@@ -32,3 +32,7 @@ These are the main activities and outcomes of the interoperability experiment de
 The objective of this activity was to support the Earth Challenge 2020 research questions. The questions were defined during the first month of the experiment and now it is time to analyze the questions in terms of data needs and thematic vocabularies to be used. Because the analysis has not yet been performed, this activity has not resulted in tangible outputs and will be reintroduced in the second IE. Details of this development are described in section 9.
 
 *Other*
+
+=== Future work
+* Describe the quality and the semantics is not provided by the STA. Extra work needed in this (definition server is needed).
+* STA could be too difficult to implement or too heavy weath (the GML problem: too general; too complicated). Is there any way to simplify it? A profile could be a better idea to avoid creating "yet another" standard. What is the minimum set of things to use. The information about the sensor or the thing is very difficult to get when using mass market solutions and could be removed from some CS projects.

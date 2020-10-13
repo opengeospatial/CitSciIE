@@ -3,10 +3,22 @@
 There is a proliferation of APIs.
 
 === iNaturalits APIs
-iAnturalist has 2 APIS
+iNaturalist has 2 APIS
 
 === API Sensor Community
 Sensor Community offers an API
 
 === API US Cit Sci repo
 I have found (form George Percival) this resource that I have been told is related with the US department of state. The expose Citizen Science APIs about 4 topics. This is the one about mosquitoes: https://portal-data.cscloud.host/api-details#api=guest-mosquitoes&operation=get-daily. What about showing them to do the same with STA?. Anne knows about this one.
+
+=== GBIF API
+GBIF API is a common place for biodiversity. Even if GBIF API is the lengua franca for biodiversity, it is still read only. You cannot contribute directly to GBIF but to the original sources of info (the individual citizen observatories).
+
+=== Why we need a common API
+To overcome the silos, we need a way to query the data (and API) regardless the server and CO you are querying (Not just share it as a "package" but extract what we need among the long list of records).
+
+* This API needs a common data model to respond the query results.
+* To support the current APIs and data models we will need to create mappings between those data models into a common data models to know what you will expect as a result of a query.
+* We will also need the queries that clients needs to populate they user interfaces.
+
+* Describe the quality and the semantics is not provided by the STA. Extra work needed in this (definition server is needed).
