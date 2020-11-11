@@ -1,0 +1,86 @@
+== Summary
+This Engineering report describes the first phase of the Citizen Science (CS) Interoperability Experiment (IE) organized by the EU H2020 WeObserve project under the OGC Innovation Program and supported by the four H2020 Citizen Observatories projects (SCENT, GROW, LandSense, and GroundTruth 2.0) as well as the EU H2020 NEXTGEOSS project. The activity covered aspects of data sharing architectures for Citizen Science data, data quality, data definitions and user authentication.
+
+The final aim was to propose solutions on how Citizen Science data could be integrated in the Global Earth Observation System of Systems (GEOSS). The solution is necessarily a combination of technical and networking components, being the first ones the focus of this work. The applications of international geospatial standards in current Citizen Science and citizen observatory projects to improve interoperability and foster innovation is one of the main tasks in the IE.
+
+The main result of the activity was to demonstrate that Sensor Observing Services can be used for Citizen Science data (as proposed in the Open Geospatial Consortium (OGC) Sensor Web Enablement for Citizen Science (SWE4CS) Discussion Paper) by implementing SWE4CS in several clients and servers that have been combined to show Citizen Science observations. In addition, an authentication server was used to create a federation between three projects. This federated approach is part of the proposed solution for GEOSS that can be found in the last chapter. Many open issues have been identified and are expected to be addressed in the second phase of the experiment, including the use of a definitions server.
+
+=== Requirements & Research Motivation
+This experiment was designed to demonstrate how current ICT-based tools can be applied together to allow better citizen participation in CS projects and enable better reuse of the data gathered. Citizen Science is highly transdisciplinary and heterogeneous by nature and current standardization efforts already occur in the OGC (e.g., addressing data model and sharing issues) as well as outside the OGC (primarily addressing project descriptions and dataset metadata). Citizen Science projects might benefit from concrete examples and best practices required to achieve the full benefits of interoperability. OGC is in the ideal position to develop and provide such best practice guidance to the international community. Developed solutions in this IE should be applicable to most Citizen Science projects. Findings from this IE will be generalized as practice examples and might set the basis for additional experimentation in the future.
+
+The FP7 Citizen Observatory Web (COBWEB) project was the first to propose the use of SWE in CS. This work resulted in an OGC public Discussion Paper available on the OGC website (OGC 16-129). The Discussion Paper describes a data model for the standardized exchange of Citizen Science sampling data based on SWE standards. This Discussion Paper was the initial motivation for this IE.
+
+Beyond the work described above, the Citizen Science Association’s International Working Group on Citizen Science Data and Metadata has developed the PPSR-CORE metadata standard and the European Citizen Science Association (ECSA) has a working group that recognizes the value of standardization in the CS activities (supported by a COST Action). However, these activities could benefit from some experimentation that would be able to suggest common best practices while recognizing the particularities and current approaches in different thematic domains, such as biodiversity monitoring. Citizen Science can complement authoritative in-situ observations and fill the information gaps in numerous scientific disciplines that could be essential for informed decision making. In that sense, the way Citizen Science can be integrated into The GEOSS (including GEOSS-Data Core as the pool to promote and share open and free data) is still under investigation.
+
+The Ecosystem of Citizen Observatories (CO) for Environmental Monitoring WeObserve project is a Horizon 2020 funded project focused on improving the coordination between existing COs and related regional, European, and international activities. WeObserve tackles three key challenges that face COs: awareness, acceptability, and sustainability. The WeObserve Community of Practice 3 (CoP3) is about Interoperability of Citizen Science projects. The WeObserve project – via its CoP activities – has represented an opportunity to promote interoperability experimentation in collaboration with the OGC. Such collaboration addresses questions raised in the SWE4CS discussion. In addition, the work offers the possibility to directly feed the results into the relevant OGC standards and promotes their usage within GEOSS (as an important user community of OGC standards).
+
+In anticipation of the 50th Anniversary of Earth Day in 2020, Earth Day Network, the Woodrow Wilson International Center for Scholars, and the U.S. Department of State, through the Eco-Capitals Forum, announce Earth Challenge 2020, a Citizen Science Initiative. This initiative is in collaboration with Connect4Climate – World Bank Group, Conservation X Labs, Hult Prize, National Council for Science and the Environment (NCSE), OGC, Reset, SciStarter, UN Environment, and others to be announced. Earth Challenge 2020 will help engage millions of global citizens in collecting one billion data points in areas including air quality, water quality, biodiversity, pollution, and human health. Earth Change 2020 data will be shared through the GEOSS Portal.
+
+=== Prior-After Comparison
+This is the first Citizen Science IE conducted by the OGC. Prior to this activity, there was a Discussion Paper on how to apply the SWE standards in Citizen Science (SWE4CS). This experiment positively tested the proposed route using Sensor Observing Services but also has opened the door to future exploration of the SensorThings API.
+
+Also prior this activity, was a H2020 project with a Authentication Service and after the activity, three H2020 efforts formed a bigger federation demonstrating the route to federating and aggregating Citizen Science projects to contribute to GEO objectives.
+
+This work is relevant to the OGC Citizen Science Domain Working Group.
+
+=== Recommendations for Future Work
+This OGC IE ended on June 2019, but a second IE is foreseen for the following year.
+
+New possible topics for next IE to be discussed among the members include the following.
+
+* There is a need for clarifying how to coordinate infrastructures for Citizen Science in Europe and adopt standard procedures for data sharing and single sign on. Solving this issue will help in connecting CS to GEO. Steffen Fritz (IIASA) has proposed a side event in the next EuroGEOSS workshop to discuss this coordination with the relevant players. This is emerging as a new activity in the WeObserve Interoperability CoP that is related, but not directly connected, to the IEs.
+
+* The WMO (World Meteorological Organization) is concerned about the amount of different CS activities that are being organized by meteorological organizations. WMO is looking for ways to take advantage of this new data stream, but problems of standardization of what is measured and how data is being shared arise. WMO has identified the potential of these data streams and would like to harmonize the situations to make data more useful for weather predictions in the future.
+
+* OGC is promoting a new generation of web services based on OpenAPI. It is unclear how these new web services could impact the use of OGC standards by CS projects but it is seen as an opportunity to make OGC standards more usable and compatible with IT mainstream. A hackathon to develop OGC API specifications occurred on 20-21 June 2019 in London and subsequent hackathons and sprints continue to advance the OGC API standards.
+
+The definition of the follow-up IE started upon completion of this IE.
+
+===	Document contributor contact points
+
+All questions regarding this document should be directed to the editor or the contributors:
+
+*Contacts*
+[width="80%",options="header",caption=""]
+|====================
+|Name |Organization
+|Joan Maso |UAB-CREAF
+|Andy Cobley |University of Dundee
+|Valantis Tsiakos |Institute of Communication & Computer Systems (ICCS)
+|Nikolaos Tousert |Institute of Communication & Computer Systems (ICCS)
+|Theodoros Theodoropoulos |Institute of Communication & Computer Systems (ICCS)
+|Simon Jirka |52 North
+|Sven Schade |European Commission, Joint Research Center (JRC)
+|Andreas Matheus |Secure Dimensions
+|Stefano Tamascelli |XTeam Software Solutions
+|Friederike Klan |Citizen Science Group, Institute of Data Science, DLR
+|Trupti Padiya |Citizen Science Group, Institute of Data Science, DLR, Friedrich-Schiller-University Jena
+|====================
+
+*Initiators*
+[width="50%",options="header",caption=""]
+|====================
+|Organization
+|Universtat Autònoma de Barcelona - CREAF (UAB-CREAF)
+|International Institute for Applied Systems Analysis (IIASA)
+|Joint Research Center (JRC)
+|European Space Agency (ESA)
+|Woodrow Wilson International Center for Scholars (Wilson Center)
+|====================
+
+The WeObserve project has received funding from the European Union’s Horizon 2020 Research and Innovation Programme under grant agreement No. 776740.
+
+This presentation reflects only the editor's views and the EU Agency is not responsible for any use that may be made of the information it contains.
+
+// *****************************************************************************
+// Editors please do not change the Foreword.
+// *****************************************************************************
+=== Foreword
+
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
+
+Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
+
+=== Acknowledgements
+
+This report was coordinated and developed with funding from the European Union’s Horizon 2020 research and innovation programme under grant agreements: no 776740 (WeObserve), no 688930 (SCENT), no 689744 (Ground Truth 2.0), no 690199 (GROW Observatory), no 689812 (LandSense) as well as no 730329 (NEXTGEOSS).

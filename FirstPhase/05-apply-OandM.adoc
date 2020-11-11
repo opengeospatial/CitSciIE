@@ -1,0 +1,371 @@
+[[DataModels]]
+== O&M for Cit Sci
+In a _feature model_ all characteristics of a feature are considered properties of the feature and are not semantically separated at the abstract level.
+
+The O&M standard ([OGC 10-004r3], Abstract Specification Topic 20: Observations and Measurements) defines a data model for observations where main concepts are separated as represented in the <<img-observationConcepts>>.
+
+[#img-observationConcepts,reftext='{figure-caption} {counter:figure-num}']]
+.Observation main concepts
+image::images/observationConcepts.png[Observation main concepts]
+
+For each observation, O&M allows us to document the following characteristics.
+
+* Where the observation is located: even if the observation was made remotely with a camera or a drone, it is commonly more relevant to know the position of the observed phenomena (the sensor position can also be recorded).
+
+* When the observation took place and what time period it represents: even if samples were collected and analyzed later, it is commonly more relevant to know the instant or period of the observed phenomenon.
+
+* How the observation was done: this will describe the procedure and instrument used to capture the phenomenon.
+
+* Who did the observation: the procedure and instrument used to capture the phenomenon was installed or used on site by someone. In citizen Science, where many observers contribute small pieces of information that together will form a dataset, it is particularly important to record at least an observer identifier.
+
+* What was measured: this will define the property names and units of measure of the variables observed.
+
+* What data was collected: this will record the actual values of the properties measured.
+
+* What is the expected quality of the observation: if an estimation of the quality of the observation was done, it is important to document the quality.
+
+In the O&M data model, the above aspects are clearly separated semantically as shown in <<img-commonModelForOandM>>. This is the main value of the O&M model and its usage SOS (or the SensorThingsAPI that uses a very similar approach to model the data), but it is also the main handicap in applying the standard.
+
+[#img-commonModelForOandM,reftext='{figure-caption} {counter:figure-num}']]
+.Common Model For Oservations and Measurements
+image::images/commonModelForOandM.png[Common Model For Oservations and Measurements]
+
+[#table_OandMModel,reftext='{table-caption} {counter:table-num}']
+.Concepts in an observation mapped to the O&M model
+[width="75%",options="header",align="center"]
+|===
+| Concept | O&M | type
+| Where | featureOfInterest | GFI_Feature
+| When | phenomenonTime, resultTime |
+| How | procedure | OM_Process
+| Who | procedure | OM_Process
+| What | observedProperty | GF_PropertyType
+| Data | result | Any
+| Quality | resultQuality |
+|===
+
+Even if the aspects above are separated, the O&M model gives a lot of flexibility in defining the properties and this flexibility can condition interoperability when trying to combine data from different sources. The standard give us freedom to select among the different geometries provided by GML to define the featureOfInterest. The standard gives us even more freedom on the data collected that can have any imaginable structure.
+
+That is the reason why the data model used to represent the data gathered by a Citizen Observatory needs to be carefully considered before even starting the first data collection campaign. Data models can be designed in UML for clarity, but they are later encoded in XML. XML is the only official encoding that O&M references in the OGC website ([OGC 10-025r1] Observations and Measurements - XML Implementation v2.0). Nevertheless, there is a JSON alternative discussed in an OGC Discussion Paper ([OGC 15-100r1] OGC Observations and Measurements – JSON Implementation) that does not represent an official position of the OGC but can be implemented anyway. As it will be discussed latter, the interpretation of long XML files might be to slow in web browsers, and in this case, a JSON encoding is regarded as a good alternative either in O&M or the SensorThings API.
+
+=== The GT20 examples
+In the Ground Truth 2.0 project, we have been using the MiraMon implementation of O&M. This implementation assumes a simplified situation that considers that each observation can be represented by a single row in a CSV or in a single record of a database table. Coordinates are represented as a single point. In this situation, we select which column names represent the _phonomenonTime_, the _procedure_ (that actually is including the user name), and the _featureOfInterest_ (the coordinates). The rest of the columns are considered part of the data record that needs to be provided as the _result_.
+
+Section 8.2.1 of the [OGC 08-094r1] OGC® SWE Common Data Model Encoding Standard v2.0 describes a way to encode a _DataRecord_ as an array of fields that can numbers, strings, dates, etc. In our simplified assumption, this array is ideal to wrap the properties of the observations that cannot be mapped to any other O&M aspect. This practice is consistent with the section 7.2.8 of the SWE4CS discussion paper.
+
+The following is an example of how a water quality observation is represented following the O&M model and encoded in XML.
+
+.Example of XML encoding of the water quality observation
+[source,xml]
+----
+<om:OM_Observation gml:id="vatten-fokus_2_1">
+	<om:type xlink:href="http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation"/>
+	<om:procedure xlink:href="http://www.opengis.uab.cat/vatten-fokus/procedure/22655"/>
+	<om:observedProperty xlink:href="http://www.opengis.uab.cat/vatten-fokus/observedProperty"/>
+	<om:featureOfInterest xlink:href="http://www.opengis.uab.cat/vatten-fokus/featureOfInterest/2"/>
+	<om:result xsi:type="swe:DataRecordPropertyType">
+		<swe:DataRecord>
+			<swe:field name="CREA_DATE">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Creation_Date">
+					<swe:value>07/12/2018 17:23</swe:value>
+				</swe:Text>
+			</swe:field>
+			<swe:field name="SITE_NAME">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Site_name">
+					<swe:value>Dunkershall. V¤gtrumma uppst¤ms.</swe:value>
+				</swe:Text>
+			</swe:field>
+			<swe:field name="LAND_USE">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Land_use_in_the_immediate_surroundings">
+					<swe:value>Agriculture</swe:value>
+				</swe:Text>
+			</swe:field>
+			<swe:field name="BANK_VEGE">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Bank_vegetation">
+					<swe:value>Grass</swe:value>
+				</swe:Text>
+			</swe:field>
+			<swe:field name="NITRATE">
+				<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/NITRATE">
+					<swe:uom/>
+					<swe:value>1.50</swe:value>
+				</swe:Quantity>
+			</swe:field>
+			<swe:field name="PHOSPHATE">
+				<swe:Quantity definition="http://www.opengis.uab.cat/vatten-fokus/variable/PHOSPHATE">
+					<swe:uom/>
+					<swe:value>0.075</swe:value>
+				</swe:Quantity>
+			</swe:field>
+			<swe:field name="WATER_COLOR">
+				<swe:Text definition="http://www.opengis.uab.cat/vatten-fokus/field/Estimated_water_colour">
+					<swe:value>Colourless</swe:value>
+				</swe:Text>
+			</swe:field>
+		</swe:DataRecord>
+	</om:result>
+</om:OM_Observation>
+----
+
+The following is an example of how two  air quality observations are represented following the O&M model and encoded in JSON.
+
+.Example of encoding of the air quality observation
+[source,json]
+----
+{
+	"id":"meet-mee-mechelen_1_0",
+	"type" : "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation",
+	"phenomenonTime" : "2017-11-19 17:20:00+01",
+	"resultTime" : "2017-11-19 17:20:00+01",
+	"procedure" : "http://www.opengis.uab.cat/meet-mee-mechelen/procedure/5",
+	"observedProperty" : "http://www.opengis.uab.cat/meet-mee-mechelen/observedProperty",
+	"featureOfInterest" : "http://www.opengis.uab.cat/meet-mee-mechelen/featureOfInterest/1",
+	"result": {
+		"type":"DataRecord",
+		"field":[
+			{
+				"name" : "CAMPAIGN",
+				"type" : "Text",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/field/CAMPAIGN",
+				"value" : "Oct-Nov2017"
+			},
+			{
+				"name" : "bc_aggr",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr",
+				"value" : "3155"
+			},
+			{
+				"name" : "bc_aggr_mi",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_mi",
+				"value" : "80"
+			},
+			{
+				"name" : "bc_aggr_ma",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_ma",
+				"value" : "16413"
+			},
+			{
+				"name" : "bc_aggr_st",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_st",
+				"value" : "3398"
+			},
+			{
+				"name" : "uncertaint",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/uncertaint",
+				"value" : "0.50"
+			}
+		]
+	}
+},
+{
+	"id":"meet-mee-mechelen_2_1",
+	"type" : "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation",
+	"phenomenonTime" : "2017-11-19 17:20:06+01",
+	"resultTime" : "2017-11-19 17:20:06+01",
+	"procedure" : "http://www.opengis.uab.cat/meet-mee-mechelen/procedure/5",
+	"observedProperty" : "http://www.opengis.uab.cat/meet-mee-mechelen/observedProperty",
+	"featureOfInterest" : "http://www.opengis.uab.cat/meet-mee-mechelen/featureOfInterest/2",
+	"result": {
+		"type":"DataRecord",
+		"field":[
+			{
+				"name" : "CAMPAIGN",
+				"type" : "Text",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/field/CAMPAIGN",
+				"value" : "Oct-Nov2017"
+			},
+			{
+				"name" : "time_first",
+				"type" : "Text",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/field/time_first",
+				"value" : "2017-11-06 08:00:18+01"
+			},
+			{
+				"name" : "bc_aggr",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr",
+				"value" : "3382"
+			},
+			{
+				"name" : "bc_aggr_mi",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_mi",
+				"value" : "80"
+			},
+			{
+				"name" : "bc_aggr_ma",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_ma",
+				"value" : "17256"
+			},
+			{
+				"name" : "bc_aggr_st",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/bc_aggr_st",
+				"value" : "3663"
+			},
+			{
+				"name" : "number_of_",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/number_of_",
+				"value" : "25"
+			},
+			{
+				"name" : "number_o_1",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/number_o_1",
+				"value" : "13"
+			},
+			{
+				"name" : "mean_numbe",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/mean_numbe",
+				"value" : "7"
+			},
+			{
+				"name" : "uncertaint",
+				"type" : "Quantity",
+				"definition" :"http://www.opengis.uab.cat/meet-mee-mechelen/variable/uncertaint",
+				"value" : "0.50"
+			}
+		]
+	}
+}
+----
+
+These examples were produced by SOS requests to this URL: http://www.ogc3.uab.cat/cgi-bin/CitSci/MiraMon.cgi?. A client connecting to this service can be found here: http://www.ogc3.uab.cat/gt20/.
+
+=== HackAir examples
+To illustrate the flexibility of the O&M, we have included this air quality report that shows how HackAir data is presented by a 52North SOS implementation. In this case the _result_ presents a single numerical value while the other information is provided as parameters. This approach is consistent with section 7.2.2.5 of the O&M standard.
+
+.Example of encoding of the water quality observation
+[source,xml]
+----
+<om:OM_Observation gml:id="o_499">
+	<om:type xlink:href="http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement"/>
+	<om:phenomenonTime>
+		<gml:TimeInstant gml:id="phenomenonTime_499">
+			<gml:timePosition>2019-01-01T00:00:12.000Z</gml:timePosition>
+		</gml:TimeInstant>
+	</om:phenomenonTime>
+	<om:resultTime xlink:href="#phenomenonTime_499"/>
+	<om:procedure xlink:href="sensors_arduino_1000"/>
+	<om:parameter>
+		<om:NamedValue>
+			<om:name xlink:href="PM2.5_AirPollutantIndex"/>
+			<om:value xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">bad</om:value>
+		</om:NamedValue>
+	</om:parameter>
+	<om:parameter>
+		<om:NamedValue>
+			<om:name xlink:href="http://www.opengis.net/def/param-name/OGC-OM/2.0/samplingGeometry"/>
+			<om:value xmlns:ns="http://www.opengis.net/gml/3.2" xsi:type="ns:GeometryPropertyType">
+				<ns:Point ns:id="Point_sp_45C0E376C40E98E8EC0D48C05F7558C2FFD15245">
+					<ns:pos srsName="http://www.opengis.net/def/crs/EPSG/0/4326">52.063269625917 4.5077472925186</ns:pos>
+				</ns:Point>
+			</om:value>
+		</om:NamedValue>
+	</om:parameter>
+	<om:parameter>
+		<om:NamedValue>
+			<om:name xlink:href="source"/>
+			<om:value xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">sensors_arduino</om:value>
+		</om:NamedValue>
+	</om:parameter>
+	<om:parameter>
+		<om:NamedValue>
+			<om:name xlink:href="user"/>
+			<om:value xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">sID :1000</om:value>
+		</om:NamedValue>
+	</om:parameter>
+	<om:observedProperty xlink:href="PM2.5_AirPollutantValue" xlink:title="PM2.5_AirPollutantValue"/>
+	<om:featureOfInterest xlink:href="sensors_arduino_1000"/>
+	<om:result xmlns:ns="http://www.opengis.net/gml/3.2" uom="μg/m3" xsi:type="ns:MeasureType">130.67</om:result>
+</om:OM_Observation>
+----
+A service producing this type of results can be seen here: https://nexos.demo.52north.org/52n-sos-hackair-webapp/service.
+
+=== GROW example
+In the GROW project the SME Hydrologic has developed a SOS service that uses an O&M observation. In this case, a single number is provided as the _result_ of the observation and additional parameters are transported.
+
+[source,xml]
+----
+<OM_Observation xmlns="http://www.opengis.net/om/2.0">
+	<type gml:remoteSchema="http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement" />
+	<phenomenonTime>
+		<gml:TimePeriod>
+			<gml:beginPosition>2018-09-03T09:01:38.000Z</gml:beginPosition>
+			<gml:endPosition>2018-09-03T09:01:38.000Z</gml:endPosition>
+		</gml:TimePeriod>
+	</phenomenonTime>
+	<resultTime>
+		<gml:TimeInstant>
+			<gml:timePosition>2018-09-03T09:01:38.000Z</gml:timePosition>
+		</gml:TimeInstant>
+	</resultTime>
+	<procedure>Grow.Thingful.Sensors_je47sfac</procedure>
+	<observedProperty nilReason="Thingful.Connectors.GROWSensors.AirTemperature" />
+	<featureOfInterest nilReason="je47sfac" />
+	<result>20.64</result>
+</OM_Observation>
+----
+
+=== Future work
+So far we have seen 3 servers using 2 different approaches to represent the result. That is not a problem for a web service (that only outputs data), but it is not the best situation to ensure interoperability at the client side where an integrated client will need to react to any possible encoding variation and deliver the best result.
+
+==== How to encode the procedure.
+The SWE4CS Discussion Paper suggest that we use an approach to encode the procedure that takes into account a recommendation extracted from section 6.18.1 of the Timeseries Profile of Observations and Measurements standard [OGC 15-042r5] that suggests an encoding for both the observation _process_ and the _operator_ of the sensor (the _citizen_ doing Citizen Science) that is based on ISO metadata. This approach will ensure a uniform way to report on these two important aspects of the observation.
+
+NOTE: This approach has not been implemented during the IE but it is considered something we can experiment with in the future. An example of this procedure is provided in the SWE4CS document and reproduced here for convenience.
+
+.Example of encoding of the procedure (including process and operator) extracted from the SWE4CS document
+[source,xml]
+----
+<om:procedure>
+  <tsml:ObservationProcess gml:id="op1">
+    <!-- processType defines observation performed by human with sensor -->
+    <tsml:processType
+xlink:href="http://www.opengis.net/def/waterml/2.0/processType/Sensor"/>
+    <!-- processReference defines sampling protocol -->
+    <tsml:processReference
+xlink:href="https://dyfi.cobwebproject.eu/skos/JapaneseKnotweedSamplingProtocol"/>
+    <!-- if a sensor is used, provide the link to the sensor definition here. Use
+SensorML if possible -->
+    <tsml:parameter>
+      <om:NamedValue>
+        <om:name xlink:href="http://www.opengis.net/def/property/OGC/0/SensorType"/>
+        <om:value>http://www.motorola.com/XT1068</om:value>
+      </om:NamedValue>
+    </tsml:parameter>
+    <!-- operator defines the citizen scientist producing this observation -->
+    <tsml:operator>
+      <gmd:CI_ResponsibleParty>
+        <gmd:individualName>
+          <gco:CharacterString>Ingo Simonis</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:organisationName>
+          <gco:CharacterString>OGC</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:role>
+          <gmd:CI_RoleCode
+    codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml"
+    codeListValue="resourceProvider"/>
+        </gmd:role>
+      </gmd:CI_ResponsibleParty>
+    </tsml:operator>
+  </tsml:ObservationProcess>
+</om:procedure>
+----
+
+The result is quite verbose, which might affect performance when many data is transmitted.
+
+==== Avoiding verbosity by defining a data stream
+
+An approach based on providing a comma-separated recordset that is described only once at the beginning should be more compact and efficient to parse.
+
+Section 8.4.3 of the [OGC 08-094r1] OGC® SWE Common Data Model Encoding Standard v2.0 describes a way to encode a _DataStream_ only once and then send the data directly as a CSV format using HTTP of other protocol. A similar solution could be worth to be tested in the future to increase performance.

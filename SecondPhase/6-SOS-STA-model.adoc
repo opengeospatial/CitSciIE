@@ -1,0 +1,25 @@
+[[SOS STA Models]]
+== SOS and O&M  Experience
+The last ER had some experience but ther was one missing that came later.
+
+=== Earth Challance experince and recomendations
+The 52°North STA comprises...
+
+=== Status with STA and useful queries
+It is important to know how to use $expand, $select, $filter, $count=true ...
+
+https://developers.sensorup.com/docs/#query-filter
+
+We need to tell people how to say "I only want frogs":
+https://cos4cloud.demo.secure-dimensions.de/sta4cs/v1.0/Datastream?$expand=Observations&$filter=Observations/Datastream/ObservedProperty/name eq 'Taxon' and Observations/result eq 'Frog'
+
+That is important to get the positions? Location (Thing), FeatureOfInterest? Having the two is a good thing but sometimes it gests complicated to know what is what.
+We need those use cases where they are the same and cases where they are not.
+
+https://cos4cloud.demo.secure-dimensions.de/sta4cs/v1.0/FeatureOfInterst?$expand=feature/geometry,Observations&$filter=st_within(feature,geography'POLYGON((0 0, 10 0, 10 10, 0 10, 0 0))')
+
+https://cos4cloud.demo.secure-dimensions.de/sta4cs/v1.0/Observations?$filter=st_within(FeatureOfInterest/feature,geography%27POLYGON((0%200,%2010%200,%2010%2010,%200%2010,%200%200))%27)
+
+=== Possible extension for STA
+STA does not consider de Citizen directly (only things)... Motivations (use cases, requirements) and what is out there.
+The integration is done in GBIF manually and is made available in yet another API (https://www.gbif.org/developer/summary). But others cannot integrate easily.

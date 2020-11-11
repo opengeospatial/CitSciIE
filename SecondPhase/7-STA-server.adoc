@@ -1,0 +1,9 @@
+[[STAServers]]
+== STA servers
+In this chapter we describe four SOS servers tested in the IE.
+
+=== STA 52North
+The 52°North STA comprises...
+
+=== STA SecureDimensions
+The Secure Dimensions STA implementation is based on Frost server Frauhofer...

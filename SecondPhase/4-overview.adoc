@@ -1,0 +1,38 @@
+[[Overview]]
+== Overview
+This Engineering Report focuses on the findings of the second phase of the Citizen Science Interoperability Experiment (CitSciIE). This ER should be read considering the context set up in the first Engineering Report (OGC 19-083).
+
+The primary focus of the OGC CitSciIE was to demonstrate the interoperability of Citizen Observatories and Citizen Science projects and the way OGC standards can be applied to Citizen Science, including possible relationships to other relevant standards from the community. In the second phase of the interoperability experiment, a subset the originally proposed topics were being addressed based on the participant organizations:
+
+* Application of O&M to describe the citizen science themes decided by the Earth Challenge 2020;
+* The use of OGC Sensor Things API, as an alternative for the SOS investigated in the first phase, to support data integration among CS projects, and with other sources, especially authoritative data;
+* Adoption of the OGC definition server as vocabulary for observation properties (variables).
+
+The desired outcome of this experiment was the following.
+
+This IE has been promoted by the OGC Citizen Science Domain Working Group, the WeObserve, NextGEOSS and the COS4Cloud H2020 projects, as well as the Earth Challenge 2020 project as supported by National Geographic Society. This IE contributes not only to the interoperability and possibly standardization program of the OGC, but also to the GEOSS. This work is also relevant to the foundational objectives of the Citizen Science Global Partnership (CSGP). Regional and national Citizen Science Associations will equally benefit from the results of this OGC IE.
+
+=== Structure of the activities
+
+The official kick-off meeting for the OGC CitSciIE experiment was held on $$ 2019 at the OGC TC meeting in $$$. Activities continued until December 2020.
+
+During the kick-off meeting of the IE, the following subgroups emerged.
+
+=== Results detailed in the subsequent sections
+
+These are the main activities and outcomes of the interoperability experiment detailed by activity.
+
+*Data sharing using OGC standards such as O&M*
+
+
+*The use of OGC Sensor Things API, as an alternative for the SOS*
+
+*Definition server for organizing Citizen Science projects*
+
+The objective of this activity was to support the Earth Challenge 2020 research questions. The questions were defined during the first month of the experiment and now it is time to analyze the questions in terms of data needs and thematic vocabularies to be used. Because the analysis has not yet been performed, this activity has not resulted in tangible outputs and will be reintroduced in the second IE. Details of this development are described in section 9.
+
+*Other*
+
+=== Future work
+* Describe the quality and the semantics is not provided by the STA. Extra work needed in this (definition server is needed).
+* STA could be too difficult to implement or too heavy weath (the GML problem: too general; too complicated). Is there any way to simplify it? A profile could be a better idea to avoid creating "yet another" standard. What is the minimum set of things to use. The information about the sensor or the thing is very difficult to get when using mass market solutions and could be removed from some CS projects.

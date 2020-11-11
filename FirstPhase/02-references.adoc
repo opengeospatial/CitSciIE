@@ -1,0 +1,15 @@
+[[references]]
+== References
+
+The following normative documents are referenced in this document.
+
+* http://portal.opengeospatial.org/files/?artifact_id=41579[OGC 10-004r3, Topic 20: Observations and Measurements]
+* http://portal.opengeospatial.org/files/?artifact_id=41510[OGC 10-025r1, Observations and Measurements - XML Implementation]
+* https://portal.opengeospatial.org/files/64910[OGC 15-100r1, OGC Observations and Measurements – JSON implementation]
+* https://portal.opengeospatial.org/files/?artifact_id=47599[OGC 12-006, OGC® Sensor Observation Service Interface Standard v2.0]
+* http://portal.opengeospatial.org/files/?artifact_id=41157[OGC 08-094r1, OGC® SWE Common Data Model Encoding Standard	v2.0]
+* http://docs.opengeospatial.org/is/15-042r5/15-042r5.html[15-042r5 OGC TimeseriesML – XML Encoding of the Timeseries Profile of Observations and Measurements v1.2]
+
+Although the following is an OGC Discussion Paper that is not an OGC standard and cannot be considered strictly a normative reference, it is actually the basis for several sections of this document and should be considered as important background:
+
+* https://portal.opengeospatial.org/files/?artifact_id=70328[OGC 16-129, Standardized Information Models to Optimize Exchange, Reusability and Comparability of Citizen Science Data (SWE4CS)]
