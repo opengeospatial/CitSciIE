@@ -1,9 +1,73 @@
 [[APIProliferation]]
 == API proliferation
-There is a proliferation of APIs.
+=== What is a API
+In this document the term API refers to the concept of "server side Web REST API" understood as a programmatic interface consisting of one or more publicly exposed URI endpoints using the HTTP defined request–response message system (e.g. HTTP GET or HTTP POST), that typically exchange  resources (payload) represented in JSON, XML or HTML via the web. HTML representations are presented to the users that interact with the (e.g following links) and JSON or XML representations are reserved to machines that will be able parse and create them.
 
-=== iNaturalits APIs
-iNaturalist has 2 APIS
+The API should be well documented in a way that, for each URL representing a resource, the HTTP verbs used as well as the representation (JOSN, XML or HTML payloads) of the request and response are well specified. The documentation can take several forms (commonly presented in HTML) but, recently, the OpenAPI documentation format (JSON or YAML) has been well accepted by the community as can be interpreted by machines as well as transformed into HTML for humans consumption.
+
+The following sub chapters collect some of the APIs we have encountered that are used in citizen science.
+
+=== iNaturalist APIs
+The iNaturalist APIs allow an application to act as a user and manage observations in their name. In practice, the existence of the API expands the way a user can create and manage observations. Possible approaches are:
+
+* The HTML pages that the iNaturalist website
+* The iNaturalist app for mobile devices
+* Other client applications developed by 3rt parties that send the data to the iNAturalist servers using the APIs.
+
+The APIs are meant to be used for building applications and for fetching small to medium batches of data. It is not meant to be a way to download data in bulk. Currently iNaturalist has two APIS. The https://www.inaturalist.org/pages/api+recommended+practices[iNaturalist API Recommended Practices] gives an overview of the current situation with iNaturalist:
+
+* An old API that has been offered through the website for a long time and it is documented at https://www.inaturalist.org/pages/api+reference. The development of this API has stopped but is still operational.
+* A newer API at https://api.inaturalist.org/, which was designed to be more consistent and comprehensive with faster response times. The new API is more scalable and will be used as the bases for future developments. Most importantly for developers, the new API declare correctly in the headers what is necessary to make a JavaScript application that supports Cross-origin Resource Sharing (CORS). Without this headers, the RitmeNatura JavaScript code is not allowed to read the response of the API requests.
+
+Despite the fact that iNaturalist recommends using the new API and is considering the old one as deprecated, there are several things that justify the permanence of the old API:
+
+* The pages generated in the iNaturalist website, are HTML representations of the old API. This makes the old API ideal for getting machine readable data and comparing it with the equivalent HTML page.
+* There are no OAuth authentication endpoints in the new API and you are expected to use the old API to get authenticated simultaneously in both APIs.
+* The way to send and image to the API might be rudimentary in the old API but it is very convenient.
+
+During the course of this Interoperability Experiment, a JavaScript application was developed to facilitate the contributions of users in the RitmeNatura initiative and the Phenotandem project. In this application, the species observed are limited to an short list of species that are of phenological interest because they are easy to recognize. The application is capable to send an observation in real time to iNaturalist of the selected species, to send pictures of it and to add the phenological status as a additional field. The application simplifies the data capturing process because the possible phenological status of the plant depends on the observed species and the application guides the user to the right available phenological status.
+
+The JavaScript application can be found in the https://www.ritmenatura.cat/captura/index.htm[RitmeNatura capture page[]. First the application uses the hello.js library to login into iNaturalist (see <<img_Ritme-Natura-Login>>). Once users have selected their pictures, species name, phenophase name, position and time (see <<img_Ritme-Natura-Observation>>), the information is sent to the iNaturalits in the following order:
+
+* The "https://api.inaturalist.org/v1/observations.json of the new API endpoint is used to send the observed species, position and time. This endpoint is supposed to return the id of the created observation but unfortunately not always does that, what complicates a bit the code.
+* The "https://www.inaturalist.org/observations/{userName}.json?updated_since={almost_now} endpoinf of the old API is used to retrieve that last recorded observation id if not returned by the creation event.
+* The https://api.inaturalist.org/v1/project_observations.json?project_observation[project_id]=63554&project_observation[observation_id]={id} is used to associate the observation to the RitmeNatura project (there is no way to do this during the creation);
+* The https://api.inaturalist.org/v1/observation_photos endpoint is used to send a multipart form with the observation id and a picture binary data for each of the photos created.
+
+The following illustrations show how the user interface prepare the interface to send the Observations and how it finally does that.
+
+[#img_Ritme-Natura-Login,reftext='{figure-caption} {counter:figure-num}']
+.RitmeNatura Login interface
+image::images/RitmeNaturaLogin.png[Ritme Natura Login]
+
+[#img_Ritme-Natura-Observation,reftext='{figure-caption} {counter:figure-num}']
+.RitmeNatura Observation interface
+image::images/RitmeNaturaObservation.png[RitmeNatura Observation]
+
+[#img_Ritme-Natura-Sending,reftext='{figure-caption} {counter:figure-num}']
+.RitmeNatura Observation in the process of being sent. The id of the observations is already know at this stage.
+image::images/RitmeNaturaSending.png[RitmeNatura Sending]
+
+[#img_Ritme-Natura-Sent,reftext='{figure-caption} {counter:figure-num}']
+.RitmeNatura Observation is completely sent.
+image::images/RitmeNaturaSent.png[RitmeNatura Sent]
+
+
+==== Twitter API to improve dissemination.
+
+The proliferation of APIs is particularly perceivable in the social media portals. The big players prvide several APIs that can make our observations more visible. In our case, we followed the instructions of twitter to build a link that sends the observation details to our twitter followers, when, as a users we sent the observations to iNaturalist first: https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview
+
+[#img_Ritme-Natura-Tweet,reftext='{figure-caption} {counter:figure-num}']
+.RitmeNatura using the twitter API to further disseminate the observation.
+image::images/RitmeNaturaTweet.png[RitmeNatura Tweet]
+
+There are several social media common used portals and almost all provide a small API to create messages. Unfortunately non of them are equal requiring several developing efforts to cover all of them. Some times the social media player deprecates a version of the API forcing to maintain the code from time to time. One possible solution is to use a 3rt party library to connect with as many social media players as possible. https://wcoder.github.io/share-buttons/ is only one example. The following illustration is a visual prove of the proliferation of different APIs.
+
+ShareButtons
+
+[#img_Share-Buttons,reftext='{figure-caption} {counter:figure-num}']
+.Share buttons library
+image::images/ShareButtons.png[Share Buttons]
 
 === API Sensor Community
 Sensor Community offers an API
@@ -14,6 +78,25 @@ I have found (form George Percival) this resource that I have been told is relat
 === GBIF API
 GBIF API is a common place for biodiversity. Even if GBIF API is the lengua franca for biodiversity, it is still read only. You cannot contribute directly to GBIF but to the original sources of info (the individual citizen observatories).
 
+=== Why so many?
+
+This Chapter considers the variation in existing geospatial APIs as the motivation for proposing API design based on open standards. The objective is to promote wide spread interoperability based on open API design while maintaining competitive opportunities.
+
+There are many public APIs. As of November 2016, The Programmable Web listed over 16,000 public APIs. (See Chapter 5 for distinction between public and open.) Richardson identified challenges with the proliferation of APIs including
+
+"Thousands of APIs are superficially similar but mutually incompatible
+
+Everyone has a slightly different view of basic real-world concepts like “person” and “event”
+
+This lack of agreement makes it impossible to create client-side software that can be reused between APIs
+
+It’s not hard to find two APIs that do exactly the same thing but have nothing in common except the application/json media type."
+
+The recent proliferation of APIs for geospatial applications has degraded the interoperability previously established by open standards. This degradation is do both to the variability of API practices across the IT industry as well as variability in geospatial APIs specifically.
+
+Advancements in API practices is needed across the software development profession. "APIs are often difficult to use, and programmers at all levels, from novices to experts, repeatedly spend significant time learning new APIs. APIs are also often used incorrectly, resulting in bugs and sometimes significant security problems." ("Improving API Usability" in the Communications of the ACM)
+
+
 === Why we need a common API
 To overcome the silos, we need a way to query the data (and API) regardless the server and CO you are querying (Not just share it as a "package" but extract what we need among the long list of records).
 
@@ -22,3 +105,5 @@ To overcome the silos, we need a way to query the data (and API) regardless the 
 * We will also need the queries that clients needs to populate they user interfaces.
 
 * Describe the quality and the semantics is not provided by the STA. Extra work needed in this (definition server is needed).
+
+OGC Web API guidelines provide a set of rules to compare APIs.
