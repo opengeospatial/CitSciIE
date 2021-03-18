@@ -1,9 +1,26 @@
 [[STAClients]]
 == STA Clients
-In this chapter we describe four SOS servers tested in the IE.
+In this chapter we describe two Sensorthings servers tested in the IE.
 
-=== STA Andy
-Andy client is based on...
+=== STA University of Dundee
+This client is a demonstrator application showing the how data from a Sensorthings test server can be retrieved and stored in a tabular data warehouse for off-the-shelf visualization tools  to create rich visualizations.  In the case of this demonstrator, Microsoft's PowerBi was used, although commercial tools such as Tableau or Spotfire can be used.  In addition, free tools such as Grafana, Rawgraphs, or Apache Superset could be employed.
+
+The data on the test server was very limited but this application with just 10 records.  The application makes a call to the server requesting a JSON feed of all parties and transverses the JSON tree to get the observations and their locations for all parties (people) in the data feed. The initial request is to the "Parties" data feed:
+
+"https://example.org/sta4cs/v1.0/Parties"
+
+The retrieved JSON is parsed and converted into a local CVS file before being consumed by the tabular store.
+Long John Silver,The opportunistic pirate by Robert Louis Stevenson,humidity temperature datastream,Point,48.1371,11.5761,Humidity,RH,2020-06-24T12:00:00.000Z,2020-07-03T15:43:00.000Z,60.8
+Long John Silver,The opportunistic pirate by Robert Louis Stevenson,humidity temperature datastream,Point,48.1371,11.5761,Humidity,RH,2020-06-24T12:01:00.000Z,2020-07-03T15:43:00.000Z,62.0
+Long John Silver,The opportunistic pirate by Robert Louis Stevenson,humidity temperature datastream,Point,48.1371,11.5761,Humidity,RH,2020-07-03T15:43:00.000Z,2020-07-31T12:00:00.000Z,80.8
+Long John Silver,The opportunistic pirate by Robert Louis Stevenson,humidity temperature datastream,Point,48.1371,11.5761,Humidity,RH,2020-07-03T15:43:00.000Z,2020-07-31T12:01:00.000Z,82.0
+Long John Silver,The opportunistic pirate by Robert Louis Stevenson,air temperature datastream,Point,48.1371,11.5761,Temperature,C,2020-06-24T12:00:00.000Z,2020-07-03T15:43:00.000Z,24.5
+Long John Silver,The opportunistic pirate by Robert Louis Stevenson,air temperature datastream,Point,48.1371,11.5761,Temperature,C,2020-06-24T12:01:00.000Z,2020-07-03T15:43:00.000Z,24.7
+Long John Silver,The opportunistic pirate by Robert Louis Stevenson,air temperature datastream,Point,48.1371,11.5761,Temperature,C,2020-07-03T15:43:00.000Z,2020-08-04T12:00:00.000Z,20.8
+Long John Silver,The opportunistic pirate by Robert Louis Stevenson,air temperature datastream,Point,48.1371,11.5761,Temperature,C,2020-07-03T15:43:00.000Z,2020-08-05T12:00:00.000Z,22.0
+Long John Silver Citizen Scientist,The opportunistic pirate by Robert Louis Stevenson,photo datastream,Point,41.485526,2.044367,n/a,,2020-08-01T15:43:00.000Z,2020-08-05T12:00:00.000Z,https://natusfera.gbif.es/attachments/local_photos/files/330575/medium/IMG_20200301_parietaria.jpg?1583141948
+Long John Silver Citizen Scientist,The opportunistic pirate by Robert Louis Stevenson,photo datastream,Point,41.485526,2.044367,n/a,,2020-08-01T18:00:00.000Z,2020-08-05T13:00:00.000Z,https://live.staticflickr.com/5579/15296897611_117ee1f1e3.jpg
+Long John Silver Citizen Scientist,The opportunistic pirate by Robert Louis Stevenson,text datastream,Point,41.485526,2.044367,en,locale/en_US,2020-08-01T15:43:00.000Z,2020-08-05T12:00:00.000Z,Parietaria officinalis
 
 === STA MiraMon
 MiraMon client has not been developed yet but we should!.
